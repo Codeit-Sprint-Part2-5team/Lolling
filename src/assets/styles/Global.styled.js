@@ -22,7 +22,6 @@ video {
   vertical-align: baseline;
 }
 
-
 /* ----- HTML5 display-role reset for older browsers ------ */
 
 article,aside,details,figcaption,
@@ -62,7 +61,6 @@ a {
   text-decoration: none;
   color: #000;
 }
-
 
 /* --------- color constants --------- */
 

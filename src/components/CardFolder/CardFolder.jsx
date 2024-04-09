@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getProfileImageRequest } from '../../apis/api';
+import { getMockImageRequest } from '../../apis/mockApi';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
 
 function CardFolder() {
   const [profileImage, setProfileImage] = useState([]);
-  const { requestFunction: getProfileImage } = useAsync(getProfileImageRequest);
+  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
 
   const getImage = async () => {
     const result = await getProfileImage();
