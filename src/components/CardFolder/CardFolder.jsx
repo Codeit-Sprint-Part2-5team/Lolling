@@ -12,8 +12,10 @@ function CardFolder() {
     const result = await getProfileImage();
     if (!result) return;
 
-    const { imageUrls } = result;
-    setProfileImage(imageUrls[0]);
+    const {
+      data: { imageUrls },
+    } = result;
+    setProfileImage(imageUrls);
   };
 
   useEffect(() => {
@@ -23,7 +25,12 @@ function CardFolder() {
   return (
     <S.CardFolderLayout>
       <S.CardUserName>To. Sowon</S.CardUserName>
-      <ProfileImage />
+      <S.CardGuestContainer>
+        {profileImage.map((image) => (
+          <ProfileImage image={image} />
+        ))}
+        <S.VisitCount>30명이 작성했어요!</S.VisitCount>
+      </S.CardGuestContainer>
       <S.CardEmoji></S.CardEmoji>
     </S.CardFolderLayout>
   );
