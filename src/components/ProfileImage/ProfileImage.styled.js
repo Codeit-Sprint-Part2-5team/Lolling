@@ -3,11 +3,11 @@ import styled from "styled-components";
 const SIZES = {
   s: {
     pc: 28,
-    mo: 28,
+    mobile: 28,
   },
   m: {
     pc: 56,
-    mo: 56,
+    mobile: 56,
   },
 };
 

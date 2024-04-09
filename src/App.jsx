@@ -1,12 +1,7 @@
 import React from "react";
-import ProfileImage from "./components/ProfileImage/ProfileImage";
 
 function App() {
-  return (
-    <>
-      <ProfileImage />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
