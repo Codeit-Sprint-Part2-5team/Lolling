@@ -24,8 +24,8 @@ function Badge({ name }) {
   }
 
   return (
-    <S.BadgeLayout backgroundColorVariable={backgroundColorVariable}>
-      <S.BadgeTextBox colorVariable={colorVariable}>{name}</S.BadgeTextBox>
+    <S.BadgeLayout $backgroundColorVariable={backgroundColorVariable}>
+      <S.BadgeTextBox $colorVariable={colorVariable}>{name}</S.BadgeTextBox>
     </S.BadgeLayout>
   );
 }

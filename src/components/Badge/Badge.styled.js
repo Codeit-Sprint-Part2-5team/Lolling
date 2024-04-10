@@ -6,11 +6,11 @@ export const BadgeLayout = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background-color: ${(props) => `var(${props.backgroundColorVariable})`};
+  background-color: ${(props) => `var(${props.$backgroundColorVariable})`};
 `;
 
 export const BadgeTextBox = styled.p`
-  color: ${(props) => `var(${props.colorVariable})`};
+  color: ${(props) => `var(${props.$colorVariable})`};
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
