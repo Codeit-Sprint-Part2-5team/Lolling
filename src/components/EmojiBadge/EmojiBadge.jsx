@@ -1,4 +1,4 @@
-import { Emoji, EmojiStyle } from 'emoji-picker-react';
+import { Emoji } from 'emoji-picker-react';
 import * as S from './EmojiBadge.styled';
 
 function EmojiBadge({ emoji = '1f423', count = '20' }) {
