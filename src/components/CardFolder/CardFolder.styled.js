@@ -7,7 +7,7 @@ export const CardFolderLayout = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10%;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-  background-color: #ffe2ad;
+  background: ${({ background }) => background};
 `;
 
 export const CardUserNameBox = styled.div`

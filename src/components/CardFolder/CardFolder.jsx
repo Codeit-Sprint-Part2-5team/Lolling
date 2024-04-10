@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getMockImageRequest } from '../../apis/mockApi';
+import { getMockImageRequest } from '../../apis/api';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
 
-function CardFolder() {
+function CardFolder({ background = 'var(--orange-200)' }) {
   const [profileImage, setProfileImage] = useState([]);
   const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
 
@@ -23,7 +23,7 @@ function CardFolder() {
   }, []);
 
   return (
-    <S.CardFolderLayout>
+    <S.CardFolderLayout background={background}>
       <S.CardUserNameBox>To. Sowon</S.CardUserNameBox>
       <S.CardGuestContainer>
         {profileImage.map((image) => (
