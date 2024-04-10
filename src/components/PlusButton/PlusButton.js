@@ -1,11 +1,18 @@
 import PlusIcon from '../../assets/images/PlusIcon.svg';
 import * as S from './PlusButton.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function PlusButton() {
+function PlusButton({ buttonState }) {
+  const [plusButtonState, setPlusButtonState] = useState('enabled');
   const [plusButtonEvent, setPlusButtonEvent] = useState('enabled');
 
-  return (
+  useEffect(() => {
+    if (buttonState) {
+      setPlusButtonState(buttonState);
+    }
+  }, [plusButtonState]);
+
+  return plusButtonState === 'enabled' ? (
     <S.PlusButtonLayout
       src={PlusIcon}
       alt="더하기 이미지"
@@ -31,6 +38,8 @@ function PlusButton() {
         setPlusButtonEvent('enabled');
       }}
     />
+  ) : (
+    <S.PlusButtonDisabledLayout src={PlusIcon} alt="더하기 이미지" />
   );
 }
 
