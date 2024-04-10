@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const SWAGGER_URL = `https://rolling-api.vercel.app`;
+const API_URL = `https://rolling-api.vercel.app`;
 
-export async function getProfileImageRequest() {
-  const response = await axios.get(`${SWAGGER_URL}/profile-images/`);
+export const getMockImageRequest = async () => {
+  const response = await axios.get(`${API_URL}/profile-images/`);
 
-  if (!response.ok) {
-    throw new Error('프로필 이미지 파일을 불러오는데 실패했습니다');
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('프로필 이미지 가져오기 실패');
   }
 
   return response;
-}
+};
