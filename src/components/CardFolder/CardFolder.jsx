@@ -4,7 +4,7 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
 
-function CardFolder({ background = 'var(--orange-200)' }) {
+function CardFolder({ userName = 'Sowon', background = 'var(--orange-200)' }) {
   const [profileImage, setProfileImage] = useState([]);
   const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
 
@@ -15,7 +15,7 @@ function CardFolder({ background = 'var(--orange-200)' }) {
     const {
       data: { imageUrls },
     } = result;
-    setProfileImage(imageUrls);
+    setProfileImage(imageUrls.slice(-3));
   };
 
   useEffect(() => {
@@ -23,15 +23,20 @@ function CardFolder({ background = 'var(--orange-200)' }) {
   }, []);
 
   return (
-    <S.CardFolderLayout background={background}>
-      <S.CardUserNameBox>To. Sowon</S.CardUserNameBox>
+    <S.CardFolderLayout $background={background}>
+      <S.CardUserNameBox>To. {userName}</S.CardUserNameBox>
       <S.CardGuestContainer>
-        {profileImage.map((image) => (
-          <ProfileImage image={image} />
+        {profileImage.map((image, index) => (
+          <ProfileImage key={index} image={image} />
         ))}
-        <S.VisitCountBox>30명이 작성했어요!</S.VisitCountBox>
+        {profileImage.length >= 1 ? (
+          <S.WroteCountBox>+27</S.WroteCountBox>
+        ) : null}
       </S.CardGuestContainer>
-      <S.CardEmojiBox></S.CardEmojiBox>
+      <S.VisitCountBox>30명이 작성했어요!</S.VisitCountBox>
+      <S.CardEmojiBox>
+        <S.CardEmoji>🫵🏻 20</S.CardEmoji>
+      </S.CardEmojiBox>
     </S.CardFolderLayout>
   );
 }
