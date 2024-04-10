@@ -3,6 +3,7 @@ import { getMockImageRequest } from '../../apis/mockApi';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
+import EmojiBadge from '../EmojiBadge/EmojiBadge';
 
 function CardFolder() {
   const [profileImage, setProfileImage] = useState([]);
@@ -31,7 +32,9 @@ function CardFolder() {
         ))}
         <S.VisitCountBox>30명이 작성했어요!</S.VisitCountBox>
       </S.CardGuestContainer>
-      <S.CardEmojiBox></S.CardEmojiBox>
+      <S.CardEmojiBox>
+        <EmojiBadge />
+      </S.CardEmojiBox>
     </S.CardFolderLayout>
   );
 }
