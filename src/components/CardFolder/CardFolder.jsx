@@ -24,14 +24,14 @@ function CardFolder() {
 
   return (
     <S.CardFolderLayout>
-      <S.CardUserName>To. Sowon</S.CardUserName>
+      <S.CardUserNameBox>To. Sowon</S.CardUserNameBox>
       <S.CardGuestContainer>
         {profileImage.map((image) => (
           <ProfileImage image={image} />
         ))}
-        <S.VisitCount>30명이 작성했어요!</S.VisitCount>
+        <S.VisitCountBox>30명이 작성했어요!</S.VisitCountBox>
       </S.CardGuestContainer>
-      <S.CardEmoji></S.CardEmoji>
+      <S.CardEmojiBox></S.CardEmojiBox>
     </S.CardFolderLayout>
   );
 }

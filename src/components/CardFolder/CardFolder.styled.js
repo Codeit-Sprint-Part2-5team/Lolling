@@ -10,7 +10,7 @@ export const CardFolderLayout = styled.div`
   background-color: #ffe2ad;
 `;
 
-export const CardUserName = styled.div`
+export const CardUserNameBox = styled.div`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 12px;
@@ -21,10 +21,10 @@ export const CardGuestContainer = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 `;
 
-export const VisitCount = styled.div`
+export const VisitCountBox = styled.div`
   margin-top: 12px;
   margin-bottom: 43px;
   font-size: 16px;
 `;
 
-export const CardEmoji = styled.div``;
+export const CardEmojiBox = styled.div``;
