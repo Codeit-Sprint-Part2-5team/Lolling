@@ -23,7 +23,8 @@ export const TestLayout = styled.div`
     gap: 10px;
 
     > input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       display: block;
       border: 1px solid var(--black-color);
