@@ -5,6 +5,7 @@ import PostPage from './pages/PostPage/PostPage';
 import ListPage from './pages/ListPage/ListPage';
 import MessagePage from './pages/MessagePage/MessagePage';
 import RollingPage from './pages/RollingPage/RollingPage';
+import ApiTestPage from './pages/ApiTestPage/ApiTestPage';
 
 function Main() {
   return (
@@ -17,6 +18,7 @@ function Main() {
             <Route index element={<PostPage />} />
             <Route path='id' element={<RollingPage />} />
             <Route path='message' element={<MessagePage />} />
+            <Route path='apitest' element={<ApiTestPage />} />
           </Route>
         </Route>
       </Routes>

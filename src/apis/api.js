@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const API_URL = `https://rolling-api.vercel.app`;
 const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
@@ -7,7 +7,7 @@ const MESSAGES_URL = `https://rolling-api.vercel.app/5-5/messages/`;
 export const getMockImageRequest = async () => {
   const response = await axios.get(`${API_URL}profile-images/`);
   if (response.status < 200 || response.status >= 300) {
-    throw new Error("프로필 이미지 가져오기 실패");
+    throw new Error('프로필 이미지 가져오기 실패');
   }
 
   return response;
@@ -83,7 +83,7 @@ export const deleteMessageRequest = async (id) => {
   });
 
   if (response.status < 200 || response.status >= 300) {
-    throw new Error('롤링 페이퍼 삭제 실패');
+    throw new Error('메시지 삭제 실패');
   }
 
   return response;
@@ -96,7 +96,7 @@ export const deleteCardFolderRequest = async (id) => {
   });
 
   if (response.status < 200 || response.status >= 300) {
-    throw new Error('롤링 페이퍼 삭제 실패');
+    throw new Error('롤링 페이퍼 페이지 삭제 실패');
   }
 
   return response;
