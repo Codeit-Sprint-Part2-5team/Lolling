@@ -3,6 +3,7 @@ import { getMockImageRequest } from "../../apis/api";
 import useAsync from "../../hooks/useAsync";
 import ProfileImage from "../ProfileImage/ProfileImage";
 import * as S from "./Card.styled";
+import Badge from "../Badge/Badge";
 
 function Card() {
   const [profileImage, setProfileImage] = useState([]);
@@ -30,7 +31,7 @@ function Card() {
           <S.NameContainer>
             <span>From.</span> <b>김동훈</b>
           </S.NameContainer>
-          <div>동료</div>
+          <Badge name='동료' />
         </S.TextContainer>
       </S.TopContainer>
       <S.BottomContainer>
