@@ -28,6 +28,7 @@ export const NameContainer = styled.div`
   display: flex;
   gap: 6px;
   font-size: 20px;
+  line-height: 24px;
 `;
 
 export const BottomContainer = styled.div`
