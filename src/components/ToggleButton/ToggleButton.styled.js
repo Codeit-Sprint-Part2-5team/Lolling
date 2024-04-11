@@ -8,7 +8,7 @@ export const ToggleButtonLayout = styled.div`
   border-radius: 6px;
 `;
 
-export const ToggleButtonSelectedItemBox = styled.div`
+export const ToggleButtonSelectedItemBox = styled.button`
   display: flex;
   padding: 7px 16px;
   justify-content: center;
@@ -29,7 +29,7 @@ export const ToggleButtonSelectedItemBox = styled.div`
   flex: 1;
 `;
 
-export const ToggleButtonLabelItemBox = styled.div`
+export const ToggleButtonLabelItemBox = styled.button`
   display: flex;
   height: 40px;
   padding: 8px 16px;
