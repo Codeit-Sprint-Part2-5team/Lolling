@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as S from './ToggleButton.styled';
 
-function ToggleButton() {
+export default function ToggleButton() {
   const [selectedToggle, setSelectedToggle] = useState('left');
 
   const handleLeftClick = () => {
@@ -35,5 +35,3 @@ function ToggleButton() {
     </S.ToggleButtonLayout>
   );
 }
-
-export default ToggleButton;
