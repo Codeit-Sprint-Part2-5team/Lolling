@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import Inner from '../../components/Inner/Inner';
 
 export default function ListPage() {
-  return <div>ListPage</div>;
+  return (
+    <div>
+      <Inner>ListPage</Inner>
+    </div>
+  );
 }

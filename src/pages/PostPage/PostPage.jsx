@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import Inner from '../../components/Inner/Inner';
 
 export default function PostPage() {
-  return <div>PostPage</div>;
+  return (
+    <div>
+      <Inner>PostPage</Inner>
+    </div>
+  );
 }

@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import Inner from '../../components/Inner/Inner';
 
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Inner>HomePage</Inner>
+    </div>
+  );
 }
