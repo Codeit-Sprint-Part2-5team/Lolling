@@ -1,20 +1,27 @@
 import useAsync from '../../hooks/useAsync';
-import { getCardFolderListRequest } from '../../apis/api';
-import { createCardFolderRequest } from '../../apis/api';
+import {
+  getCardFolderListRequest,
+  getMessageListRequest,
+  createCardFolderRequest,
+  createMessageRequest,
+} from '../../apis/api';
 import { useState } from 'react';
-import * as S from './ApiTestPage.styled.js';
+import * as S from './ApiTestPage.styled';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
   backgroundColor: '',
 };
 
-const INIT_CREATE_MESSAGE = {
-  userName: '',
-  backgroundColor: '',
+const INIT_MESSAGE_BODY = {
+  sender: '',
+  profileImageURL: '',
+  relationship: '',
+  content: '',
+  font: '',
 };
 
-export default function PostPage() {
+const PostPage = () => {
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
@@ -34,93 +41,179 @@ export default function PostPage() {
   };
 
   return (
-    <S.PostPageLayout>
+    <S.TestLayout>
       <S.FormContainer onSubmit={createPaper}>
-        <label>
-          <input
-            name="userName"
-            value={rollPaperBody.userName}
-            onChange={onChangeInputHandler}
-            placeholder="받는 사람 이름을 입력해 주세요"
-          />
-        </label>
-        <h4>배경화면을 선택해 주세요.</h4>
+        <input
+          name="userName"
+          value={rollPaperBody.userName}
+          onChange={onChangeInputHandler}
+          placeholder="페이퍼 주인이 될 사람 이름을 입력해주세요"
+        />
+        {/* <h4>배경화면을 선택해 주세요.</h4>
         <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
         <div>
           <button type="button">컬러</button>
           <button type="button">이미지</button>
-        </div>
-        <div>
-          <select
-            name="backgroundColor"
-            value={rollPaperBody.backgroundColor}
-            onChange={onChangeInputHandler}
-          >
-            <option value="beige">주황</option>
-            <option value="purple">보라</option>
-            <option value="blue">파랑</option>
-            <option value="green">초록</option>
-          </select>
-        </div>
+        </div> */}
+        <select
+          name="backgroundColor"
+          value={rollPaperBody.backgroundColor}
+          onChange={onChangeInputHandler}
+        >
+          <option value="beige">주황</option>
+          <option value="purple">보라</option>
+          <option value="blue">파랑</option>
+          <option value="green">초록</option>
+        </select>
         <S.Button>생성하기</S.Button>
       </S.FormContainer>
-    </S.PostPageLayout>
+    </S.TestLayout>
   );
-}
+};
 
-export default function ListPage() {
+const GetPaper = () => {
   const [paperList, setPaperList] = useState();
-  const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const { requestFunction: getCardFolder } = useAsync(getCardFolderListRequest);
 
   const getRequest = async () => {
-    const result = await getCardFolder();
-    if (!result) return;
-    setPaperList(result);
+    const res = await getCardFolder();
+    if (!res) return;
+    const {
+      data: { results },
+    } = res;
+    setPaperList(results);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getRequest();
   };
+  return (
+    <S.TestLayout>
+      <form>
+        <h4>롤링 페이퍼 가져오기</h4>
+        <S.Button type="button" onClick={handleSubmit}>
+          등록된 유저 출력
+        </S.Button>
+      </form>
+      {paperList
+        ? paperList.map((user) => (
+            <div
+              key={user.id}
+            >{`${user.name}(id:${user.id}, 배경색:${user.backgroundColor}, 등록된 페이퍼:${user.messageCount})`}</div>
+          ))
+        : null}
+    </S.TestLayout>
+  );
+};
+
+const PostMessages = () => {
+  const [messageBody, setMessageBody] = useState(INIT_MESSAGE_BODY);
+  const { requestFunction: createRequest } = useAsync(createMessageRequest);
+
+  const onChangeInputHandler = (e) => {
+    setMessageBody({
+      ...messageBody,
+      [e.target['name']]: e.target.value,
+    });
+  };
+
+  const createMessage = async (e) => {
+    e.preventDefault();
+    const result = await createRequest(messageBody);
+    if (!result) return;
+
+    setMessageBody(INIT_MESSAGE_BODY);
+  };
 
   return (
     <S.TestLayout>
-      <h4>리스폰스 확인은 네트워크 페이지에서</h4>
-      <div className="getPaperList">
-        <form>
-          <h4>롤링 페이퍼 가져오기</h4>
-          <button type="button" onClick={handleSubmit}>
-            클릭
-          </button>
-        </form>
-      </div>
-      <div className="postMessage">
-        <form>
-          <h4>유저에게 메시지 보내기</h4>
-          <input name="sender" placeholder="보내는 사람" />
-          <input name="profileImageURL" placeholder="프로필 이미지" />
-          <input name="relationship" placeholder="관계" />
-          <textarea name="content" placeholder="내용" />
-          <select name="font">
-            <option value="Noto Sans">Noto Sans</option>
-          </select>
-          <button>보내기</button>
-        </form>
-      </div>
-      <div className="getMessage">
-        <form>
-          <h4>유저가 받은 메세지 조회</h4>
-          <input placeholder="id를 입력하세요" />
-          <button>조회</button>
-        </form>
-      </div>
-      <div>
-        <form>
-          <h4></h4>
-        </form>
-      </div>
-      <PostPage />
+      <form onSubmit={createMessage}>
+        <h4>유저에게 메시지 보내기</h4>
+        <input
+          value={messageBody.sender}
+          name="sender"
+          placeholder="보내는 사람"
+          onChange={onChangeInputHandler}
+        />
+        <input
+          value={messageBody.profileImageURL}
+          name="profileImageURL"
+          placeholder="프로필 이미지"
+          onChange={onChangeInputHandler}
+        />
+        <select
+          value={messageBody.relationship}
+          name="relationship"
+          onChange={onChangeInputHandler}
+        >
+          <option value="친구">친구</option>
+          <option value="지인">지인</option>
+          <option value="동료">동료</option>
+          <option value="가족">가족</option>
+        </select>
+        <textarea
+          value={messageBody.content}
+          name="content"
+          placeholder="내용"
+          onChange={onChangeInputHandler}
+        />
+        <select
+          value={messageBody.font}
+          name="font"
+          onChange={onChangeInputHandler}
+        >
+          <option value="Noto Sans">Noto Sans</option>
+          <option value="Pretendard">Pretendard</option>
+          <option value="나눔명조">나눔명조</option>
+          <option value="나눔손글씨 손편지체">나눔손글씨 손편지체</option>
+        </select>
+        <S.Button type="submit">보내기</S.Button>
+      </form>
     </S.TestLayout>
   );
-}
+};
+
+const GetMessage = () => {
+  const [messages, setMessages] = useState();
+  const [id, setId] = useState();
+  const { requestFunction: getMessages } = useAsync(getMessageListRequest);
+
+  const getRequest = async (id) => {
+    const result = await getMessages(id);
+    if (!result) return;
+    setMessages(result);
+  };
+
+  const handleInput = (e) => {
+    setId(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getRequest(id);
+  };
+
+  return (
+    <S.TestLayout>
+      <form onSubmit={handleSubmit}>
+        <h4>유저가 받은 메세지 조회</h4>
+        <input onChange={handleInput} placeholder="id를 입력하세요" />
+        <S.Button>조회</S.Button>
+      </form>
+    </S.TestLayout>
+  );
+};
+
+const ApiTestPage = () => {
+  return (
+    <S.Layout>
+      <PostPage />
+      <GetPaper />
+      <PostMessages />
+      <GetMessage />
+    </S.Layout>
+  );
+};
+
+export default ApiTestPage;
