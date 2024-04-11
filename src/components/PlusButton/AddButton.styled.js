@@ -9,23 +9,23 @@ export const AddButtonLayout = styled.img`
   align-items: center;
   flex-shrink: 0;
   border-radius: 100px;
-  background: var(--grayscale-500);
+  background: var(--grayscale-500: #555555);
   cursor: pointer;
 
   &:disabled {
-    background: var(--grayscale-300);
+    background: var(--grayscale-300: #cccccc);
   }
 
   &:hover {
-    background: var(--grayscale-600);
+    background: var(--grayscale-600: #4a4a4a);
   }
 
   &:active {
-    background: var(--grayscale-700);
+    background: var(--grayscale-600: #4a4a4a);
   }
 
   &:focus {
-    background: var(--grayscale-700);
-    border: 1px solid var(--grayscale-800);
+    background: var(--grayscale-700: #3a3a3a);
+    border: 1px solid var(--grayscale-800: #2b2b2b);
   }
 `;
