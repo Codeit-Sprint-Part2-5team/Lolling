@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { getMockImageRequest } from "../../apis/api";
-import useAsync from "../../hooks/useAsync";
-import ProfileImage from "../ProfileImage/ProfileImage";
-import * as S from "./Card.styled";
-import Badge from "../Badge/Badge";
+import { useEffect, useState } from 'react';
+import { getMockImageRequest } from '../../apis/api';
+import useAsync from '../../hooks/useAsync';
+import ProfileImage from '../ProfileImage/ProfileImage';
+import * as S from './Card.styled';
+import Badge from '../Badge/Badge';
 
 function Card() {
   const [profileImage, setProfileImage] = useState([]);
