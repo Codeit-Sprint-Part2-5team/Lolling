@@ -19,7 +19,7 @@ export const DeleteButtonLayout = styled.img`
     background: var(--grayscale-100);
   }
 
-  &:pressed {
+  &:active {
     background: var(--grayscale-100);
   }
 
