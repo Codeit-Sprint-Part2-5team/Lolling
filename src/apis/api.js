@@ -42,3 +42,29 @@ export const getCardFolderListRequest = async () => {
 
   return response;
 };
+
+export const getMessageRequest = async (id) => {
+  const response = await axios.get(`${TEAM_URL}${id}/messages`);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('롤링 페이퍼 정보 가져오기 실패');
+  }
+
+  return response;
+};
+
+export const createMessageRequest = async (id, body) => {
+  const { sender, profileImageURL, relationship, content, font } = body;
+
+  const response = await axios({
+    method: 'post',
+    url: `${TEAM_URL}${id}/messages`,
+    data: {
+      sender: sender,
+      profileImageURL: profileImageURL,
+      relationship: relationship,
+      content: content,
+      font: font,
+    },
+  });
+};
