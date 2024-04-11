@@ -1,11 +1,31 @@
+import { useEffect, useState } from "react";
+import { getMockImageRequest } from "../../apis/api";
+import useAsync from "../../hooks/useAsync";
 import ProfileImage from "../ProfileImage/ProfileImage";
 import * as S from "./Card.styled";
 
 function Card() {
+  const [profileImage, setProfileImage] = useState([]);
+  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+
+  const getImage = async () => {
+    const result = await getProfileImage();
+    if (!result) return;
+
+    const {
+      data: { imageUrls },
+    } = result;
+    setProfileImage(imageUrls[1]);
+  };
+
+  useEffect(() => {
+    getImage();
+  }, []);
+
   return (
     <S.CardLayout>
       <S.TopContainer>
-        <ProfileImage size='m' />
+        <ProfileImage image={profileImage} size='m' />
         <S.TextContainer>
           <S.NameContainer>
             <span>From.</span> <b>김동훈</b>
