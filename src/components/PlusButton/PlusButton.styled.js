@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const buttonBackgroundColor = {
+const plusButtonBackgroundColor = {
   enabled: '--grayscale-500',
   hover: '--grayscale-600',
   pressed: '--grayscale-700',
@@ -17,13 +17,13 @@ export const PlusButtonLayout = styled.img`
   flex-shrink: 0;
   border-radius: 100px;
   background: ${(props) =>
-    `var(${buttonBackgroundColor[props.plusButtonEvent]})`};
+    `var(${plusButtonBackgroundColor[props.plusButtonEvent]})`};
   cursor: pointer;
   border: ${(props) =>
     props.plusButtonEvent === 'focus' ? '1px solid var(--grayscale-800)' : ''};
 `;
 
-export const PlusButtonDisabledLayout = styled.img`
+export const DisabledPlusButtonLayout = styled.img`
   display: flex;
   width: 56px;
   height: 56px;
