@@ -7,6 +7,9 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <div>
+        <Input value='test' />
+      </div>
       <Outlet />
     </>
   );

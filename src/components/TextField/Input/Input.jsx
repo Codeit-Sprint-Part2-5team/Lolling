@@ -26,8 +26,8 @@ function Input({ ...props }) {
   };
 
   const handleSubmission = () => {
-    // 어떤 조건에서 에러 발생한다고 가정 -> 추후 수정
-    if (props.value === '') {
+    // 에러 조건: 비밀번호 8자 이상 -> 추후 수정
+    if (props.password.length < 8) {
       setError(true);
     } else {
       setError(false);
