@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PlusButtonLayout = styled.img`
+export const AddButtonLayout = styled.img`
   display: flex;
   width: 56px;
   height: 56px;
