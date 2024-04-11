@@ -1,31 +1,32 @@
+import { useState } from 'react';
 import * as S from './Badge.styled';
 
 function Badge({ name }) {
-  let backgroundColorVariable;
-  let colorVariable;
+  const [backgroundColor, setBackgroundColor] = useState(--orange - 100);
+  const [color, setColor] = useState(--orange - 100);
 
   switch (name) {
     case '지인':
-      backgroundColorVariable = '--orange-100';
-      colorVariable = '--orange-500';
+      setBackgroundColor = '--orange-100';
+      setColor = '--orange-500';
       break;
     case '동료':
-      backgroundColorVariable = '--purple-100';
-      colorVariable = '--purple-600';
+      setBackgroundColor = '--purple-100';
+      setColor = '--purple-600';
       break;
     case '가족':
-      backgroundColorVariable = '--green-100';
-      colorVariable = '--green-500';
+      setBackgroundColor = '--green-100';
+      setColor = '--green-500';
       break;
     case '친구':
     default:
-      backgroundColorVariable = '--blue-100';
-      colorVariable = '--blue-500';
+      setBackgroundColor = '--blue-100';
+      setColor = '--blue-500';
   }
 
   return (
-    <S.BadgeLayout backgroundColorVariable={backgroundColorVariable}>
-      <S.BadgeTextBox colorVariable={colorVariable}>{name}</S.BadgeTextBox>
+    <S.BadgeLayout setBackgroundColor={setBackgroundColor}>
+      <S.BadgeTextBox setColor={setColor}>{name}</S.BadgeTextBox>
     </S.BadgeLayout>
   );
 }

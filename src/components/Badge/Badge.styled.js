@@ -7,6 +7,7 @@ export const BadgeLayout = styled.div`
   align-items: center;
   border-radius: 4px;
   background-color: ${(props) => `var(${props.backgroundColorVariable})`};
+  width: fit-content;
 `;
 
 export const BadgeTextBox = styled.p`
