@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -85,15 +85,15 @@ a {
   --green-300: #9BE282;
   --green-400: #60CF37;
   --green-500: #2BA600;
-  --grayscale-100: #F6F6F6;
-  --grayscale-200: #EEEEEE;
-  --grayscale-300: #CCCCCC;
-  --grayscale-400: #999999;
-  --grayscale-500: #555555;
-  --grayscale-600: #4A4A4A;
-  --grayscale-700: #3A3A3A;
-  --grayscale-800: #2B2B2B;
-  --grayscale-900: #181818;
+  --gray-100: #F6F6F6;
+  --gray-200: #EEEEEE;
+  --gray-300: #CCCCCC;
+  --gray-400: #999999;
+  --gray-500: #555555;
+  --gray-600: #4A4A4A;
+  --gray-700: #3A3A3A;
+  --gray-800: #2B2B2B;
+  --gray-900: #181818;
 }
 
 `;
