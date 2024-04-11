@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const API_URL = `https://rolling-api.vercel.app`;
-const TEAM_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
+const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
+const MESSAGES_URL = `https://rolling-api.vercel.app/5-5/messages/`;
 
 export const getMockImageRequest = async () => {
   const response = await axios.get(`${API_URL}profile-images/`);
@@ -18,7 +19,7 @@ export const createCardFolderRequest = async ({
 }) => {
   const response = await axios({
     method: 'post',
-    url: `${TEAM_URL}`,
+    url: `${RECIPIENTS_URL}`,
     data: {
       name: userName,
       backgroundColor: backgroundColor,
@@ -33,7 +34,7 @@ export const createCardFolderRequest = async ({
 };
 
 export const getCardFolderListRequest = async () => {
-  const response = await axios.get(`${TEAM_URL}`);
+  const response = await axios.get(`${RECIPIENTS_URL}`);
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -43,7 +44,7 @@ export const getCardFolderListRequest = async () => {
 };
 
 export const getMessageListRequest = async (id) => {
-  const response = await axios.get(`${TEAM_URL}${id}/messages/`);
+  const response = await axios.get(`${RECIPIENTS_URL}${id}/messages/`);
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -52,13 +53,14 @@ export const getMessageListRequest = async (id) => {
   return response;
 };
 
-export const createMessageRequest = async (body, id = 5777) => {
-  const { sender, relationship, content, font } = body;
+export const createMessageRequest = async (body) => {
+  const { sender, relationship, content, font, recipientId } = body;
 
   const response = await axios({
     method: 'post',
-    url: `${TEAM_URL}${id}/messages/`,
+    url: `${RECIPIENTS_URL}${recipientId}/messages/`,
     data: {
+      recipientId: recipientId,
       sender: sender,
       profileImageURL: 'https://picsum.photos/id/1082/100/100',
       relationship: relationship,
@@ -77,7 +79,7 @@ export const createMessageRequest = async (body, id = 5777) => {
 export const deleteMessageRequest = async (id) => {
   const response = await axios({
     method: 'delete',
-    url: `${TEAM_URL}${id}/`,
+    url: `${MESSAGES_URL}${id}/`,
   });
 
   if (response.status < 200 || response.status >= 300) {
@@ -90,7 +92,7 @@ export const deleteMessageRequest = async (id) => {
 export const deleteCardFolderRequest = async (id) => {
   const response = await axios({
     method: 'delete',
-    url: `${TEAM_URL}${id}/`,
+    url: `${RECIPIENTS_URL}${id}/`,
   });
 
   if (response.status < 200 || response.status >= 300) {

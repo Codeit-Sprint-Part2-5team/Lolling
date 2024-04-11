@@ -4,6 +4,8 @@ import {
   getMessageListRequest,
   createCardFolderRequest,
   createMessageRequest,
+  deleteMessageRequest,
+  deleteCardFolderRequest,
 } from '../../apis/api';
 import { useState } from 'react';
 import * as S from './ApiTestPage.styled';
@@ -14,6 +16,7 @@ const INIT_CREATE_ROLL_PAPER = {
 };
 
 const INIT_MESSAGE_BODY = {
+  recipientId: '',
   sender: '',
   profileImageURL: '',
   relationship: '',
@@ -42,7 +45,8 @@ const PostPage = () => {
 
   return (
     <S.TestLayout>
-      <S.FormContainer onSubmit={createPaper}>
+      <form onSubmit={createPaper}>
+        <h4>롤링 페이퍼 생성하기</h4>
         <input
           name="userName"
           value={rollPaperBody.userName}
@@ -66,7 +70,7 @@ const PostPage = () => {
           <option value="green">초록</option>
         </select>
         <S.Button>생성하기</S.Button>
-      </S.FormContainer>
+      </form>
     </S.TestLayout>
   );
 };
@@ -130,6 +134,12 @@ const PostMessages = () => {
     <S.TestLayout>
       <form onSubmit={createMessage}>
         <h4>유저에게 메시지 보내기</h4>
+        <input
+          value={messageBody.recipientId}
+          name="recipientId"
+          placeholder="id"
+          onChange={onChangeInputHandler}
+        />
         <input
           value={messageBody.sender}
           name="sender"
@@ -205,13 +215,82 @@ const GetMessage = () => {
   );
 };
 
+const DeleteMessage = () => {
+  const [id, setId] = useState();
+  const { requestFunction: deleteMessage } = useAsync(deleteMessageRequest);
+
+  const deleteRequest = async (id) => {
+    const result = await deleteMessage(id);
+    if (!result) return;
+
+    setId();
+  };
+  const handleInput = (e) => {
+    setId(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    deleteRequest();
+  };
+
+  return (
+    <S.TestLayout>
+      <form onSubmit={handleSubmit}>
+        <h4>메시지 삭제</h4>
+        <input
+          onChange={handleInput}
+          placeholder="삭제할 메시지의 id를 입력하시오"
+        />
+        <S.Button>삭제</S.Button>
+      </form>
+    </S.TestLayout>
+  );
+};
+
+const DeleteCardFolder = () => {
+  const [id, setId] = useState();
+  const { requestFunction: deleteMessage } = useAsync(deleteCardFolderRequest);
+
+  const deleteRequest = async (id) => {
+    const result = await deleteMessage(id);
+    if (!result) return;
+
+    setId();
+  };
+  const handleInput = (e) => {
+    setId(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    deleteRequest();
+  };
+
+  return (
+    <S.TestLayout>
+      <form onSubmit={handleSubmit}>
+        <h4>롤링페이퍼 삭제</h4>
+        <input
+          onChange={handleInput}
+          placeholder="삭제할 롤링페이퍼의 id를 입력하시오"
+        />
+        <S.Button>삭제</S.Button>
+      </form>
+    </S.TestLayout>
+  );
+};
+
 const ApiTestPage = () => {
   return (
     <S.Layout>
+      <h4>셀렉트 태그는 onChange라 값을 한번 변경해야 값이 들어감!</h4>
       <PostPage />
       <GetPaper />
       <PostMessages />
       <GetMessage />
+      <DeleteMessage />
+      <DeleteCardFolder />
     </S.Layout>
   );
 };

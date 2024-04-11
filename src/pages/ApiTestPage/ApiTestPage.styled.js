@@ -1,34 +1,39 @@
 import styled from 'styled-components';
 
 export const Layout = styled.div`
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  align-items: center;
+  gap: 50px;
+
+  > h4 {
+    font-size: 20px;
+  }
 `;
 
 export const TestLayout = styled.div`
+  padding-bottom: 50px;
+  border-bottom: 1px solid gray;
+
   > form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
     > input,
     textarea {
-      width: 50%;
+      width: 100%;
       display: block;
       border: 1px solid var(--black-color);
     }
+
     > h4 {
       font-size: 20px;
       color: var(--purple-600);
     }
   }
-`;
-
-export const PostPageLayout = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-export const FormContainer = styled.form`
-  width: 700px;
 `;
 
 export const Button = styled.button`
