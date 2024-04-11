@@ -1,5 +1,6 @@
 import React from "react";
+import Inner from '../../components/Inner/Inner';
 
 export default function RollingPage() {
-  return <div>RollingPage</div>;
+  return <Inner>RollingPage</Inner>;
 }
