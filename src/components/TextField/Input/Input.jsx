@@ -1,6 +1,6 @@
-import * as S from "./Input.styled";
+import * as S from './Input.styled';
 
-const Input = ({ active, error, submitted, ...props }) => {
+function Input({ active, error, submitted, ...props }) {
   const [focused, setFocused] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
 
@@ -14,16 +14,16 @@ const Input = ({ active, error, submitted, ...props }) => {
       <S.InputContainer
         className={
           error
-            ? "error"
+            ? 'error'
             : active
-            ? "active"
+            ? 'active'
             : focused
-            ? "focused"
+            ? 'focused'
             : clickedOutside
-            ? "button"
+            ? 'button'
             : submitted
-            ? "disabled"
-            : ""
+            ? 'disabled'
+            : ''
         }
         onBlur={handleClickOutside}
         onFocus={() => setFocused(true)}
@@ -32,6 +32,6 @@ const Input = ({ active, error, submitted, ...props }) => {
       {error && <S.ErrorMessage>Error Message</S.ErrorMessage>}
     </S.InputLayout>
   );
-};
+}
 
 export default Input;
