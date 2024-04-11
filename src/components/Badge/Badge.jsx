@@ -7,21 +7,21 @@ function Badge({ name }) {
 
   switch (name) {
     case '지인':
-      setBackgroundColor = '--orange-100';
-      setColor = '--orange-500';
+      setBackgroundColor = '--orange-100,#FFF0D6';
+      setColor = '--orange-500,#FF8832';
       break;
     case '동료':
-      setBackgroundColor = '--purple-100';
-      setColor = '--purple-600';
+      setBackgroundColor = '--purple-100,#F8F0FF';
+      setColor = '--purple-600,#9935FF';
       break;
     case '가족':
-      setBackgroundColor = '--green-100';
-      setColor = '--green-500';
+      setBackgroundColor = '--green-,#E4FBDC';
+      setColor = '--green-500,#2BA600';
       break;
     case '친구':
     default:
-      setBackgroundColor = '--blue-100';
-      setColor = '--blue-500';
+      setBackgroundColor = '--blue-100,#E2F5FF';
+      setColor = '--blue-500,#00A2FE';
   }
 
   return (
