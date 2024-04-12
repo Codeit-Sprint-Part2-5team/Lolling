@@ -5,6 +5,8 @@ export const PostPageLayout = styled.div`
 `;
 
 export const FormContainer = styled.div`
+  width: 720px;
+
   > div {
     > h4 {
       font-size: 24px;
@@ -65,8 +67,9 @@ export const SelectingContainer = styled.div`
 `;
 
 export const SelectingBGContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 69px;
 `;
 
