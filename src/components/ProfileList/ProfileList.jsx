@@ -4,10 +4,10 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 export default function ProfileList({ recentMessages, messageCount }) {
   return (
     <>
-      {recentMessages.map((item) => (
+      {recentMessages?.map((item) => (
         <ProfileImage key={item.id} image={item.profileImageURL} />
       ))}
-      {messageCount > recentMessages.length ? (
+      {messageCount > recentMessages?.length ? (
         <S.WroteCountBox>{`+ ${messageCount}`}</S.WroteCountBox>
       ) : null}
     </>

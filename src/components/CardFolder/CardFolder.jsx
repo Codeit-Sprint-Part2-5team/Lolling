@@ -12,7 +12,7 @@ function CardFolder({ userInfo }) {
     recentMessages = null,
   } = userInfo;
 
-  const colorConversion = (color) => {
+  const convertColor = (color) => {
     if (color === 'beige') {
       return 'var(--orange-200)';
     }
@@ -21,7 +21,7 @@ function CardFolder({ userInfo }) {
 
   return (
     <S.CardFolderLayout
-      $background={backgroundImageURL || colorConversion(backgroundColor)}
+      $background={backgroundImageURL || convertColor(backgroundColor)}
     >
       <S.UserInfoContainer>
         <S.CardUserNameBox>To. {name}</S.CardUserNameBox>
