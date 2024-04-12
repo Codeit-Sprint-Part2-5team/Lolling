@@ -5,14 +5,7 @@ import * as S from './PostPage.styled';
 export default function PostPage() {
   return (
     <S.PostPageLayout>
-      <Inner>
-        PostPage
-        
-
-
-
-
-      </Inner>
+      <Inner>PostPage</Inner>
     </S.PostPageLayout>
   );
 }

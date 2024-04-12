@@ -5,14 +5,7 @@ import * as S from './ListPage.styled';
 export default function ListPage() {
   return (
     <S.ListPageLayout>
-      <Inner>
-        ListPage
-        
-
-
-
-
-      </Inner>
+      <Inner>ListPage</Inner>
     </S.ListPageLayout>
   );
 }
