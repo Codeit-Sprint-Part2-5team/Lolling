@@ -5,13 +5,7 @@ import * as S from './HomePage.styled';
 export default function HomePage() {
   return (
     <S.HomePageLayout>
-      <Inner>
-        HomePage
-
-
-
-
-      </Inner>
+      <Inner>HomePage</Inner>
     </S.HomePageLayout>
   );
 }
