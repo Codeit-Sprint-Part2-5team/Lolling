@@ -3,6 +3,7 @@ import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
 import { createCardFolderRequest } from '../../apis/api';
+import ColorOption from '../../components/ColorOption/ColorOption';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
@@ -49,16 +50,12 @@ export default function PostPage() {
             <button type='button'>컬러</button>
             <button type='button'>이미지</button>
           </S.SelectingContainer>
-          <select
-            name='backgroundColor'
-            value={rollPaperBody.backgroundColor}
-            onChange={onChangeInputHandler}
-          >
-            <option value='beige'>주황</option>
-            <option value='purple'>보라</option>
-            <option value='blue'>파랑</option>
-            <option value='green'>초록</option>
-          </select>
+          <S.SelectingBGContainer>
+            <ColorOption color={'var(--orange-200)'} />
+            <ColorOption color={'var(--purple-200)'} />
+            <ColorOption color={'var(--blue-200)'} />
+            <ColorOption color={'var(--green-200)'} />
+          </S.SelectingBGContainer>
           <S.Button>생성하기</S.Button>
         </S.FormContainer>
       </Inner>

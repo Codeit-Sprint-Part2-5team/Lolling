@@ -64,6 +64,12 @@ export const SelectingContainer = styled.div`
   }
 `;
 
+export const SelectingBGContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 69px;
+`;
+
 export const Button = styled.button`
   display: block;
   width: 100%;
