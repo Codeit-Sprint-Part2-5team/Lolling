@@ -1,36 +1,58 @@
 import styled from 'styled-components';
 
-export const DropDownLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 318px;
-  height: 220px;
-  padding: 10px 1px;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
-  font-size: 16px;
-`;
+export const DropDownLayout = styled.div``;
 
-export const DropDownItem = styled.div`
+export const DropDownInput = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 316px;
+  justify-content: space-between;
+  width: 320px;
   height: 50px;
   padding: 12px 16px;
   gap: 10px;
-  background: #f6f6f6;
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-family: 'Pretendard';
+  font-size: 16px;
 
+  &::placeholder {
+    color: #555555;
+  }
+
+  .dropdown-arrow {
+    margin-left: 10px;
+  }
+`;
+
+export const DropDownItemList = styled.div`
+  width: 318px;
+  height: 220px;
+  padding: 0;
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+`;
+
+export const DropDownItem = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const DropDownItemHover = styled.li`
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  transition: background-color 0.3s;
   &:hover {
-    /* list / Hover */
     background: #f6f6f6;
   }
 `;
