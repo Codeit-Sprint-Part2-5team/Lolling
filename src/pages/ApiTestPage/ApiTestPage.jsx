@@ -64,6 +64,9 @@ const PostPage = () => {
           value={rollPaperBody.backgroundColor}
           onChange={onChangeInputHandler}
         >
+          <option value='' disabled hidden>
+            선택하세요
+          </option>
           <option value='beige'>주황</option>
           <option value='purple'>보라</option>
           <option value='blue'>파랑</option>
@@ -157,6 +160,10 @@ const PostMessages = () => {
           name='relationship'
           onChange={onChangeInputHandler}
         >
+          {' '}
+          <option value='' disabled hidden>
+            선택하세요
+          </option>
           <option value='친구'>친구</option>
           <option value='지인'>지인</option>
           <option value='동료'>동료</option>
@@ -173,6 +180,9 @@ const PostMessages = () => {
           name='font'
           onChange={onChangeInputHandler}
         >
+          <option value='' disabled hidden>
+            선택하세요
+          </option>
           <option value='Noto Sans'>Noto Sans</option>
           <option value='Pretendard'>Pretendard</option>
           <option value='나눔명조'>나눔명조</option>
