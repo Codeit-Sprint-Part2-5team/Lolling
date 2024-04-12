@@ -98,6 +98,7 @@ export const ContentBox = styled.p`
   letter-spacing: -0.18px;
   padding-right: 20px;
   overflow-y: scroll;
+  margin-bottom: 24px;
 
   &::-webkit-scrollbar {
     width: 4px;
