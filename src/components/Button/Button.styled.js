@@ -12,23 +12,23 @@ const ButtonStyle = css`
 export const ButtonLayout = styled.button`
   // 공통 부분
   ${ButtonStyle}
-  width: ${({ buttonWidth }) => buttonWidth}px;
+  width: ${({ width }) => width}px;
   cursor: pointer;
 
   // Size
-  ${({ buttonSize, buttonVariant }) =>
-    buttonSize === 56 &&
+  ${({ size, variant }) =>
+    size === 56 &&
     `
     height: 56px;
-    padding: ${buttonVariant === 'primary' ? '14px 24px' : '14px 16px'};
+    padding: ${variant === 'primary' ? '14px 24px' : '14px 16px'};
     border-radius: 12px;
     font-size: 18px;
     font-weight: 700;
     line-height: 28px;
     letter-spacing: -0.18px;
   `}
-  ${({ buttonSize }) =>
-    buttonSize === 40 &&
+  ${({ size }) =>
+    size === 40 &&
     `
     height: 40px;
     padding: 8px 16px;
@@ -39,8 +39,8 @@ export const ButtonLayout = styled.button`
     line-height: 26px;
     letter-spacing: -0.16px;
   `}
-  ${({ buttonSize }) =>
-    buttonSize === 36 &&
+  ${({ size }) =>
+    size === 36 &&
     `
     height: 36px;
     padding: 6px 16px;
@@ -50,8 +50,8 @@ export const ButtonLayout = styled.button`
     font-weight: 500;
     line-height: 24px;
   `}
-  ${({ buttonSize }) =>
-    buttonSize === 28 &&
+  ${({ size }) =>
+    size === 28 &&
     `
     height: 28px;
     padding: 2px 16px;
@@ -64,15 +64,11 @@ export const ButtonLayout = styled.button`
   `}
 
   // Variant 
-  ${({ buttonVariant }) =>
-    buttonVariant === 'primary' &&
+  ${({ variant }) =>
+    variant === 'primary' &&
     `
     background: var(--purple-600, #9935FF);
     color: var(--white-color, #FFFFFF);
-
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
 
     &:hover {
       background: var(--purple-700, #861DEE);
@@ -84,18 +80,17 @@ export const ButtonLayout = styled.button`
       background: var(--purple-800, #6E0AD1);
       border: 2px solid var(--purple-900, #5603A7);
     }
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+    }
 
   `}
-  ${({ buttonVariant }) =>
-    buttonVariant === 'secondary' &&
+  ${({ variant }) =>
+    variant === 'secondary' &&
     `
     border: 1px solid var(--purple-600, #9935FF);
     background: var(--white-color, #FFFFFF);
     color: var(--purple-700, #861DEE, #861DEE);
-
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
 
     &:hover {
       background: var(--purple-100, #F8F0FF);
@@ -112,17 +107,18 @@ export const ButtonLayout = styled.button`
       border: 1px solid var(--purple-800, #6E0AD1);
     }
 
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+      color: var(--white-color, #FFFFFF);
+    }
+
   `}
-  ${({ buttonVariant }) =>
-    buttonVariant === 'outline' &&
+  ${({ variant }) =>
+    variant === 'outline' &&
     `
     border: 1px solid var(--gray-300, #CCCCCC);
     background: var(--white-color, #FFFFFF);
     color: var(--gray-900, #181818);
-
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
 
     &:hover {
       background: var(--gray-100, #F6F6F6);
@@ -135,6 +131,11 @@ export const ButtonLayout = styled.button`
     &:focus {
       background: var(--white-color, #FFFFFF);
       border: 1px solid var(--gray-500, #555555);
+    }
+
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+      color: var(--white-color, #FFFFFF);
     }
   `}
 `;
