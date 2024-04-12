@@ -32,15 +32,19 @@ export default function PostPage() {
     <S.PostPageLayout>
       <Inner>
         <S.FormContainer onSubmit={createPaper}>
-          <h4>To.</h4>
-          <input
-            name='userName'
-            value={rollPaperBody.userName}
-            onChange={onChangeInputHandler}
-            placeholder='받는 사람 이름을 입력해 주세요'
-          />
-          <h4>배경화면을 선택해 주세요.</h4>
-          <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
+          <S.ToContainer>
+            <h4>To.</h4>
+            <input
+              name='userName'
+              value={rollPaperBody.userName}
+              onChange={onChangeInputHandler}
+              placeholder='받는 사람 이름을 입력해 주세요'
+            />
+          </S.ToContainer>
+          <S.BackgroundContainer>
+            <h4>배경화면을 선택해 주세요.</h4>
+            <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
+          </S.BackgroundContainer>
           <S.SelectingContainer>
             <button type='button'>컬러</button>
             <button type='button'>이미지</button>

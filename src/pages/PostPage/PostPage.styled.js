@@ -1,29 +1,45 @@
 import styled from 'styled-components';
 
-export const PostPageLayout = styled.div``;
+export const PostPageLayout = styled.div`
+  padding-top: 57px;
+`;
 
 export const FormContainer = styled.div`
-  > h4 {
-    font-size: 24px;
-    font-weight: bold;
-  }
+  > div {
+    > h4 {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-  > p {
-    color: var(--gray-500, #555555);
-  }
+    > p {
+      color: var(--gray-500, #555555);
+    }
 
-  > input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--gray-300, #cccccc);
-    border-radius: 8px;
+    > input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-300, #cccccc);
+      border-radius: 8px;
+    }
   }
+`;
+
+export const ToContainer = styled.div`
+  margin-bottom: 50px;
+`;
+
+export const BackgroundContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
 `;
 
 export const SelectingContainer = styled.div`
   display: flex;
   width: 100%;
   height: 40px;
+  margin-bottom: 45px;
 
   > button {
     width: 122px;
