@@ -4,6 +4,7 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
+import ProfileList from '../ProfileList/ProfileList';
 
 function CardFolder({
   name = 'Sowon',
@@ -11,35 +12,34 @@ function CardFolder({
   backgroundColor = 'beige',
   messageCount = 21,
   topReactions,
+  recentMessages,
 }) {
-  const [profileImage, setProfileImage] = useState([]);
-  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+  // const [profileImage, setProfileImage] = useState([]);
+  // const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
 
-  const getImage = async () => {
-    const result = await getProfileImage();
-    if (!result) return;
+  // const getImage = async () => {
+  //   const result = await getProfileImage();
+  //   if (!result) return;
 
-    const {
-      data: { imageUrls },
-    } = result;
-    setProfileImage(imageUrls.slice(-3));
-  };
+  //   const {
+  //     data: { imageUrls },
+  //   } = result;
+  //   setProfileImage(imageUrls.slice(-3));
+  // };
 
-  useEffect(() => {
-    getImage();
-  }, []);
+  // useEffect(() => {
+  //   getImage();
+  // }, []);
 
   return (
     <S.CardFolderLayout $background={backgroundImageURL || backgroundColor}>
       <S.UserInfoContainer>
         <S.CardUserNameBox>To. {name}</S.CardUserNameBox>
         <S.CardGuestContainer>
-          {profileImage.map((image, index) => (
-            <ProfileImage key={index} image={image} />
-          ))}
-          {profileImage.length >= 1 ? (
-            <S.WroteCountBox>{`+${messageCount}`}</S.WroteCountBox>
-          ) : null}
+          <ProfileList
+            recentMessages={recentMessages}
+            messageCount={messageCount}
+          />
         </S.CardGuestContainer>
         <S.VisitCountBox>{`${messageCount}명이 작성했어요!`}</S.VisitCountBox>
       </S.UserInfoContainer>
