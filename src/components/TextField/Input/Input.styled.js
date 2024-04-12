@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const InputLayout = styled.div``;
+export const InputLayout = styled.div`
+  position: relative;
+`;
 
 export const InputContainer = styled.input`
   display: flex;
@@ -14,7 +16,18 @@ export const InputContainer = styled.input`
   border-radius: 8px;
   box-sizing: border-box;
   background: #ffffff;
+  font-family: 'Pretendard';
   font-size: 16px;
+
+  &::placeholder {
+    color: #555555;
+  }
+
+  &.disabled {
+    background: #f6f6f6;
+    color: #666666;
+    cursor: not-allowed;
+  }
 
   &.active {
     border: 2px solid #3a3a3a;
@@ -33,6 +46,7 @@ export const InputContainer = styled.input`
     border: 1px solid #cccccc;
     border-radius: 8px;
     background: #f6f6f6;
+    color: #666666;
   }
 
   &.error {
@@ -43,7 +57,8 @@ export const InputContainer = styled.input`
 export const ErrorMessage = styled.div`
   position: absolute;
   bottom: -20px;
-  left: 0;
+  left: 2px;
   color: red;
+  font-family: 'Pretendard';
   font-size: 14px;
 `;

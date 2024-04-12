@@ -26,6 +26,10 @@
   font-display: swap;
 }
 
+body {
+  font-family: 'Pretendard';
+}
+
 /* Font sizes */
 .font-12 {
   font-size: 12px;
