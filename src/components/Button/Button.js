@@ -12,9 +12,9 @@ export default function Button({
 }) {
   return (
     <S.ButtonLayout
-      buttonVariant={variant}
-      buttonSize={size}
-      buttonWidth={width}
+      variant={variant}
+      size={size}
+      width={width}
       disabled={disabled}
     >
       {isSmileIcon ? (
