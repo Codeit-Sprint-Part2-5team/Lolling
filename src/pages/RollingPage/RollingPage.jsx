@@ -18,8 +18,6 @@ export default function RollingPage() {
     setMessageList(results);
   };
 
-  console.log(messageList);
-
   useEffect(() => {
     getData();
   }, []);

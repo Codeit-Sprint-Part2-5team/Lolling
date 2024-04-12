@@ -4,7 +4,7 @@ import Badge from '../Badge/Badge';
 import AddButton from '../AddButton/AddButton';
 
 export default function Card({
-  add = false,
+  add,
   content,
   profileImageURL,
   relationship,
@@ -12,7 +12,7 @@ export default function Card({
   createdAt,
 }) {
   return (
-    <S.CardLayout>
+    <S.CardLayout $add={add}>
       {add ? (
         <AddButton />
       ) : (

@@ -8,14 +8,22 @@ export const CardLayout = styled.div`
   padding: 28px 24px 24px;
   border-radius: 16px;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-  background-color: var(--white, #FFF);
+  background-color: var(--white, #fff);
+
+  ${({ $add }) =>
+    $add &&
+    `
+    justify-content: center;
+    align-items: center;
+    `}
 `;
 
 export const TopContainer = styled.div`
   display: flex;
   gap: 14px;
+  width: 100%;
   padding-bottom: 15px;
-  border-bottom: 1px solid var(--gray-200, #EEE);
+  border-bottom: 1px solid var(--gray-200, #eee);
 `;
 
 export const TextContainer = styled.div`
@@ -45,7 +53,7 @@ export const ContentBox = styled.p`
   overflow: hidden;
   font-size: 18px;
   line-height: 28px;
-  color: var(--gray-600, #4A4A4A);
+  color: var(--gray-600, #4a4a4a);
   letter-spacing: -0.18px;
   text-overflow: ellipsis;
   word-break: break-word;
