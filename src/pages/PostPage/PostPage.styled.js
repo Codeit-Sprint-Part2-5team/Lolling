@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const PostPageLayout = styled.div`
-  padding-top: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const FormContainer = styled.div`
+  padding-top: 57px;
   width: 720px;
 
   > div {
@@ -27,13 +30,16 @@ export const FormContainer = styled.div`
 `;
 
 export const ToContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 50px;
 `;
 
 export const BackgroundContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   margin-bottom: 24px;
 `;
 

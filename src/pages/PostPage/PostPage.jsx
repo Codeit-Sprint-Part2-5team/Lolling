@@ -30,8 +30,8 @@ export default function PostPage() {
   };
 
   return (
-    <S.PostPageLayout>
-      <Inner>
+    <Inner>
+      <S.PostPageLayout>
         <S.FormContainer onSubmit={createPaper}>
           <S.ToContainer>
             <h4>To.</h4>
@@ -58,7 +58,7 @@ export default function PostPage() {
           </S.SelectingBGContainer>
           <S.Button>생성하기</S.Button>
         </S.FormContainer>
-      </Inner>
-    </S.PostPageLayout>
+      </S.PostPageLayout>
+    </Inner>
   );
 }
