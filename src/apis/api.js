@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `https://rolling-api.vercel.app`;
+const API_URL = `https://rolling-api.vercel.app/`;
 const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
 const MESSAGES_URL = `https://rolling-api.vercel.app/5-5/messages/`;
 
