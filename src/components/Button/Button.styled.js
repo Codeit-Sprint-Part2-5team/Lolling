@@ -71,7 +71,7 @@ export const ButtonLayout = styled.button`
     color: var(--white-color, #FFFFFF);
 
     &:disabled {
-      background: var(--grayscale-300, #CCCCCC);
+      background: var(--gray-300, #CCCCCC);
     }
 
     &:hover {
@@ -94,7 +94,7 @@ export const ButtonLayout = styled.button`
     color: var(--purple-700, #861DEE, #861DEE);
 
     &:disabled {
-      background: var(--grayscale-300, #CCCCCC);
+      background: var(--gray-300, #CCCCCC);
     }
 
     &:hover {
@@ -116,12 +116,12 @@ export const ButtonLayout = styled.button`
   ${({ buttonVariant }) =>
     buttonVariant === 'outline' &&
     `
-    border: 1px solid var(--grayscale-300, #CCCCCC);
+    border: 1px solid var(--gray-300, #CCCCCC);
     background: var(--white-color, #FFFFFF);
-    color: var(--grayscale-900, #181818);
+    color: var(--gray-900, #181818);
 
     &:disabled {
-      background: var(--grayscale-300, #CCCCCC);
+      background: var(--gray-300, #CCCCCC);
     }
 
     &:hover {
@@ -134,7 +134,7 @@ export const ButtonLayout = styled.button`
 
     &:focus {
       background: var(--white-color, #FFFFFF);
-      border: 1px solid var(--grayscale-500, #555555);
+      border: 1px solid var(--gray-500, #555555);
     }
   `}
 `;

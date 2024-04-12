@@ -7,24 +7,24 @@ export const DeleteButtonLayout = styled.img`
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  border: 1px solid var(--grayscale-300: #CCCCCC);
+  border: 1px solid var(--gray-300: #CCCCCC);
   background: var(--white-color: #FFFFFF)
   cursor: pointer;
 
   &:disabled {
-    background: var(--grayscale-300: #CCCCCC);
+    background: var(--gray-300: #CCCCCC);
   }
 
   &:hover {
-    background: var(--grayscale-100: #F6F6F6);
+    background: var(--gray-100: #F6F6F6);
   }
 
   &:active {
-    background: var(--grayscale-100: #F6F6F6);
+    background: var(--gray-100: #F6F6F6);
   }
 
   &:focus {
-    border: 1px solid var(--grayscale-500: #555555);
+    border: 1px solid var(--gray-500: #555555);
     background: var(--white-color: #FFFFFF);
   }
 `;

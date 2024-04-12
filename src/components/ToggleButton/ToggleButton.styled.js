@@ -37,7 +37,7 @@ export const ToggleButtonLabelItemBox = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  color: var(--grayscale-900: #181818);
+  color: var(--gray-900: #181818);
   text-align: center;
   font-family: Pretendard;
   font-size: 16px;
