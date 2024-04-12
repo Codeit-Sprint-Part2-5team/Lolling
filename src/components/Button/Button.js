@@ -7,6 +7,7 @@ export default function Button({
   variant,
   size,
   width,
+  disabled = false,
   isSmileIcon = false,
 }) {
   return (
@@ -14,8 +15,11 @@ export default function Button({
       buttonVariant={variant}
       buttonSize={size}
       buttonWidth={width}
+      disabled={disabled}
     >
-      {isSmileIcon ? <img src={smileIcon} alt="스마일" /> : null}
+      {isSmileIcon ? (
+        <img src={disabled ? smileWhiteIcon : smileIcon} alt="스마일" />
+      ) : null}
       {text}
     </S.ButtonLayout>
   );

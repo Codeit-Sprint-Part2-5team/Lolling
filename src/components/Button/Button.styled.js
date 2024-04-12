@@ -70,10 +70,6 @@ export const ButtonLayout = styled.button`
     background: var(--purple-600, #9935FF);
     color: var(--white-color, #FFFFFF);
 
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
-
     &:hover {
       background: var(--purple-700, #861DEE);
     }
@@ -84,6 +80,9 @@ export const ButtonLayout = styled.button`
       background: var(--purple-800, #6E0AD1);
       border: 2px solid var(--purple-900, #5603A7);
     }
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+    }
 
   `}
   ${({ buttonVariant }) =>
@@ -92,10 +91,6 @@ export const ButtonLayout = styled.button`
     border: 1px solid var(--purple-600, #9935FF);
     background: var(--white-color, #FFFFFF);
     color: var(--purple-700, #861DEE, #861DEE);
-
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
 
     &:hover {
       background: var(--purple-100, #F8F0FF);
@@ -112,6 +107,11 @@ export const ButtonLayout = styled.button`
       border: 1px solid var(--purple-800, #6E0AD1);
     }
 
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+      color: var(--white-color, #FFFFFF);
+    }
+
   `}
   ${({ buttonVariant }) =>
     buttonVariant === 'outline' &&
@@ -119,10 +119,6 @@ export const ButtonLayout = styled.button`
     border: 1px solid var(--gray-300, #CCCCCC);
     background: var(--white-color, #FFFFFF);
     color: var(--gray-900, #181818);
-
-    &:disabled {
-      background: var(--gray-300, #CCCCCC);
-    }
 
     &:hover {
       background: var(--gray-100, #F6F6F6);
@@ -135,6 +131,11 @@ export const ButtonLayout = styled.button`
     &:focus {
       background: var(--white-color, #FFFFFF);
       border: 1px solid var(--gray-500, #555555);
+    }
+
+    &:disabled {
+      background: var(--gray-300, #CCCCCC);
+      color: var(--white-color, #FFFFFF);
     }
   `}
 `;

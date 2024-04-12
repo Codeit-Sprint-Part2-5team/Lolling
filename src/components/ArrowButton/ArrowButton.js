@@ -4,8 +4,8 @@ import * as S from './ArrowButton.styled';
 
 export default function ArrowButton({ arrowDirection }) {
   return arrowDirection === 'right' ? (
-    <S.ArrowLayout src={arrowRightIcon} />
+    <S.ArrowButtonLayout src={arrowRightIcon} />
   ) : (
-    <S.ArrowLayout src={arrowLeftIcon} />
+    <S.ArrowButtonLayout src={arrowLeftIcon} />
   );
 }
