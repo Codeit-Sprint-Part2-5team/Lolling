@@ -2,10 +2,10 @@ import arrowRightIcon from '../../assets/images/ArrowRightIcon.svg';
 import arrowLeftIcon from '../../assets/images/ArrowLeftIcon.svg';
 import * as S from './ArrowButton.styled';
 
-export default function ArrowButton({ arrowDirection }) {
-  return arrowDirection === 'right' ? (
-    <S.ArrowLayout src={arrowRightIcon} />
+export default function ArrowButton({ direction }) {
+  return direction === 'right' ? (
+    <S.ArrowButtonLayout src={arrowRightIcon} />
   ) : (
-    <S.ArrowLayout src={arrowLeftIcon} />
+    <S.ArrowButtonLayout src={arrowLeftIcon} />
   );
 }

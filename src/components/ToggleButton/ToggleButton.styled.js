@@ -15,7 +15,7 @@ export const ToggleButtonSelectedItemBox = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  border: 2px solid var(--purple-600: #9935ff);
+  border: 2px solid var(--purple-600, #9935ff);
   background: var(--white-color, #ffffff);
   color: var(--purple-700: #861dee);
   text-align: center;
@@ -37,7 +37,7 @@ export const ToggleButtonLabelItemBox = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  color: var(--gray-900: #181818);
+  color: var(--gray-900, #181818);
   text-align: center;
   font-family: Pretendard;
   font-size: 16px;
