@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const InnerLayout = styled.div`
   max-width: 1200px;
-  width: 100%;
-  padding: 0 24px;
+  width: calc(100% - 48px);
   margin: 0 auto;
 `;
