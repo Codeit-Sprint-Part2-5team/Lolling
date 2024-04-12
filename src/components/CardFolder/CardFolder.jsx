@@ -6,10 +6,11 @@ import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 
 function CardFolder({
-  currentUserReceivedEmojiInfo,
-  currentUserVisitorInfo,
-  userName = 'Sowon',
-  background = 'var(--orange-200)',
+  name = 'Sowon',
+  backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
+  backgroundColor = 'beige',
+  messageCount = 21,
+  topReactions,
 }) {
   const [profileImage, setProfileImage] = useState([]);
   const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
@@ -29,23 +30,23 @@ function CardFolder({
   }, []);
 
   return (
-    <S.CardFolderLayout $background={background}>
+    <S.CardFolderLayout $background={backgroundImageURL || backgroundColor}>
       <S.UserInfoContainer>
-        <S.CardUserNameBox>To. {userName}</S.CardUserNameBox>
+        <S.CardUserNameBox>To. {name}</S.CardUserNameBox>
         <S.CardGuestContainer>
           {profileImage.map((image, index) => (
             <ProfileImage key={index} image={image} />
           ))}
           {profileImage.length >= 1 ? (
-            <S.WroteCountBox>+27</S.WroteCountBox>
+            <S.WroteCountBox>{`+${messageCount}`}</S.WroteCountBox>
           ) : null}
         </S.CardGuestContainer>
-        <S.VisitCountBox>30명이 작성했어요!</S.VisitCountBox>
+        <S.VisitCountBox>{`${messageCount}명이 작성했어요!`}</S.VisitCountBox>
       </S.UserInfoContainer>
       <S.CardEmojiContainer>
-        <EmojiBadge />
-        <EmojiBadge emoji={'1f44d'} count={'15'} />
-        <EmojiBadge emoji={'1f604'} count={'20'} />
+        {topReactions?.map((item) => (
+          <EmojiBadge key={item.id} emoji={item.emoji} count={item.count} />
+        ))}
       </S.CardEmojiContainer>
     </S.CardFolderLayout>
   );

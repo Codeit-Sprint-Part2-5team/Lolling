@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardFolderLayout = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,9 +10,33 @@ export const CardFolderLayout = styled.div`
   padding: 30px 24px 20px 24px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10%;
-  object-fit: cover;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-  background: ${({ $background }) => $background};
+  overflow: hidden;
+
+  > div {
+    z-index: 100;
+  }
+
+  ${({ $background }) => {
+    if ($background.includes('url')) {
+      return `
+      background-image: ${$background};
+      background-size: cover;
+      color: var(--white-color);
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      `;
+    }
+    return `${$background}`;
+  }}
 `;
 
 export const UserInfoContainer = styled.div``;
@@ -38,6 +63,7 @@ export const WroteCountBox = styled.div`
   padding: 5px 6px 4px 6px;
   border-radius: 30px;
   background-color: var(--white-color);
+  color: var(--black-color);
   font-size: 12px;
   font-weight: 400;
 `;
