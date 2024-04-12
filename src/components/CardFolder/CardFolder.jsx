@@ -1,38 +1,28 @@
-import { useEffect, useState } from 'react';
-import { getMockImageRequest } from '../../apis/api';
-import ProfileImage from '../ProfileImage/ProfileImage';
-import useAsync from '../../hooks/useAsync';
 import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
 
-function CardFolder({
-  name = 'Sowon',
-  backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
-  backgroundColor = 'beige',
-  messageCount = 21,
-  topReactions,
-  recentMessages,
-}) {
-  // const [profileImage, setProfileImage] = useState([]);
-  // const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+function CardFolder({ userInfo }) {
+  const {
+    name = 'Sowon',
+    backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
+    backgroundColor = 'beige',
+    messageCount = 21,
+    topReactions = null,
+    recentMessages = null,
+  } = userInfo;
 
-  // const getImage = async () => {
-  //   const result = await getProfileImage();
-  //   if (!result) return;
-
-  //   const {
-  //     data: { imageUrls },
-  //   } = result;
-  //   setProfileImage(imageUrls.slice(-3));
-  // };
-
-  // useEffect(() => {
-  //   getImage();
-  // }, []);
+  const colorConversion = (color) => {
+    if (color === 'beige') {
+      return 'var(--orange-200)';
+    }
+    return `var(--${color}-200)`;
+  };
 
   return (
-    <S.CardFolderLayout $background={backgroundImageURL || backgroundColor}>
+    <S.CardFolderLayout
+      $background={backgroundImageURL || colorConversion(backgroundColor)}
+    >
       <S.UserInfoContainer>
         <S.CardUserNameBox>To. {name}</S.CardUserNameBox>
         <S.CardGuestContainer>
@@ -41,7 +31,11 @@ function CardFolder({
             messageCount={messageCount}
           />
         </S.CardGuestContainer>
-        <S.VisitCountBox>{`${messageCount}명이 작성했어요!`}</S.VisitCountBox>
+        {messageCount ? (
+          <S.VisitCountBox>{`${messageCount}명이 작성했어요!`}</S.VisitCountBox>
+        ) : (
+          '페이퍼 남기러 가요~'
+        )}
       </S.UserInfoContainer>
       <S.CardEmojiContainer>
         {topReactions?.map((item) => (

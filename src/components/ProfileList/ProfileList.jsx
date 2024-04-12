@@ -7,8 +7,8 @@ export default function ProfileList({ recentMessages, messageCount }) {
       {recentMessages.map((item) => (
         <ProfileImage key={item.id} image={item.profileImageURL} />
       ))}
-      {messageCount.length > recentMessages.length ? (
-        <S.WroteCountBox>{`+${messageCount}`}</S.WroteCountBox>
+      {messageCount > recentMessages.length ? (
+        <S.WroteCountBox>{`+ ${messageCount}`}</S.WroteCountBox>
       ) : null}
     </>
   );
