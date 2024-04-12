@@ -9,18 +9,13 @@ export const ColorBox = styled.div`
   width: 168px;
   height: 168px;
   border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border: ${({ $select }) =>
-    $select ? '2px solid rgba(0, 0, 0, 0.8)' : '1px solid rgba(0,0,0,0.08)'}
   cursor: pointer;
+  border: ${({ $select }) =>
+    $select ? '2px solid rgba(0, 0, 0, 0.8)' : '1px solid rgba(0,0,0,0.08)'};
   background-color: ${({ $color }) => $color};
 
   > div {
-    display: none;
-  }
-
-  &:hover > div {
-    display: flex;
+    display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   }
 `;
 export const ImgBox = styled.div`
