@@ -28,6 +28,9 @@ export default function RollingPage() {
     <S.RollingPageLayout>
       <Inner>
         <S.CardContainer>
+          <li>
+            <Card add />
+          </li>
           {messageList?.map((item) => (
             <li key={item.id}>
               <Card
