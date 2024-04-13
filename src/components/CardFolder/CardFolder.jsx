@@ -1,7 +1,7 @@
 import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
-import convertColor from '../../utils/convertColor';
+import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
 function CardFolder({ userInfo }) {
   const {
@@ -15,7 +15,9 @@ function CardFolder({ userInfo }) {
 
   return (
     <S.CardFolderLayout
-      $background={backgroundImageURL || convertColor(backgroundColor)}
+      $background={
+        backgroundImageURL || convertBackgroundColor(backgroundColor)
+      }
     >
       <S.UserInfoContainer>
         <S.CardUserNameBox>To. {name}</S.CardUserNameBox>

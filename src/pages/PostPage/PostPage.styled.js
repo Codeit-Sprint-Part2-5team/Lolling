@@ -7,7 +7,7 @@ export const PostPageLayout = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  padding-top: 57px;
+  padding: 57px 0;
   width: 720px;
 
   > div {

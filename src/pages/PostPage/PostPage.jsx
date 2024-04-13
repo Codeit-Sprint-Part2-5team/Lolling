@@ -13,6 +13,7 @@ const INIT_CREATE_ROLL_PAPER = {
 };
 
 export default function PostPage() {
+  const [select, setSelect] = useState('orange');
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
@@ -52,10 +53,22 @@ export default function PostPage() {
             <ToggleButton />
           </S.SelectingContainer>
           <S.SelectingBGContainer>
-            <ColorOption color={'var(--orange-200)'} />
-            <ColorOption color={'var(--purple-200)'} />
-            <ColorOption color={'var(--blue-200)'} />
-            <ColorOption color={'var(--green-200)'} />
+            <ColorOption
+              color={'orange'}
+              select={select}
+              setSelect={setSelect}
+            />
+            <ColorOption
+              color={'purple'}
+              select={select}
+              setSelect={setSelect}
+            />
+            <ColorOption color={'blue'} select={select} setSelect={setSelect} />
+            <ColorOption
+              color={'green'}
+              select={select}
+              setSelect={setSelect}
+            />
           </S.SelectingBGContainer>
           <Button
             text={'생성하기'}
