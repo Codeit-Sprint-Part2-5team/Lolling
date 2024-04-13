@@ -1,6 +1,7 @@
 import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
+import convertColor from '../../utils/convertColor';
 
 function CardFolder({ userInfo }) {
   const {
@@ -11,13 +12,6 @@ function CardFolder({ userInfo }) {
     topReactions = null,
     recentMessages = null,
   } = userInfo;
-
-  const convertColor = (color) => {
-    if (color === 'beige') {
-      return 'var(--orange-200)';
-    }
-    return `var(--${color}-200)`;
-  };
 
   return (
     <S.CardFolderLayout
