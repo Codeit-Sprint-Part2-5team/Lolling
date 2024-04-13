@@ -4,6 +4,7 @@ import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
+import HeaderService from '../../components/HeaderService/HeaderService';
 
 export default function RollingPage() {
   const [messageList, setMessageList] = useState();
@@ -23,25 +24,28 @@ export default function RollingPage() {
   }, []);
 
   return (
-    <S.RollingPageLayout>
-      <Inner>
-        <S.CardContainer>
-          <li>
-            <Card add />
-          </li>
-          {messageList?.map((item) => (
-            <li key={item.id}>
-              <Card
-                content={item.content}
-                profileImageURL={item.profileImageURL}
-                relationship={item.relationship}
-                sender={item.sender}
-                createdAt={item.createdAt}
-              />
+    <>
+      <HeaderService />
+      <S.RollingPageLayout>
+        <Inner>
+          <S.CardContainer>
+            <li>
+              <Card add />
             </li>
-          ))}
-        </S.CardContainer>
-      </Inner>
-    </S.RollingPageLayout>
+            {messageList?.map((item) => (
+              <li key={item.id}>
+                <Card
+                  content={item.content}
+                  profileImageURL={item.profileImageURL}
+                  relationship={item.relationship}
+                  sender={item.sender}
+                  createdAt={item.createdAt}
+                />
+              </li>
+            ))}
+          </S.CardContainer>
+        </Inner>
+      </S.RollingPageLayout>
+    </>
   );
 }

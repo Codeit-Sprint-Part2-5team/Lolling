@@ -18,7 +18,7 @@ export default function Card({
       ) : (
         <>
           <S.TopContainer>
-            <ProfileImage image={profileImageURL} size='m' />
+            <ProfileImage image={profileImageURL} size="m" />
             <S.TextContainer>
               <S.NameContainer>
                 <span>From.</span> <b>{sender}</b>
