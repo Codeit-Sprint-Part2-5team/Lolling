@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
@@ -13,7 +13,7 @@ const INIT_CREATE_ROLL_PAPER = {
 };
 
 export default function PostPage() {
-  const [select, setSelect] = useState('orange');
+  const [select, setSelect] = useState('beige');
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
@@ -24,6 +24,13 @@ export default function PostPage() {
     });
   };
 
+  const onChangeBackgroundHandler = (value) => {
+    setRollPaperBody({
+      ...rollPaperBody,
+      backgroundColor: value,
+    });
+  };
+
   const createPaper = async (e) => {
     e.preventDefault();
     const result = await createRequest(rollPaperBody);
@@ -31,6 +38,10 @@ export default function PostPage() {
 
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
+
+  useEffect(() => {
+    onChangeBackgroundHandler(select);
+  }, [select]);
 
   return (
     <Inner>
@@ -54,7 +65,7 @@ export default function PostPage() {
           </S.SelectingContainer>
           <S.SelectingBGContainer>
             <ColorOption
-              color={'orange'}
+              color={'beige'}
               select={select}
               setSelect={setSelect}
             />
