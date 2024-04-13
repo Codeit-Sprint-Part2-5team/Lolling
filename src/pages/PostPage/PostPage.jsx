@@ -4,6 +4,8 @@ import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
 import { createCardFolderRequest } from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
+import Button from '../../components/Button/Button';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
@@ -47,8 +49,7 @@ export default function PostPage() {
             <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
           </S.BackgroundContainer>
           <S.SelectingContainer>
-            <button type='button'>컬러</button>
-            <button type='button'>이미지</button>
+            <ToggleButton />
           </S.SelectingContainer>
           <S.SelectingBGContainer>
             <ColorOption color={'var(--orange-200)'} />
@@ -56,7 +57,12 @@ export default function PostPage() {
             <ColorOption color={'var(--blue-200)'} />
             <ColorOption color={'var(--green-200)'} />
           </S.SelectingBGContainer>
-          <S.Button>생성하기</S.Button>
+          <Button
+            text={'생성하기'}
+            width={'100%'}
+            variant={'primary'}
+            size={56}
+          />
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>
