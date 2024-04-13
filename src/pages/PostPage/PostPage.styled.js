@@ -83,9 +83,11 @@ export const SelectingContainer = styled.div`
   }
 `;
 
-export const SelectingBGContainer = styled.div`
+export const ColorContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 69px;
 `;
+
+export const ImageContainer = styled.div``;

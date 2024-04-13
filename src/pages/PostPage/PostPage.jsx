@@ -12,9 +12,12 @@ const INIT_CREATE_ROLL_PAPER = {
   backgroundColor: '',
 };
 
+const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
+
 export default function PostPage() {
   const [select, setSelect] = useState('beige');
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
+  const [contextSelected, setContextSelected] = useState('color');
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
   const onChangeInputHandler = (e) => {
@@ -64,24 +67,19 @@ export default function PostPage() {
           <S.SelectingContainer>
             <ToggleButton />
           </S.SelectingContainer>
-          <S.SelectingBGContainer>
-            <ColorOption
-              color={'beige'}
-              select={select}
-              setSelect={setSelect}
-            />
-            <ColorOption
-              color={'purple'}
-              select={select}
-              setSelect={setSelect}
-            />
-            <ColorOption color={'blue'} select={select} setSelect={setSelect} />
-            <ColorOption
-              color={'green'}
-              select={select}
-              setSelect={setSelect}
-            />
-          </S.SelectingBGContainer>
+          {contextSelected === 'color' ? (
+            <S.ColorContainer>
+              {BACKGROUND_COLORS.map((item) => (
+                <ColorOption
+                  color={item}
+                  select={select}
+                  setSelect={setSelect}
+                />
+              ))}
+            </S.ColorContainer>
+          ) : (
+            <S.ImageContainer></S.ImageContainer>
+          )}
           <Button
             text={'생성하기'}
             width={'100%'}

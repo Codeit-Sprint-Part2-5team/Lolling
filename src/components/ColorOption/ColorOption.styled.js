@@ -18,7 +18,7 @@ export const ColorBox = styled.div`
     display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   }
 `;
-export const ImgBox = styled.div`
+export const IconBox = styled.div`
   display: flex;
   justify-content: center;
   width: 44px;
