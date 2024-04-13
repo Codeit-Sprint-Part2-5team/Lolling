@@ -22,13 +22,18 @@ export const getBackgroundImageRequest = async () => {
   return response;
 };
 
-export const createCardFolderRequest = async ({ name, backgroundColor }) => {
+export const createCardFolderRequest = async ({
+  name,
+  backgroundColor,
+  backgroundImageURL,
+}) => {
   const response = await axios({
     method: 'post',
     url: `${RECIPIENTS_URL}`,
     data: {
       name: name,
       backgroundColor: backgroundColor,
+      backgroundImageURL: backgroundImageURL,
     },
   });
 

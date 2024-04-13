@@ -10,6 +10,7 @@ import Button from '../../components/Button/Button';
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
   backgroundColor: '',
+  backgroundImageURL: '',
 };
 
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
@@ -35,9 +36,17 @@ export default function PostPage() {
   };
 
   const onChangeBackgroundHandler = (value) => {
-    setRollPaperBody({
+    if (value.includes('http')) {
+      return setRollPaperBody({
+        ...rollPaperBody,
+        backgroundImageURL: value,
+      });
+    }
+
+    return setRollPaperBody({
       ...rollPaperBody,
       backgroundColor: value,
+      backgroundImageURL: '',
     });
   };
 
@@ -77,7 +86,6 @@ export default function PostPage() {
               right={BACKGROUND_IMAGES}
             />
           </S.SelectingContainer>
-
           <S.BackgroundContainer>
             {contextSelected.map((item) => (
               <ColorOption
@@ -88,7 +96,6 @@ export default function PostPage() {
               />
             ))}
           </S.BackgroundContainer>
-
           <Button
             text={'생성하기'}
             width={'100%'}

@@ -12,9 +12,15 @@ export const ColorBox = styled.div`
   border-radius: 16px;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s;
 
   > div {
     display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 
   ${({ $background }) => {
@@ -22,6 +28,16 @@ export const ColorBox = styled.div`
       return `
       background-image: url(${$background});
       background-size: cover;
+
+      &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
       `;
     }
     return `background-color:${$background}`;
