@@ -1,12 +1,33 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
 import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
+import ProfileImage from '../../components/ProfileImage/ProfileImage';
+import profileIcon from '../../assets/images/ProfileIcon.svg';
+import useAsync from '../../hooks/useAsync';
+import { getMockImageRequest } from '../../apis/api';
 
 export default function MessagePage() {
+  const [profileImage, setProfileImage] = useState([]);
+  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+
+  const getImage = async () => {
+    const result = await getProfileImage();
+    if (!result) return;
+
+    const {
+      data: { imageUrls },
+    } = result;
+    setProfileImage(imageUrls);
+  };
+
+  useEffect(() => {
+    getImage();
+  }, []);
+
   return (
     <Inner>
       <S.PostPageLayout>
@@ -17,9 +38,13 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <h4>프로필 이미지</h4>
-            <div></div>
+            <img src={profileIcon} />
             <p>프로필 이미지를 선택해주세요!</p>
-            <div></div>
+            <div>
+              {profileImage.map((image) => (
+                <ProfileImage key={image} image={image} size={'m'} />
+              ))}
+            </div>
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
