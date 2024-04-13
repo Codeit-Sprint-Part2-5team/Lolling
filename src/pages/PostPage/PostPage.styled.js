@@ -39,7 +39,7 @@ export const ToContainer = styled.div`
   }
 `;
 
-export const BackgroundContainer = styled.div`
+export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -83,7 +83,7 @@ export const SelectingContainer = styled.div`
   }
 `;
 
-export const ColorContainer = styled.div`
+export const BackgroundContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;

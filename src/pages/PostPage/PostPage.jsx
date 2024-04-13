@@ -60,26 +60,23 @@ export default function PostPage() {
               placeholder='받는 사람 이름을 입력해 주세요'
             />
           </S.ToContainer>
-          <S.BackgroundContainer>
+          <S.TextContainer>
             <h4>배경화면을 선택해 주세요.</h4>
             <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
-          </S.BackgroundContainer>
+          </S.TextContainer>
           <S.SelectingContainer>
             <ToggleButton />
           </S.SelectingContainer>
-          {contextSelected === 'color' ? (
-            <S.ColorContainer>
-              {BACKGROUND_COLORS.map((item) => (
-                <ColorOption
-                  color={item}
-                  select={select}
-                  setSelect={setSelect}
-                />
-              ))}
-            </S.ColorContainer>
-          ) : (
-            <S.ImageContainer></S.ImageContainer>
-          )}
+          <S.BackgroundContainer>
+            {BACKGROUND_COLORS.map((item, index) => (
+              <ColorOption
+                key={index}
+                color={item}
+                select={select}
+                setSelect={setSelect}
+              />
+            ))}
+          </S.BackgroundContainer>
           <Button
             text={'생성하기'}
             width={'100%'}
