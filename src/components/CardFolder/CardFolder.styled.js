@@ -8,7 +8,6 @@ export const CardFolderLayout = styled.div`
   width: 275px;
   height: 260px;
   padding: 30px 24px 20px 24px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10%;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -35,7 +34,10 @@ export const CardFolderLayout = styled.div`
         }
       `;
     }
-    return `background-color:${$background}`;
+    return `
+    background-color:${$background};
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    `;
   }}
 `;
 
