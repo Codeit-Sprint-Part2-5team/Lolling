@@ -43,6 +43,16 @@ export const getCardFolderListRequest = async () => {
   return response;
 };
 
+export const getCardFolderRequest = async (id) => {
+  const response = await axios.get(`${RECIPIENTS_URL}${id}/`);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('유저 페이퍼 페이지 정보 가져오기 실패');
+  }
+
+  return response;
+};
+
 export const getMessageListRequest = async (id) => {
   const response = await axios.get(`${RECIPIENTS_URL}${id}/messages/`);
 

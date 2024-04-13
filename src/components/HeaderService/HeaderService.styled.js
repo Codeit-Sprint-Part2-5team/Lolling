@@ -23,3 +23,28 @@ export const HeaderServiceContainer = styled.div`
   align-items: center;
   gap: 28px;
 `;
+
+export const HeaderServiceDataContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 11px;
+`;
+
+export const UserCountBox = styled.p`
+  display: flex;
+  color: var(--gray-900, #181818);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+`;
+
+export const UserCountSpanBox = styled.p`
+  color: var(--gray-900, #181818);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 27px;
+`;
