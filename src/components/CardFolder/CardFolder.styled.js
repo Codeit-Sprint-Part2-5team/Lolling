@@ -18,9 +18,9 @@ export const CardFolderLayout = styled.div`
   }
 
   ${({ $background }) => {
-    if ($background.includes('url')) {
+    if ($background.includes('http')) {
       return `
-      background-image: ${$background};
+      background-image: url(${$background});
       background-size: cover;
       color: var(--white-color);
 

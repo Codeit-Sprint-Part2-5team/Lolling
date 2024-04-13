@@ -6,7 +6,7 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 function CardFolder({ userInfo }) {
   const {
     name = 'Sowon',
-    backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
+    backgroundImageURL = 'https://picsum.photos/id/24/3840/2160',
     backgroundColor = 'beige',
     messageCount = 21,
     topReactions = null,
