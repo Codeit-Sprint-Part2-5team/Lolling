@@ -2,17 +2,24 @@ import * as S from './ColorOption.styled';
 import checkicon from '../../assets/images/Check.svg';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-export default function ColorOption({ color, image, select, setSelect }) {
-  const isActive = select === color;
+export default function ColorOption({ background, select, setSelect }) {
+  const isActive = select === background;
 
   const onChangeActive = () => {
-    setSelect(color);
+    setSelect(background);
+  };
+
+  const convertColor = () => {
+    if (!background.includes('http')) {
+      return convertBackgroundColor(background);
+    }
+    return background;
   };
 
   return (
     <S.ColorOptionLayout>
       <S.ColorBox
-        $color={convertBackgroundColor(color)}
+        $background={convertColor(background)}
         $isActive={isActive}
         onClick={onChangeActive}
       >

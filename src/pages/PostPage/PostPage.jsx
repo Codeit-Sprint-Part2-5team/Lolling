@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import {
-  createCardFolderRequest,
-  getBackgroundImageRequest,
-} from '../../apis/api';
+import { createCardFolderRequest } from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -17,15 +14,18 @@ const INIT_CREATE_ROLL_PAPER = {
 
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
+const BACKGROUND_IMAGES = [
+  'https://picsum.photos/id/683/3840/2160',
+  'https://picsum.photos/id/24/3840/2160',
+  'https://picsum.photos/id/599/3840/2160',
+  'https://picsum.photos/id/1058/3840/2160',
+];
+
 export default function PostPage() {
-  const [select, setSelect] = useState('beige');
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [images, setImages] = useState([]);
-  const [contextSelected, setContextSelected] = useState('color');
+  const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
+  const [select, setSelect] = useState('beige');
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
-  const { requestFunction: getImageRequest } = useAsync(
-    getBackgroundImageRequest
-  );
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
@@ -49,19 +49,8 @@ export default function PostPage() {
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
 
-  const getImages = async () => {
-    const result = await getImageRequest();
-    if (!result) return;
-
-    const {
-      data: { imageUrls },
-    } = result;
-    setImages(imageUrls);
-  };
-
   useEffect(() => {
     onChangeBackgroundHandler(select);
-    getImages();
   }, [select]);
 
   return (
@@ -82,18 +71,24 @@ export default function PostPage() {
             <p>컬러를 선택하거나 이미지를 선택할 수 있습니다.</p>
           </S.TextContainer>
           <S.SelectingContainer>
-            <ToggleButton />
+            <ToggleButton
+              setContext={setContextSelected}
+              left={BACKGROUND_COLORS}
+              right={BACKGROUND_IMAGES}
+            />
           </S.SelectingContainer>
+
           <S.BackgroundContainer>
-            {BACKGROUND_COLORS.map((item, index) => (
+            {contextSelected.map((item) => (
               <ColorOption
-                key={index}
-                color={item}
+                key={item}
+                background={item}
                 select={select}
                 setSelect={setSelect}
               />
             ))}
           </S.BackgroundContainer>
+
           <Button
             text={'생성하기'}
             width={'100%'}

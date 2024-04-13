@@ -6,18 +6,28 @@ export const ColorBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 168px;
   height: 168px;
   border-radius: 16px;
   cursor: pointer;
-  border: ${({ $select }) =>
-    $select ? '2px solid rgba(0, 0, 0, 0.8)' : '1px solid rgba(0,0,0,0.08)'};
-  background-color: ${({ $color }) => $color};
+  border: 1px solid rgba(0, 0, 0, 0.08);
 
   > div {
     display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   }
+
+  ${({ $background }) => {
+    if ($background.includes('http')) {
+      return `
+      background-image: url(${$background});
+      background-size: cover;
+      `;
+    }
+    return `background-color:${$background}`;
+  }}
 `;
+
 export const IconBox = styled.div`
   display: flex;
   justify-content: center;
