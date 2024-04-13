@@ -8,13 +8,14 @@ export const HomePageLayout = styled.div`
   width: 1920px;
   height: 1080px;
   background: #fff;
+  display: flex;
 `;
 
 export const MainContainer = styled.div`
   display: flex;
   width: 1200px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
 `;
 
@@ -92,6 +93,7 @@ export const SecondContainer = styled.div`
   border-radius: 16px;
   background: var(--Surface, #f6f8ff);
   gap: 289.69px;
+  margin-bottom: 24px;
 `;
 
 export const Container = styled.div`
@@ -190,4 +192,5 @@ export const SecondContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  white-space: nowrap;
 `;
