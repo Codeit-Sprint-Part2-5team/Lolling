@@ -13,6 +13,15 @@ export const getMockImageRequest = async () => {
   return response;
 };
 
+export const getBackgroundImageRequest = async () => {
+  const response = await axios.get(`${API_URL}background-images/`);
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('배경 이미지 가져오기 실패');
+  }
+
+  return response;
+};
+
 export const createCardFolderRequest = async ({ name, backgroundColor }) => {
   const response = await axios({
     method: 'post',
