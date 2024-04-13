@@ -13,15 +13,12 @@ export const getMockImageRequest = async () => {
   return response;
 };
 
-export const createCardFolderRequest = async ({
-  userName,
-  backgroundColor,
-}) => {
+export const createCardFolderRequest = async ({ name, backgroundColor }) => {
   const response = await axios({
     method: 'post',
     url: `${RECIPIENTS_URL}`,
     data: {
-      name: userName,
+      name: name,
       backgroundColor: backgroundColor,
     },
   });

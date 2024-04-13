@@ -8,7 +8,7 @@ import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
 
 const INIT_CREATE_ROLL_PAPER = {
-  userName: '',
+  name: '',
   backgroundColor: '',
 };
 
@@ -36,6 +36,7 @@ export default function PostPage() {
     const result = await createRequest(rollPaperBody);
     if (!result) return;
 
+    console.log(result);
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
 
@@ -50,8 +51,8 @@ export default function PostPage() {
           <S.ToContainer>
             <h4>To.</h4>
             <input
-              name='userName'
-              value={rollPaperBody.userName}
+              name='name'
+              value={rollPaperBody.name}
               onChange={onChangeInputHandler}
               placeholder='받는 사람 이름을 입력해 주세요'
             />
