@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const CardGuestContainer = styled.div`
   display: flex;
   margin-top: 12px;

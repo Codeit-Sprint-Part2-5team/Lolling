@@ -8,10 +8,10 @@ export default function ProfileList({ recentMessages, messageCount }) {
         {recentMessages?.map((item) => (
           <ProfileImage key={item.id} image={item.profileImageURL} />
         ))}
+        {messageCount > recentMessages?.length ? (
+          <S.WroteCountBox>{`+ ${messageCount}`}</S.WroteCountBox>
+        ) : null}
       </S.CardGuestContainer>
-      {messageCount > recentMessages?.length ? (
-        <S.WroteCountBox>{`+ ${messageCount}`}</S.WroteCountBox>
-      ) : null}
     </>
   );
 }
