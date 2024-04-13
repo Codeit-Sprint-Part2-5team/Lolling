@@ -46,15 +46,7 @@ export const CardUserNameBox = styled.div`
   font-weight: bold;
 `;
 
-export const CardGuestContainer = styled.div`
-  display: flex;
-  margin-top: 12px;
-
-  > img {
-    border: 1.5px solid var(--white-color);
-    margin-right: -10px;
-  }
-`;
+export const CardGuestContainer = styled.div``;
 
 export const VisitCountBox = styled.div`
   margin-top: 12px;

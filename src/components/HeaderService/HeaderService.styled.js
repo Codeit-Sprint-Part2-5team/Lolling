@@ -27,7 +27,7 @@ export const HeaderServiceContainer = styled.div`
 export const HeaderServiceDataContainer = styled.div`
   display: flex;
   align-items: flex-end;
-  gap: 11px;
+  gap: 18px;
 `;
 
 export const UserCountBox = styled.p`
