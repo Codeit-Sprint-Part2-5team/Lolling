@@ -10,7 +10,7 @@ export default function HomePage() {
           <S.FirstContainer>
             <S.FirstContentContainer>
               <S.PointBox>
-                <S.PointContentBox>Point. 01 </S.PointContentBox>
+                <S.PointContentBox>Point. 01</S.PointContentBox>
               </S.PointBox>
               <S.Content1>
                 누구나 손쉽게, 온라인
@@ -20,6 +20,40 @@ export default function HomePage() {
             </S.FirstContentContainer>
             <S.CardImageBox></S.CardImageBox>
           </S.FirstContainer>
+          <S.SecondContainer>
+            <S.Container>
+              <S.Inner>
+                <S.SmallEmojiContainer>
+                  <S.SmallEmojiBox>👍</S.SmallEmojiBox>
+                  <S.SmallEmojiCountBox>10</S.SmallEmojiCountBox>
+                </S.SmallEmojiContainer>
+                <S.SmallEmojiContainer>
+                  <S.SmallEmojiCountBox>24</S.SmallEmojiCountBox>
+                </S.SmallEmojiContainer>
+                <S.SmallEmojiContainer>
+                  <S.SmallEmojiBox>😍</S.SmallEmojiBox>
+                  <S.SmallEmojiCountBox>24</S.SmallEmojiCountBox>
+                </S.SmallEmojiContainer>
+              </S.Inner>
+              <S.ArrowDownIconBox></S.ArrowDownIconBox>
+              <S.AddIconBox>
+                <S.SmileIconBox></S.SmileIconBox>
+                <S.ContentBox>추가</S.ContentBox>
+              </S.AddIconBox>
+              <S.CursorIconBox></S.CursorIconBox>
+            </S.Container>
+            <S.SecondContentContainer>
+              <S.PointBox>
+                <S.PointContentBox>Point. 02</S.PointContentBox>
+              </S.PointBox>
+              <S.Content1>
+                서로에게 이모지로 감정을
+                <br />
+                표현해보세요
+              </S.Content1>
+              <S.Content2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.Content2>
+            </S.SecondContentContainer>
+          </S.SecondContainer>
         </S.MainContainer>
       </Inner>
     </S.HomePageLayout>
