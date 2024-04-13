@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
 export const PostPageLayout = styled.div`
   display: flex;
   align-items: center;
@@ -6,13 +7,17 @@ export const PostPageLayout = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  padding-top: 57px;
+  padding: 57px 0;
   width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 
   > div {
     > h4 {
       font-size: 24px;
       font-weight: bold;
+      line-height: 36px;
     }
 
     > p {
@@ -27,9 +32,56 @@ export const FormContainer = styled.div`
     }
   }
 `;
+const FlexMargin = css`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
 
-export const FromContainer = styled.div``;
-export const ProfileImageContainer = styled.div``;
-export const RelationShipContainer = styled.div``;
-export const TextAreaContainer = styled.div``;
-export const FontContainer = styled.div``;
+export const FromContainer = styled.div`
+  ${FlexMargin}
+`;
+
+export const ProfileImageContainer = styled.div`
+  display: grid;
+  grid-template-areas:
+    'Title Title'
+    'Img P'
+    'Img Box';
+  grid-template-columns: 80px 1fr;
+  gap: 12px 32px;
+`;
+
+export const ProfileTitle = styled.h4`
+  grid-area: Title;
+`;
+
+export const ProfileImg = styled.img`
+  grid-area: Img;
+  position: relative;
+  top: 7px;
+`;
+
+export const ProfileP = styled.p`
+  grid-area: P;
+  line-height: 26px;
+`;
+
+export const ProfileBox = styled.div`
+  grid-area: Box;
+  display: flex;
+  justify-content: space-between;
+  > img {
+    cursor: pointer;
+  }
+`;
+
+export const RelationShipContainer = styled.div`
+  ${FlexMargin}
+`;
+export const TextAreaContainer = styled.div`
+  ${FlexMargin}
+`;
+export const FontContainer = styled.div`
+  ${FlexMargin}
+`;

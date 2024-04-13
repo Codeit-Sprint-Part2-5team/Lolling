@@ -37,14 +37,14 @@ export default function MessagePage() {
             <Input />
           </S.FromContainer>
           <S.ProfileImageContainer>
-            <h4>프로필 이미지</h4>
-            <img src={profileIcon} />
-            <p>프로필 이미지를 선택해주세요!</p>
-            <div>
+            <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
+            <S.ProfileImg src={profileIcon} />
+            <S.ProfileP>프로필 이미지를 선택해주세요!</S.ProfileP>
+            <S.ProfileBox>
               {profileImage.map((image) => (
                 <ProfileImage key={image} image={image} size={'m'} />
               ))}
-            </div>
+            </S.ProfileBox>
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
