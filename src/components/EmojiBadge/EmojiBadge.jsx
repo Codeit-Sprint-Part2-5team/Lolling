@@ -1,10 +1,9 @@
-import { Emoji } from 'emoji-picker-react';
 import * as S from './EmojiBadge.styled';
 
-function EmojiBadge({ emoji = '1f423', count = '20' }) {
+function EmojiBadge({ emoji, count = '0' }) {
   return (
     <S.EmojiBadgeLayout>
-      <Emoji unified={emoji} size="16" />
+      {emoji}
       {count}
     </S.EmojiBadgeLayout>
   );

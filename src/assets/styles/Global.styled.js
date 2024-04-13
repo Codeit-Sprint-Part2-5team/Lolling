@@ -9,8 +9,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-size: 100%;
-  font: inherit;
+  color: inherit;
   vertical-align: baseline;
 }
 

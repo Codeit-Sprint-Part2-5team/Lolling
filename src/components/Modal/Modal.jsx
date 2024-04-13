@@ -23,7 +23,7 @@ function Modal({ image, name, badgeName, date, content }) {
         <S.DividerBox></S.DividerBox>
       </S.HeaderContainer>
       <S.ContentBox>{content}</S.ContentBox>
-      <Button text={'확인'} variant={'primary'} size={40} width={120} />
+      <Button text={'확인'} variant={'primary'} size={40} width={'120px'} />
     </S.Layout>
   );
 }

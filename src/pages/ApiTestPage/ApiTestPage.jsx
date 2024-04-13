@@ -91,10 +91,13 @@ const GetPaper = () => {
     setPaperList(results);
   };
 
+  if (paperList) console.log(paperList);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     getRequest();
   };
+
   return (
     <S.TestLayout>
       <form>
