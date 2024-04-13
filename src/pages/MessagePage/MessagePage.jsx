@@ -1,6 +1,9 @@
 import React from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
+import MarkDown from '../../components/TextField/MarkDown';
+import Input from '../../components/TextField/Input/Input';
+import DropDown from '../../components/TextField/DropDown/DropDown';
 
 export default function MessagePage() {
   return (
@@ -9,7 +12,7 @@ export default function MessagePage() {
         <S.FormContainer>
           <S.FromContainer>
             <h4>From.</h4>
-            <input />
+            <Input />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <h4>프로필 이미지</h4>
@@ -21,13 +24,11 @@ export default function MessagePage() {
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
-            <select>
-              <option>지인</option>
-            </select>
+            <DropDown />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
             <h4>내용을 입력해 주세요</h4>
-            <textarea />
+            <MarkDown />
           </S.TextAreaContainer>
           <S.FontContainer>
             <h4>폰트 선택</h4>
