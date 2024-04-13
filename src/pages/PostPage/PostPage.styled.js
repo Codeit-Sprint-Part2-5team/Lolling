@@ -55,32 +55,7 @@ export const TextContainer = styled.div`
 `;
 
 export const SelectingContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 40px;
   margin-bottom: 45px;
-
-  > button {
-    width: 122px;
-    padding: 8px 16px;
-    cursor: pointer;
-    background-color: var(--gray-100, #f6f6f6);
-    &:first-child {
-      border-radius: 6px 0 0 6px;
-    }
-    &:last-child {
-      border-radius: 0 6px 6px 0;
-    }
-
-    &:hover,
-    &:active {
-      border: 2px solid var(--purple-600);
-      border-radius: 6px;
-      background-color: var(--white-color);
-      color: var(--purple-700);
-      font-weight: 700;
-    }
-  }
 `;
 
 export const BackgroundContainer = styled.div`
@@ -89,5 +64,3 @@ export const BackgroundContainer = styled.div`
   width: 100%;
   margin-bottom: 69px;
 `;
-
-export const ImageContainer = styled.div``;

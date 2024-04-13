@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const ColorOptionLayout = styled.div``;
-
-export const ColorBox = styled.div`
+export const ColorOptionLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +9,6 @@ export const ColorBox = styled.div`
   height: 168px;
   border-radius: 16px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s;
 
@@ -40,7 +37,10 @@ export const ColorBox = styled.div`
       }
       `;
     }
-    return `background-color:${$background}`;
+    return `
+    background-color:${$background};
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    `;
   }}
 `;
 

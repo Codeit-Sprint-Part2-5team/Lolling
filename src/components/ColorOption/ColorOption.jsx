@@ -17,16 +17,14 @@ export default function ColorOption({ background, select, setSelect }) {
   };
 
   return (
-    <S.ColorOptionLayout>
-      <S.ColorBox
-        $background={convertColor(background)}
-        $isActive={isActive}
-        onClick={onChangeActive}
-      >
-        <S.IconBox>
-          <S.CheckImg src={checkicon} />
-        </S.IconBox>
-      </S.ColorBox>
+    <S.ColorOptionLayout
+      $background={convertColor(background)}
+      $isActive={isActive}
+      onClick={onChangeActive}
+    >
+      <S.IconBox>
+        <S.CheckImg src={checkicon} />
+      </S.IconBox>
     </S.ColorOptionLayout>
   );
 }
