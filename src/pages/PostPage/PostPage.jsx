@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import { createCardFolderRequest } from '../../apis/api';
+import {
+  createCardFolderRequest,
+  getBackgroundImageRequest,
+} from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -17,8 +20,12 @@ const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 export default function PostPage() {
   const [select, setSelect] = useState('beige');
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
+  const [images, setImages] = useState([]);
   const [contextSelected, setContextSelected] = useState('color');
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
+  const { requestFunction: getImageRequest } = useAsync(
+    getBackgroundImageRequest
+  );
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
@@ -39,12 +46,22 @@ export default function PostPage() {
     const result = await createRequest(rollPaperBody);
     if (!result) return;
 
-    console.log(result);
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
+  };
+
+  const getImages = async () => {
+    const result = await getImageRequest();
+    if (!result) return;
+
+    const {
+      data: { imageUrls },
+    } = result;
+    setImages(imageUrls);
   };
 
   useEffect(() => {
     onChangeBackgroundHandler(select);
+    getImages();
   }, [select]);
 
   return (
