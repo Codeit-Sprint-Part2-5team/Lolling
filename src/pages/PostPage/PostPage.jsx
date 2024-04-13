@@ -24,7 +24,7 @@ const BACKGROUND_IMAGES = [
 
 export default function PostPage() {
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
+  const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [select, setSelect] = useState('beige');
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
@@ -57,6 +57,10 @@ export default function PostPage() {
 
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
+
+  useEffect(() => {
+    setContextSelected(BACKGROUND_COLORS);
+  }, []);
 
   useEffect(() => {
     onChangeBackgroundHandler(select);
