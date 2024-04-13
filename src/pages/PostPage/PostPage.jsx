@@ -26,6 +26,7 @@ export default function PostPage() {
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [select, setSelect] = useState('beige');
+  const [isActive, setActive] = useState(true);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
   const onChangeInputHandler = (e) => {
@@ -61,6 +62,13 @@ export default function PostPage() {
   useEffect(() => {
     setContextSelected(BACKGROUND_COLORS);
   }, []);
+
+  useEffect(() => {
+    if (rollPaperBody.name === '') {
+      return setActive(true);
+    }
+    return setActive(false);
+  }, [rollPaperBody]);
 
   useEffect(() => {
     onChangeBackgroundHandler(select);
@@ -105,6 +113,7 @@ export default function PostPage() {
             width={'100%'}
             variant={'primary'}
             size={56}
+            disabled={isActive}
           />
         </S.FormContainer>
       </S.PostPageLayout>
