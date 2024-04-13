@@ -4,6 +4,7 @@ import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
 import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
+import Button from '../../components/Button/Button';
 
 export default function MessagePage() {
   return (
@@ -16,11 +17,9 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <h4>프로필 이미지</h4>
-            <div>
-              <div></div>
-              <p>프로필 이미지를 선택해주세요!</p>
-              <div></div>
-            </div>
+            <div></div>
+            <p>프로필 이미지를 선택해주세요!</p>
+            <div></div>
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
@@ -36,7 +35,12 @@ export default function MessagePage() {
               <option>Noto Sans</option>
             </select>
           </S.FontContainer>
-          <button>생성하기</button>
+          <Button
+            variant={'primary'}
+            text={'생성하기'}
+            size={56}
+            width={'100%'}
+          />
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>

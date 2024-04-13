@@ -2,15 +2,17 @@ import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
 
-function CardFolder({ userInfo }) {
-  const {
-    name = 'Sowon',
-    backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
-    backgroundColor = 'beige',
-    messageCount = 21,
-    topReactions = null,
-    recentMessages = null,
-  } = userInfo;
+function CardFolder({
+  name = 'Sowon',
+  backgroundImageURL = 'url(https://picsum.photos/id/24/3840/2160)',
+  backgroundColor = 'beige',
+  messageCount = 21,
+  topReactions = null,
+  recentMessages = null,
+}) {
+  // const {
+
+  // } = userInfo;
 
   const convertColor = (color) => {
     if (color === 'beige') {
