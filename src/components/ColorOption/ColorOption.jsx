@@ -10,10 +10,10 @@ export default function ColorOption({ background, select, setSelect }) {
   };
 
   const convertColor = () => {
-    if (!background.includes('http')) {
-      return convertBackgroundColor(background);
+    if (background.includes('http')) {
+      return background;
     }
-    return background;
+    return convertBackgroundColor(background);
   };
 
   return (
