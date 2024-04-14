@@ -4,7 +4,7 @@ const ButtonStyle = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: ${({ isSmileIcon }) => (isSmileIcon ? '4px' : '10px')};
   text-align: center;
   font-family: Pretendard;
 `;
@@ -12,7 +12,7 @@ const ButtonStyle = css`
 export const ButtonLayout = styled.button`
   // 공통 부분
   ${ButtonStyle}
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width};
   cursor: pointer;
 
   // Size
@@ -138,4 +138,9 @@ export const ButtonLayout = styled.button`
       color: var(--white-color, #FFFFFF);
     }
   `}
+`;
+
+export const SmileIconImg = styled.img`
+  width: 24px;
+  height: 24px;
 `;

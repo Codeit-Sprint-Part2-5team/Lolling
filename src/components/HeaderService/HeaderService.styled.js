@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import EmojiBadge from '../EmojiBadge/EmojiBadge';
 
 export const HeaderServiceLayout = styled.div`
   display: flex;
@@ -47,4 +48,56 @@ export const UserCountSpanBox = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: 27px;
+`;
+
+export const BarItemsInner = styled.div`
+  width: 1px;
+  height: 28px;
+  background: var(--gray-200, #eee);
+`;
+
+export const EmojiContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+`;
+
+export const EmojiBadgeContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+`;
+
+export const EmojiButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 13px;
+`;
+
+export const EmojiListButton = styled.button`
+  display: flex;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  cursor: pointer;
+`;
+
+export const EmojiListButtonImg = styled.img`
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+`;
+
+export const SharedButton = styled.button`
+  display: flex;
+  padding: 6px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--gray-300, #ccc);
+  background: var(--white, #fff);
 `;
