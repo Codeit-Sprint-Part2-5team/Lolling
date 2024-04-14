@@ -2,11 +2,11 @@ import * as S from './ColorOption.styled';
 import checkicon from '../../assets/images/Check.svg';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-export default function ColorOption({ background, select, setSelect }) {
-  const isActive = select === background;
+export default function ColorOption({ background, selected, setSelected }) {
+  const isActive = selected === background;
 
   const onChangeActive = () => {
-    setSelect(background);
+    setSelected(background);
   };
 
   const convertColor = () => {

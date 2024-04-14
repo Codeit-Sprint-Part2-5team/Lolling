@@ -4,7 +4,6 @@ import GlobalStyle from './assets/styles/Global.styled';
 import Header from './components/Header/Header';
 
 function App() {
-  const obj = {};
   return (
     <>
       <GlobalStyle />
