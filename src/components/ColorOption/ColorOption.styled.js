@@ -6,14 +6,6 @@ const pending = keyframes`
   }
 `;
 
-export const LoadingBox = styled.div`
-  width: 168px;
-  height: 168px;
-  border-radius: 16px;
-  background-color: rgba(0, 0, 0, 0.2);
-  animation: ${pending} 2s ease-in-out infinite;
-`;
-
 export const ColorOptionLayout = styled.div`
   display: flex;
   justify-content: center;

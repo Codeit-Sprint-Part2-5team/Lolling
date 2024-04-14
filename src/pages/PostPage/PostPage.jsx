@@ -18,13 +18,6 @@ const INIT_CREATE_ROLL_PAPER = {
 
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
-const BACKGROUND_IMAGES = [
-  'https://picsum.photos/id/683/3840/2160',
-  'https://picsum.photos/id/24/3840/2160',
-  'https://picsum.photos/id/599/3840/2160',
-  'https://picsum.photos/id/1058/3840/2160',
-];
-
 export default function PostPage() {
   const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
@@ -32,7 +25,7 @@ export default function PostPage() {
   const [select, setSelect] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
-  const { pending: isLoading, requestFunction: getImageRequest } = useAsync(
+  const { requestFunction: getImageRequest } = useAsync(
     getBackgroundImageRequest
   );
 
@@ -75,9 +68,10 @@ export default function PostPage() {
 
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
+
   useEffect(() => {
     getImage();
-  }, [contextSelected]);
+  }, []);
 
   useEffect(() => {
     if (rollPaperBody.name === '') {
@@ -119,7 +113,6 @@ export default function PostPage() {
               <ColorOption
                 key={item}
                 background={item}
-                isLoading={isLoading}
                 select={select}
                 setSelect={setSelect}
               />
