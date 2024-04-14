@@ -2,6 +2,7 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 import * as S from './Card.styled';
 import Badge from '../Badge/Badge';
 import AddButton from '../AddButton/AddButton';
+import { Link } from 'react-router-dom';
 
 export default function Card({
   add,
@@ -14,7 +15,9 @@ export default function Card({
   return (
     <S.CardLayout $add={add}>
       {add ? (
-        <AddButton />
+        <Link to="message">
+          <AddButton />
+        </Link>
       ) : (
         <>
           <S.TopContainer>
