@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import { createCardFolderRequest } from '../../apis/api';
+import {
+  createCardFolderRequest,
+  getBackgroundImageRequest,
+} from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -23,11 +26,15 @@ const BACKGROUND_IMAGES = [
 ];
 
 export default function PostPage() {
+  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
   const [select, setSelect] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
+  const { pending: isLoading, requestFunction: getImageRequest } = useAsync(
+    getBackgroundImageRequest
+  );
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
@@ -51,6 +58,16 @@ export default function PostPage() {
     });
   };
 
+  const getImage = async () => {
+    const result = await getImageRequest();
+    if (!result) return;
+
+    const {
+      data: { imageUrls },
+    } = result;
+    setBACKGROUND_IMAGES(imageUrls);
+  };
+
   const createPaper = async (e) => {
     e.preventDefault();
     const result = await createRequest(rollPaperBody);
@@ -58,6 +75,9 @@ export default function PostPage() {
 
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
   };
+  useEffect(() => {
+    getImage();
+  }, [contextSelected]);
 
   useEffect(() => {
     if (rollPaperBody.name === '') {
@@ -99,6 +119,7 @@ export default function PostPage() {
               <ColorOption
                 key={item}
                 background={item}
+                isLoading={isLoading}
                 select={select}
                 setSelect={setSelect}
               />

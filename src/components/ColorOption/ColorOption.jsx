@@ -6,7 +6,7 @@ export default function ColorOption({
   background,
   select,
   setSelect,
-  pending,
+  isLoading,
 }) {
   const isActive = select === background;
 
@@ -23,7 +23,7 @@ export default function ColorOption({
 
   return (
     <>
-      {pending ? (
+      {isLoading ? (
         <S.LoadingBox></S.LoadingBox>
       ) : (
         <S.ColorOptionLayout

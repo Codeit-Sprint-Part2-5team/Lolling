@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const pending = keyframes`
   50% {
-    opacity: 0.2;
+    opacity: 0.5;
   }
 `;
 
@@ -11,7 +11,7 @@ export const LoadingBox = styled.div`
   height: 168px;
   border-radius: 16px;
   background-color: rgba(0, 0, 0, 0.2);
-  animation: ${pending} 1s ease-in-out infinite;
+  animation: ${pending} 2s ease-in-out infinite;
 `;
 
 export const ColorOptionLayout = styled.div`
