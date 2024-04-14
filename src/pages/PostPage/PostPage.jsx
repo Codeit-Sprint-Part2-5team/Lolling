@@ -23,7 +23,7 @@ export default function PostPage() {
   const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
-  const [select, setSelect] = useState('beige');
+  const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const nav = useNavigate();
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
@@ -88,8 +88,8 @@ export default function PostPage() {
   }, [rollPaperBody]);
 
   useEffect(() => {
-    onChangeBackgroundHandler(select);
-  }, [select]);
+    onChangeBackgroundHandler(selected);
+  }, [selected]);
 
   return (
     <Inner>
@@ -120,8 +120,8 @@ export default function PostPage() {
               <ColorOption
                 key={item}
                 background={item}
-                select={select}
-                setSelect={setSelect}
+                selected={selected}
+                setSelected={setSelected}
               />
             ))}
           </S.BackgroundContainer>
