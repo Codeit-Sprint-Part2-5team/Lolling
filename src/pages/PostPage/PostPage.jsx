@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import {
-  createCardFolderRequest,
-  getBackgroundImageRequest,
-} from '../../apis/api';
+import { createCardFolderRequest } from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -20,16 +17,18 @@ const INIT_CREATE_ROLL_PAPER = {
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
 export default function PostPage() {
-  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
+  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([
+    'https://picsum.photos/id/683/3840/2160',
+    'https://picsum.photos/id/24/3840/2160',
+    'https://picsum.photos/id/599/3840/2160',
+    'https://picsum.photos/id/1058/3840/2160',
+  ]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
+  const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const nav = useNavigate();
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
-  const { requestFunction: getImageRequest } = useAsync(
-    getBackgroundImageRequest
-  );
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
@@ -53,16 +52,6 @@ export default function PostPage() {
     });
   };
 
-  const getImage = async () => {
-    const result = await getImageRequest();
-    if (!result) return;
-
-    const {
-      data: { imageUrls },
-    } = result;
-    setBACKGROUND_IMAGES(imageUrls);
-  };
-
   const createPaper = async (e) => {
     e.preventDefault();
     const result = await createRequest(rollPaperBody);
@@ -77,10 +66,6 @@ export default function PostPage() {
   };
 
   useEffect(() => {
-    getImage();
-  }, []);
-
-  useEffect(() => {
     if (rollPaperBody.name === '') {
       return setActiveBtn(true);
     }
@@ -90,6 +75,10 @@ export default function PostPage() {
   useEffect(() => {
     onChangeBackgroundHandler(selected);
   }, [selected]);
+
+  useEffect(() => {
+    setContextSelected(BACKGROUND_COLORS);
+  }, []);
 
   return (
     <Inner>
