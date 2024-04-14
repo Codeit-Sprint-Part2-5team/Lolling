@@ -1,8 +1,9 @@
 import * as S from './ProfileImage.styled';
 
-function ProfileImage({ image, size = 's', setSelected, selected }) {
+function ProfileImage({ image, size = 's', setSelected, onChange }) {
   const onChangeImage = () => {
     setSelected(image);
+    onChange(image);
   };
   return (
     <S.ProfileImageLayout

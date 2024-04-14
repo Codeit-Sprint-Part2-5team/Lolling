@@ -48,6 +48,13 @@ export default function MessagePage() {
     });
   };
 
+  const onChangeImageHandler = (value) => {
+    setMessageBody({
+      ...messageBody,
+      profileImageURL: value,
+    });
+  };
+
   useEffect(() => {
     getImage();
   }, []);
@@ -80,7 +87,7 @@ export default function MessagePage() {
                   image={image}
                   size={'m'}
                   setSelected={setSelected}
-                  selected={selected}
+                  onChange={onChangeImageHandler}
                 />
               ))}
             </S.ProfileBox>
