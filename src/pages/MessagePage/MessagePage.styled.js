@@ -59,7 +59,9 @@ export const ProfileTitle = styled.h4`
 export const ProfileImg = styled.img`
   grid-area: Img;
   position: relative;
-  top: 7px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 `;
 
 export const ProfileP = styled.p`

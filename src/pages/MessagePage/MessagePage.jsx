@@ -6,12 +6,12 @@ import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
-import profileIcon from '../../assets/images/ProfileIcon.svg';
 import useAsync from '../../hooks/useAsync';
 import { getMockImageRequest } from '../../apis/api';
 
 export default function MessagePage() {
   const [profileImage, setProfileImage] = useState([]);
+  const [selected, setSelected] = useState();
   const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
 
   const getImage = async () => {
@@ -28,6 +28,10 @@ export default function MessagePage() {
     getImage();
   }, []);
 
+  useEffect(() => {
+    setSelected(profileImage[0]);
+  }, [profileImage]);
+
   return (
     <Inner>
       <S.PostPageLayout>
@@ -38,11 +42,17 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
-            <S.ProfileImg src={profileIcon} />
+            <S.ProfileImg src={selected} />
             <S.ProfileP>프로필 이미지를 선택해주세요!</S.ProfileP>
             <S.ProfileBox>
               {profileImage.map((image) => (
-                <ProfileImage key={image} image={image} size={'m'} />
+                <ProfileImage
+                  key={image}
+                  image={image}
+                  size={'m'}
+                  setSelected={setSelected}
+                  selected={selected}
+                />
               ))}
             </S.ProfileBox>
           </S.ProfileImageContainer>
