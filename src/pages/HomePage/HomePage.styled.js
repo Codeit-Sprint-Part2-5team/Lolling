@@ -5,8 +5,6 @@ import { ReactComponent as SmileIconSvg } from '../../assets/images/EmojiSmile.s
 import { ReactComponent as CursorIconSvg } from '../../assets/images/Cursor.svg';
 
 export const HomePageLayout = styled.div`
-  width: 1920px;
-  height: 1080px;
   background: #fff;
   display: flex;
 `;
