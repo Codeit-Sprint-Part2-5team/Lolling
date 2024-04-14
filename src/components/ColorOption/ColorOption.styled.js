@@ -6,6 +6,14 @@ const pending = keyframes`
   }
 `;
 
+export const LoadingBox = styled.div`
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  animation: ${pending} 1s ease-in-out infinite;
+`;
+
 export const ColorOptionLayout = styled.div`
   display: flex;
   justify-content: center;
@@ -27,11 +35,8 @@ export const ColorOptionLayout = styled.div`
     transform: scale(1.1);
   }
 
-  ${({ $background, $pending }) => {
+  ${({ $background }) => {
     if ($background.includes('http')) {
-      if ($pending) {
-        return `animation: ${pending} 1s ease-in-out infinite `;
-      }
       return `
       background-image: url(${$background});
       background-size: cover;

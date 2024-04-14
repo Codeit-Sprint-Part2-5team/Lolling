@@ -22,15 +22,20 @@ export default function ColorOption({
   };
 
   return (
-    <S.ColorOptionLayout
-      $background={convertColor(background)}
-      $isActive={isActive}
-      $pending={pending}
-      onClick={onChangeActive}
-    >
-      <S.IconBox>
-        <S.CheckIcon src={checkicon} />
-      </S.IconBox>
-    </S.ColorOptionLayout>
+    <>
+      {pending ? (
+        <S.LoadingBox></S.LoadingBox>
+      ) : (
+        <S.ColorOptionLayout
+          $background={convertColor(background)}
+          $isActive={isActive}
+          onClick={onChangeActive}
+        >
+          <S.IconBox>
+            <S.CheckIcon src={checkicon} />
+          </S.IconBox>
+        </S.ColorOptionLayout>
+      )}
+    </>
   );
 }
