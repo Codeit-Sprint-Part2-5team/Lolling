@@ -100,4 +100,5 @@ export const SharedButton = styled.button`
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
+  cursor: pointer;
 `;
