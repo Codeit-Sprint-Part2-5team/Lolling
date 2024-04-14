@@ -7,7 +7,7 @@ import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
-import { getMockImageRequest } from '../../apis/api';
+import { createMessageRequest, getMockImageRequest } from '../../apis/api';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -22,16 +22,30 @@ export default function MessagePage() {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
   const [selected, setSelected] = useState();
-  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+  const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
+  const { requestFunction: postMessageRequest } =
+    useAsync(createMessageRequest);
 
   const getImage = async () => {
-    const result = await getProfileImage();
+    const result = await getImageRequest();
     if (!result) return;
 
     const {
       data: { imageUrls },
     } = result;
     setProfileImage(imageUrls);
+  };
+
+  const postMessage = async () => {
+    const result = await postMessageRequest(messageBody);
+    if (!result) return;
+  };
+
+  const onChangeInputHandler = (e) => {
+    setMessageBody({
+      ...messageBody,
+      [e.target['name']]: e.target.value,
+    });
   };
 
   useEffect(() => {
@@ -48,7 +62,12 @@ export default function MessagePage() {
         <S.FormContainer>
           <S.FromContainer>
             <h4>From.</h4>
-            <Input />
+            <input
+              name='sender'
+              value={messageBody.sender}
+              onChange={onChangeInputHandler}
+              placeholder='이름을 입력해 주세요'
+            />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
