@@ -9,6 +9,7 @@ import {
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
@@ -24,6 +25,7 @@ export default function PostPage() {
   const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
   const [select, setSelect] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
+  const nav = useNavigate();
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
   const { requestFunction: getImageRequest } = useAsync(
     getBackgroundImageRequest
@@ -67,6 +69,11 @@ export default function PostPage() {
     if (!result) return;
 
     setRollPaperBody(INIT_CREATE_ROLL_PAPER);
+
+    const {
+      data: { id },
+    } = result;
+    nav(`/post/${id}`);
   };
 
   useEffect(() => {
