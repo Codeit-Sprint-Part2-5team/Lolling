@@ -1,24 +1,57 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const ColorOptionLayout = styled.div``;
+const pending = keyframes`
+  50% {
+    opacity: 0.5;
+  }
+`;
 
-export const ColorBox = styled.div`
+export const ColorOptionLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 168px;
   height: 168px;
   border-radius: 16px;
   cursor: pointer;
-  border: ${({ $select }) =>
-    $select ? '2px solid rgba(0, 0, 0, 0.8)' : '1px solid rgba(0,0,0,0.08)'};
-  background-color: ${({ $color }) => $color};
+  overflow: hidden;
+  transition: transform 0.3s;
 
   > div {
     display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
+    z-index: 100;
   }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  ${({ $background }) => {
+    if ($background.includes('http')) {
+      return `
+      background-image: url(${$background});
+      background-size: cover;
+
+      &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      `;
+    }
+    return `
+    background-color:${$background};
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    `;
+  }}
 `;
-export const ImgBox = styled.div`
+
+export const IconBox = styled.div`
   display: flex;
   justify-content: center;
   width: 44px;
@@ -26,6 +59,6 @@ export const ImgBox = styled.div`
   background-color: var(--gray-500);
   border-radius: 50%;
 `;
-export const CheckImg = styled.img`
+export const CheckIcon = styled.img`
   width: 25px;
 `;
