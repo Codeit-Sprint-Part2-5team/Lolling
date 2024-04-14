@@ -93,6 +93,7 @@ export const EmojiListButtonImg = styled.img`
 
 export const SharedButton = styled.button`
   display: flex;
+  height: 36px;
   padding: 6px 16px;
   justify-content: center;
   align-items: center;
@@ -101,4 +102,17 @@ export const SharedButton = styled.button`
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
   cursor: pointer;
+
+  &:hover {
+    background: var(--gray-100, #f6f6f6);
+  }
+
+  &:active {
+    background: var(--gray-100, #f6f6f6);
+  }
+
+  &:focus {
+    background: var(--white-color, #ffffff);
+    border: 1px solid var(--gray-500, #555555);
+  }
 `;
