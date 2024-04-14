@@ -1,10 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const pending = keyframes`
-  50% {
-    opacity: 0.5;
-  }
-`;
+import styled from 'styled-components';
 
 export const ColorOptionLayout = styled.div`
   display: flex;
