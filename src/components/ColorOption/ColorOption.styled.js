@@ -1,4 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const pending = keyframes`
+  50% {
+    opacity: 0.2;
+  }
+`;
 
 export const ColorOptionLayout = styled.div`
   display: flex;
@@ -14,14 +20,18 @@ export const ColorOptionLayout = styled.div`
 
   > div {
     display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
+    z-index: 100;
   }
 
   &:hover {
     transform: scale(1.1);
   }
 
-  ${({ $background }) => {
+  ${({ $background, $pending }) => {
     if ($background.includes('http')) {
+      if ($pending) {
+        return `animation: ${pending} 1s ease-in-out infinite `;
+      }
       return `
       background-image: url(${$background});
       background-size: cover;
@@ -52,6 +62,6 @@ export const IconBox = styled.div`
   background-color: var(--gray-500);
   border-radius: 50%;
 `;
-export const CheckImg = styled.img`
+export const CheckIcon = styled.img`
   width: 25px;
 `;

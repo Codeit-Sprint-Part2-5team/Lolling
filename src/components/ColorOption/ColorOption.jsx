@@ -2,7 +2,12 @@ import * as S from './ColorOption.styled';
 import checkicon from '../../assets/images/Check.svg';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-export default function ColorOption({ background, select, setSelect }) {
+export default function ColorOption({
+  background,
+  select,
+  setSelect,
+  pending,
+}) {
   const isActive = select === background;
 
   const onChangeActive = () => {
@@ -20,10 +25,11 @@ export default function ColorOption({ background, select, setSelect }) {
     <S.ColorOptionLayout
       $background={convertColor(background)}
       $isActive={isActive}
+      $pending={pending}
       onClick={onChangeActive}
     >
       <S.IconBox>
-        <S.CheckImg src={checkicon} />
+        <S.CheckIcon src={checkicon} />
       </S.IconBox>
     </S.ColorOptionLayout>
   );

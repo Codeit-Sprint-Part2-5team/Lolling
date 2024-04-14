@@ -10,7 +10,7 @@ import Button from '../../components/Button/Button';
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
   backgroundColor: '',
-  backgroundImageURL: '',
+  backgroundImageURL: null,
 };
 
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
@@ -47,7 +47,7 @@ export default function PostPage() {
     return setRollPaperBody({
       ...rollPaperBody,
       backgroundColor: value,
-      backgroundImageURL: '',
+      backgroundImageURL: null,
     });
   };
 
