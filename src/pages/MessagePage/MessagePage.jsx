@@ -9,7 +9,17 @@ import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import { getMockImageRequest } from '../../apis/api';
 
+const INIT_CREATE_MESSAGE = {
+  recipientId: 0,
+  sender: '',
+  profileImageURL: '',
+  relationship: '친구',
+  content: '',
+  font: 'Noto Sans',
+};
+
 export default function MessagePage() {
+  const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
   const [selected, setSelected] = useState();
   const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
