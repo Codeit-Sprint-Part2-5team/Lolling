@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import { createMessageRequest, getMockImageRequest } from '../../apis/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -20,7 +20,7 @@ const INIT_CREATE_MESSAGE = {
   font: 'Noto Sans',
 };
 
-export default function MessagePage({ id = 5788 }) {
+export default function MessagePage() {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
   const [selected, setSelected] = useState('');
@@ -30,6 +30,8 @@ export default function MessagePage({ id = 5788 }) {
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
   const nav = useNavigate();
+  const { userId } = useParams();
+
   const INIT_DROPDOWN = {
     relationship: ['친구', '지인', '가족', '동료'],
     font: ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'],
@@ -52,7 +54,7 @@ export default function MessagePage({ id = 5788 }) {
 
     setMessageBody(INIT_CREATE_MESSAGE);
 
-    nav(`/post/${id}`);
+    nav(`/post/${userId}`);
   };
 
   const onChangeInputHandler = (e) => {
@@ -92,7 +94,7 @@ export default function MessagePage({ id = 5788 }) {
     getImage();
     setMessageBody({
       ...messageBody,
-      recipientId: id,
+      recipientId: Number(userId),
     });
   }, []);
 
