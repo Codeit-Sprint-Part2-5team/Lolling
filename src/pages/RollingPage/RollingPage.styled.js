@@ -10,3 +10,15 @@ export const CardContainer = styled.ul`
   gap: 28px 24px;
   flex-wrap: wrap;
 `;
+
+export const ModalContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+`;

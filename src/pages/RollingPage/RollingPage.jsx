@@ -49,13 +49,15 @@ export default function RollingPage() {
           ))}
         </S.CardContainer>
         {modalVisible && (
-          <Modal
-            image={modal.profileImageURL}
-            name={modal.sender}
-            badgeName={modal.relationship}
-            date={modal.date}
-            content={modal.content}
-          />
+          <S.ModalContainer>
+            <Modal
+              image={modal.profileImageURL}
+              name={modal.sender}
+              badgeName={modal.relationship}
+              date={modal.date}
+              content={modal.content}
+            />
+          </S.ModalContainer>
         )}
       </Inner>
     </S.RollingPageLayout>
