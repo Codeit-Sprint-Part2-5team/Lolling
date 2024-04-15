@@ -23,7 +23,7 @@ export default function HeaderService() {
     getData();
   }, []);
 
-  if (data) console.log(data.data.name);
+  if (data) console.log(data.data);
 
   return (
     data && (

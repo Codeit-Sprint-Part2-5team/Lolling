@@ -15,13 +15,13 @@ export default function Card({
   return (
     <S.CardLayout $add={add}>
       {add ? (
-        <Link to="message">
+        <Link to='message'>
           <AddButton />
         </Link>
       ) : (
         <>
           <S.TopContainer>
-            <ProfileImage image={profileImageURL} size="m" />
+            <ProfileImage image={profileImageURL} size='m' />
             <S.TextContainer>
               <S.NameContainer>
                 <span>From.</span> <b>{sender}</b>
