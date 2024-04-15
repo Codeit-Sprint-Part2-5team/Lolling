@@ -62,9 +62,9 @@ export default function RollingPage() {
           {modalVisible && (
             <S.ModalContainer>
               <Modal
-                image={modal.profileImageURL}
-                name={modal.sender}
-                badgeName={modal.relationship}
+                profileImageURL={modal.profileImageURL}
+                sender={modal.sender}
+                relationship={modal.relationship}
                 date={modal.date}
                 content={modal.content}
                 onClick={handleModalClose}
