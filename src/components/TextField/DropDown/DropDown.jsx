@@ -21,13 +21,6 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
     }));
   };
 
-  useEffect(() => {
-    console.log('마운트');
-    return () => {
-      console.log('언마운트');
-    };
-  });
-
   return (
     <S.DropDownLayout>
       <S.DropDownInput onClick={toggleDropDown}>
