@@ -23,8 +23,6 @@ export default function HeaderService() {
     getData();
   }, []);
 
-  if (data) console.log(data.data);
-
   return (
     data && (
       <Inner>
@@ -34,7 +32,9 @@ export default function HeaderService() {
           </S.HeaderServiceTitleBox>
           <S.HeaderServiceContainer>
             <S.HeaderServiceDataContainer>
-              <ProfileList recentMessages={data.data.recentMessages} />
+              <S.HeaderServiceInnerImg>
+                <ProfileList recentMessages={data.data.recentMessages} />
+              </S.HeaderServiceInnerImg>
               <S.UserCountBox>
                 <S.UserCountSpanBox>
                   {data.data.messageCount}
@@ -63,7 +63,7 @@ export default function HeaderService() {
                   text={'추가'}
                   variant={'outline'}
                   size={36}
-                  isSmileIcon={true}
+                  isSmileIcon={'on'}
                 />
                 <S.BarItemsInner></S.BarItemsInner>
                 <S.SharedButton>

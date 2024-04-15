@@ -5,7 +5,7 @@ export const HeaderServiceLayout = styled.div`
   display: flex;
   padding: 13px 0;
   align-items: center;
-  gap: 263px;
+  justify-content: space-between;
 `;
 
 export const HeaderServiceTitleBox = styled.h1`
@@ -31,7 +31,11 @@ export const HeaderServiceDataContainer = styled.div`
   gap: 18px;
 `;
 
-export const UserCountBox = styled.p`
+export const HeaderServiceInnerImg = styled.div`
+  margin-bottom: 16px;
+`;
+
+export const UserCountBox = styled.div`
   display: flex;
   color: var(--gray-900, #181818);
   font-family: Pretendard;
