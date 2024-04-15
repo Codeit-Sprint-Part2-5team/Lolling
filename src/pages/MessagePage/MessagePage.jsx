@@ -8,6 +8,7 @@ import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
 import { createMessageRequest, getMockImageRequest } from '../../apis/api';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -33,6 +34,7 @@ export default function MessagePage({ id = 5788 }) {
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
+  const nav = useNavigate();
 
   const getImage = async () => {
     const result = await getImageRequest();
@@ -44,9 +46,17 @@ export default function MessagePage({ id = 5788 }) {
     setProfileImage(imageUrls);
   };
 
-  const postMessage = async () => {
+  const postMessage = async (e) => {
+    e.preventDefault();
     const result = await postMessageRequest(messageBody);
     if (!result) return;
+
+    setMessageBody(INIT_CREATE_MESSAGE);
+
+    const {
+      data: { id },
+    } = result;
+    nav(`/post/${id}`);
   };
 
   const onChangeInputHandler = (e) => {
@@ -92,7 +102,7 @@ export default function MessagePage({ id = 5788 }) {
   return (
     <Inner>
       <S.PostPageLayout>
-        <S.FormContainer>
+        <S.FormContainer onSubmit={postMessage}>
           <S.FromContainer>
             <h4>From.</h4>
             <Input

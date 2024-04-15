@@ -6,7 +6,7 @@ export const PostPageLayout = styled.div`
   justify-content: center;
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   padding: 57px 0;
   width: 720px;
   display: flex;
