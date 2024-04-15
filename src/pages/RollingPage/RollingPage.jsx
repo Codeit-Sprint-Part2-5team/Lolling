@@ -4,6 +4,8 @@ import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
+
+import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
 
 export default function RollingPage() {
@@ -31,39 +33,42 @@ export default function RollingPage() {
   };
 
   return (
-    <S.RollingPageLayout>
-      <Inner>
-        <S.CardContainer>
-          <li>
-            <Card add />
-          </li>
-          {messageList?.map((item) => (
-            <li key={item.id}>
-              <Card
-                setModal={setModal}
-                setModalVisible={setModalVisible}
-                content={item.content}
-                profileImageURL={item.profileImageURL}
-                relationship={item.relationship}
-                sender={item.sender}
-                createdAt={item.createdAt}
-              />
+    <>
+      <HeaderService />
+      <S.RollingPageLayout>
+        <Inner>
+          <S.CardContainer>
+            <li>
+              <Card add />
             </li>
-          ))}
-        </S.CardContainer>
-        {modalVisible && (
-          <S.ModalContainer>
-            <Modal
-              image={modal.profileImageURL}
-              name={modal.sender}
-              badgeName={modal.relationship}
-              date={modal.date}
-              content={modal.content}
-              onClick={handleModalClose}
-            />
-          </S.ModalContainer>
-        )}
-      </Inner>
-    </S.RollingPageLayout>
+            {messageList?.map((item) => (
+              <li key={item.id}>
+                <Card
+                  setModal={setModal}
+                  setModalVisible={setModalVisible}
+                  content={item.content}
+                  profileImageURL={item.profileImageURL}
+                  relationship={item.relationship}
+                  sender={item.sender}
+                  createdAt={item.createdAt}
+                />
+              </li>
+            ))}
+          </S.CardContainer>
+          {modalVisible && (
+            <S.ModalContainer>
+              <Modal
+                image={modal.profileImageURL}
+                name={modal.sender}
+                badgeName={modal.relationship}
+                date={modal.date}
+                content={modal.content}
+                onClick={handleModalClose}
+              />
+            </S.ModalContainer>
+          )}
+        </Inner>
+      </S.RollingPageLayout>
+    </>
   );
 }

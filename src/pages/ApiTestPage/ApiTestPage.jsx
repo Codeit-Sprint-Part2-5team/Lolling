@@ -6,9 +6,12 @@ import {
   createMessageRequest,
   deleteMessageRequest,
   deleteCardFolderRequest,
+  getReactionsRequest,
+  postReactionRequest,
 } from '../../apis/api';
 import { useState } from 'react';
 import * as S from './ApiTestPage.styled';
+import EmojiPicker from 'emoji-picker-react';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
@@ -22,6 +25,16 @@ const INIT_MESSAGE_BODY = {
   relationship: '',
   content: '',
   font: '',
+};
+
+const INIT_REACTION_BODY = {
+  emoji: '',
+  type: 'increase',
+};
+
+const query = {
+  limit: 8,
+  offset: 0,
 };
 
 const PostPage = () => {
@@ -83,7 +96,7 @@ const GetPaper = () => {
   const { requestFunction: getCardFolder } = useAsync(getCardFolderListRequest);
 
   const getRequest = async () => {
-    const res = await getCardFolder();
+    const res = await getCardFolder({});
     if (!res) return;
     const {
       data: { results },
@@ -306,6 +319,91 @@ const DeleteCardFolder = () => {
   );
 };
 
+const GetReactions = () => {
+  const [emoji, setEmoji] = useState([]);
+  const [id, setId] = useState();
+  const { requestFunction: getEmoji } = useAsync(getReactionsRequest);
+
+  const getRequest = async (id) => {
+    const res = await getEmoji(id);
+    if (!res) return;
+
+    const {
+      data: { results },
+    } = res;
+    setEmoji(results);
+  };
+
+  const handleInput = (e) => {
+    setId(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getRequest(id);
+  };
+
+  return (
+    <S.TestLayout>
+      <form onSubmit={handleSubmit}>
+        <h4>유저가 받은 이모지 조회</h4>
+        <input onChange={handleInput} placeholder='id를 입력하세요' />
+        <S.Button>조회</S.Button>
+        {emoji.map((item) => (
+          <div key={item.id}>
+            <div>{`id:${item.id}, 이모지:${item.emoji}, 받은갯수:${item.count}`}</div>
+          </div>
+        ))}
+      </form>
+    </S.TestLayout>
+  );
+};
+
+const PostReaction = () => {
+  const [reactionBody, setReactionBody] = useState(INIT_REACTION_BODY);
+  const [emoji, setEmoji] = useState();
+  const [id, setId] = useState();
+  const { requestFunction: postReaction } = useAsync(postReactionRequest);
+
+  const postRequest = async (id) => {
+    const res = await postReaction(id, reactionBody);
+    if (!res) return;
+
+    setReactionBody([]);
+  };
+
+  const handleInput = (e) => {
+    setId(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postRequest(id);
+  };
+
+  const handleEmoji = (e) => {
+    console.log(e);
+    setReactionBody({
+      ...reactionBody,
+      emoji: e.emoji,
+    });
+  };
+
+  return (
+    <S.TestLayout>
+      <form onSubmit={handleSubmit}>
+        <h4>이모지 보내기</h4>
+        {reactionBody.emoji}
+        <EmojiPicker reactionsDefaultOpen={true} onEmojiClick={handleEmoji} />
+        <input
+          onChange={handleInput}
+          placeholder='이모지를 보낼 상대 id를 입력하시오'
+        />
+        <S.Button>보내기</S.Button>
+      </form>
+    </S.TestLayout>
+  );
+};
+
 const ApiTestPage = () => {
   return (
     <S.Layout>
@@ -316,6 +414,8 @@ const ApiTestPage = () => {
       <GetMessage />
       <DeleteMessage />
       <DeleteCardFolder />
+      <GetReactions />
+      <PostReaction />
     </S.Layout>
   );
 };
