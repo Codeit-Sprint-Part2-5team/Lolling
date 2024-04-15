@@ -20,10 +20,7 @@ export default function RollingPage() {
   const [recipient, setRecipient] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
   const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
-
   const { userId } = useParams();
-
-  console.log(recipient);
 
   const getMessageData = async () => {
     const result = await getMessageList(userId);
