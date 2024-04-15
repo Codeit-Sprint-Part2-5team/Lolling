@@ -1,8 +1,7 @@
-import ProfileImage from '../ProfileImage/ProfileImage';
 import * as S from './Card.styled';
-import Badge from '../Badge/Badge';
 import AddButton from '../AddButton/AddButton';
 import { Link } from 'react-router-dom';
+import SenderProfile from '../SenderProfile/SenderProfile';
 
 export default function Card({
   add,
@@ -36,13 +35,11 @@ export default function Card({
       ) : (
         <S.CardLayout onClick={handleCardClick}>
           <S.TopContainer>
-            <ProfileImage image={profileImageURL} size='m' />
-            <S.TextContainer>
-              <S.NameContainer>
-                <span>From.</span> <b>{sender}</b>
-              </S.NameContainer>
-              <Badge name={relationship} />
-            </S.TextContainer>
+            <SenderProfile
+              profileImageURL={profileImageURL}
+              sender={sender}
+              relationship={relationship}
+            />
           </S.TopContainer>
           <S.BottomContainer>
             <S.ContentBox>{content}</S.ContentBox>

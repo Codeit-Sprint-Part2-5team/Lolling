@@ -3,19 +3,27 @@ import Inner from '../../components/Inner/Inner';
 import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
-import { getMessageListRequest } from '../../apis/api';
-
+import {
+  getCardFolderListRequest,
+  getCardFolderRequest,
+  getMessageListRequest,
+} from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
+import { useParams } from 'react-router-dom';
+import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
 export default function RollingPage() {
   const [messageList, setMessageList] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [modal, setModal] = useState();
+  const [recipient, setRecipient] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
+  const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
+  const { userId } = useParams();
 
-  const getData = async () => {
-    const result = await getMessageList(5788);
+  const getMessageData = async () => {
+    const result = await getMessageList(userId);
     if (!result) return;
     const {
       data: { results },
@@ -23,8 +31,16 @@ export default function RollingPage() {
     setMessageList(results);
   };
 
+  const getRecipientsData = async () => {
+    const result = await getRecipient(userId);
+    if (!result) return;
+    const { data } = result;
+    setRecipient(data);
+  };
+
   useEffect(() => {
-    getData();
+    getMessageData();
+    getRecipientsData();
   }, []);
 
   const handleModalClose = () => {
@@ -32,10 +48,14 @@ export default function RollingPage() {
     setModal({});
   };
 
+  const background =
+    recipient?.backgroundImageURL ||
+    convertBackgroundColor(recipient?.backgroundColor);
+
   return (
     <>
       <HeaderService />
-      <S.RollingPageLayout>
+      <S.RollingPageLayout $background={background}>
         <Inner>
           <S.CardContainer>
             <li>
@@ -58,9 +78,9 @@ export default function RollingPage() {
           {modalVisible && (
             <S.ModalContainer>
               <Modal
-                image={modal.profileImageURL}
-                name={modal.sender}
-                badgeName={modal.relationship}
+                profileImageURL={modal.profileImageURL}
+                sender={modal.sender}
+                relationship={modal.relationship}
                 date={modal.date}
                 content={modal.content}
                 onClick={handleModalClose}
