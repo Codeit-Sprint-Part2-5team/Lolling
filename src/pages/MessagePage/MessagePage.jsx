@@ -79,7 +79,13 @@ export default function MessagePage({ id }) {
               onChange={onChangeInputHandler}
               placeholder='이름을 입력해 주세요'
             /> */}
-            <Input width={'100%'} placeholder={'이름을 입력해 주세요.'} />
+            <Input
+              width={'100%'}
+              placeholder={'이름을 입력해 주세요.'}
+              name={'sender'}
+              onChange={onChangeInputHandler}
+              value={messageBody.sender}
+            />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
