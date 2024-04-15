@@ -6,16 +6,28 @@ import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
-import profileIcon from '../../assets/images/ProfileIcon.svg';
 import useAsync from '../../hooks/useAsync';
-import { getMockImageRequest } from '../../apis/api';
+import { createMessageRequest, getMockImageRequest } from '../../apis/api';
+
+const INIT_CREATE_MESSAGE = {
+  recipientId: 0,
+  sender: '',
+  profileImageURL: '',
+  relationship: '친구',
+  content: '',
+  font: 'Noto Sans',
+};
 
 export default function MessagePage() {
+  const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
-  const { requestFunction: getProfileImage } = useAsync(getMockImageRequest);
+  const [selected, setSelected] = useState();
+  const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
+  const { requestFunction: postMessageRequest } =
+    useAsync(createMessageRequest);
 
   const getImage = async () => {
-    const result = await getProfileImage();
+    const result = await getImageRequest();
     if (!result) return;
 
     const {
@@ -24,9 +36,32 @@ export default function MessagePage() {
     setProfileImage(imageUrls);
   };
 
+  const postMessage = async () => {
+    const result = await postMessageRequest(messageBody);
+    if (!result) return;
+  };
+
+  const onChangeInputHandler = (e) => {
+    setMessageBody({
+      ...messageBody,
+      [e.target['name']]: e.target.value,
+    });
+  };
+
+  const onChangeImageHandler = (value) => {
+    setMessageBody({
+      ...messageBody,
+      profileImageURL: value,
+    });
+  };
+
   useEffect(() => {
     getImage();
   }, []);
+
+  useEffect(() => {
+    setSelected(profileImage[0]);
+  }, [profileImage]);
 
   return (
     <Inner>
@@ -34,15 +69,27 @@ export default function MessagePage() {
         <S.FormContainer>
           <S.FromContainer>
             <h4>From.</h4>
-            <Input />
+            {/* <input
+              name='sender'
+              value={messageBody.sender}
+              onChange={onChangeInputHandler}
+              placeholder='이름을 입력해 주세요'
+            /> */}
+            <Input width={'100%'} />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
-            <S.ProfileImg src={profileIcon} />
+            <S.ProfileImg src={selected} />
             <S.ProfileP>프로필 이미지를 선택해주세요!</S.ProfileP>
             <S.ProfileBox>
               {profileImage.map((image) => (
-                <ProfileImage key={image} image={image} size={'m'} />
+                <ProfileImage
+                  key={image}
+                  image={image}
+                  size={'m'}
+                  setSelected={setSelected}
+                  onChange={onChangeImageHandler}
+                />
               ))}
             </S.ProfileBox>
           </S.ProfileImageContainer>
