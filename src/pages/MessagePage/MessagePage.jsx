@@ -73,12 +73,6 @@ export default function MessagePage({ id }) {
         <S.FormContainer>
           <S.FromContainer>
             <h4>From.</h4>
-            {/* <input
-              name='sender'
-              value={messageBody.sender}
-              onChange={onChangeInputHandler}
-              placeholder='이름을 입력해 주세요'
-            /> */}
             <Input
               width={'100%'}
               placeholder={'이름을 입력해 주세요.'}
