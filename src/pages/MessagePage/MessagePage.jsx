@@ -52,9 +52,6 @@ export default function MessagePage({ id = 5788 }) {
 
     setMessageBody(INIT_CREATE_MESSAGE);
 
-    const {
-      data: { id },
-    } = result;
     nav(`/post/${id}`);
   };
 
