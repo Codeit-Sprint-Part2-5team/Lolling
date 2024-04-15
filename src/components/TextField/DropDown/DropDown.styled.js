@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-export const DropDownLayout = styled.div``;
+export const DropDownLayout = styled.div`
+  position: relative`;
 
 export const DropDownInput = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
