@@ -9,6 +9,7 @@ export default function Button({
   width,
   disabled = false,
   isSmileIcon = false,
+  onClick,
 }) {
   return (
     <S.ButtonLayout
@@ -16,7 +17,10 @@ export default function Button({
       size={size}
       width={width}
       disabled={disabled}
+
       smileicon={isSmileIcon}
+      onClick={onClick}
+
     >
       {isSmileIcon ? (
         <S.SmileIconImg
