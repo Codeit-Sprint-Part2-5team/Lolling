@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TopContainer = styled.div`
+export const SenderProfileLayout = styled.div`
   display: flex;
   gap: 14px;
 `;

@@ -9,7 +9,7 @@ export default function SenderProfile({
   relationship,
 }) {
   return (
-    <S.TopContainer>
+    <S.SenderProfileLayout>
       <ProfileImage image={profileImageURL} size='m' />
       <S.TextContainer>
         <S.NameContainer>
@@ -17,6 +17,6 @@ export default function SenderProfile({
         </S.NameContainer>
         <Badge name={relationship} />
       </S.TextContainer>
-    </S.TopContainer>
+    </S.SenderProfileLayout>
   );
 }
