@@ -3,9 +3,6 @@ import styled from 'styled-components';
 export const TopContainer = styled.div`
   display: flex;
   gap: 14px;
-  width: 100%;
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--gray-200, #eee);
 `;
 
 export const TextContainer = styled.div`
