@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './Input.styled';
 
-function Input({ disabled, width }) {
+function Input({ disabled, width, placeholder }) {
   // 추후 disabled 조건에 따라 컴포넌트 외부에서 불러와서 사용
   const [error, setError] = useState(false);
 
@@ -18,8 +18,9 @@ function Input({ disabled, width }) {
   return (
     <S.InputLayout>
       <S.InputContainer
+        $width={width}
         type='text'
-        placeholder='Placeholder'
+        placeholder={placeholder}
         className={disabled ? 'disabled' : ''}
         disabled={disabled}
         onChange={handleChange} // 입력 내용이 변경될 때마다 호출

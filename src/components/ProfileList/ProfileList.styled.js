@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const CardGuestContainer = styled.div`
+  display: flex;
+  margin-top: 12px;
+
+  > img {
+    border: 1.5px solid var(--white-color);
+    margin-right: -10px;
+  }
+`;
+
 export const WroteCountBox = styled.div`
   display: flex;
   justify-content: center;
