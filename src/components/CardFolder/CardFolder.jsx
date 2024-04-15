@@ -3,15 +3,14 @@ import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-function CardFolder({ userInfo }) {
-  const {
-    name = 'Sowon',
-    backgroundImageURL = 'https://picsum.photos/id/24/3840/2160',
-    backgroundColor = 'beige',
-    messageCount = 21,
-    topReactions = null,
-    recentMessages = null,
-  } = userInfo;
+function CardFolder({
+  name = 'Sowon',
+  backgroundImageURL = 'https://picsum.photos/id/24/3840/2160',
+  backgroundColor = 'beige',
+  messageCount = 21,
+  topReactions = null,
+  recentMessages = null,
+}) {
 
   return (
     <S.CardFolderLayout
@@ -20,7 +19,7 @@ function CardFolder({ userInfo }) {
       }
     >
       <S.UserInfoContainer>
-        <S.CardUserNameBox>To. {name}</S.CardUserNameBox>
+        <S.CardUserNameBox>To.{name}</S.CardUserNameBox>
         <S.CardGuestContainer>
           <ProfileList
             recentMessages={recentMessages}
