@@ -4,10 +4,10 @@ import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items, font }) {
+function DropDown({ items }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(items[0]);
-  
+  const [selectedItem, setSelectedItem] = useState(items.relationship[0]);
+
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
   };
@@ -16,9 +16,9 @@ function DropDown({ items, font }) {
     setSelectedItem(item);
     setIsOpen(false);
   };
-  
+
   return (
-    <S.DropDownLayout font={font}>
+    <S.DropDownLayout font={items.font}>
       <S.DropDownInput onClick={toggleDropDown}>
         {selectedItem}
         <img
@@ -29,7 +29,7 @@ function DropDown({ items, font }) {
       </S.DropDownInput>
       {isOpen && (
         <S.DropDownItemList>
-          {items.map(item => (
+          {items.relationship.map((item) => (
             <S.DropDownItem key={item} onClick={() => handleItemClick(item)}>
               {item}
             </S.DropDownItem>
@@ -41,8 +41,10 @@ function DropDown({ items, font }) {
 }
 
 DropDown.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  font: PropTypes.string.isRequired,
+  items: PropTypes.shape({
+    relationship: PropTypes.arrayOf(PropTypes.string).isRequired,
+    font: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
 };
 
 export default DropDown;
