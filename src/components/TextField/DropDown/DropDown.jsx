@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import * as S from './DropDown.styled'; 
+import PropTypes from 'prop-types';
+import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown() {
-  const [isOpen, setIsOpen] = useState(false); 
-  const [selectedItem, setSelectedItem] = useState(null); 
+function DropDown({ items }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(items.relationship[0]);
 
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
@@ -13,27 +14,37 @@ function DropDown() {
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
-    setIsOpen(false); 
+    setIsOpen(false);
   };
 
   return (
-    <S.DropDownLayout>
+    <S.DropDownLayout font={items.font}>
       <S.DropDownInput onClick={toggleDropDown}>
-        {selectedItem || 'DropDown'}
-        <img src={isOpen ? ArrowUp : ArrowDown} alt="arrow-icon" className="dropdown-arrow" />
+        {selectedItem}
+        <img
+          src={isOpen ? ArrowUp : ArrowDown}
+          alt='arrow-icon'
+          className='dropdown-arrow'
+        />
       </S.DropDownInput>
       {isOpen && (
         <S.DropDownItemList>
-          <S.DropDownItem>
-            <S.DropDownItemHover onClick={() => handleItemClick("가족")}>가족</S.DropDownItemHover>
-            <S.DropDownItemHover onClick={() => handleItemClick("지인")}>지인</S.DropDownItemHover>
-            <S.DropDownItemHover onClick={() => handleItemClick("친구")}>친구</S.DropDownItemHover>
-            <S.DropDownItemHover onClick={() => handleItemClick("연인")}>연인</S.DropDownItemHover>
-          </S.DropDownItem>
+          {items.relationship.map((item) => (
+            <S.DropDownItem key={item} onClick={() => handleItemClick(item)}>
+              {item}
+            </S.DropDownItem>
+          ))}
         </S.DropDownItemList>
       )}
     </S.DropDownLayout>
   );
 }
+
+DropDown.propTypes = {
+  items: PropTypes.shape({
+    relationship: PropTypes.arrayOf(PropTypes.string).isRequired,
+    font: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+};
 
 export default DropDown;
