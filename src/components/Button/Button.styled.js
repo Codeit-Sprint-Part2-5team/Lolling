@@ -4,7 +4,7 @@ const ButtonStyle = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: ${({ $smileicon }) => ($smileicon === 'on' ? '4px' : '10px')};
   text-align: center;
   font-family: Pretendard;
 `;
@@ -16,11 +16,11 @@ export const ButtonLayout = styled.button`
   cursor: pointer;
 
   // Size
-  ${({ size, variant }) =>
+  ${({ size, $variant }) =>
     size === 56 &&
     `
     height: 56px;
-    padding: ${variant === 'primary' ? '14px 24px' : '14px 16px'};
+    padding: ${$variant === 'primary' ? '14px 24px' : '14px 16px'};
     border-radius: 12px;
     font-size: 18px;
     font-weight: 700;
@@ -63,9 +63,9 @@ export const ButtonLayout = styled.button`
     letter-spacing: -0.07px;
   `}
 
-  // Variant 
-  ${({ variant }) =>
-    variant === 'primary' &&
+  // $Variant 
+  ${({ $variant }) =>
+    $variant === 'primary' &&
     `
     background: var(--purple-600, #9935FF);
     color: var(--white-color, #FFFFFF);
@@ -85,8 +85,8 @@ export const ButtonLayout = styled.button`
     }
 
   `}
-  ${({ variant }) =>
-    variant === 'secondary' &&
+  ${({ $variant }) =>
+    $variant === 'secondary' &&
     `
     border: 1px solid var(--purple-600, #9935FF);
     background: var(--white-color, #FFFFFF);
@@ -113,8 +113,8 @@ export const ButtonLayout = styled.button`
     }
 
   `}
-  ${({ variant }) =>
-    variant === 'outline' &&
+  ${({ $variant }) =>
+    $variant === 'outline' &&
     `
     border: 1px solid var(--gray-300, #CCCCCC);
     background: var(--white-color, #FFFFFF);
@@ -138,4 +138,9 @@ export const ButtonLayout = styled.button`
       color: var(--white-color, #FFFFFF);
     }
   `}
+`;
+
+export const SmileIconImg = styled.img`
+  width: 24px;
+  height: 24px;
 `;

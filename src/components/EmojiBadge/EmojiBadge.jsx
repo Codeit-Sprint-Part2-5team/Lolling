@@ -4,7 +4,7 @@ function EmojiBadge({ emoji, count = '0' }) {
   return (
     <S.EmojiBadgeLayout>
       {emoji}
-      {count}
+      <S.EmojiBadgeNumberBox>{count}</S.EmojiBadgeNumberBox>
     </S.EmojiBadgeLayout>
   );
 }

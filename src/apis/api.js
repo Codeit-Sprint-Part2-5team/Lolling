@@ -13,16 +13,27 @@ export const getMockImageRequest = async () => {
   return response;
 };
 
+export const getBackgroundImageRequest = async () => {
+  const response = await axios.get(`${API_URL}background-images/`);
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('배경 이미지 가져오기 실패');
+  }
+
+  return response;
+};
+
 export const createCardFolderRequest = async ({
-  userName,
+  name,
   backgroundColor,
+  backgroundImageURL = null,
 }) => {
   const response = await axios({
     method: 'post',
     url: `${RECIPIENTS_URL}`,
     data: {
-      name: userName,
+      name: name,
       backgroundColor: backgroundColor,
+      backgroundImageURL: backgroundImageURL,
     },
   });
 
@@ -33,8 +44,10 @@ export const createCardFolderRequest = async ({
   return response;
 };
 
-export const getCardFolderListRequest = async () => {
-  const response = await axios.get(`${RECIPIENTS_URL}`);
+export const getCardFolderListRequest = async (limit = 8, offset = 0) => {
+  const query = `limit=${limit}&offset=${offset}`;
+
+  const response = await axios.get(`${RECIPIENTS_URL}?${query}/`);
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -53,8 +66,12 @@ export const getCardFolderRequest = async (id) => {
   return response;
 };
 
-export const getMessageListRequest = async (id) => {
-  const response = await axios.get(`${RECIPIENTS_URL}${id}/messages/`);
+export const getMessageListRequest = async (id, limit = 8, offset = 0) => {
+  const query = `limit=${limit}&offset=${offset}`;
+
+  const response = await axios.get(
+    `${RECIPIENTS_URL}${id}/messages/?${query}/`
+  );
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -107,6 +124,35 @@ export const deleteCardFolderRequest = async (id) => {
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 페이지 삭제 실패');
+  }
+
+  return response;
+};
+
+export const getReactionsRequest = async (id, limit = 8, offset = 0) => {
+  const query = `limit=${limit}&offset=${offset}`;
+
+  const response = await axios({
+    method: 'get',
+    url: `${RECIPIENTS_URL}${id}/reactions/?${query}/`,
+  });
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('유저가 받은 리액션 가져오기 실패');
+  }
+
+  return response;
+};
+
+export const postReactionRequest = async (id, changeType) => {
+  const response = await axios({
+    method: 'post',
+    url: `${RECIPIENTS_URL}${id}/reactions/`,
+    data: changeType,
+  });
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('유저에게 리액션 보내기 실패');
   }
 
   return response;
