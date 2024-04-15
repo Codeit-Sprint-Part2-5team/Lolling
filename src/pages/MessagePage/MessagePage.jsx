@@ -20,11 +20,6 @@ const INIT_CREATE_MESSAGE = {
   font: 'Noto Sans',
 };
 
-const INIT_DROPDOWN = {
-  relationship: ['친구', '지인', '가족', '동료'],
-  font: ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'],
-};
-
 export default function MessagePage({ id = 5788 }) {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
@@ -35,6 +30,10 @@ export default function MessagePage({ id = 5788 }) {
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
   const nav = useNavigate();
+  const INIT_DROPDOWN = {
+    relationship: ['친구', '지인', '가족', '동료'],
+    font: ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'],
+  };
 
   const getImage = async () => {
     const result = await getImageRequest();
@@ -82,6 +81,7 @@ export default function MessagePage({ id = 5788 }) {
       ...messageBody,
       content: textareaBody,
     });
+    console.log(textareaBody);
   }, [textareaBody]);
 
   useEffect(() => {
