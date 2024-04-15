@@ -17,8 +17,10 @@ export default function Button({
       size={size}
       width={width}
       disabled={disabled}
-      isSmileIcon={isSmileIcon}
+
+      smileicon={isSmileIcon}
       onClick={onClick}
+
     >
       {isSmileIcon ? (
         <S.SmileIconImg

@@ -45,15 +45,17 @@ export default function HeaderService() {
             <S.BarItemsInner></S.BarItemsInner>
             <S.EmojiContainer>
               <S.EmojiBadgeContainer>
-                {data.data.topReactions?.map((item) => (
-                  <EmojiBadge
-                    key={item.id}
-                    emoji={item.emoji}
-                    count={item.count}
-                  />
-                ))}
+                <S.EmojiTopThree>
+                  {data.data.topReactions?.map((item) => (
+                    <EmojiBadge
+                      key={item.id}
+                      emoji={item.emoji}
+                      count={item.count}
+                    />
+                  ))}
+                </S.EmojiTopThree>
                 <S.EmojiListButton>
-                  <S.EmojiListButtonImg src={arrowDownIcon} alt="이모지 보기" />
+                  <S.EmojiListButtonImg src={arrowDownIcon} alt='이모지 보기' />
                 </S.EmojiListButton>
               </S.EmojiBadgeContainer>
               <S.EmojiButtonContainer>
@@ -65,7 +67,7 @@ export default function HeaderService() {
                 />
                 <S.BarItemsInner></S.BarItemsInner>
                 <S.SharedButton>
-                  <img src={ShareIcon} alt="공유하기" />
+                  <img src={ShareIcon} alt='공유하기' />
                 </S.SharedButton>
               </S.EmojiButtonContainer>
             </S.EmojiContainer>
