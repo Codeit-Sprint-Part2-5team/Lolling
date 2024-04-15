@@ -9,6 +9,7 @@ export default function Button({
   width,
   disabled = false,
   isSmileIcon = false,
+  onClick,
 }) {
   return (
     <S.ButtonLayout
@@ -17,11 +18,12 @@ export default function Button({
       width={width}
       disabled={disabled}
       isSmileIcon={isSmileIcon}
+      onClick={onClick}
     >
       {isSmileIcon ? (
         <S.SmileIconImg
           src={disabled ? smileWhiteIcon : smileIcon}
-          alt="스마일"
+          alt='스마일'
         />
       ) : null}
       {text}

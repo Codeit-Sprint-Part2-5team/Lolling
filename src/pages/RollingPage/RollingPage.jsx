@@ -4,10 +4,14 @@ import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
+
 import HeaderService from '../../components/HeaderService/HeaderService';
+import Modal from '../../components/Modal/Modal';
 
 export default function RollingPage() {
   const [messageList, setMessageList] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modal, setModal] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
 
   const getData = async () => {
@@ -23,6 +27,11 @@ export default function RollingPage() {
     getData();
   }, []);
 
+  const handleModalClose = () => {
+    setModalVisible(false);
+    setModal({});
+  };
+
   return (
     <>
       <HeaderService />
@@ -35,6 +44,8 @@ export default function RollingPage() {
             {messageList?.map((item) => (
               <li key={item.id}>
                 <Card
+                  setModal={setModal}
+                  setModalVisible={setModalVisible}
                   content={item.content}
                   profileImageURL={item.profileImageURL}
                   relationship={item.relationship}
@@ -44,6 +55,18 @@ export default function RollingPage() {
               </li>
             ))}
           </S.CardContainer>
+          {modalVisible && (
+            <S.ModalContainer>
+              <Modal
+                image={modal.profileImageURL}
+                name={modal.sender}
+                badgeName={modal.relationship}
+                date={modal.date}
+                content={modal.content}
+                onClick={handleModalClose}
+              />
+            </S.ModalContainer>
+          )}
         </Inner>
       </S.RollingPageLayout>
     </>
