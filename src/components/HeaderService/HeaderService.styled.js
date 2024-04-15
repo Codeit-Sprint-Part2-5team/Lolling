@@ -5,7 +5,7 @@ export const HeaderServiceLayout = styled.div`
   display: flex;
   padding: 13px 0;
   align-items: center;
-  gap: 263px;
+  justify-content: space-between;
 `;
 
 export const HeaderServiceTitleBox = styled.h1`
@@ -29,6 +29,10 @@ export const HeaderServiceDataContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
+`;
+
+export const HeaderServiceInnerImg = styled.div`
+  margin-bottom: 16px;
 `;
 
 export const UserCountBox = styled.div`
