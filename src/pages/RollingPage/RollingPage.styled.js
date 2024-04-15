@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 
 export const RollingPageLayout = styled.div`
+  min-height: calc(100vh - 146px);
   padding: 113px 0 246px;
-  background: var(--Orange-200, #ffe2ad);
+  ${({ $background }) => {
+    if ($background.includes('http')) {
+      return `
+      background-image: url(${$background});
+      background-size: cover;
+      `;
+    }
+    return `
+    background-color:${$background};
+    `;
+  }}
 `;
 
 export const CardContainer = styled.ul`
