@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from './Main';
-import DropDown from './components/TextField/DropDown/DropDown';
+import Input from './components/TextField/Input/Input';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <Main />
-    <DropDown />
+    <Input />
   </div>
 );
