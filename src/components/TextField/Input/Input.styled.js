@@ -8,6 +8,7 @@ export const InputContainer = styled.input`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: ${({ $width }) => $width};
   height: 50px;
   padding: 12px 16px;
   gap: 10px;
@@ -17,12 +18,6 @@ export const InputContainer = styled.input`
   background: #ffffff;
   font-family: 'Pretendard';
   font-size: 16px;
-
-  ${({ width }) =>
-    width &&
-    css`
-      width: ${width};
-    `}
 
   &::placeholder {
     color: #555555;

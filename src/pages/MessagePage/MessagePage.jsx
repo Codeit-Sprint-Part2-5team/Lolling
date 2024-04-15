@@ -18,6 +18,11 @@ const INIT_CREATE_MESSAGE = {
   font: 'Noto Sans',
 };
 
+const INIT_DROPDOWN = {
+  relationship: ['친구', '지인', '가족', '동료'],
+  font: ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'],
+};
+
 export default function MessagePage({ id }) {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
@@ -99,7 +104,7 @@ export default function MessagePage({ id }) {
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
-            <DropDown />
+            <DropDown items={INIT_DROPDOWN.relationship} />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
             <h4>내용을 입력해 주세요</h4>
@@ -107,9 +112,7 @@ export default function MessagePage({ id }) {
           </S.TextAreaContainer>
           <S.FontContainer>
             <h4>폰트 선택</h4>
-            <select>
-              <option>Noto Sans</option>
-            </select>
+            <DropDown items={INIT_DROPDOWN.font} />
           </S.FontContainer>
           <Button
             variant={'primary'}

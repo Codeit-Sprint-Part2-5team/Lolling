@@ -6,7 +6,7 @@ import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
 function DropDown({ items }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(items.relationship[0]);
+  const [selectedItem, setSelectedItem] = useState(items[0]);
 
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
@@ -18,7 +18,7 @@ function DropDown({ items }) {
   };
 
   return (
-    <S.DropDownLayout font={items.font}>
+    <S.DropDownLayout>
       <S.DropDownInput onClick={toggleDropDown}>
         {selectedItem}
         <img
@@ -29,11 +29,16 @@ function DropDown({ items }) {
       </S.DropDownInput>
       {isOpen && (
         <S.DropDownItemList>
-          {items.relationship.map((item) => (
-            <S.DropDownItem key={item} onClick={() => handleItemClick(item)}>
-              {item}
-            </S.DropDownItem>
-          ))}
+          <S.DropDownItem>
+            {items.map((item) => (
+              <S.DropDownItemHover
+                key={item}
+                onClick={() => handleItemClick(item)}
+              >
+                {item}
+              </S.DropDownItemHover>
+            ))}
+          </S.DropDownItem>
         </S.DropDownItemList>
       )}
     </S.DropDownLayout>
