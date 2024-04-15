@@ -80,7 +80,6 @@ export default function MessagePage() {
       ...messageBody,
       content: textareaBody,
     });
-    console.log(textareaBody);
   }, [textareaBody]);
 
   useEffect(() => {
