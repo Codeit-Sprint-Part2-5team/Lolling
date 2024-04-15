@@ -8,7 +8,7 @@ export const InputContainer = styled.input`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 320px;
+  width: ${({ $width }) => $width};
   height: 50px;
   padding: 12px 16px;
   gap: 10px;
