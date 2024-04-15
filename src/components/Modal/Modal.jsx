@@ -3,7 +3,7 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 import Badge from '../Badge/Badge';
 import Button from '../Button/Button';
 
-function Modal({ image, name, badgeName, date, content }) {
+function Modal({ image, name, badgeName, date, content, onClick }) {
   return (
     <S.Layout>
       <S.HeaderContainer>
@@ -23,7 +23,13 @@ function Modal({ image, name, badgeName, date, content }) {
         <S.DividerBox></S.DividerBox>
       </S.HeaderContainer>
       <S.ContentBox>{content}</S.ContentBox>
-      <Button text={'확인'} variant={'primary'} size={40} width={120} />
+      <Button
+        onClick={onClick}
+        text={'확인'}
+        variant={'primary'}
+        size={40}
+        width={120}
+      />
     </S.Layout>
   );
 }

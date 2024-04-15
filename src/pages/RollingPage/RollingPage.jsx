@@ -25,7 +25,10 @@ export default function RollingPage() {
     getData();
   }, []);
 
-  console.log(modal, modalVisible);
+  const handleModalClose = () => {
+    setModalVisible(false);
+    setModal({});
+  };
 
   return (
     <S.RollingPageLayout>
@@ -56,6 +59,7 @@ export default function RollingPage() {
               badgeName={modal.relationship}
               date={modal.date}
               content={modal.content}
+              onClick={handleModalClose}
             />
           </S.ModalContainer>
         )}
