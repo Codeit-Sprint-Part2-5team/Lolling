@@ -4,7 +4,6 @@ import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
-
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
 
@@ -15,7 +14,7 @@ export default function RollingPage() {
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
 
   const getData = async () => {
-    const result = await getMessageList(5788);
+    const result = await getMessageList(5858);
     if (!result) return;
     const {
       data: { results },
