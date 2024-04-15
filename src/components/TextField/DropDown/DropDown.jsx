@@ -45,11 +45,8 @@ function DropDown({ items }) {
   );
 }
 
-DropDown.propTypes = {
-  items: PropTypes.shape({
-    relationship: PropTypes.arrayOf(PropTypes.string).isRequired,
-    font: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
-};
+// DropDown.propTypes = {
+//     items: PropTypes.arrayOf(PropTypes.string).isRequired,
+// };
 
 export default DropDown;
