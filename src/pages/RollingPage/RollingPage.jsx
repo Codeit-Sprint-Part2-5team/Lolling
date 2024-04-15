@@ -14,7 +14,7 @@ export default function RollingPage() {
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
 
   const getData = async () => {
-    const result = await getMessageList(5858);
+    const result = await getMessageList(5788);
     if (!result) return;
     const {
       data: { results },
