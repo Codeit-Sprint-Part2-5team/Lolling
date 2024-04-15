@@ -28,7 +28,7 @@ function Modal({ image, name, badgeName, date, content, onClick }) {
         text={'확인'}
         variant={'primary'}
         size={40}
-        width={120}
+        width={'120px'}
       />
     </S.Layout>
   );

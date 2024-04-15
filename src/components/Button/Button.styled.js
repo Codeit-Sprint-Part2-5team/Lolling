@@ -12,7 +12,7 @@ const ButtonStyle = css`
 export const ButtonLayout = styled.button`
   // 공통 부분
   ${ButtonStyle}
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width};
   cursor: pointer;
 
   // Size
