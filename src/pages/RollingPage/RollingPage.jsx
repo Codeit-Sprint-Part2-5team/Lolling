@@ -6,6 +6,7 @@ import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
+import { useParams } from 'react-router-dom';
 
 export default function RollingPage() {
   const [messageList, setMessageList] = useState();
@@ -13,8 +14,12 @@ export default function RollingPage() {
   const [modal, setModal] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
 
+  const { userId } = useParams();
+
+  console.log(userId);
+
   const getData = async () => {
-    const result = await getMessageList(5788);
+    const result = await getMessageList(userId);
     if (!result) return;
     const {
       data: { results },
