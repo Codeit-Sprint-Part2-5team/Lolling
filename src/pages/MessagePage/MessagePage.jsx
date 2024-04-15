@@ -18,7 +18,7 @@ const INIT_CREATE_MESSAGE = {
   font: 'Noto Sans',
 };
 
-export default function MessagePage() {
+export default function MessagePage({ id }) {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
   const [selected, setSelected] = useState();
@@ -57,6 +57,10 @@ export default function MessagePage() {
 
   useEffect(() => {
     getImage();
+    setMessageBody({
+      ...messageBody,
+      recipientId: id,
+    });
   }, []);
 
   useEffect(() => {
@@ -75,7 +79,7 @@ export default function MessagePage() {
               onChange={onChangeInputHandler}
               placeholder='이름을 입력해 주세요'
             /> */}
-            <Input width={'100%'} />
+            <Input width={'100%'} placeholder={'이름을 입력해 주세요.'} />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
