@@ -104,7 +104,12 @@ export default function MessagePage({ id }) {
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
-            <DropDown items={INIT_DROPDOWN.relationship} />
+            <DropDown
+              items={INIT_DROPDOWN.relationship}
+              type={'relationship'}
+              messageBody={messageBody}
+              setMessageBody={setMessageBody}
+            />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
             <h4>내용을 입력해 주세요</h4>
@@ -112,7 +117,12 @@ export default function MessagePage({ id }) {
           </S.TextAreaContainer>
           <S.FontContainer>
             <h4>폰트 선택</h4>
-            <DropDown items={INIT_DROPDOWN.font} />
+            <DropDown
+              items={INIT_DROPDOWN.font}
+              type={'font'}
+              messageBody={messageBody}
+              setMessageBody={setMessageBody}
+            />
           </S.FontContainer>
           <Button
             variant={'primary'}

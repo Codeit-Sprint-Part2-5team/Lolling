@@ -4,7 +4,7 @@ import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items }) {
+function DropDown({ items, type, messageBody, setMessageBody }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
@@ -15,6 +15,10 @@ function DropDown({ items }) {
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
+    setMessageBody(() => ({
+      ...messageBody,
+      [type]: item,
+    }));
   };
 
   return (
@@ -45,8 +49,8 @@ function DropDown({ items }) {
   );
 }
 
-// DropDown.propTypes = {
-//     items: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
+DropDown.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default DropDown;
