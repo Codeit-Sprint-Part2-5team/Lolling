@@ -69,12 +69,13 @@ export default function MessagePage() {
         <S.FormContainer>
           <S.FromContainer>
             <h4>From.</h4>
-            <input
+            {/* <input
               name='sender'
               value={messageBody.sender}
               onChange={onChangeInputHandler}
               placeholder='이름을 입력해 주세요'
-            />
+            /> */}
+            <Input width={'100%'} />
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
