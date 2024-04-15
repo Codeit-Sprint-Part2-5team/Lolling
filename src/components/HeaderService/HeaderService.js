@@ -32,7 +32,9 @@ export default function HeaderService() {
           </S.HeaderServiceTitleBox>
           <S.HeaderServiceContainer>
             <S.HeaderServiceDataContainer>
-              <ProfileList recentMessages={data.data.recentMessages} />
+              <S.HeaderServiceInnerImg>
+                <ProfileList recentMessages={data.data.recentMessages} />
+              </S.HeaderServiceInnerImg>
               <S.UserCountBox>
                 <S.UserCountSpanBox>
                   {data.data.messageCount}
