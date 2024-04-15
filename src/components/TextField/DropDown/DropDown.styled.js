@@ -29,7 +29,7 @@ export const DropDownInput = styled.div`
 
 export const DropDownItemList = styled.div`
   width: 318px;
-  height: 220px;
+  height: 100%;
   padding: 0;
   margin-top: 10px;
   background: #ffffff;
