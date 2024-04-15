@@ -5,6 +5,7 @@ import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import { getMessageListRequest } from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
+import CardFolder from '../../components/CardFolder/CardFolder';
 
 export default function RollingPage() {
   const [messageList, setMessageList] = useState();

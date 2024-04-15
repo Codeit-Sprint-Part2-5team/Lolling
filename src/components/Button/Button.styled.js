@@ -4,7 +4,7 @@ const ButtonStyle = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: ${({ isSmileIcon }) => (isSmileIcon ? '4px' : '10px')};
+  gap: ${({ smileicon }) => (smileicon ? '4px' : '10px')};
   text-align: center;
   font-family: Pretendard;
 `;

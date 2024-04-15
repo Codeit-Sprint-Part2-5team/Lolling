@@ -27,7 +27,7 @@ export const HeaderServiceContainer = styled.div`
 
 export const HeaderServiceDataContainer = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 18px;
 `;
 
@@ -72,6 +72,12 @@ export const EmojiButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 13px;
+`;
+
+export const EmojiTopThree = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 `;
 
 export const EmojiListButton = styled.button`
