@@ -83,11 +83,8 @@ export default function MessagePage() {
   }, [textareaBody]);
 
   useEffect(() => {
-    if (messageBody.sender === '') return setActiveBtn(true);
-    if (messageBody.content === '') return setActiveBtn(true);
-
-    return setActiveBtn(false);
-  }, [messageBody]);
+    setActiveBtn(messageBody.sender === '' || messageBody.content === '');
+  }, [messageBody.sender, messageBody.content]);
 
   useEffect(() => {
     getImage();
