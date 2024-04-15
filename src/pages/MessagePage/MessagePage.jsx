@@ -12,7 +12,8 @@ import { createMessageRequest, getMockImageRequest } from '../../apis/api';
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
   sender: '',
-  profileImageURL: '',
+  profileImageURL:
+    'https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png',
   relationship: '친구',
   content: '',
   font: 'Noto Sans',
@@ -23,10 +24,12 @@ const INIT_DROPDOWN = {
   font: ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'],
 };
 
-export default function MessagePage({ id }) {
+export default function MessagePage({ id = 5788 }) {
   const [messageBody, setMessageBody] = useState(INIT_CREATE_MESSAGE);
   const [profileImage, setProfileImage] = useState([]);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState('');
+  const [isActiveBtn, setActiveBtn] = useState(true);
+  const [textareaBody, setTextareaBody] = useState('');
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
@@ -61,16 +64,30 @@ export default function MessagePage({ id }) {
   };
 
   useEffect(() => {
+    setSelected(profileImage[0]);
+  }, [profileImage]);
+
+  useEffect(() => {
+    setMessageBody({
+      ...messageBody,
+      content: textareaBody,
+    });
+  }, [textareaBody]);
+
+  useEffect(() => {
+    if (messageBody.sender === '') return setActiveBtn(true);
+    if (messageBody.content === '') return setActiveBtn(true);
+
+    return setActiveBtn(false);
+  }, [messageBody]);
+
+  useEffect(() => {
     getImage();
     setMessageBody({
       ...messageBody,
       recipientId: id,
     });
   }, []);
-
-  useEffect(() => {
-    setSelected(profileImage[0]);
-  }, [profileImage]);
 
   return (
     <Inner>
@@ -113,7 +130,10 @@ export default function MessagePage({ id }) {
           </S.RelationShipContainer>
           <S.TextAreaContainer>
             <h4>내용을 입력해 주세요</h4>
-            <MarkDown />
+            <MarkDown
+              textareaBody={textareaBody}
+              setTextareaBody={setTextareaBody}
+            />
           </S.TextAreaContainer>
           <S.FontContainer>
             <h4>폰트 선택</h4>
@@ -125,6 +145,7 @@ export default function MessagePage({ id }) {
             />
           </S.FontContainer>
           <Button
+            disabled={isActiveBtn}
             variant={'primary'}
             text={'생성하기'}
             size={56}
