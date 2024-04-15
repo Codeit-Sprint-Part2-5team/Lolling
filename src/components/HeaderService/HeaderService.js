@@ -23,8 +23,6 @@ export default function HeaderService() {
     getData();
   }, []);
 
-  if (data) console.log(data.data);
-
   return (
     data && (
       <Inner>
@@ -63,7 +61,7 @@ export default function HeaderService() {
                   text={'추가'}
                   variant={'outline'}
                   size={36}
-                  isSmileIcon={true}
+                  isSmileIcon={'on'}
                 />
                 <S.BarItemsInner></S.BarItemsInner>
                 <S.SharedButton>

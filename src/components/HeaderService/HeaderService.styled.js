@@ -31,7 +31,7 @@ export const HeaderServiceDataContainer = styled.div`
   gap: 18px;
 `;
 
-export const UserCountBox = styled.p`
+export const UserCountBox = styled.div`
   display: flex;
   color: var(--gray-900, #181818);
   font-family: Pretendard;
