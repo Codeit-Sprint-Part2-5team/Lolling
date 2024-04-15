@@ -8,21 +8,19 @@ export default function Button({
   size,
   width,
   disabled = false,
-  isSmileIcon = false,
+  isSmileIcon = 'off',
   onClick,
 }) {
   return (
     <S.ButtonLayout
-      variant={variant}
+      $variant={variant}
       size={size}
       width={width}
       disabled={disabled}
-
-      smileicon={isSmileIcon}
+      $smileicon={isSmileIcon}
       onClick={onClick}
-
     >
-      {isSmileIcon ? (
+      {isSmileIcon === 'on' ? (
         <S.SmileIconImg
           src={disabled ? smileWhiteIcon : smileIcon}
           alt='스마일'
