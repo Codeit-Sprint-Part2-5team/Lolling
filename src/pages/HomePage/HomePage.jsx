@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Inner from '../../components/Inner/Inner';
 import * as S from './HomePage.styled';
 import Button from '../../components/Button/Button';
+import GroupImg from '../../assets/images/Group.png';
 
 export default function HomePage() {
   return (
@@ -23,27 +24,7 @@ export default function HomePage() {
             <S.CardImageBox></S.CardImageBox>
           </S.FirstContainer>
           <S.SecondContainer>
-            <S.Container>
-              <S.Inner>
-                <S.SmallEmojiContainer>
-                  <S.SmallEmojiBox>👍</S.SmallEmojiBox>
-                  <S.SmallEmojiCountBox>10</S.SmallEmojiCountBox>
-                </S.SmallEmojiContainer>
-                <S.SmallEmojiContainer>
-                  <S.SmallEmojiCountBox>24</S.SmallEmojiCountBox>
-                </S.SmallEmojiContainer>
-                <S.SmallEmojiContainer>
-                  <S.SmallEmojiBox>😍</S.SmallEmojiBox>
-                  <S.SmallEmojiCountBox>24</S.SmallEmojiCountBox>
-                </S.SmallEmojiContainer>
-              </S.Inner>
-              <S.ArrowDownIconBox></S.ArrowDownIconBox>
-              <S.AddIconBox>
-                <S.SmileIconBox></S.SmileIconBox>
-                <S.ContentBox>추가</S.ContentBox>
-              </S.AddIconBox>
-              <S.CursorIconBox></S.CursorIconBox>
-            </S.Container>
+            <S.GroupImageBox src={GroupImg}></S.GroupImageBox>
             <S.SecondContentContainer>
               <S.PointBox>
                 <S.PointContentBox>Point. 02</S.PointContentBox>
