@@ -6,6 +6,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 export default function Card({
   add,
+  id,
   setModal,
   content,
   profileImageURL,
@@ -13,8 +14,10 @@ export default function Card({
   sender,
   createdAt,
   edit,
+  deleteMessage,
 }) {
   const date = createdAt?.slice(0, 10);
+
   const handleCardClick = () => {
     setModal({
       content,
@@ -24,6 +27,13 @@ export default function Card({
       date,
     });
   };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    deleteMessage(id);
+    console.log('delete');
+  };
+
   return (
     <>
       {add ? (
@@ -40,7 +50,7 @@ export default function Card({
               sender={sender}
               relationship={relationship}
             />
-            {edit && <DeleteButton />}
+            {edit && <DeleteButton onClick={handleDelete} />}
           </S.TopContainer>
           <S.BottomContainer>
             <S.ContentBox>{content}</S.ContentBox>

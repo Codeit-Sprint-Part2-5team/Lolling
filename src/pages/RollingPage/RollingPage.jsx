@@ -3,7 +3,12 @@ import Inner from '../../components/Inner/Inner';
 import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
-import { getCardFolderRequest, getMessageListRequest } from '../../apis/api';
+import {
+  deleteCardFolderRequest,
+  deleteMessageRequest,
+  getCardFolderRequest,
+  getMessageListRequest,
+} from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
 import { useParams } from 'react-router-dom';
@@ -15,6 +20,10 @@ export default function RollingPage({ edit }) {
   const [recipient, setRecipient] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
   const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
+  const { requestFunction: deleteCardFolder } = useAsync(
+    deleteCardFolderRequest
+  );
+  const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
 
   const getMessageData = async () => {
@@ -33,6 +42,14 @@ export default function RollingPage({ edit }) {
     setRecipient(data);
   };
 
+  const deleteAll = async () => {
+    await deleteCardFolder(userId);
+  };
+
+  const deleteMessage = async (id) => {
+    await deleteMessageCard(id);
+  };
+
   useEffect(() => {
     getMessageData();
     getRecipientsData();
@@ -46,13 +63,22 @@ export default function RollingPage({ edit }) {
     recipient?.backgroundImageURL ||
     convertBackgroundColor(recipient?.backgroundColor);
 
+  const handleDeleteAll = () => {
+    deleteAll();
+  };
+
   return (
     <>
       <HeaderService />
       <S.RollingPageLayout $background={background}>
         <Inner>
           {edit && (
-            <S.ButtonBox text={'삭제하기'} variant={'primary'} size={40} />
+            <S.ButtonBox
+              text={'삭제하기'}
+              variant={'primary'}
+              size={40}
+              onClick={handleDeleteAll}
+            />
           )}
           <S.CardContainer>
             <li>
@@ -62,12 +88,14 @@ export default function RollingPage({ edit }) {
               <li key={item.id}>
                 <Card
                   edit={edit}
+                  id={item.id}
                   setModal={setModal}
                   content={item.content}
                   profileImageURL={item.profileImageURL}
                   relationship={item.relationship}
                   sender={item.sender}
                   createdAt={item.createdAt}
+                  deleteMessage={deleteMessage}
                 />
               </li>
             ))}
