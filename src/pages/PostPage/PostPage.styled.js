@@ -27,6 +27,10 @@ export const FormContainer = styled.form`
       border-radius: 8px;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ToContainer = styled.div`
