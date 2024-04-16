@@ -83,9 +83,12 @@ export default function RollingPage({ edit }) {
             />
           )}
           <S.CardContainer>
-            <li>
-              <Card add />
-            </li>
+            {!edit && (
+              <li>
+                <Card add />
+              </li>
+            )}
+
             {messageList?.map((item) => (
               <li key={item.id}>
                 <Card
