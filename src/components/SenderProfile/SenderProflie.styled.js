@@ -16,4 +16,12 @@ export const NameContainer = styled.div`
   gap: 6px;
   font-size: 20px;
   line-height: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+
+    & b {
+      font-size: 16px;
+    }
+  }
 `;

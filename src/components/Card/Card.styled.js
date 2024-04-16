@@ -16,6 +16,10 @@ export const CardLayout = styled.div`
     justify-content: center;
     align-items: center;
     `}
+
+  @media (max-width: 768px) {
+    height: 230px;
+  }
 `;
 
 export const TopContainer = styled.div`
@@ -61,6 +65,11 @@ export const ContentBox = styled.p`
   word-break: break-word;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    line-height: 22px;
+  }
 `;
 
 export const DateBox = styled.p`
