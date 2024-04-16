@@ -143,3 +143,9 @@ export const EmojiBoxItem = styled.div`
   background: #fff;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 `;
+
+export const EmojiSelectdBox = styled.div`
+  position: absolute;
+  top: 130px;
+  transform: translateX(-259px);
+`;

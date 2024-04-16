@@ -9,9 +9,6 @@ export const PostPageLayout = styled.div`
 export const FormContainer = styled.form`
   padding: 57px 0;
   width: 720px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
 
   > div {
     > h4 {
@@ -31,11 +28,17 @@ export const FormContainer = styled.form`
       border-radius: 8px;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
+
 const FlexMargin = css`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-bottom: 50px;
 `;
 
 export const FromContainer = styled.div`
@@ -43,6 +46,7 @@ export const FromContainer = styled.div`
 `;
 
 export const ProfileImageContainer = styled.div`
+  ${FlexMargin}
   display: grid;
   grid-template-areas:
     'Title Title'
@@ -73,17 +77,28 @@ export const ProfileBox = styled.div`
   grid-area: Box;
   display: flex;
   justify-content: space-between;
+
   > img {
     cursor: pointer;
+    border: 1px solid var(--gray-200);
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 2px;
   }
 `;
 
 export const RelationShipContainer = styled.div`
   ${FlexMargin}
 `;
+
 export const TextAreaContainer = styled.div`
   ${FlexMargin}
 `;
+
 export const FontContainer = styled.div`
   ${FlexMargin}
+  margin-bottom: 206px;
 `;

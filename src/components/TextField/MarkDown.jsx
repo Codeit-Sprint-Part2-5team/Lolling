@@ -2,7 +2,7 @@ import MDEditor from '@uiw/react-md-editor';
 
 function MarkDown({ textareaBody, setTextareaBody }) {
   return (
-    <div className='MDLayout' style={{ width: '720px', height: '260px' }}>
+    <div className='MDLayout' style={{ width: '100%', height: '260px' }}>
       <div className='markarea'>
         <div data-color-mode='light'>
           <MDEditor

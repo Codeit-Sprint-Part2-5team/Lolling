@@ -17,7 +17,7 @@ export default function HeaderService() {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const getData = async () => {
-    const response = await getCardFolderRequest(5777);
+    const response = await getCardFolderRequest(5777); /** 주의 */
 
     if (!response) return;
 
@@ -25,7 +25,7 @@ export default function HeaderService() {
   };
 
   const getEmojiData = async () => {
-    const response = await getReactionsRequest(5777);
+    const response = await getReactionsRequest(5788);
 
     if (!response) return;
 
@@ -107,11 +107,7 @@ export default function HeaderService() {
                   isSmileIcon={'on'}
                   onClick={toggleEmojiPicker}
                 />
-                <S.EmojiSelectdBox>
-                  {showEmojiPicker && (
-                    <EmojiPicker onEmojiClick={onEmojiClick} />
-                  )}
-                </S.EmojiSelectdBox>
+                {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
                 <S.BarItemsInner></S.BarItemsInner>
                 <S.SharedButton>
                   <img src={ShareIcon} alt='공유하기' />
