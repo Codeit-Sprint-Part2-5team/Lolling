@@ -19,7 +19,7 @@ export default function Header() {
         setIsShowRollingButton(false);
         break;
     }
-  }, [[pathname]]);
+  }, [pathname]);
 
   return (
     <S.HeaderLayout>
