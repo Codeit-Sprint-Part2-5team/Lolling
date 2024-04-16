@@ -43,6 +43,10 @@ export const ColorOptionLayout = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.08);
     `;
   }}
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const IconBox = styled.div`

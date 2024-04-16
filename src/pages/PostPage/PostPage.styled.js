@@ -59,8 +59,14 @@ export const SelectingContainer = styled.div`
 `;
 
 export const BackgroundContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 168px);
+  gap: 16px;
   width: 100%;
   margin-bottom: 69px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 `;
