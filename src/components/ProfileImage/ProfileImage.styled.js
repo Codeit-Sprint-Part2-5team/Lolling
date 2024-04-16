@@ -16,4 +16,9 @@ export const ProfileImageLayout = styled.img`
   height: ${({ size }) => SIZES[size].pc}px;
   border-radius: 50%;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;

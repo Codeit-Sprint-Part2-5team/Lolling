@@ -7,6 +7,7 @@ import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import Input from '../../components/TextField/Input/Input';
 
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
@@ -86,11 +87,12 @@ export default function PostPage() {
         <S.FormContainer onSubmit={createPaper}>
           <S.ToContainer>
             <h4>To.</h4>
-            <input
-              name='name'
+            <Input
+              width={'100%'}
               value={rollPaperBody.name}
+              name={'name'}
+              placeholder={'받는 사람 이름을 입력해 주세요.'}
               onChange={onChangeInputHandler}
-              placeholder='받는 사람 이름을 입력해 주세요'
             />
           </S.ToContainer>
           <S.TextContainer>

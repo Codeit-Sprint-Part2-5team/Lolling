@@ -12,7 +12,7 @@ export default function HeaderService() {
   const [data, setData] = useState();
 
   const getData = async () => {
-    const response = await getCardFolderRequest(5788);
+    const response = await getCardFolderRequest(5777); /** 주의 */
 
     if (!response) return;
 

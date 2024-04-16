@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const DropDownLayout = styled.div`
-  position: relative`;
+  position: relative;
+`;
 
 export const DropDownInput = styled.div`
-  position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,10 +30,11 @@ export const DropDownInput = styled.div`
 `;
 
 export const DropDownItemList = styled.div`
+  position: absolute;
   width: 318px;
-  height: 100%;
   padding: 0;
   margin-top: 10px;
+  z-index: 200;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 8px;

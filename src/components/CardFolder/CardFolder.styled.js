@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const CardFolderLayout = styled.div`
   position: relative;
@@ -34,10 +34,88 @@ export const CardFolderLayout = styled.div`
         }
       `;
     }
-    return `
-    background-color:${$background};
-    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    const shapeInit = css`
+      position: absolute;
+      content: '';
     `;
+
+    const beigeShape = css`
+      &::after {
+        ${shapeInit}
+        top: 116px;
+        left: 150px;
+        width: 500px;
+        height: 500px;
+        opacity: 0.7;
+        border-radius: 51px;
+        background-color: #ffd382;
+      }
+    `;
+
+    const purpleShape = css`
+      &::after {
+        ${shapeInit}
+        width: 336px;
+        height: 169px;
+        top: 124px;
+        left: 133px;
+        opacity: 0.4;
+        border-radius: 90.5px;
+        background-color: #dcb9ff;
+      }
+    `;
+
+    const greenShape = css`
+      &::after {
+        ${shapeInit}
+        width: 336px;
+        height: 169px;
+        top: 124px;
+        left: 133px;
+        opacity: 0.3;
+        border-radius: 90.5px;
+        background-color: #9be282;
+      }
+    `;
+
+    const blueShape = css`
+      &::after {
+        ${shapeInit}
+        top: 140px;
+        left: 150px;
+        width: 202px;
+        height: 202px;
+        opacity: 0.7;
+        border-radius: 51px;
+        background-color: #9dddff;
+        transform: rotate(45deg);
+      }
+    `;
+
+    const innerColorShape = css`
+      background-color: ${$background};
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    `;
+
+    switch ($background) {
+      case 'var(--orange-200)':
+        return css`
+          ${innerColorShape}, ${beigeShape}
+        `;
+      case 'var(--blue-200)':
+        return css`
+          ${innerColorShape}, ${blueShape}
+        `;
+      case 'var(--green-200)':
+        return css`
+          ${innerColorShape}, ${greenShape}
+        `;
+      case 'var(--purple-200)':
+        return css`
+          ${innerColorShape}, ${purpleShape}
+        `;
+    }
   }}
 `;
 
