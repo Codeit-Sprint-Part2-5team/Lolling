@@ -7,7 +7,6 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 export default function Card({
   add,
   setModal,
-  setModalVisible,
   content,
   profileImageURL,
   relationship,
@@ -24,7 +23,6 @@ export default function Card({
       sender,
       date,
     });
-    setModalVisible(true);
   };
   return (
     <>

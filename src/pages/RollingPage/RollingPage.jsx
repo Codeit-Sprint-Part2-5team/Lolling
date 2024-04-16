@@ -11,7 +11,6 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
-  const [modalVisible, setModalVisible] = useState(false);
   const [modal, setModal] = useState();
   const [recipient, setRecipient] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
@@ -40,8 +39,7 @@ export default function RollingPage({ edit }) {
   }, []);
 
   const handleModalClose = () => {
-    setModalVisible(false);
-    setModal({});
+    setModal();
   };
 
   const background =
@@ -62,7 +60,6 @@ export default function RollingPage({ edit }) {
                 <Card
                   edit={edit}
                   setModal={setModal}
-                  setModalVisible={setModalVisible}
                   content={item.content}
                   profileImageURL={item.profileImageURL}
                   relationship={item.relationship}
@@ -72,7 +69,7 @@ export default function RollingPage({ edit }) {
               </li>
             ))}
           </S.CardContainer>
-          {modalVisible && (
+          {modal && (
             <S.ModalContainer>
               <Modal
                 profileImageURL={modal.profileImageURL}
