@@ -149,3 +149,29 @@ export const EmojiSelectdBox = styled.div`
   top: 130px;
   transform: translateX(-259px);
 `;
+
+export const SharedSelectContainer = styled.ul`
+  display: inline-flex;
+  padding: 10px 1px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300, #ccc);
+  background: var(--white, #fff);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  top: 130px;
+  transform: translateX(36px);
+`;
+
+export const SharedSelectedItem = styled.li`
+  display: flex;
+  width: 138px;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 10px;
+
+  &:hover {
+    background: var(--gray-100, #f6f6f6);
+  }
+`;

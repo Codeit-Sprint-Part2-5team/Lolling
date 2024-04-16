@@ -15,6 +15,7 @@ export default function HeaderService() {
   const [emojiData, setEmojiData] = useState();
   const [showEmoji, setShowEmoji] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showShared, setShowShared] = useState(false);
 
   const getData = async () => {
     const response = await getCardFolderRequest(5777);
@@ -41,12 +42,16 @@ export default function HeaderService() {
     if (emojiData) setShowEmoji(!showEmoji);
   };
 
-  const toggleEmojiPicker = () => {
+  const showEmojiPickerContainer = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
   const onEmojiClick = (emojiObject) => {
     console.log(emojiObject);
+  };
+
+  const showSharedContainer = () => {
+    setShowShared(!showShared);
   };
 
   return (
@@ -105,7 +110,7 @@ export default function HeaderService() {
                   variant={'outline'}
                   size={36}
                   isSmileIcon={'on'}
-                  onClick={toggleEmojiPicker}
+                  onClick={showEmojiPickerContainer}
                 />
                 <S.EmojiSelectdBox>
                   {showEmojiPicker && (
@@ -113,9 +118,15 @@ export default function HeaderService() {
                   )}
                 </S.EmojiSelectdBox>
                 <S.BarItemsInner></S.BarItemsInner>
-                <S.SharedButton>
+                <S.SharedButton onClick={showSharedContainer}>
                   <img src={ShareIcon} alt='공유하기' />
                 </S.SharedButton>
+                {showShared && (
+                  <S.SharedSelectContainer>
+                    <S.SharedSelectedItem>카카오톡 공유</S.SharedSelectedItem>
+                    <S.SharedSelectedItem>URL 공유</S.SharedSelectedItem>
+                  </S.SharedSelectContainer>
+                )}
               </S.EmojiButtonContainer>
             </S.EmojiContainer>
           </S.HeaderServiceContainer>
