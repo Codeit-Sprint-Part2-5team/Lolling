@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
   min-height: calc(100vh - 146px);
@@ -14,6 +15,12 @@ export const RollingPageLayout = styled.div`
     background-color:${$background};
     `;
   }}
+`;
+
+export const ButtonBox = styled(Button)`
+  position: absolute;
+  top: -50px;
+  right: 0;
 `;
 
 export const CardContainer = styled.ul`

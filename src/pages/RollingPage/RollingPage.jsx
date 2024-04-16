@@ -51,6 +51,9 @@ export default function RollingPage({ edit }) {
       <HeaderService />
       <S.RollingPageLayout $background={background}>
         <Inner>
+          {edit && (
+            <S.ButtonBox text={'삭제하기'} variant={'primary'} size={40} />
+          )}
           <S.CardContainer>
             <li>
               <Card add />
