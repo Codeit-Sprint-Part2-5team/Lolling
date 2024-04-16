@@ -7,9 +7,12 @@ import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import arrowDownIcon from '../../assets/images/ArrowDownIcon.svg';
 import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
+import { getReactionsRequest } from '../../apis/api';
 
 export default function HeaderService() {
   const [data, setData] = useState();
+  const [emojiData, setEmojiData] = useState();
+  const [showEmoji, setShowEmoji] = useState(false);
 
   const getData = async () => {
     const response = await getCardFolderRequest(5788);
@@ -19,9 +22,22 @@ export default function HeaderService() {
     setData(response);
   };
 
+  const getEmojiData = async () => {
+    const response = await getReactionsRequest(5788);
+
+    if (!response) return;
+
+    setEmojiData(response.data.results);
+  };
+
   useEffect(() => {
     getData();
+    getEmojiData();
   }, []);
+
+  const showEmojiContainer = () => {
+    if (emojiData) setShowEmoji((prevShowEmoji) => !prevShowEmoji);
+  };
 
   return (
     data && (
@@ -55,7 +71,22 @@ export default function HeaderService() {
                   ))}
                 </S.EmojiTopThree>
                 <S.EmojiListButton>
-                  <S.EmojiListButtonImg src={arrowDownIcon} alt='이모지 보기' />
+                  <S.EmojiListButtonImg
+                    src={arrowDownIcon}
+                    alt='이모지 보기'
+                    onClick={showEmojiContainer}
+                  />
+                  {showEmoji && (
+                    <S.EmojiBoxItem>
+                      {emojiData?.map((item) => (
+                        <EmojiBadge
+                          key={item.id}
+                          emoji={item.emoji}
+                          count={item.count}
+                        />
+                      ))}
+                    </S.EmojiBoxItem>
+                  )}
                 </S.EmojiListButton>
               </S.EmojiBadgeContainer>
               <S.EmojiButtonContainer>

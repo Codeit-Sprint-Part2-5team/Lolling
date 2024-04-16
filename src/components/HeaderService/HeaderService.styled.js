@@ -126,3 +126,20 @@ export const SharedButton = styled.button`
     border: 1px solid var(--gray-500, #555555);
   }
 `;
+
+export const EmojiBoxItem = styled.div`
+  display: inline-flex;
+  width: 334px;
+  position: absolute;
+  top: 130px;
+  transform: translateX(-136px);
+  flex-wrap: wrap;
+  padding: 24px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: #fff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+`;
