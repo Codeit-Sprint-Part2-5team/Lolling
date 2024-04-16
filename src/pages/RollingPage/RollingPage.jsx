@@ -11,7 +11,7 @@ import {
 } from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
 export default function RollingPage({ edit }) {
@@ -25,6 +25,7 @@ export default function RollingPage({ edit }) {
   );
   const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   const getMessageData = async () => {
     const result = await getMessageList(userId);
@@ -65,6 +66,7 @@ export default function RollingPage({ edit }) {
 
   const handleDeleteAll = () => {
     deleteAll();
+    navigate('/');
   };
 
   return (
