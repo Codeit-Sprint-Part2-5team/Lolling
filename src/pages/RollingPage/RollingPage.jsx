@@ -3,17 +3,13 @@ import Inner from '../../components/Inner/Inner';
 import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
-import {
-  getCardFolderListRequest,
-  getCardFolderRequest,
-  getMessageListRequest,
-} from '../../apis/api';
+import { getCardFolderRequest, getMessageListRequest } from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
 import { useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-export default function RollingPage() {
+export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [modal, setModal] = useState();
@@ -64,6 +60,7 @@ export default function RollingPage() {
             {messageList?.map((item) => (
               <li key={item.id}>
                 <Card
+                  edit={edit}
                   setModal={setModal}
                   setModalVisible={setModalVisible}
                   content={item.content}
