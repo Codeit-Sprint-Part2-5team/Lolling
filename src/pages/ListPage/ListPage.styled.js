@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  // 인기순 카드 목록 컨테이너(h 태그 + CardList)
+// 인기순 카드 목록 컨테이너(h 태그 + CardList)
   position: relative;
   flex-direction: column;
   width: 100%;
@@ -21,18 +21,26 @@ export const ListPageLayout = styled.div`
 `;
 
 export const RecentCardContainer = styled.div`
-  // 최신순 카드 목록 컨테이너
+// 최신순 카드 목록 컨테이너
   margin-top: 20px;
 `;
 
 export const CardList = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap; 
   align-items: flex-start;
-  width: fit-content;
+  width: 1160px;
   padding: 0px;
   gap: 20px;
-  overflow-x: auto;
+  overflow-x: auto; 
+  scroll-behavior: smooth;
+
+  /* 스크롤바 숨김 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `;
 
 export const ButtonContainer = styled.div`

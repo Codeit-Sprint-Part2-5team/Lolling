@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
 
+// CardList랑 중복되는 코드 수정하기
+
 export const LeftButton = styled(ArrowButton)`
   position: absolute;
   // left: 35px;

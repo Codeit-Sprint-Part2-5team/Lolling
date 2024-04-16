@@ -37,6 +37,8 @@ export default function ListPage() {
       <Inner>
         <S.CardContainer>
           <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
+          {/* <S.CardSlider + CardList 포함하는 컴포넌트 만들기>
+          <CardSlider /> */}
           <S.CardList>
             {sortedCardDataByReaction.map((card) => (
               <CardFolder
