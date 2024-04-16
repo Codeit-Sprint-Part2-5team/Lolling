@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items }) {
+function DropDown({ items, type, messageBody, setMessageBody }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(items.relationship[0]);
+  const [selectedItem, setSelectedItem] = useState(items[0]);
 
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
@@ -15,10 +15,14 @@ function DropDown({ items }) {
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
+    setMessageBody(() => ({
+      ...messageBody,
+      [type]: item,
+    }));
   };
 
   return (
-    <S.DropDownLayout font={items.font}>
+    <S.DropDownLayout>
       <S.DropDownInput onClick={toggleDropDown}>
         {selectedItem}
         <img
@@ -29,11 +33,16 @@ function DropDown({ items }) {
       </S.DropDownInput>
       {isOpen && (
         <S.DropDownItemList>
-          {items.relationship.map((item) => (
-            <S.DropDownItem key={item} onClick={() => handleItemClick(item)}>
-              {item}
-            </S.DropDownItem>
-          ))}
+          <S.DropDownItem>
+            {items.map((item) => (
+              <S.DropDownItemHover
+                key={item}
+                onClick={() => handleItemClick(item)}
+              >
+                {item}
+              </S.DropDownItemHover>
+            ))}
+          </S.DropDownItem>
         </S.DropDownItemList>
       )}
     </S.DropDownLayout>
@@ -41,10 +50,7 @@ function DropDown({ items }) {
 }
 
 DropDown.propTypes = {
-  items: PropTypes.shape({
-    relationship: PropTypes.arrayOf(PropTypes.string).isRequired,
-    font: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default DropDown;

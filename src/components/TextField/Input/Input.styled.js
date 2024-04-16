@@ -8,21 +8,16 @@ export const InputContainer = styled.input`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: ${({ $width }) => $width};
   height: 50px;
   padding: 12px 16px;
   gap: 10px;
-  border: 1px solid #cccccc;
+  border: 1px solid ${({ $error }) => ($error ? '#ff0000' : '#cccccc')};
   border-radius: 8px;
   box-sizing: border-box;
   background: #ffffff;
   font-family: 'Pretendard';
   font-size: 16px;
-
-  ${({ width }) =>
-    width &&
-    css`
-      width: ${width};
-    `}
 
   &::placeholder {
     color: #555555;
@@ -52,10 +47,6 @@ export const InputContainer = styled.input`
     border-radius: 8px;
     background: #f6f6f6;
     color: #666666;
-  }
-
-  &.error {
-    border-color: #ff0000;
   }
 `;
 
