@@ -8,11 +8,13 @@ import arrowDownIcon from '../../assets/images/ArrowDownIcon.svg';
 import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
+import EmojiPicker from 'emoji-picker-react';
 
 export default function HeaderService() {
   const [data, setData] = useState();
   const [emojiData, setEmojiData] = useState();
   const [showEmoji, setShowEmoji] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const getData = async () => {
     const response = await getCardFolderRequest(5788);
@@ -36,7 +38,15 @@ export default function HeaderService() {
   }, []);
 
   const showEmojiContainer = () => {
-    if (emojiData) setShowEmoji((prevShowEmoji) => !prevShowEmoji);
+    if (emojiData) setShowEmoji(!showEmoji);
+  };
+
+  const toggleEmojiPicker = () => {
+    setShowEmojiPicker(!showEmojiPicker);
+  };
+
+  const onEmojiClick = (emojiObject) => {
+    console.log(emojiObject);
   };
 
   return (
@@ -95,7 +105,9 @@ export default function HeaderService() {
                   variant={'outline'}
                   size={36}
                   isSmileIcon={'on'}
+                  onClick={toggleEmojiPicker}
                 />
+                {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
                 <S.BarItemsInner></S.BarItemsInner>
                 <S.SharedButton>
                   <img src={ShareIcon} alt='공유하기' />
