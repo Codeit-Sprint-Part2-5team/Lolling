@@ -96,6 +96,7 @@ export default function RollingPage({ edit }) {
                   sender={item.sender}
                   createdAt={item.createdAt}
                   deleteMessage={deleteMessage}
+                  setMessageList={setMessageList}
                 />
               </li>
             ))}

@@ -15,6 +15,7 @@ export default function Card({
   createdAt,
   edit,
   deleteMessage,
+  setMessageList,
 }) {
   const date = createdAt?.slice(0, 10);
 
@@ -31,6 +32,7 @@ export default function Card({
   const handleDelete = (e) => {
     e.stopPropagation();
     deleteMessage(id);
+    setMessageList((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (
