@@ -1,55 +1,42 @@
 import styled from 'styled-components';
 
-export const ListPageLayout = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const CardContainer = styled.div`
+  // 인기순 카드 목록 컨테이너(h 태그 + CardList)
+  position: relative;
   flex-direction: column;
-
-  > div {
-    > h4 {
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 36px;
-    }
-  }
+  width: 100%;
+  gap: 5px;
 `;
 
-export const HotCardContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
-  margin-top: 20px;
-  margin-bottom: 20px; 
-  width: 100%; 
-  gap: 5px;
+export const TextBox = styled.h4`
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+`;
+
+export const ListPageLayout = styled.div`
+  padding: 20px 0 100px;
+  overflow-y: hidden;
 `;
 
 export const RecentCardContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
-  width: 100%; 
-  gap: 5px;
+  // 최신순 카드 목록 컨테이너
+  margin-top: 20px;
 `;
 
 export const CardList = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  width: fit-content;
   padding: 0px;
   gap: 20px;
-  // flex-shrink: 0;
-  // margin: 0 10px 0 0;
-`;
-
-export const CardSliderContainer = styled.div`
-  display: flex;
   overflow-x: auto;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   margin-top: 20px;
 `;

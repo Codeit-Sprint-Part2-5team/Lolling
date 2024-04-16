@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import * as S from './CardSlider.styled';
 import ArrowButton from "../ArrowButton/ArrowButton";
 

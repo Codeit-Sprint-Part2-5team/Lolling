@@ -1,56 +1,72 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Inner from '../../components/Inner/Inner';
 import Button from '../../components/Button/Button';
 import CardFolder from '../../components/CardFolder/CardFolder';
-import CardSlider from '../../components/CardSlider/CardSlider';
+import useAsync from '../../hooks/useAsync';
 import * as S from './ListPage.styled';
+import { getCardFolderListRequest } from '../../apis/api';
 
 export default function ListPage() {
-  // 샘플 데이터
-  const cardData = [
-    { id: 1, content: '카드1', createdAt: '2024-04-16', reactionCount: 5 },
-    { id: 2, content: '카드2', createdAt: '2024-04-17', reactionCount: 3 },
-    { id: 3, content: '카드3', createdAt: '2024-04-18', reactionCount: 7 },
-    { id: 4, content: '카드4', createdAt: '2024-04-19', reactionCount: 1 },
-    // { id: 5, content: '카드5', createdAt: '2024-04-20', reactionCount: 9 }
-  ];
+  const [cardDataList, setCardDataList] = useState([]);
+  const { requestFunction: getCardDataList } = useAsync(
+    getCardFolderListRequest
+  );
 
-  const [currentIndex, setCurrentIndex] = useState(0); // 현재 보이는 카드의 인덱스를 상태로 관리
+  useEffect(() => {
+    const getData = async () => {
+      const result = await getCardDataList(5788);
+      if (result && result.data && result.data.results) {
+        setCardDataList(result.data.results);
+      }
+    };
+    getData();
+  }, [getCardDataList]);
 
-  const sortedCardData = useMemo(() => {
-    return [...cardData].sort((a, b) => b.reactionCount - a.reactionCount);
-  }, [cardData]);
+  const sortedCardDataByReaction = useMemo(() => {
+    return [...cardDataList].sort((a, b) => b.reactionCount - a.reactionCount);
+  }, [cardDataList]);
+
+  const sortedCardDataByCreatedAt = useMemo(() => {
+    return [...cardDataList].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+  }, [cardDataList]);
 
   return (
-    <Inner>
-      <S.ListPageLayout>
-        <S.HotCardContainer>
-          <h4>인기 롤링 페이퍼🔥</h4>
-          <S.CardSliderContainer>
-            <CardSlider>
-              {sortedCardData.map((card, index) => (
-                <CardFolder
-                  key={card.id}
-                  data={card}
-                  style={{ display: index === currentIndex ? 'block' : 'none' }}
-                />
-              ))}
-            </CardSlider>
-          </S.CardSliderContainer>
-        </S.HotCardContainer>
+    <S.ListPageLayout>
+      <Inner>
+        <S.CardContainer>
+          <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
+          <S.CardList>
+            {sortedCardDataByReaction.map((card) => (
+              <CardFolder
+                key={card.id}
+                name={card.name}
+                backgroundColor={card.backgroundColor}
+                backgroundImageURL={card.backgroundImageURL}
+                messageCount={card.messageCount}
+                topReactions={card.topReactions}
+                recentMessages={card.recentMessages}
+                sort='like'
+              />
+            ))}
+          </S.CardList>
+        </S.CardContainer>
         <S.RecentCardContainer>
-          <h4>최근에 만든 롤링 페이퍼⭐️️</h4>
-          <S.CardSliderContainer>
-            <CardSlider>
-              {sortedCardData.map((card, index) => (
-                <CardFolder
-                  key={card.id}
-                  data={card}
-                  style={{ display: index === currentIndex ? 'block' : 'none' }}
-                />
-              ))}
-            </CardSlider>
-          </S.CardSliderContainer>
+          <S.TextBox>최근에 만든 롤링 페이퍼⭐️️</S.TextBox>
+          <S.CardList>
+            {sortedCardDataByCreatedAt.map((card) => (
+              <CardFolder
+                key={card.id}
+                name={card.name}
+                backgroundColor={card.backgroundColor}
+                backgroundImageURL={card.backgroundImageURL}
+                messageCount={card.messageCount}
+                topReactions={card.topReactions}
+                recentMessages={card.recentMessages}
+              />
+            ))}
+          </S.CardList>
         </S.RecentCardContainer>
         <S.ButtonContainer>
           <Button
@@ -60,7 +76,7 @@ export default function ListPage() {
             width={'280px'}
           />
         </S.ButtonContainer>
-      </S.ListPageLayout>
-    </Inner>
+      </Inner>
+    </S.ListPageLayout>
   );
 }
