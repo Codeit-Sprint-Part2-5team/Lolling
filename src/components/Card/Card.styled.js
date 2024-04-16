@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CardLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 384px;
   height: 280px;
   padding: 28px 24px 24px;
   border-radius: 16px;

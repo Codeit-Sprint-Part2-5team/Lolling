@@ -24,9 +24,17 @@ export const ButtonBox = styled(Button)`
 `;
 
 export const CardContainer = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px 24px;
-  flex-wrap: wrap;
+
+  @media (max-width: 1248px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const ModalContainer = styled.div`

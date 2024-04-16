@@ -31,7 +31,6 @@ export default function Card({
   const handleDelete = (e) => {
     e.stopPropagation();
     deleteMessage(id);
-    console.log('delete');
   };
 
   return (
