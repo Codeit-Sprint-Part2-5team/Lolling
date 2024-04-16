@@ -10,9 +10,11 @@ export default function Button({
   disabled = false,
   isSmileIcon = 'off',
   onClick,
+  className,
 }) {
   return (
     <S.ButtonLayout
+      className={className}
       $variant={variant}
       size={size}
       width={width}
