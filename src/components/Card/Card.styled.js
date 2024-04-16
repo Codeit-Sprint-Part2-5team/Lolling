@@ -21,6 +21,8 @@ export const CardLayout = styled.div`
 
 export const TopContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: start;
   gap: 14px;
   width: 100%;
   padding-bottom: 15px;

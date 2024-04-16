@@ -2,6 +2,7 @@ import * as S from './Card.styled';
 import AddButton from '../AddButton/AddButton';
 import { Link } from 'react-router-dom';
 import SenderProfile from '../SenderProfile/SenderProfile';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 export default function Card({
   add,
@@ -12,6 +13,7 @@ export default function Card({
   relationship,
   sender,
   createdAt,
+  edit,
 }) {
   const date = createdAt?.slice(0, 10);
   const handleCardClick = () => {
@@ -40,6 +42,7 @@ export default function Card({
               sender={sender}
               relationship={relationship}
             />
+            {edit && <DeleteButton />}
           </S.TopContainer>
           <S.BottomContainer>
             <S.ContentBox>{content}</S.ContentBox>
