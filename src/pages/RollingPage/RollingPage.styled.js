@@ -21,6 +21,15 @@ export const ButtonBox = styled(Button)`
   position: absolute;
   top: -50px;
   right: 0;
+
+  @media (max-width: 1248px) {
+    position: fixed;
+    top: unset;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    z-index: 1;
+  }
 `;
 
 export const CardContainer = styled.ul`
