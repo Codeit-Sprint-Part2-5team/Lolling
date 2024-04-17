@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Layout = styled.div`
-  width: 600px;
+  max-width: 600px;
+  width: calc(100% - 48px);
   height: 476px;
-  flex-shrink: 0;
+  padding: 40px;
   border-radius: 16px;
   background: var(--white-color);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
@@ -13,22 +14,20 @@ export const Layout = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 599px;
-  height: 116px;
-  padding-top: 40px;
+  width: 100%;
+  padding-bottom: 20px;
   gap: 20px;
+  border-bottom: 1px solid var(--gray-200, #eee);
 `;
 
 export const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 520px;
-  height: 56px;
+  width: 100%;
 `;
 
 export const UserProfileContainer = styled.div`
@@ -78,16 +77,8 @@ export const DateBox = styled.p`
   letter-spacing: -0.07px;
 `;
 
-export const DividerBox = styled.div`
-  width: 520px;
-  height: 1px;
-  flex-shrink: 0;
-  background: var(--gray-200, #eee);
-`;
-
 export const ContentBox = styled.p`
-  width: 520px;
-  margin-top: 16px;
+  width: 100%;
   height: 256px;
   color: #5a5a5a;
   font-family: Pretendard;
@@ -96,9 +87,9 @@ export const ContentBox = styled.p`
   font-weight: 400;
   line-height: 28px;
   letter-spacing: -0.18px;
+  margin: 16px 0 24px;
   padding-right: 20px;
   overflow-y: scroll;
-  margin-bottom: 24px;
 
   &::-webkit-scrollbar {
     width: 4px;

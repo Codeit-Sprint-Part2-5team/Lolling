@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
   min-height: calc(100vh - 146px);
@@ -16,10 +17,33 @@ export const RollingPageLayout = styled.div`
   }}
 `;
 
+export const ButtonBox = styled(Button)`
+  position: absolute;
+  top: -50px;
+  right: 0;
+
+  @media (max-width: 1248px) {
+    position: fixed;
+    top: unset;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    z-index: 1;
+  }
+`;
+
 export const CardContainer = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px 24px;
-  flex-wrap: wrap;
+
+  @media (max-width: 1248px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const ModalContainer = styled.div`

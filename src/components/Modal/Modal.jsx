@@ -21,7 +21,6 @@ function Modal({
           />
           <S.DateBox>{date}</S.DateBox>
         </S.HeaderInner>
-        <S.DividerBox></S.DividerBox>
       </S.HeaderContainer>
       <S.ContentBox>{content}</S.ContentBox>
       <Button

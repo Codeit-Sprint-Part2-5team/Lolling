@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CardLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 384px;
   height: 280px;
   padding: 28px 24px 24px;
   border-radius: 16px;
@@ -17,10 +16,16 @@ export const CardLayout = styled.div`
     justify-content: center;
     align-items: center;
     `}
+
+  @media (max-width: 768px) {
+    height: 230px;
+  }
 `;
 
 export const TopContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: start;
   gap: 14px;
   width: 100%;
   padding-bottom: 15px;
@@ -60,6 +65,11 @@ export const ContentBox = styled.p`
   word-break: break-word;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    line-height: 22px;
+  }
 `;
 
 export const DateBox = styled.p`

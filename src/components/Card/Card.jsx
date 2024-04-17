@@ -2,18 +2,23 @@ import * as S from './Card.styled';
 import AddButton from '../AddButton/AddButton';
 import { Link } from 'react-router-dom';
 import SenderProfile from '../SenderProfile/SenderProfile';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 export default function Card({
   add,
+  id,
   setModal,
-  setModalVisible,
   content,
   profileImageURL,
   relationship,
   sender,
   createdAt,
+  edit,
+  deleteMessage,
+  setMessageList,
 }) {
   const date = createdAt?.slice(0, 10);
+
   const handleCardClick = () => {
     setModal({
       content,
@@ -22,8 +27,14 @@ export default function Card({
       sender,
       date,
     });
-    setModalVisible(true);
   };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    deleteMessage(id);
+    setMessageList((prev) => prev.filter((item) => item.id !== id));
+  };
+
   return (
     <>
       {add ? (
@@ -40,6 +51,7 @@ export default function Card({
               sender={sender}
               relationship={relationship}
             />
+            {edit && <DeleteButton onClick={handleDelete} />}
           </S.TopContainer>
           <S.BottomContainer>
             <S.ContentBox>{content}</S.ContentBox>

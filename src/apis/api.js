@@ -79,7 +79,8 @@ export const getMessageListRequest = async (id, limit = 8, offset = 0) => {
 };
 
 export const createMessageRequest = async (body) => {
-  const { sender, relationship, content, font, recipientId } = body;
+  const { sender, relationship, content, font, recipientId, profileImageURL } =
+    body;
 
   const response = await axios({
     method: 'post',
@@ -87,7 +88,7 @@ export const createMessageRequest = async (body) => {
     data: {
       recipientId: recipientId,
       sender: sender,
-      profileImageURL: 'https://picsum.photos/id/1082/100/100',
+      profileImageURL: profileImageURL,
       relationship: relationship,
       content: content,
       font: font,
