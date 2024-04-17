@@ -13,6 +13,7 @@ import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
@@ -26,6 +27,18 @@ export default function RollingPage({ edit }) {
   const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
   const navigate = useNavigate();
+  const [dataLimit, setDataLimit] = useState(8);
+  const [isFetching, setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
+
+  function updateFunctionOnScroll() {
+    setDataLimit((prev) => prev + 9);
+    getMessageData(dataLimit);
+    setIsFetching(false);
+  }
+
+  useEffect(() => {
+    updateFunctionOnScroll();
+  }, [isFetching]);
 
   const getMessageData = async (limit) => {
     const result = await getMessageList(userId, limit);

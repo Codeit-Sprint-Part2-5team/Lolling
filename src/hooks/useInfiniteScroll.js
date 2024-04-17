@@ -1,14 +1,14 @@
 import { throttle } from 'lodash';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const THROTTLE_WAIT = 300;
 
-export default function useInfiniteScroll(callback) {
+export default function useInfiniteScroll(fetchCallback) {
   const [isFetching, setIsFetching] = useState(false);
 
   const handleScrollThrottle = throttle(() => {
     const isScrollOver =
-      window.innerHeight + document.documentElement.scrollTop >=
+      window.innerHeight + document.documentElement.scrollTop + 20 >=
       document.documentElement.offsetHeight;
     if (isScrollOver) {
       setIsFetching(true);
@@ -24,7 +24,7 @@ export default function useInfiniteScroll(callback) {
 
   useEffect(() => {
     if (!isFetching) return;
-    callback();
+    fetchCallback();
   }, [isFetching]);
 
   return [isFetching, setIsFetching];
