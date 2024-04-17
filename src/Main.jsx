@@ -18,6 +18,7 @@ function Main() {
             <Route index element={<PostPage />} />
             <Route path=':userId'>
               <Route index element={<RollingPage />} />
+              <Route path='edit' element={<RollingPage edit />} />
               <Route path='message' element={<MessagePage />} />
             </Route>
             <Route path='apitest' element={<ApiTestPage />} />

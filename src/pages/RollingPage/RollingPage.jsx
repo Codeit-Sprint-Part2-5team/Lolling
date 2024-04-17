@@ -4,23 +4,28 @@ import * as S from './RollingPage.styled';
 import Card from '../../components/Card/Card';
 import useAsync from '../../hooks/useAsync';
 import {
-  getCardFolderListRequest,
+  deleteCardFolderRequest,
+  deleteMessageRequest,
   getCardFolderRequest,
   getMessageListRequest,
 } from '../../apis/api';
 import HeaderService from '../../components/HeaderService/HeaderService';
 import Modal from '../../components/Modal/Modal';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
-export default function RollingPage() {
+export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
-  const [modalVisible, setModalVisible] = useState(false);
   const [modal, setModal] = useState();
   const [recipient, setRecipient] = useState();
   const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
   const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
+  const { requestFunction: deleteCardFolder } = useAsync(
+    deleteCardFolderRequest
+  );
+  const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   const getMessageData = async () => {
     const result = await getMessageList(userId);
@@ -38,44 +43,70 @@ export default function RollingPage() {
     setRecipient(data);
   };
 
+  const deleteAll = async () => {
+    await deleteCardFolder(userId);
+  };
+
+  const deleteMessage = async (id) => {
+    await deleteMessageCard(id);
+  };
+
   useEffect(() => {
     getMessageData();
     getRecipientsData();
   }, []);
 
   const handleModalClose = () => {
-    setModalVisible(false);
-    setModal({});
+    setModal();
   };
 
   const background =
     recipient?.backgroundImageURL ||
     convertBackgroundColor(recipient?.backgroundColor);
 
+  const handleDeleteAll = () => {
+    deleteAll();
+    navigate('/');
+  };
+
   return (
     <>
       <HeaderService />
       <S.RollingPageLayout $background={background}>
         <Inner>
+          {edit && (
+            <S.ButtonBox
+              text={'삭제하기'}
+              variant={'primary'}
+              size={40}
+              onClick={handleDeleteAll}
+            />
+          )}
           <S.CardContainer>
-            <li>
-              <Card add />
-            </li>
+            {!edit && (
+              <li>
+                <Card add />
+              </li>
+            )}
+
             {messageList?.map((item) => (
               <li key={item.id}>
                 <Card
+                  edit={edit}
+                  id={item.id}
                   setModal={setModal}
-                  setModalVisible={setModalVisible}
                   content={item.content}
                   profileImageURL={item.profileImageURL}
                   relationship={item.relationship}
                   sender={item.sender}
                   createdAt={item.createdAt}
+                  deleteMessage={deleteMessage}
+                  setMessageList={setMessageList}
                 />
               </li>
             ))}
           </S.CardContainer>
-          {modalVisible && (
+          {modal && (
             <S.ModalContainer>
               <Modal
                 profileImageURL={modal.profileImageURL}

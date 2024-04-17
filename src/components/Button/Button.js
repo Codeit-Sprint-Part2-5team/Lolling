@@ -10,9 +10,11 @@ export default function Button({
   disabled = false, // 버튼 활상화, 비활성화 - true, false
   isSmileIcon = 'off', // 웃음 아이콘 넣을지 안넣을지 지정 - on, off
   onClick,
+  className,
 }) {
   return (
     <S.ButtonLayout
+      className={className}
       $variant={variant}
       size={size}
       width={width}
