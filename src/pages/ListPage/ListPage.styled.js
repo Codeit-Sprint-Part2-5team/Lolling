@@ -25,24 +25,6 @@ export const RecentCardContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const CardList = styled.div`
-  display: flex;
-  flex-wrap: nowrap; 
-  align-items: flex-start;
-  width: 1160px;
-  padding: 0px;
-  gap: 20px;
-  overflow-x: auto; 
-  scroll-behavior: smooth;
-
-  /* 스크롤바 숨김 */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-`;
-
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;

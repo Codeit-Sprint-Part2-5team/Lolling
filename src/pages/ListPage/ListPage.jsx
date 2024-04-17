@@ -5,6 +5,7 @@ import CardFolder from '../../components/CardFolder/CardFolder';
 import useAsync from '../../hooks/useAsync';
 import * as S from './ListPage.styled';
 import { getCardFolderListRequest } from '../../apis/api';
+import CardSlider from '../../components/CardSlider/CardSlider'; // CardSlider 추가
 
 export default function ListPage() {
   const [cardDataList, setCardDataList] = useState([]);
@@ -35,11 +36,10 @@ export default function ListPage() {
   return (
     <S.ListPageLayout>
       <Inner>
+        {/* 인기 롤링 페이퍼 */}
         <S.CardContainer>
           <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
-          {/* <S.CardSlider + CardList 포함하는 컴포넌트 만들기>
-          <CardSlider /> */}
-          <S.CardList>
+          <CardSlider>
             {sortedCardDataByReaction.map((card) => (
               <CardFolder
                 key={card.id}
@@ -52,11 +52,13 @@ export default function ListPage() {
                 sort='like'
               />
             ))}
-          </S.CardList>
+          </CardSlider>
         </S.CardContainer>
+
+        {/* 최근에 만든 롤링 페이퍼 */}
         <S.RecentCardContainer>
           <S.TextBox>최근에 만든 롤링 페이퍼⭐️️</S.TextBox>
-          <S.CardList>
+          <CardSlider>
             {sortedCardDataByCreatedAt.map((card) => (
               <CardFolder
                 key={card.id}
@@ -68,8 +70,10 @@ export default function ListPage() {
                 recentMessages={card.recentMessages}
               />
             ))}
-          </S.CardList>
+          </CardSlider>
         </S.RecentCardContainer>
+
+        {/* 나도 만들어보기 버튼 */}
         <S.ButtonContainer>
           <Button
             variant={'primary'}
