@@ -156,3 +156,22 @@ export const postReactionRequest = async (id, changeType) => {
 
   return response;
 };
+// const STORAGE_URL = 'https://rolling-69e73.appspot.com/';
+
+// export const uploadImageRequest = async (imageFile) => {
+//   try {
+//     const formData = new FormData();
+//     formData.append('image', imageFile);
+
+//     const response = await axios({
+//       method: 'post',
+//       headers: { 'Content-Type': 'multipart/form-data' },
+//       url: `${STORAGE_URL}`,
+//       data: formData,
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error('이미지 업로드 실패:', error);
+//     throw error;
+//   }
+// };

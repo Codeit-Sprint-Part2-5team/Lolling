@@ -8,10 +8,14 @@ import {
   deleteCardFolderRequest,
   getReactionsRequest,
   postReactionRequest,
+  uploadImageRequest,
 } from '../../apis/api';
+import { storage } from '../../apis/firebase';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useState } from 'react';
 import * as S from './ApiTestPage.styled';
 import EmojiPicker from 'emoji-picker-react';
+import ProfileImage from '../../components/ProfileImage/ProfileImage';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
@@ -404,6 +408,30 @@ const PostReaction = () => {
   );
 };
 
+const FileUpload = () => {
+  const [fileItem, setFileItem] = useState([]);
+  const [photoURL, setPhotoURL] = useState();
+
+  const handleImageChange = (e) => {
+    setFileItem(e.target.files[0]);
+  };
+
+  const handleImageUpload = async (e) => {
+    e.preventDefault();
+    const storageRef = ref(storage, `images/${fileItem.name}`);
+    await uploadBytes(storageRef, fileItem);
+    setPhotoURL(await getDownloadURL(ref(storage, `images/${fileItem.name}`)));
+  };
+
+  return (
+    <form onSubmit={handleImageUpload}>
+      {photoURL && <ProfileImage image={photoURL} />}
+      <input type='file' accept='image/*' onChange={handleImageChange} />
+      <S.Button>업로드</S.Button>
+    </form>
+  );
+};
+
 const ApiTestPage = () => {
   return (
     <S.Layout>
@@ -416,6 +444,7 @@ const ApiTestPage = () => {
       <DeleteCardFolder />
       <GetReactions />
       <PostReaction />
+      <FileUpload />
     </S.Layout>
   );
 };
