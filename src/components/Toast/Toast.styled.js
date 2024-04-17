@@ -35,9 +35,16 @@ export const CheckTextBox = styled.p`
   letter-spacing: -0.16px;
 `;
 
-export const CloseIconBox = styled(ToastCloseSvg)`
+export const CloseIconButtonBox = styled.button`
   width: 24px;
   height: 24px;
+  border: 0;
+  background-color: transparent;
+`;
+
+export const CloseIconBox = styled(ToastCloseSvg)`
+  width: 100%;
+  height: 100%;
   flex-shrink: 0;
   cursor: pointer;
 `;
