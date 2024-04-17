@@ -8,10 +8,8 @@ import {
   deleteCardFolderRequest,
   getReactionsRequest,
   postReactionRequest,
-  uploadImageRequest,
+  uploadProfileImageRequest,
 } from '../../apis/api';
-import { storage } from '../../apis/firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useState } from 'react';
 import * as S from './ApiTestPage.styled';
 import EmojiPicker from 'emoji-picker-react';
@@ -411,6 +409,7 @@ const PostReaction = () => {
 const FileUpload = () => {
   const [fileItem, setFileItem] = useState([]);
   const [photoURL, setPhotoURL] = useState();
+  const { requestFunction: getUrl } = useAsync(uploadProfileImageRequest);
 
   const handleImageChange = (e) => {
     setFileItem(e.target.files[0]);
@@ -418,9 +417,12 @@ const FileUpload = () => {
 
   const handleImageUpload = async (e) => {
     e.preventDefault();
-    const storageRef = ref(storage, `images/${fileItem.name}`);
-    await uploadBytes(storageRef, fileItem);
-    setPhotoURL(await getDownloadURL(ref(storage, `images/${fileItem.name}`)));
+
+    const result = await getUrl(fileItem);
+    if (!result) return;
+
+    setPhotoURL(result);
+    console.log(photoURL);
   };
 
   return (
