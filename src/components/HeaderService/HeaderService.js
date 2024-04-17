@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import * as S from './HeaderService.styled';
 import Inner from '../Inner/Inner';
 import ProfileList from '../ProfileList/ProfileList';
-import { getCardFolderRequest } from '../../apis/api';
+import { getCardFolderRequest, postReactionRequest } from '../../apis/api';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import arrowDownIcon from '../../assets/images/ArrowDownIcon.svg';
 import Button from '../Button/Button';
@@ -21,6 +21,7 @@ export default function HeaderService({ userId }) {
   const [isShowShareButton, setIsShowShareButton] = useState(false);
   const location = useLocation();
   const [isShowToast, setIsShowToast] = useState(false);
+  const [emojiLog, setEmojiLog] = useState([]);
 
   const getData = async () => {
     const response = await getCardFolderRequest(userId);
@@ -41,7 +42,7 @@ export default function HeaderService({ userId }) {
   useEffect(() => {
     getData();
     getEmojiData();
-  }, []);
+  }, [emojiLog]);
 
   const showEmojiContainer = () => {
     if (emojiData) setIsShowEmoji(!isShowEmoji);
@@ -51,8 +52,13 @@ export default function HeaderService({ userId }) {
     setIsShowEmojiPicker(!isShowEmojiPicker);
   };
 
-  const onEmojiClick = (emojiObject) => {
-    console.log(emojiObject);
+  const onEmojiClick = async (emojiObject) => {
+    await postReactionRequest(userId, {
+      emoji: emojiObject.emoji,
+      type: 'increase',
+    });
+
+    setEmojiLog((prevLog) => [...prevLog, emojiObject.emoji]);
   };
 
   const showSharedContainer = () => {
