@@ -27,8 +27,8 @@ export default function RollingPage({ edit }) {
   const { userId } = useParams();
   const navigate = useNavigate();
 
-  const getMessageData = async () => {
-    const result = await getMessageList(userId);
+  const getMessageData = async (limit) => {
+    const result = await getMessageList(userId, limit);
     if (!result) return;
     const {
       data: { results },
