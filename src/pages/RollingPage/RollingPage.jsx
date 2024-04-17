@@ -54,7 +54,7 @@ export default function RollingPage() {
 
   return (
     <>
-      <HeaderService />
+      <HeaderService userId={userId} />
       <S.RollingPageLayout $background={background}>
         <Inner>
           <S.CardContainer>

@@ -5,7 +5,7 @@ export const HeaderLayout = styled.header`
   display: flex;
   align-items: center;
   height: 64px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 `;
 
 export const LogoBox = styled.h1`
@@ -18,5 +18,5 @@ export const LinkBox = styled(Link)`
   gap: 8px;
   font-size: 19px;
   font-weight: 700;
-  color: #4A494F;
+  color: #4a494f;
 `;
