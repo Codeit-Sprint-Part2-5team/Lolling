@@ -4,6 +4,7 @@ export const CardFolderLayout = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   justify-content: space-between;
   width: 275px;
   height: 260px;

@@ -49,8 +49,8 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
   );
 }
 
-DropDown.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+// DropDown.propTypes = {
+//   items: PropTypes.arrayOf(PropTypes.string).isRequired,
+// };
 
 export default DropDown;
