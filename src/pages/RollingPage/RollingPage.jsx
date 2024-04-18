@@ -87,12 +87,14 @@ export default function RollingPage({ edit }) {
     navigate('/');
   };
 
+  console.log(recipient.name);
+
   return (
     <>
       <HeaderService userId={userId} />
       <S.RollingPageLayout $background={background}>
         <Inner>
-          <KakaoButton />
+          <KakaoButton name={recipient.name} id={recipient.id} />
           {edit && (
             <S.ButtonBox
               text={'삭제하기'}
