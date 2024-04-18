@@ -27,6 +27,7 @@ export default function MessagePage() {
   const [selected, setSelected] = useState('');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [textareaBody, setTextareaBody] = useState('');
+  const [profileContext, setProfileContext] = useState('img');
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
@@ -111,20 +112,39 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
-            <S.StyledToggleButton />
-            <S.ProfileImg src={selected} />
+            <S.StyledToggleButton
+              leftName={'이미지'}
+              rightName={'업로드'}
+              setContext={setProfileContext}
+              left={'img'}
+              right={'upload'}
+            />
+            <S.ProfileImgBox>
+              <S.ProfileImg src={selected} />
+            </S.ProfileImgBox>
             <S.ProfileP>자신만의 프로필 이미지를 선택하세요!</S.ProfileP>
-            <S.ProfileBox>
-              {profileImage.map((image) => (
-                <ProfileImage
-                  key={image}
-                  image={image}
-                  size={'m'}
-                  setSelected={setSelected}
-                  onChange={onChangeImageHandler}
+            {profileContext === 'img' ? (
+              <S.ProfileBox>
+                {profileImage.map((image) => (
+                  <ProfileImage
+                    key={image}
+                    image={image}
+                    size={'m'}
+                    setSelected={setSelected}
+                    onChange={onChangeImageHandler}
+                  />
+                ))}
+              </S.ProfileBox>
+            ) : (
+              <S.ProfileBox>
+                <Button
+                  text={'이미지 업로드'}
+                  variant={'secondary'}
+                  width={'100%'}
+                  size={40}
                 />
-              ))}
-            </S.ProfileBox>
+              </S.ProfileBox>
+            )}
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>

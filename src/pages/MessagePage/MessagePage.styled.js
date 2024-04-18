@@ -64,11 +64,17 @@ export const ProfileTitle = styled.h4`
 
 export const StyledToggleButton = styled(ToggleButton)`
   grid-area: Select;
+  margin-bottom: 15px;
+`;
+
+export const ProfileImgBox = styled.div`
+  grid-area: Img;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ProfileImg = styled.img`
-  grid-area: Img;
-  position: relative;
   border-radius: 50%;
   width: 80px;
   height: 80px;

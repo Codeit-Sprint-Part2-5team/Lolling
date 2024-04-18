@@ -14,6 +14,7 @@ export default function Button({
 }) {
   return (
     <S.ButtonLayout
+      type='button'
       className={className}
       $variant={variant}
       size={size}
