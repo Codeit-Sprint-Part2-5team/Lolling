@@ -14,6 +14,7 @@ import Modal from '../../components/Modal/Modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
+import KakaoButton from '../../components/KakaoButton/KakaoButton';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
@@ -91,6 +92,7 @@ export default function RollingPage({ edit }) {
       <HeaderService userId={userId} />
       <S.RollingPageLayout $background={background}>
         <Inner>
+          <KakaoButton />
           {edit && (
             <S.ButtonBox
               text={'삭제하기'}
