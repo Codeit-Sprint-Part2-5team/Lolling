@@ -6,6 +6,7 @@ import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import useAsync from '../../hooks/useAsync';
 import { createMessageRequest, getMockImageRequest } from '../../apis/api';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -110,8 +111,9 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
+            <S.StyledToggleButton />
             <S.ProfileImg src={selected} />
-            <S.ProfileP>프로필 이미지를 선택해주세요!</S.ProfileP>
+            <S.ProfileP>자신만의 프로필 이미지를 선택하세요!</S.ProfileP>
             <S.ProfileBox>
               {profileImage.map((image) => (
                 <ProfileImage

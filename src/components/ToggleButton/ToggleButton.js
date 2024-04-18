@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import * as S from './ToggleButton.styled';
 
-export default function ToggleButton({ setContext, left, right }) {
+export default function ToggleButton({
+  setContext,
+  left,
+  right,
+  leftName,
+  rightName,
+  className,
+}) {
   const [selectedToggle, setSelectedToggle] = useState('left');
 
   const handleLeftClick = () => {
@@ -15,23 +22,23 @@ export default function ToggleButton({ setContext, left, right }) {
   };
 
   return (
-    <S.ToggleButtonLayout>
+    <S.ToggleButtonLayout className={className}>
       {selectedToggle === 'left' ? (
         <S.ToggleButtonSelectedItemBox type='button' onClick={handleLeftClick}>
-          컬러
+          {leftName}
         </S.ToggleButtonSelectedItemBox>
       ) : (
         <S.ToggleButtonLabelItemBox type='button' onClick={handleLeftClick}>
-          컬러
+          {leftName}
         </S.ToggleButtonLabelItemBox>
       )}
       {selectedToggle === 'right' ? (
         <S.ToggleButtonSelectedItemBox type='button' onClick={handleRightClick}>
-          이미지
+          {rightName}
         </S.ToggleButtonSelectedItemBox>
       ) : (
         <S.ToggleButtonLabelItemBox type='button' onClick={handleRightClick}>
-          이미지
+          {rightName}
         </S.ToggleButtonLabelItemBox>
       )}
     </S.ToggleButtonLayout>

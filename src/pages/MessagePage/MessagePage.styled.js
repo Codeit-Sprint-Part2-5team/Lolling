@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
 
 export const PostPageLayout = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ export const ProfileImageContainer = styled.div`
   display: grid;
   grid-template-areas:
     'Title Title'
+    'Select Select'
     'Img P'
     'Img Box';
   grid-template-columns: 80px 1fr;
@@ -58,6 +60,10 @@ export const ProfileImageContainer = styled.div`
 
 export const ProfileTitle = styled.h4`
   grid-area: Title;
+`;
+
+export const StyledToggleButton = styled(ToggleButton)`
+  grid-area: Select;
 `;
 
 export const ProfileImg = styled.img`
