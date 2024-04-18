@@ -28,16 +28,19 @@ export const RightButton = styled(ArrowButton)`
 
 export const CardSlider = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 export const CardList = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
-  width: 1160px;
+  width: 100%;
+  max-width: 1160px;
   padding: 0px;
   gap: 20px;
-  margin-left: 20px;
+  margin: 0 auto;
   overflow-x: auto;
   scroll-behavior: smooth;
 

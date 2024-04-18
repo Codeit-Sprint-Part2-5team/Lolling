@@ -14,6 +14,10 @@ export const TextBox = styled.h4`
   margin-left: 20px;
   margin-top: 50px;
   margin-bottom: 16px;
+
+  @media (max-width: 1248px) {
+    margin-left:0px;
+  }
 `;
 
 export const ListPageLayout = styled.div``;
