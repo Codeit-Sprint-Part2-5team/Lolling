@@ -9,6 +9,7 @@ function CardSlider({ children }) {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
 
+  // 카드 너비 계산
   const calculateCardCount = () => {
     const cardListWidth = sliderRef.current.offsetWidth;
     return Math.floor((cardListWidth + gap) / (cardFolderWidth + gap));
@@ -30,7 +31,7 @@ function CardSlider({ children }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentSliderRef = sliderRef.current; 
+      const currentSliderRef = sliderRef.current;
       const { scrollLeft, scrollWidth, clientWidth } = currentSliderRef;
       setShowLeftButton(scrollLeft > 0);
       setShowRightButton(scrollLeft < scrollWidth - clientWidth);
@@ -38,9 +39,10 @@ function CardSlider({ children }) {
 
     sliderRef.current.addEventListener('scroll', handleScroll);
     return () => {
+      // eslint-disable-next-line
       sliderRef.current.removeEventListener('scroll', handleScroll);
     };
-  }, [sliderRef]); 
+  }, [sliderRef]);
 
   return (
     <S.CardSlider>
