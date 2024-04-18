@@ -1,30 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import * as S from './HeaderService.styled';
 import Inner from '../Inner/Inner';
 import ProfileList from '../ProfileList/ProfileList';
-import { getCardFolderRequest, postReactionRequest } from '../../apis/api';
+import { getCardFolderRequest } from '../../apis/api';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import arrowDownIcon from '../../assets/images/ArrowDownIcon.svg';
 import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
-import checkIcon from '../../assets/images/UrlCheckIcon.svg';
-import closeIcon from '../../assets/images/CloseIcon.svg';
 
-export default function HeaderService({ userId }) {
+export default function HeaderService() {
   const [data, setData] = useState();
   const [emojiData, setEmojiData] = useState();
-  const [isShowEmoji, setIsShowEmoji] = useState(false);
-  const [isShowEmojiPicker, setIsShowEmojiPicker] = useState(false);
-  const [isShowShareButton, setIsShowShareButton] = useState(false);
-  const location = useLocation();
-  const [isShowToast, setIsShowToast] = useState(false);
-  const [emojiLog, setEmojiLog] = useState([]);
+  const [showEmoji, setShowEmoji] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const getData = async () => {
-    const response = await getCardFolderRequest(userId);
+    const response = await getCardFolderRequest(5777); /** 주의 */
 
     if (!response) return;
 
@@ -32,7 +25,7 @@ export default function HeaderService({ userId }) {
   };
 
   const getEmojiData = async () => {
-    const response = await getReactionsRequest(userId);
+    const response = await getReactionsRequest(5788);
 
     if (!response) return;
 
@@ -42,39 +35,18 @@ export default function HeaderService({ userId }) {
   useEffect(() => {
     getData();
     getEmojiData();
-  }, [emojiLog]);
+  }, []);
 
   const showEmojiContainer = () => {
-    if (emojiData) setIsShowEmoji(!isShowEmoji);
+    if (emojiData) setShowEmoji(!showEmoji);
   };
 
-  const showEmojiPickerContainer = () => {
-    setIsShowEmojiPicker(!isShowEmojiPicker);
+  const toggleEmojiPicker = () => {
+    setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const onEmojiClick = async (emojiObject) => {
-    await postReactionRequest(userId, {
-      emoji: emojiObject.emoji,
-      type: 'increase',
-    });
-
-    setEmojiLog((prevLog) => [...prevLog, emojiObject.emoji]);
-  };
-
-  const showSharedContainer = () => {
-    setIsShowShareButton(!isShowShareButton);
-  };
-
-  const handleCopyClipBoard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setIsShowToast(true);
-      setTimeout(() => {
-        setIsShowToast(false);
-      }, 5000);
-    } catch (error) {
-      console.log(error);
-    }
+  const onEmojiClick = (emojiObject) => {
+    console.log(emojiObject);
   };
 
   return (
@@ -114,7 +86,7 @@ export default function HeaderService({ userId }) {
                     alt='이모지 보기'
                     onClick={showEmojiContainer}
                   />
-                  {isShowEmoji && (
+                  {showEmoji && (
                     <S.EmojiBoxItem>
                       {emojiData?.map((item) => (
                         <EmojiBadge
@@ -133,48 +105,13 @@ export default function HeaderService({ userId }) {
                   variant={'outline'}
                   size={36}
                   isSmileIcon={'on'}
-                  onClick={showEmojiPickerContainer}
+                  onClick={toggleEmojiPicker}
                 />
-                <S.EmojiSelectdBox>
-                  {isShowEmojiPicker && (
-                    <EmojiPicker onEmojiClick={onEmojiClick} />
-                  )}
-                </S.EmojiSelectdBox>
+                {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
                 <S.BarItemsInner></S.BarItemsInner>
-                <S.SharedButton onClick={showSharedContainer}>
+                <S.SharedButton>
                   <img src={ShareIcon} alt='공유하기' />
                 </S.SharedButton>
-                {isShowShareButton && (
-                  <S.SharedSelectContainer>
-                    <S.SharedSelectedItem>카카오톡 공유</S.SharedSelectedItem>
-                    <S.SharedSelectedItem
-                      onClick={() =>
-                        handleCopyClipBoard(
-                          `${'http://localhost:3000'}${location.pathname}`
-                        )
-                      }
-                    >
-                      URL 공유
-                    </S.SharedSelectedItem>
-                  </S.SharedSelectContainer>
-                )}
-                {isShowToast && (
-                  <S.UrlToastContainer>
-                    <S.UrlToastTextBox>
-                      <img src={checkIcon} alt='icon' />
-                      <S.UrlToastTextItem>
-                        URL이 복사 되었습니다.
-                      </S.UrlToastTextItem>
-                    </S.UrlToastTextBox>
-                    <img
-                      src={closeIcon}
-                      alt='닫기'
-                      onClick={() => {
-                        setIsShowToast(false);
-                      }}
-                    />
-                  </S.UrlToastContainer>
-                )}
               </S.EmojiButtonContainer>
             </S.EmojiContainer>
           </S.HeaderServiceContainer>

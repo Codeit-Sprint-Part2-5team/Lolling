@@ -12,13 +12,13 @@ function CardFolder({
   sort = 'latest', // 수정: 기본값으로 'latest'를 사용하여 sort prop을 추가
 }) {
   let sortedData = recentMessages; // 수정: 기본값으로 recentMessages를 사용
-
+  
   if (sort === 'like') {
     sortedData = recentMessages.sort(
       (a, b) => b.reactionCount - a.reactionCount
     );
   }
-
+  
   return (
     <S.CardFolderLayout
       $background={

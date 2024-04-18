@@ -126,3 +126,83 @@ export const SharedButton = styled.button`
     border: 1px solid var(--gray-500, #555555);
   }
 `;
+
+export const EmojiBoxItem = styled.div`
+  display: inline-flex;
+  width: 334px;
+  position: absolute;
+  top: 130px;
+  transform: translateX(-136px);
+  flex-wrap: wrap;
+  padding: 24px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: #fff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+`;
+
+export const EmojiSelectdBox = styled.div`
+  position: absolute;
+  top: 130px;
+  transform: translateX(-259px);
+`;
+
+export const SharedSelectContainer = styled.ul`
+  display: inline-flex;
+  padding: 10px 1px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300, #ccc);
+  background: var(--white, #fff);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  top: 130px;
+  transform: translateX(36px);
+`;
+
+export const SharedSelectedItem = styled.li`
+  display: flex;
+  width: 138px;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 10px;
+
+  &:hover {
+    background: var(--gray-100, #f6f6f6);
+  }
+`;
+
+export const UrlToastContainer = styled.div`
+  display: flex;
+  width: 524px;
+  height: 64px;
+  padding: 19px 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const UrlToastTextBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+`;
+
+export const UrlToastTextItem = styled.p`
+  color: var(--white, #fff);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: -0.16px;
+`;

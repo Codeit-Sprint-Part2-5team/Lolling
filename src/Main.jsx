@@ -16,8 +16,11 @@ function Main() {
           <Route path='list' element={<ListPage />} />
           <Route path='post'>
             <Route index element={<PostPage />} />
-            <Route path='id' element={<RollingPage />} />
-            <Route path='message' element={<MessagePage />} />
+            <Route path=':userId'>
+              <Route index element={<RollingPage />} />
+              <Route path='edit' element={<RollingPage edit />} />
+              <Route path='message' element={<MessagePage />} />
+            </Route>
             <Route path='apitest' element={<ApiTestPage />} />
           </Route>
         </Route>

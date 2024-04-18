@@ -47,7 +47,7 @@ export const createCardFolderRequest = async ({
 export const getCardFolderListRequest = async (limit = 8, offset = 0) => {
   const query = `limit=${limit}&offset=${offset}`;
 
-  const response = await axios.get(`${RECIPIENTS_URL}?${query}/`);
+  const response = await axios.get(`${RECIPIENTS_URL}?${query}`);
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -69,9 +69,7 @@ export const getCardFolderRequest = async (id) => {
 export const getMessageListRequest = async (id, limit = 8, offset = 0) => {
   const query = `limit=${limit}&offset=${offset}`;
 
-  const response = await axios.get(
-    `${RECIPIENTS_URL}${id}/messages/?${query}/`
-  );
+  const response = await axios.get(`${RECIPIENTS_URL}${id}/messages/?${query}`);
 
   if (response.status < 200 || response.status >= 300) {
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
@@ -81,7 +79,8 @@ export const getMessageListRequest = async (id, limit = 8, offset = 0) => {
 };
 
 export const createMessageRequest = async (body) => {
-  const { sender, relationship, content, font, recipientId } = body;
+  const { sender, relationship, content, font, recipientId, profileImageURL } =
+    body;
 
   const response = await axios({
     method: 'post',
@@ -89,7 +88,7 @@ export const createMessageRequest = async (body) => {
     data: {
       recipientId: recipientId,
       sender: sender,
-      profileImageURL: 'https://picsum.photos/id/1082/100/100',
+      profileImageURL: profileImageURL,
       relationship: relationship,
       content: content,
       font: font,
@@ -134,7 +133,7 @@ export const getReactionsRequest = async (id, limit = 8, offset = 0) => {
 
   const response = await axios({
     method: 'get',
-    url: `${RECIPIENTS_URL}${id}/reactions/?${query}/`,
+    url: `${RECIPIENTS_URL}${id}/reactions/?${query}`,
   });
 
   if (response.status < 200 || response.status >= 300) {
