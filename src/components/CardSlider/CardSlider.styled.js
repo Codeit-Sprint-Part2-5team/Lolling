@@ -8,6 +8,10 @@ export const LeftButton = styled(ArrowButton)`
   transform: translateY(-50%) rotate(180deg);
   // arrowLeftIcon이 연결되지 않아 회전시킴
   z-index: 1;
+
+  @media (max-width: 1248px) {
+    display: none;
+  }
 `;
 
 export const RightButton = styled(ArrowButton)`
@@ -16,6 +20,10 @@ export const RightButton = styled(ArrowButton)`
   right: 0;
   transform: translateY(-50%);
   z-index: 1;
+
+  @media (max-width: 1248px) {
+    display: none;
+  }
 `;
 
 export const CardSlider = styled.div`
