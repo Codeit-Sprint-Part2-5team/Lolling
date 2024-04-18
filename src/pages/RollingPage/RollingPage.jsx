@@ -88,7 +88,7 @@ export default function RollingPage({ edit }) {
 
   return (
     <>
-      <HeaderService />
+      <HeaderService userId={userId} />
       <S.RollingPageLayout $background={background}>
         <Inner>
           {edit && (
