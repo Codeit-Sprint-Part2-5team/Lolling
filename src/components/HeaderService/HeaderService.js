@@ -12,6 +12,7 @@ import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
 import checkIcon from '../../assets/images/UrlCheckIcon.svg';
 import closeIcon from '../../assets/images/CloseIcon.svg';
+import Toast from '../Toast/Toast';
 
 export default function HeaderService({ userId }) {
   const [data, setData] = useState();
@@ -158,23 +159,7 @@ export default function HeaderService({ userId }) {
                     </S.SharedSelectedItem>
                   </S.SharedSelectContainer>
                 )}
-                {isShowToast && (
-                  <S.UrlToastContainer>
-                    <S.UrlToastTextBox>
-                      <img src={checkIcon} alt='icon' />
-                      <S.UrlToastTextItem>
-                        URL이 복사 되었습니다.
-                      </S.UrlToastTextItem>
-                    </S.UrlToastTextBox>
-                    <img
-                      src={closeIcon}
-                      alt='닫기'
-                      onClick={() => {
-                        setIsShowToast(false);
-                      }}
-                    />
-                  </S.UrlToastContainer>
-                )}
+                {isShowToast && <Toast />}
               </S.EmojiButtonContainer>
             </S.EmojiContainer>
           </S.HeaderServiceContainer>
