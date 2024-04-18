@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Inner from '../../components/Inner/Inner';
 import Button from '../../components/Button/Button';
 import CardFolder from '../../components/CardFolder/CardFolder';
@@ -75,12 +76,14 @@ export default function ListPage() {
 
         {/* 나도 만들어보기 버튼 */}
         <S.ButtonContainer>
+        <Link to="/post">
           <Button
             variant={'primary'}
             text={'나도 만들어보기'}
             size={56}
             width={'280px'}
           />
+          </Link>
         </S.ButtonContainer>
       </Inner>
     </S.ListPageLayout>
