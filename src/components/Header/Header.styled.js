@@ -7,15 +7,14 @@ export const HeaderLayout = styled.header`
   height: 64px;
   border-bottom: 1px solid #ededed;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1248px) {
     display: flex;
-    width: 768px;
+    width: 100%;
     height: 64px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1px;
-    padding: 11px 24px;
   }
 `;
 
@@ -24,7 +23,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1248px) {
     display: flex;
     align-items: center;
     gap: 465px;
@@ -34,7 +33,7 @@ export const HeaderContainer = styled.div`
 export const LogoBox = styled.h1`
   width: fit-content;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1248px) {
     display: flex;
     justify-content: center;
     align-items: center;
