@@ -3,8 +3,8 @@ import ThumnailImage from '../../assets/images/share-img.png';
 
 const { Kakao } = window;
 
-export default function KakaoButton({ name }) {
-  const realUrl = 'https://5rolling.netlify.app';
+export default function KakaoButton({ name, id }) {
+  const realUrl = `https://5rolling.netlify.app/post/${id}`;
 
   useEffect(() => {
     Kakao.cleanup();
