@@ -8,6 +8,12 @@ export const HeaderLayout = styled.header`
   border-bottom: 1px solid #ededed;
 `;
 
+export const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const LogoBox = styled.h1`
   width: fit-content;
 `;
