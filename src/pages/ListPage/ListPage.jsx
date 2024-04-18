@@ -18,11 +18,13 @@ export default function ListPage() {
     const getData = async () => {
       const result = await getCardDataList(5788);
       if (result && result.data && result.data.results) {
-        setCardDataList(result.data.results);
+        setCardDataList(result.data.results.slice(0, 3));
       }
     };
     getData();
   }, [getCardDataList]);
+
+  
 
   const sortedCardDataByReaction = useMemo(() => {
     return [...cardDataList].sort((a, b) => b.reactionCount - a.reactionCount);
