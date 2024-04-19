@@ -14,6 +14,7 @@ import {
 } from '../../apis/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import ImageUploader from '../../components/ImageUploader/ImageUploader';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -60,9 +61,12 @@ export default function MessagePage() {
 
   const urlRequest = async (e) => {
     e.preventDefault();
+    setActiveBtn(true);
+    const url = await getUrl(imageFile);
+
     setMessageBody({
       ...messageBody,
-      profileImageURL: await getUrl(imageFile),
+      profileImageURL: url,
     });
     setSubmit(true);
   };
@@ -200,6 +204,11 @@ export default function MessagePage() {
             size={56}
             width={'100%'}
           />
+          {pending && (
+            <S.LoadingModalBox>
+              <LoadingModal pending={pending} />
+            </S.LoadingModalBox>
+          )}
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>
