@@ -67,14 +67,8 @@ export const StyledToggleButton = styled(ToggleButton)`
   margin-bottom: 15px;
 `;
 
-export const ProfileImgBox = styled.div`
-  grid-area: Img;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const ProfileImg = styled.img`
+  grid-area: Img;
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -89,6 +83,7 @@ export const ProfileBox = styled.div`
   grid-area: Box;
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   > img {
     cursor: pointer;

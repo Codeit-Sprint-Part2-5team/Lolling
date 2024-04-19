@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
@@ -6,10 +6,14 @@ import Input from '../../components/TextField/Input/Input';
 import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
-import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import useAsync from '../../hooks/useAsync';
-import { createMessageRequest, getMockImageRequest } from '../../apis/api';
+import {
+  createMessageRequest,
+  getMockImageRequest,
+  uploadProfileImageRequest,
+} from '../../apis/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import ImageUploader from '../../components/ImageUploader/ImageUploader';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -28,7 +32,12 @@ export default function MessagePage() {
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [textareaBody, setTextareaBody] = useState('');
   const [profileContext, setProfileContext] = useState('img');
+  const [imageFile, setImageFile] = useState();
+  const [isSubmit, setSubmit] = useState(false);
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
+  const { pending, requestFunction: getUrl } = useAsync(
+    uploadProfileImageRequest
+  );
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
   const nav = useNavigate();
@@ -49,11 +58,18 @@ export default function MessagePage() {
     setProfileImage(imageUrls);
   };
 
-  const postMessage = async (e) => {
+  const urlRequest = async (e) => {
     e.preventDefault();
+    setMessageBody({
+      ...messageBody,
+      profileImageURL: await getUrl(imageFile),
+    });
+    setSubmit(true);
+  };
+
+  const postMessage = async () => {
     const result = await postMessageRequest(messageBody);
     if (!result) return;
-
     setMessageBody(INIT_CREATE_MESSAGE);
 
     nav(`/post/${userId}`);
@@ -74,8 +90,12 @@ export default function MessagePage() {
   };
 
   useEffect(() => {
-    setSelected(profileImage[0]);
-  }, [profileImage]);
+    if (profileContext === 'upload' && imageFile) {
+      const preview = URL.createObjectURL(imageFile);
+      return setSelected(preview);
+    }
+    return setSelected(profileImage[0]);
+  }, [profileImage, profileContext]);
 
   useEffect(() => {
     setMessageBody({
@@ -89,6 +109,10 @@ export default function MessagePage() {
   }, [messageBody.sender, messageBody.content]);
 
   useEffect(() => {
+    postMessage();
+  }, [isSubmit]);
+
+  useEffect(() => {
     getImage();
     setMessageBody({
       ...messageBody,
@@ -99,7 +123,7 @@ export default function MessagePage() {
   return (
     <Inner>
       <S.PostPageLayout>
-        <S.FormContainer onSubmit={postMessage}>
+        <S.FormContainer onSubmit={urlRequest}>
           <S.FromContainer>
             <h4>From.</h4>
             <Input
@@ -119,9 +143,7 @@ export default function MessagePage() {
               left={'img'}
               right={'upload'}
             />
-            <S.ProfileImgBox>
-              <S.ProfileImg src={selected} />
-            </S.ProfileImgBox>
+            <S.ProfileImg src={selected} />
             <S.ProfileP>자신만의 프로필 이미지를 선택하세요!</S.ProfileP>
             {profileContext === 'img' ? (
               <S.ProfileBox>
@@ -137,11 +159,10 @@ export default function MessagePage() {
               </S.ProfileBox>
             ) : (
               <S.ProfileBox>
-                <Button
-                  text={'이미지 업로드'}
-                  variant={'secondary'}
-                  width={'100%'}
-                  size={40}
+                <ImageUploader
+                  setSelected={setSelected}
+                  imageFile={imageFile}
+                  setImageFile={setImageFile}
                 />
               </S.ProfileBox>
             )}
@@ -172,6 +193,7 @@ export default function MessagePage() {
             />
           </S.FontContainer>
           <Button
+            type={'submit'}
             disabled={isActiveBtn}
             variant={'primary'}
             text={'생성하기'}

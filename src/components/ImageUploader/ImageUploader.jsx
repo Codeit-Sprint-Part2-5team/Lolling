@@ -1,19 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
+import { useEffect, useRef } from 'react';
 import Button from '../Button/Button';
-import {
-  deleteProfileImageRequest,
-  uploadProfileImageRequest,
-} from '../../apis/api';
+import * as S from './ImageUploader.styled';
 
-export default function ImageUploader({ onChange, setSelected, initImage }) {
-  const [fileItem, setFileItem] = useState();
-  const [ref, setRef] = useState();
+export default function ImageUploader({
+  setSelected,
+  imageFile,
+  setImageFile,
+}) {
   const inputRef = useRef();
-  const { requestFunction: getUrl } = useAsync(uploadProfileImageRequest);
 
   const handleImageChange = (e) => {
-    setFileItem(e.target.files[0]);
+    setImageFile(e.target.files[0]);
+    const preview = URL.createObjectURL(e.target.files[0]);
+    setSelected(preview);
   };
 
   const handleClearClick = () => {
@@ -21,40 +20,33 @@ export default function ImageUploader({ onChange, setSelected, initImage }) {
     if (!inputNode) return;
 
     inputNode.value = '';
-    setFileItem(null);
+    setImageFile(null);
+    setSelected(
+      'https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png'
+    );
   };
 
-  useEffect(() => {
-    if (!fileItem) return;
-    const urlRequest = async () => {
-      const result = await getUrl(fileItem);
-      if (!result) return;
-      console.log(result);
-      onChange(result.getUrl);
-      setSelected(result.getUrl);
-      setRef(result.delete);
-    };
-    urlRequest();
-
-    return () => {
-      setSelected(initImage);
-      deleteProfileImageRequest(ref);
-    };
-  }, [fileItem]);
-
   return (
-    <div>
-      <input
-        type='file'
-        accept='image/*'
-        onChange={handleImageChange}
-        ref={inputRef}
-      />
-      {fileItem && (
-        <button type='button' onClick={handleClearClick}>
+    <>
+      <S.InputContainer>
+        <Button
+          text={'파일 선택'}
+          size={56}
+          width={'100%'}
+          variant={'outline'}
+        />
+        <S.Input
+          type='file'
+          accept='image/*'
+          onChange={handleImageChange}
+          ref={inputRef}
+        />
+      </S.InputContainer>
+      {imageFile && (
+        <S.CancelButton type='button' onClick={handleClearClick}>
           X
-        </button>
+        </S.CancelButton>
       )}
-    </div>
+    </>
   );
 }

@@ -11,10 +11,11 @@ export default function Button({
   isSmileIcon = 'off', // 웃음 아이콘 넣을지 안넣을지 지정 - on, off
   onClick,
   className,
+  type,
 }) {
   return (
     <S.ButtonLayout
-      type='button'
+      type={type}
       className={className}
       $variant={variant}
       size={size}
