@@ -24,8 +24,6 @@ export default function ListPage() {
     getData();
   }, [getCardDataList]);
 
-  
-
   const sortedCardDataByReaction = useMemo(() => {
     return [...cardDataList].sort((a, b) => b.reactionCount - a.reactionCount);
   }, [cardDataList]);
@@ -43,9 +41,8 @@ export default function ListPage() {
           <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
           <CardSlider>
             {sortedCardDataByReaction.map((card) => (
-              <Link to='/userId'>
+              <Link key={card.id} to='/userId'>
                 <CardFolder
-                  key={card.id}
                   name={card.name}
                   backgroundColor={card.backgroundColor}
                   backgroundImageURL={card.backgroundImageURL}
