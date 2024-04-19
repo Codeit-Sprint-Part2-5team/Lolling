@@ -1,8 +1,10 @@
 import * as S from './Button.styled';
+import { Link } from 'react-router-dom';
 import smileIcon from '../../assets/images/smileIcon.svg';
 import smileWhiteIcon from '../../assets/images/SmileWhiteIcon.svg';
 
 export default function Button({
+  to, // 링크 주소를 받음
   text, // 버튼 내부에 들어갈 텍스트 입력
   variant, // 버튼 색상 지정 - primary, secondery, outline
   size, // height값을 기준으로 버튼 별 크기 지정 - 56, 40, 36, 28
@@ -13,7 +15,33 @@ export default function Button({
   className,
   type,
 }) {
-  return (
+  const buttonContent = (
+    <>
+      {isSmileIcon === 'on' ? (
+        <S.SmileIconImg
+          src={disabled ? smileWhiteIcon : smileIcon}
+          alt='스마일'
+        />
+      ) : null}
+      {text}
+    </>
+  );
+
+  return to ? (
+    <Link to={to} style={{ textDecoration: 'none' }}>
+      <S.ButtonLayout
+        className={className}
+        $variant={variant}
+        size={size}
+        width={width}
+        disabled={disabled}
+        $smileicon={isSmileIcon}
+        onClick={onClick}
+      >
+        {buttonContent}
+      </S.ButtonLayout>
+    </Link>
+  ) : (
     <S.ButtonLayout
       type={type}
       className={className}
@@ -24,13 +52,7 @@ export default function Button({
       $smileicon={isSmileIcon}
       onClick={onClick}
     >
-      {isSmileIcon === 'on' ? (
-        <S.SmileIconImg
-          src={disabled ? smileWhiteIcon : smileIcon}
-          alt='스마일'
-        />
-      ) : null}
-      {text}
+      {buttonContent}
     </S.ButtonLayout>
   );
 }
