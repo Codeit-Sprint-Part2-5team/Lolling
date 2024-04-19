@@ -70,9 +70,17 @@ const rotate = keyframes`
   }
 `;
 
+export const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+  color: var(--purple-800);
+`;
+
 export const LoadingBox = styled.img`
   display: block;
-  width: 50px;
-  margin: 50px auto 0;
-  animation: ${rotate} 2s infinite linear;
+  width: 20px;
+  animation: ${rotate} 3s infinite linear;
 `;

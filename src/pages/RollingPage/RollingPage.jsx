@@ -123,7 +123,11 @@ export default function RollingPage({ edit }) {
               </li>
             ))}
           </S.CardContainer>
-          {!noMoreData && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
+          {!noMoreData && (
+            <S.LoadingContainer>
+              <S.LoadingBox src={LoadingIcon} alt='로딩' />
+            </S.LoadingContainer>
+          )}
           {modal && (
             <S.ModalContainer>
               <Modal
