@@ -28,7 +28,7 @@ export default function RollingPage({ edit }) {
   const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
   const navigate = useNavigate();
-  const [dataLimit, setDataLimit] = useState(8);
+  const [dataLimit, setDataLimit] = useState(edit ? 9 : 8);
   const [setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
   const [messageCount, setMessageCount] = useState();
 
@@ -39,10 +39,6 @@ export default function RollingPage({ edit }) {
     getMessageData(dataLimit);
     setIsFetching(false);
   }
-
-  useEffect(() => {
-    updateFunctionOnScroll();
-  }, []);
 
   const getMessageData = async (limit) => {
     const result = await getMessageList(userId, limit);
@@ -70,7 +66,8 @@ export default function RollingPage({ edit }) {
   };
 
   useEffect(() => {
-    getMessageData();
+    updateFunctionOnScroll();
+    getMessageData(edit ? 9 : 8);
     getRecipientsData();
   }, []);
 
