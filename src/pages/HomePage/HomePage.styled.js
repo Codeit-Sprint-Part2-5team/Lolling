@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as CardImageSvg } from '../../assets/images/Card.svg';
+import { ReactComponent as CardImageSvg } from '../../assets/images/card.svg';
 import Button from '../../components/Button/Button';
 
 export const HomePageLayout = styled.div`
@@ -15,6 +15,10 @@ export const HomePageLayout = styled.div`
     justify-content: center;
     align-items: center;
     gap: 49px;
+
+    @media (max-width: 768px) {
+      gap: 0;
+    }
   }
 `;
 
@@ -30,6 +34,11 @@ export const MainContainer = styled.div`
     width: 100%;
     height: 910px;
     padding-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
+    gap: 24px;
   }
 `;
 
@@ -55,6 +64,15 @@ export const FirstContainer = styled.div`
     padding: 40px;
     margin-top: 0;
   }
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    height: 352px;
+    padding: 24px 0px 62.278px 0px;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const FirstContentContainer = styled.div`
@@ -66,6 +84,16 @@ export const FirstContentContainer = styled.div`
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 57px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 24px 24px 0 24px;
   }
 `;
 
@@ -85,6 +113,16 @@ export const PointBox = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    padding: 4px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
   }
 `;
 
@@ -106,6 +144,16 @@ export const PointContentBox = styled.p`
     line-height: 20px;
     letter-spacing: -0.07px;
   }
+
+  @media (max-width: 768px) {
+    color: var(--white, #fff);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.07px;
+  }
 `;
 
 export const Content1 = styled.p`
@@ -117,7 +165,7 @@ export const Content1 = styled.p`
   line-height: 36px;
   letter-spacing: -0.24px;
   margin-top: 16px;
-  white-space: nowrap;
+  white-space: normal;
 
   @media (max-width: 1248px) {
     color: var(--gray-900, #181818);
@@ -128,13 +176,26 @@ export const Content1 = styled.p`
     line-height: 36px;
     letter-spacing: -0.24px;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    color: var(--gray-900, #181818);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.18px;
+    white-space: normal;
+  }
 `;
 
 export const BrBox = styled.div`
   display: block;
 
   @media (max-width: 1248px) {
-    display: none;
+    display: inline-block;
+    margin-right: 8px;
   }
 `;
 
@@ -157,6 +218,18 @@ export const Content2 = styled.p`
     line-height: 28px;
     letter-spacing: -0.18px;
   }
+
+  @media (max-width: 768px) {
+    color: var(--gray-500, #555);
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.15px;
+    white-space: normal;
+    width: 100%;
+  }
 `;
 
 export const CardImageBox = styled(CardImageSvg)`
@@ -173,6 +246,12 @@ export const CardImageBox = styled(CardImageSvg)`
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 204px;
+    padding: 0;
   }
 `;
 
@@ -193,6 +272,14 @@ export const SecondContainer = styled.div`
     gap: 0;
     padding: 0;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 362px;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+  }
 `;
 
 export const GroupImageBox = styled.img`
@@ -203,6 +290,14 @@ export const GroupImageBox = styled.img`
   @media (max-width: 1248px) {
     width: 470px;
     margin: 36px 125px 40px 125px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260.343px;
+    margin: 0 29.83px 0 29.83px;
   }
 `;
 
@@ -227,11 +322,26 @@ export const SecondContentContainer = styled.div`
     align-items: flex-start;
     padding: 40px 315px 0 40px;
   }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding: 24px 24px 0 24px;
+  }
 `;
 
 export const ButtonBox = styled(Button)`
   @media (max-width: 1248px) {
     width: 720px;
+    height: 56px;
+  }
+
+  @media (max-width: 768px) {
+    width: 320px;
     height: 56px;
   }
 `;
