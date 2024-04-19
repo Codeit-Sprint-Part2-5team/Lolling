@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
   min-height: calc(100vh - 146px);
-  padding: 113px 0 246px;
+  padding: 113px 0;
   ${({ $background }) => {
     if ($background.includes('http')) {
       return `
@@ -56,4 +56,23 @@ export const ModalContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
+`;
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingBox = styled.img`
+  display: block;
+  width: 50px;
+  margin: 50px auto 0;
+  animation: ${rotate} 2s infinite linear;
 `;

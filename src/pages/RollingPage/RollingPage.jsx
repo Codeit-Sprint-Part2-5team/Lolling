@@ -15,6 +15,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import KakaoButton from '../../components/KakaoButton/KakaoButton';
+import LoadingIcon from '../../assets/images/loadingIcon.png';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
@@ -31,9 +32,9 @@ export default function RollingPage({ edit }) {
   const [dataLimit, setDataLimit] = useState(edit ? 9 : 8);
   const [setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
   const [messageCount, setMessageCount] = useState();
+  const noMoreData = messageCount && dataLimit - 9 > messageCount;
 
   function updateFunctionOnScroll() {
-    const noMoreData = messageCount && dataLimit - 9 > messageCount;
     if (noMoreData) return;
     setDataLimit((prev) => prev + 9);
     getMessageData(dataLimit);
@@ -122,6 +123,7 @@ export default function RollingPage({ edit }) {
               </li>
             ))}
           </S.CardContainer>
+          {!noMoreData && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
           {modal && (
             <S.ModalContainer>
               <Modal
