@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from '../Button/Button';
 
 export const HeaderLayout = styled.header`
   display: flex;
@@ -80,5 +81,12 @@ export const LinkBox = styled(Link)`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+`;
+
+export const ButtonBox = styled(Button)`
+  @media (max-width: 768px) {
+    width: 142px;
+    font-size: 14px;
   }
 `;

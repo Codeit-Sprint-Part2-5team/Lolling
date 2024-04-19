@@ -33,7 +33,7 @@ export default function Header() {
           </S.LogoBox>
           {isShowRollingButton && (
             <Link to="/post">
-              <Button
+              <S.ButtonBox
                 text={'롤링 페이퍼 만들기'}
                 variant={'outline'}
                 size={40}

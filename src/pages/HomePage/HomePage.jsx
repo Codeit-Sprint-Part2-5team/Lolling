@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Inner from '../../components/Inner/Inner';
 import * as S from './HomePage.styled';
-import Button from '../../components/Button/Button';
 import GroupImg from '../../assets/images/Group.png';
 
 export default function HomePage() {
