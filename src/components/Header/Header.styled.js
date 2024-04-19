@@ -22,7 +22,6 @@ export const HeaderLayout = styled.header`
     height: 64px;
     flex-shrink: 0;
     display: inline-flex;
-    padding: 12px 20px;
     align-items: center;
     gap: 500px;
   }

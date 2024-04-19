@@ -266,7 +266,6 @@ export const SecondContainer = styled.div`
 
   @media (max-width: 1248px) {
     width: 100%;
-    height: 440px;
     display: flex;
     flex-direction: column-reverse;
     gap: 0;
@@ -275,9 +274,8 @@ export const SecondContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 362px;
     padding: 0;
-    margin: 0;
+    margin-bottom: 31px;
     gap: 0;
   }
 `;
@@ -289,15 +287,16 @@ export const GroupImageBox = styled.img`
 
   @media (max-width: 1248px) {
     width: 470px;
-    margin: 36px 125px 40px 125px;
+    margin: 0 auto;
+    margin-bottom: 40px;
   }
 
   @media (max-width: 768px) {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 260.343px;
-    margin: 0 29.83px 0 29.83px;
+    width: 100%;
+    margin-bottom: 51px;
   }
 `;
 
@@ -321,6 +320,7 @@ export const SecondContentContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 40px 315px 0 40px;
+    margin-bottom: 36px;
   }
 
   @media (max-width: 768px) {
@@ -328,20 +328,19 @@ export const SecondContentContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    padding: 24px 24px 0 24px;
+    margin-bottom: 48px;
+    padding: 0 0 0 24px;
   }
 `;
 
 export const ButtonBox = styled(Button)`
   @media (max-width: 1248px) {
-    width: 720px;
+    width: 100%;
     height: 56px;
   }
 
   @media (max-width: 768px) {
-    width: 320px;
+    width: 100%;
     height: 56px;
   }
 `;
