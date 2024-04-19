@@ -10,8 +10,6 @@ import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
-import checkIcon from '../../assets/images/UrlCheckIcon.svg';
-import closeIcon from '../../assets/images/CloseIcon.svg';
 import Toast from '../Toast/Toast';
 
 export default function HeaderService({ userId }) {
@@ -159,7 +157,11 @@ export default function HeaderService({ userId }) {
                     </S.SharedSelectedItem>
                   </S.SharedSelectContainer>
                 )}
-                {isShowToast && <Toast />}
+                {isShowToast && (
+                  <S.UrlToastContainer>
+                    <Toast />
+                  </S.UrlToastContainer>
+                )}
               </S.EmojiButtonContainer>
             </S.EmojiContainer>
           </S.HeaderServiceContainer>

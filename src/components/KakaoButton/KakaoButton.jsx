@@ -21,6 +21,7 @@ export default function KakaoButton({ name, id }) {
         imageUrl: ThumnailImage,
         link: {
           mobileWebUrl: realUrl,
+          webUrl: realUrl,
         },
       },
       buttons: [
@@ -28,6 +29,7 @@ export default function KakaoButton({ name, id }) {
           title: '롤링페이퍼 확인하기',
           link: {
             mobileWebUrl: realUrl,
+            webUrl: realUrl,
           },
         },
       ],

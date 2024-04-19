@@ -131,7 +131,7 @@ export const EmojiBoxItem = styled.div`
   display: inline-flex;
   width: 334px;
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(-136px);
   flex-wrap: wrap;
   padding: 24px;
@@ -146,7 +146,7 @@ export const EmojiBoxItem = styled.div`
 
 export const EmojiSelectdBox = styled.div`
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(-259px);
 `;
 
@@ -160,7 +160,7 @@ export const SharedSelectContainer = styled.ul`
   background: var(--white, #fff);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(36px);
 `;
 
@@ -177,32 +177,8 @@ export const SharedSelectedItem = styled.li`
 `;
 
 export const UrlToastContainer = styled.div`
-  display: flex;
-  width: 524px;
-  height: 64px;
-  padding: 19px 30px;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
-`;
-
-export const UrlToastTextBox = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-`;
-
-export const UrlToastTextItem = styled.p`
-  color: var(--white, #fff);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
 `;
