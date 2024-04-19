@@ -8,6 +8,8 @@ import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/TextField/Input/Input';
+import AddButton from '../../components/AddButton/AddButton';
+import ImageUploader from '../../components/ImageUploader/ImageUploader';
 
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
@@ -108,7 +110,7 @@ export default function PostPage() {
               right={BACKGROUND_IMAGES}
             />
           </S.SelectingContainer>
-          <S.BackgroundContainer>
+          <S.BackgroundContainer $contextSelected={contextSelected}>
             {contextSelected.map((item) => (
               <ColorOption
                 key={item}
@@ -117,6 +119,10 @@ export default function PostPage() {
                 setSelected={setSelected}
               />
             ))}
+            <S.UploadImageBox>
+              <AddButton />
+              {/* <ImageUploader /> */}
+            </S.UploadImageBox>
           </S.BackgroundContainer>
           <Button
             text={'생성하기'}
