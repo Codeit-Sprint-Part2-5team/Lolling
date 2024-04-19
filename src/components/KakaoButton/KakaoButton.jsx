@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import ThumnailImage from '../../assets/images/share-img.png';
 
 const { Kakao } = window;
 
 export default function KakaoButton({ name, id }) {
   const realUrl = `https://5rolling.netlify.app/post/${id}`;
+  const thumnailImage = require('../../assets/images/share-img.png');
 
   useEffect(() => {
     Kakao.cleanup();
@@ -18,7 +18,7 @@ export default function KakaoButton({ name, id }) {
       content: {
         title: 'Rolling',
         description: `${name}님의 롤링페이퍼입니다`,
-        imageUrl: ThumnailImage,
+        imageUrl: thumnailImage,
         link: {
           mobileWebUrl: realUrl,
           webUrl: realUrl,
