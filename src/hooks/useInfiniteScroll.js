@@ -27,5 +27,5 @@ export default function useInfiniteScroll(fetchCallback) {
     fetchCallback();
   }, [isFetching]);
 
-  return [isFetching, setIsFetching];
+  return [setIsFetching];
 }

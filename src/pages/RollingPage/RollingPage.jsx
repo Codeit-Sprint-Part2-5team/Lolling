@@ -29,7 +29,7 @@ export default function RollingPage({ edit }) {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [dataLimit, setDataLimit] = useState(8);
-  const [isFetching, setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
+  const [setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
   const [messageCount, setMessageCount] = useState();
 
   function updateFunctionOnScroll() {
