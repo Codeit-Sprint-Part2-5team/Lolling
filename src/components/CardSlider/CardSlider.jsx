@@ -9,7 +9,6 @@ function CardSlider({ children }) {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
 
-  // 카드 너비 계산
   const calculateCardCount = () => {
     const cardListWidth = sliderRef.current.offsetWidth;
     return Math.floor((cardListWidth + gap) / (cardFolderWidth + gap));
@@ -42,7 +41,15 @@ function CardSlider({ children }) {
       // eslint-disable-next-line
       sliderRef.current.removeEventListener('scroll', handleScroll);
     };
-  }, [sliderRef]);
+  }, []);
+
+  useEffect(() => {
+    if (sliderRef.current && children.length * (cardFolderWidth + gap) > sliderRef.current.offsetWidth) {
+      setShowRightButton(true);
+    } else {
+      setShowRightButton(false);
+    }
+  }, [children, cardFolderWidth, gap]);
 
   return (
     <S.CardSlider>
