@@ -37,6 +37,8 @@ export default function PostPage() {
   };
 
   const onChangeBackgroundHandler = (value) => {
+    /** 이미지를 선택해도 백엔드에선 컬러값을 4가지중 하나를 무조건 받아야 함.
+     * backgroundColor만 null값을 허용안함 */
     if (value.includes('http')) {
       return setRollPaperBody({
         ...rollPaperBody,
