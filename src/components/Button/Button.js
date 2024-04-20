@@ -26,7 +26,7 @@ export default function Button({
           <S.SmileText>{text}</S.SmileText>
         </>
       ) : (
-        { text }
+        <>{text}</>
       )}
     </>
   );

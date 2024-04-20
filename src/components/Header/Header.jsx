@@ -10,8 +10,6 @@ export default function Header() {
   const [isShowRollingButton, setIsShowRollingButton] = useState(false);
   const [isUnvisibleOnMobile, setisUnvisibleOnMobile] = useState(false);
 
-  // console.log(params);
-
   useEffect(() => {
     switch (pathname) {
       case '/':
