@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { storage } from '../apis/firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  getStorage,
+  listAll,
+} from 'firebase/storage';
 
 const API_URL = `https://rolling-api.vercel.app/`;
 const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
@@ -15,14 +21,14 @@ export const getMockImageRequest = async () => {
   return response;
 };
 
-export const getBackgroundImageRequest = async () => {
-  const response = await axios.get(`${API_URL}background-images/`);
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error('배경 이미지 가져오기 실패');
-  }
+// export const getBackgroundImageRequest = async () => {
+//   const response = await axios.get(`${API_URL}background-images/`);
+//   if (response.status < 200 || response.status >= 300) {
+//     throw new Error('배경 이미지 가져오기 실패');
+//   }
 
-  return response;
-};
+//   return response;
+// };
 
 export const createCardFolderRequest = async ({
   name,
@@ -179,4 +185,22 @@ export const uploadBackgroundImageRequest = async (imageFile) => {
   }
 
   return getDownloadURL(ref(storage, `background/${imageFile.name}`));
+};
+
+export const getBackgroundImageRequest = async () => {
+  const storageRef = ref(storage, 'background/');
+  const response = await listAll(storageRef);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('배경 이미지 가져오기 실패');
+  }
+
+  const downloadUrlList = await Promise.all(
+    response.items.map((item) => {
+      const url = getDownloadURL(item);
+      return url;
+    })
+  );
+
+  return downloadUrlList;
 };
