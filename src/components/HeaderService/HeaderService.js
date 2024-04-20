@@ -120,6 +120,7 @@ export default function HeaderService({ userId }) {
         !emojiPickerRef.current.contains(event.target)
       ) {
         setIsShowEmojiPicker(false);
+        console.log(isShowEmojiPicker);
       }
 
       if (
@@ -195,19 +196,15 @@ export default function HeaderService({ userId }) {
               </S.EmojiBadgeContainer>
               <S.EmojiButtonContainer>
                 <Button
-                  ref={emojiPickerRef}
                   text={'추가'}
                   variant={'outline'}
                   size={36}
                   isSmileIcon={'on'}
                   onClick={showEmojiPickerContainer}
                 />
-                <S.EmojiSelectdBox>
+                <S.EmojiSelectdBox ref={emojiPickerRef}>
                   {isShowEmojiPicker && (
-                    <EmojiPicker
-                      ref={emojiPickerRef}
-                      onEmojiClick={onEmojiClick}
-                    />
+                    <EmojiPicker onEmojiClick={onEmojiClick} />
                   )}
                 </S.EmojiSelectdBox>
                 <S.BarItemsInner></S.BarItemsInner>
@@ -233,7 +230,7 @@ export default function HeaderService({ userId }) {
                 )}
                 {isShowToast && (
                   <S.UrlToastContainer>
-                    <Toast />
+                    <Toast callback={() => setIsShowToast(false)} />
                   </S.UrlToastContainer>
                 )}
               </S.EmojiButtonContainer>
