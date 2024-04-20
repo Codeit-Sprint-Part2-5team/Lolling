@@ -32,6 +32,23 @@ export const ButtonBox = styled(Button)`
   }
 `;
 
+export const DeleteModalBox = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: #fff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  font-size: 18px;
+  color: var(--gray-600, #4a4a4a);
+`;
+
 export const CardContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
