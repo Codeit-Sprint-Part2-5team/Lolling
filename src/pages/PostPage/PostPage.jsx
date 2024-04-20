@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import { createCardFolderRequest } from '../../apis/api';
+import {
+  createCardFolderRequest,
+  uploadBackgroundImageRequest,
+} from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -25,15 +28,25 @@ export default function PostPage() {
   const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
-  const [imageFile, setImageFile] = useState();
+  const [imageFile, setImageFile] = useState(null);
   const nav = useNavigate();
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
+  const { requestFunction: uploadRequest } = useAsync(
+    uploadBackgroundImageRequest
+  );
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
       ...rollPaperBody,
       [e.target['name']]: e.target.value,
     });
+  };
+
+  const urlRequest = async () => {
+    const url = await uploadRequest(imageFile);
+    if (!url) return;
+
+    setBACKGROUND_IMAGES([...BACKGROUND_IMAGES, url]);
   };
 
   const onChangeBackgroundHandler = (value) => {
@@ -65,6 +78,11 @@ export default function PostPage() {
     } = result;
     nav(`/post/${id}`);
   };
+
+  useEffect(() => {
+    if (!imageFile) return;
+    urlRequest();
+  }, [imageFile]);
 
   useEffect(() => {
     if (rollPaperBody.name === '') {
@@ -103,11 +121,9 @@ export default function PostPage() {
             <ToggleButton
               leftName={'컬러'}
               rightName={'이미지'}
-              thirdName={'업로드'}
               setContext={setContextSelected}
               left={BACKGROUND_COLORS}
               right={BACKGROUND_IMAGES}
-              third={imageFile}
             />
           </S.SelectingContainer>
           <S.BackgroundContainer>
