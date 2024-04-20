@@ -25,7 +25,7 @@ const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 export default function PostPage() {
   const [backgroundImages, setBackgroundImages] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [contextSelected, setContextSelected] = useState(backgroundImages);
+  const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [imageFile, setImageFile] = useState(null);
@@ -93,6 +93,13 @@ export default function PostPage() {
     if (!imageFile) return;
     uploadRequest();
   }, [imageFile]);
+
+  // useEffect(() => {
+  //   if (contextSelected === backgroundImages) {
+  //     return setContextSelected(backgroundImages);
+  //   }
+  //   return setContextSelected(BACKGROUND_COLORS);
+  // }, [backgroundImages]);
 
   useEffect(() => {
     if (rollPaperBody.name === '') {
