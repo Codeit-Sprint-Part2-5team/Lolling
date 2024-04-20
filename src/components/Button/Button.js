@@ -18,12 +18,16 @@ export default function Button({
   const buttonContent = (
     <>
       {isSmileIcon === 'on' ? (
-        <S.SmileIconImg
-          src={disabled ? smileWhiteIcon : smileIcon}
-          alt='스마일'
-        />
-      ) : null}
-      {text}
+        <>
+          <S.SmileIconImg
+            src={disabled ? smileWhiteIcon : smileIcon}
+            alt='스마일'
+          />
+          <S.SmileText>{text}</S.SmileText>
+        </>
+      ) : (
+        { text }
+      )}
     </>
   );
 

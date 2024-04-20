@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './HeaderService.styled';
-import Inner from '../Inner/Inner';
 import ProfileList from '../ProfileList/ProfileList';
 import { getCardFolderRequest, postReactionRequest } from '../../apis/api';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import arrowDownIcon from '../../assets/images/ArrowDownIcon.svg';
-import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
@@ -161,7 +159,7 @@ export default function HeaderService({ userId }) {
                 </S.EmojiListButton>
               </S.EmojiBadgeContainer>
               <S.EmojiButtonContainer>
-                <Button
+                <S.EmojiButtonBox
                   text={'추가'}
                   variant={'outline'}
                   size={36}

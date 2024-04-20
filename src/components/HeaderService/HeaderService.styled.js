@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Inner from '../Inner/Inner';
+import Button from '../Button/Button';
 
 export const HeaderServiceLayout = styled.div`
   display: flex;
@@ -116,6 +117,13 @@ export const EmojiButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 13px;
+  position: relative;
+`;
+
+export const EmojiButtonBox = styled(Button)`
+  @media (max-width: 768px) {
+    padding: 8px 6px;
+  }
 `;
 
 export const EmojiTopThree = styled.div`
@@ -165,13 +173,17 @@ export const SharedButton = styled.button`
     background: var(--white-color, #ffffff);
     border: 1px solid var(--gray-500, #555555);
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 6px;
+  }
 `;
 
 export const EmojiBoxItem = styled.div`
   display: inline-flex;
   width: 334px;
   position: absolute;
-  top: 70px;
+  top: 43px;
   transform: translateX(-136px);
   flex-wrap: wrap;
   padding: 24px;
@@ -183,11 +195,16 @@ export const EmojiBoxItem = styled.div`
   background: #fff;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   z-index: 2;
+
+  @media (max-width: 768px) {
+    left: 0;
+    transform: none;
+  }
 `;
 
 export const EmojiSelectdBox = styled.div`
   position: absolute;
-  top: 70px;
+  top: 43px;
   transform: translateX(-259px);
   z-index: 2;
 `;
@@ -202,8 +219,8 @@ export const SharedSelectContainer = styled.ul`
   background: var(--white, #fff);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   position: absolute;
-  top: 70px;
-  transform: translateX(36px);
+  top: 43px;
+  right: 0;
   z-index: 2;
 `;
 
