@@ -10,7 +10,6 @@ export default function KakaoButton({ name, id }) {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init('078e480e2602fab08071f90f6fc7425a');
-    console.log(Kakao); // 잘 작동하면 true
   }, []);
 
   const shareKakao = () => {
