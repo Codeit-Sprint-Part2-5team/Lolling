@@ -32,19 +32,16 @@ export default function Button({
   );
 
   return to ? (
-    <Link to={to} style={{ textDecoration: 'none' }}>
-      <S.ButtonLayout
-        className={className}
-        $variant={variant}
-        size={size}
-        width={width}
-        disabled={disabled}
-        $smileicon={isSmileIcon}
-        onClick={onClick}
-      >
-        {buttonContent}
-      </S.ButtonLayout>
-    </Link>
+    <S.ButtonLayout
+      className={className}
+      $variant={variant}
+      size={size}
+      width={width}
+      disabled={disabled}
+      $smileicon={isSmileIcon}
+    >
+      <Link to={to}>{buttonContent}</Link>
+    </S.ButtonLayout>
   ) : (
     <S.ButtonLayout
       type={type}

@@ -10,15 +10,15 @@ export const HomePageLayout = styled.div`
   @media (max-width: 1248px) {
     display: flex;
     width: 100%;
-    height: 1175px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 49px;
-
-    @media (max-width: 768px) {
-      gap: 0;
-    }
+    padding: 49px 0 24px;
+  }
+  @media (max-width: 768px) {
+    gap: 0;
+    padding: 42px 0 24px;
   }
 `;
 
@@ -32,7 +32,6 @@ export const MainContainer = styled.div`
   @media (max-width: 1248px) {
     align-items: flex-start;
     width: 100%;
-    height: 910px;
     padding-bottom: 24px;
   }
 

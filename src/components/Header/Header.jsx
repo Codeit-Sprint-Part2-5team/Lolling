@@ -36,14 +36,13 @@ export default function Header() {
             </S.LinkBox>
           </S.LogoBox>
           {isShowRollingButton && (
-            <Link to='/post'>
-              <S.ButtonBox
-                text={'롤링 페이퍼 만들기'}
-                variant={'outline'}
-                size={40}
-                width={'157px'}
-              />
-            </Link>
+            <S.ButtonBox
+              to='/post'
+              text={'롤링 페이퍼 만들기'}
+              variant={'outline'}
+              size={40}
+              width={'157px'}
+            />
           )}
         </S.HeaderContainer>
       </Inner>
