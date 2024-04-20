@@ -21,14 +21,23 @@ export const getMockImageRequest = async () => {
   return response;
 };
 
-// export const getBackgroundImageRequest = async () => {
-//   const response = await axios.get(`${API_URL}background-images/`);
-//   if (response.status < 200 || response.status >= 300) {
-//     throw new Error('배경 이미지 가져오기 실패');
-//   }
+export const getBackgroundImageRequest = async () => {
+  const storageRef = ref(storage, 'background/');
+  const response = await listAll(storageRef);
 
-//   return response;
-// };
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('배경 이미지 가져오기 실패');
+  }
+
+  const downloadUrlList = await Promise.all(
+    response.items.map(async (item) => {
+      const url = await getDownloadURL(item);
+      return url;
+    })
+  );
+
+  return downloadUrlList;
+};
 
 export const createCardFolderRequest = async ({
   name,
@@ -185,22 +194,4 @@ export const uploadBackgroundImageRequest = async (imageFile) => {
   }
 
   return getDownloadURL(ref(storage, `background/${imageFile.name}`));
-};
-
-export const getBackgroundImageRequest = async () => {
-  const storageRef = ref(storage, 'background/');
-  const response = await listAll(storageRef);
-
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error('배경 이미지 가져오기 실패');
-  }
-
-  const downloadUrlList = await Promise.all(
-    response.items.map(async (item) => {
-      const url = await getDownloadURL(item);
-      return url;
-    })
-  );
-
-  return downloadUrlList;
 };
