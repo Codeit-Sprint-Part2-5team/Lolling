@@ -11,8 +11,7 @@ import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
 import Toast from '../Toast/Toast';
-
-const { Kakao } = window;
+import KakaoButton from '../KakaoButton/KakaoButton';
 
 export default function HeaderService({ userId }) {
   const [data, setData] = useState();
@@ -23,8 +22,6 @@ export default function HeaderService({ userId }) {
   const [isShowToast, setIsShowToast] = useState(false);
   const location = useLocation();
   const [emojiLog, setEmojiLog] = useState([]);
-  const realUrl = `https://5rolling.netlify.app/post/${userId}`;
-  const thumnailImage = require('../../assets/images/share-img.png');
   const emojiPickerRef = useRef(null);
   const emojiButtonRef = useRef(null);
   const shareButtonRef = useRef(null);
@@ -84,43 +81,12 @@ export default function HeaderService({ userId }) {
   };
 
   useEffect(() => {
-    Kakao.cleanup();
-    Kakao.init('078e480e2602fab08071f90f6fc7425a');
-    console.log(Kakao); // 잘 작동하면 true
-  }, []);
-
-  const shareKakao = () => {
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: 'Rolling',
-        description: `${data.data.name}님의 롤링페이퍼입니다`,
-        imageUrl: thumnailImage,
-        link: {
-          mobileWebUrl: realUrl,
-          webUrl: realUrl,
-        },
-      },
-      buttons: [
-        {
-          title: '롤링페이퍼 확인하기',
-          link: {
-            mobileWebUrl: realUrl,
-            webUrl: realUrl,
-          },
-        },
-      ],
-    });
-  };
-
-  useEffect(() => {
     function handleClickOutside(event) {
       if (
         emojiPickerRef.current &&
         !emojiPickerRef.current.contains(event.target)
       ) {
         setIsShowEmojiPicker(false);
-        console.log(isShowEmojiPicker);
       }
 
       if (
@@ -213,8 +179,8 @@ export default function HeaderService({ userId }) {
                 </S.SharedButton>
                 {isShowShareButton && (
                   <S.SharedSelectContainer>
-                    <S.SharedSelectedItem onClick={shareKakao}>
-                      카카오톡 공유
+                    <S.SharedSelectedItem>
+                      <KakaoButton name={data.data.name} id={userId} />
                     </S.SharedSelectedItem>
                     <S.SharedSelectedItem
                       ref={shareButtonRef}
