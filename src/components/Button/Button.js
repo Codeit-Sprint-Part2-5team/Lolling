@@ -13,6 +13,7 @@ export default function Button({
   isSmileIcon = 'off', // 웃음 아이콘 넣을지 안넣을지 지정 - on, off
   onClick,
   className,
+  type,
 }) {
   const buttonContent = (
     <>
@@ -42,6 +43,7 @@ export default function Button({
     </Link>
   ) : (
     <S.ButtonLayout
+      type={type}
       className={className}
       $variant={variant}
       size={size}

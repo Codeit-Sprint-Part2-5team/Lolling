@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { storage } from '../apis/firebase';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const API_URL = `https://rolling-api.vercel.app/`;
 const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
@@ -155,4 +157,15 @@ export const postReactionRequest = async (id, changeType) => {
   }
 
   return response;
+};
+
+export const uploadProfileImageRequest = async (imageFile) => {
+  const storageRef = ref(storage, `images/${imageFile.name}`);
+  const response = await uploadBytes(storageRef, imageFile);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('프로필 이미지 업로드 실패');
+  }
+
+  return getDownloadURL(ref(storage, `images/${imageFile.name}`));
 };
