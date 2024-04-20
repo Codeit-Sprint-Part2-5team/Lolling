@@ -5,4 +5,8 @@ export const InnerLayout = styled.div`
   max-width: 1200px;
   width: calc(100% - 48px);
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 40px);
+  }
 `;

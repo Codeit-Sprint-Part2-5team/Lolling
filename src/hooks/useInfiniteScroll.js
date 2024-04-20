@@ -8,7 +8,7 @@ export default function useInfiniteScroll(fetchCallback) {
 
   const handleScrollThrottle = throttle(() => {
     const isScrollOver =
-      window.innerHeight + document.documentElement.scrollTop + 20 >=
+      window.innerHeight + document.documentElement.scrollTop + 50 >=
       document.documentElement.offsetHeight;
     if (isScrollOver) {
       setIsFetching(true);
@@ -27,5 +27,5 @@ export default function useInfiniteScroll(fetchCallback) {
     fetchCallback();
   }, [isFetching]);
 
-  return [isFetching, setIsFetching];
+  return [setIsFetching];
 }
