@@ -169,3 +169,14 @@ export const uploadProfileImageRequest = async (imageFile) => {
 
   return getDownloadURL(ref(storage, `images/${imageFile.name}`));
 };
+
+export const uploadBackgroundImageRequest = async (imageFile) => {
+  const storageRef = ref(storage, `background/${imageFile.name}`);
+  const response = await uploadBytes(storageRef, imageFile);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('프로필 이미지 업로드 실패');
+  }
+
+  return getDownloadURL(ref(storage, `background/${imageFile.name}`));
+};

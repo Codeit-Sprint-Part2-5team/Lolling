@@ -106,9 +106,11 @@ export default function PostPage() {
             <ToggleButton
               leftName={'컬러'}
               rightName={'이미지'}
+              thirdName={'업로드'}
               setContext={setContextSelected}
               left={BACKGROUND_COLORS}
               right={BACKGROUND_IMAGES}
+              third={imageFile}
             />
           </S.SelectingContainer>
           <S.BackgroundContainer>
