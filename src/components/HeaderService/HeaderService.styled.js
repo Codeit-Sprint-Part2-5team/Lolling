@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import EmojiBadge from '../EmojiBadge/EmojiBadge';
 
 export const HeaderServiceLayout = styled.div`
   display: flex;
@@ -17,18 +16,30 @@ export const HeaderServiceTitleBox = styled.h1`
   font-weight: 700;
   line-height: 42px;
   letter-spacing: -0.28px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const HeaderServiceContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 28px;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 `;
 
 export const HeaderServiceDataContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
+
+  @media (max-width: 1248px) {
+    display: none;
+  }
 `;
 
 export const HeaderServiceInnerImg = styled.div`
@@ -131,7 +142,7 @@ export const EmojiBoxItem = styled.div`
   display: inline-flex;
   width: 334px;
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(-136px);
   flex-wrap: wrap;
   padding: 24px;
@@ -142,12 +153,14 @@ export const EmojiBoxItem = styled.div`
   border: 1px solid #b6b6b6;
   background: #fff;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  z-index: 2;
 `;
 
 export const EmojiSelectdBox = styled.div`
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(-259px);
+  z-index: 2;
 `;
 
 export const SharedSelectContainer = styled.ul`
@@ -160,8 +173,9 @@ export const SharedSelectContainer = styled.ul`
   background: var(--white, #fff);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   position: absolute;
-  top: 130px;
+  top: 70px;
   transform: translateX(36px);
+  z-index: 2;
 `;
 
 export const SharedSelectedItem = styled.li`
@@ -177,32 +191,18 @@ export const SharedSelectedItem = styled.li`
 `;
 
 export const UrlToastContainer = styled.div`
-  display: flex;
-  width: 524px;
-  height: 64px;
-  padding: 19px 30px;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
 `;
 
-export const UrlToastTextBox = styled.div`
+export const MobileHeaderLayout = styled.div`
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-`;
-
-export const UrlToastTextItem = styled.p`
-  color: var(--white, #fff);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
+  width: 360px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 263px;
+  background: #fff;
 `;

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import * as S from './KakaoButton.styled';
 
 const { Kakao } = window;
 
@@ -36,5 +37,9 @@ export default function KakaoButton({ name, id }) {
     });
   };
 
-  return <button onClick={shareKakao}>카카오톡 공유</button>;
+  return (
+    <S.KakaoSharedButtonLayout onClick={shareKakao}>
+      카카오톡 공유
+    </S.KakaoSharedButtonLayout>
+  );
 }
