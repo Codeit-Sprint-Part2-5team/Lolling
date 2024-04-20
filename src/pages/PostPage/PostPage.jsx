@@ -23,9 +23,9 @@ const INIT_CREATE_ROLL_PAPER = {
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
 export default function PostPage() {
-  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
+  const [backgroundImages, setBackgroundImages] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
+  const [contextSelected, setContextSelected] = useState(backgroundImages);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [imageFile, setImageFile] = useState(null);
@@ -46,7 +46,7 @@ export default function PostPage() {
     const url = await uploadRequest(imageFile);
     if (!url) return;
 
-    setBACKGROUND_IMAGES([...BACKGROUND_IMAGES, url]);
+    setBackgroundImages([...backgroundImages, url]);
   };
 
   const onChangeBackgroundHandler = (value) => {
@@ -123,7 +123,7 @@ export default function PostPage() {
               rightName={'이미지'}
               setContext={setContextSelected}
               left={BACKGROUND_COLORS}
-              right={BACKGROUND_IMAGES}
+              right={backgroundImages}
             />
           </S.SelectingContainer>
           <S.BackgroundContainer>
@@ -135,7 +135,7 @@ export default function PostPage() {
                 setSelected={setSelected}
               />
             ))}
-            {contextSelected === BACKGROUND_IMAGES && (
+            {contextSelected === backgroundImages && (
               <ImageUploader
                 buttonStyle='addButton'
                 setSelected={setSelected}
