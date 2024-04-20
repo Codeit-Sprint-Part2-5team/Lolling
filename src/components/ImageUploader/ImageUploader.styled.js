@@ -6,6 +6,24 @@ export const InputContainer = styled.label`
   width: 100%;
 `;
 
+export const PostInputContainer = styled.label`
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  background-color: var(--gray-300);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 export const Input = styled.input`
   position: absolute;
   inset: 0 0;

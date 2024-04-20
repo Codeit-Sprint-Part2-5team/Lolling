@@ -5,8 +5,10 @@ export default function ToggleButton({
   setContext,
   left,
   right,
+  third,
   leftName,
   rightName,
+  thirdName,
   className,
 }) {
   const [selectedToggle, setSelectedToggle] = useState('left');
@@ -19,6 +21,11 @@ export default function ToggleButton({
   const handleRightClick = () => {
     setSelectedToggle('right');
     setContext(right);
+  };
+
+  const handleThirdClick = () => {
+    setSelectedToggle('third');
+    setContext(third);
   };
 
   return (
@@ -40,6 +47,25 @@ export default function ToggleButton({
         <S.ToggleButtonLabelItemBox type='button' onClick={handleRightClick}>
           {rightName}
         </S.ToggleButtonLabelItemBox>
+      )}
+      {thirdName && (
+        <>
+          {selectedToggle === 'third' ? (
+            <S.ToggleButtonSelectedItemBox
+              type='button'
+              onClick={handleThirdClick}
+            >
+              {thirdName}
+            </S.ToggleButtonSelectedItemBox>
+          ) : (
+            <S.ToggleButtonLabelItemBox
+              type='button'
+              onClick={handleThirdClick}
+            >
+              {thirdName}
+            </S.ToggleButtonLabelItemBox>
+          )}
+        </>
       )}
     </S.ToggleButtonLayout>
   );

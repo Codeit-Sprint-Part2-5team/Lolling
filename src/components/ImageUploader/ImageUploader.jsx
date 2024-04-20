@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
+import AddButton from '../AddButton/AddButton';
 import Button from '../Button/Button';
 import * as S from './ImageUploader.styled';
 
 export default function ImageUploader({
+  buttonStyle = 'textButton',
   setSelected,
   imageFile,
   setImageFile,
@@ -28,20 +30,32 @@ export default function ImageUploader({
 
   return (
     <>
-      <S.InputContainer>
-        <Button
-          text={'파일 선택'}
-          size={56}
-          width={'100%'}
-          variant={'outline'}
-        />
-        <S.Input
-          type='file'
-          accept='image/*'
-          onChange={handleImageChange}
-          ref={inputRef}
-        />
-      </S.InputContainer>
+      {buttonStyle === 'textButton' ? (
+        <S.InputContainer>
+          <Button
+            text={'파일 선택'}
+            size={56}
+            width={'100%'}
+            variant={'outline'}
+          />
+          <S.Input
+            type='file'
+            accept='image/*'
+            onChange={handleImageChange}
+            ref={inputRef}
+          />
+        </S.InputContainer>
+      ) : (
+        <S.PostInputContainer>
+          <AddButton />
+          <S.Input
+            type='file'
+            accept='image/*'
+            onChange={handleImageChange}
+            ref={inputRef}
+          />
+        </S.PostInputContainer>
+      )}
       {imageFile && (
         <S.CancelButton type='button' onClick={handleClearClick}>
           X

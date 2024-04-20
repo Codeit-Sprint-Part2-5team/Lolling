@@ -4,7 +4,7 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 
 export default function ColorOption({ background, selected, setSelected }) {
   const isActive = selected === background;
-
+  console.log(background);
   const onChangeActive = () => {
     setSelected(background);
   };

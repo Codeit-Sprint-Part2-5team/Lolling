@@ -30,6 +30,7 @@ export default function PostPage() {
   const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
+  const [imageFile, setImageFile] = useState();
   const nav = useNavigate();
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
 
@@ -110,7 +111,7 @@ export default function PostPage() {
               right={BACKGROUND_IMAGES}
             />
           </S.SelectingContainer>
-          <S.BackgroundContainer $contextSelected={contextSelected}>
+          <S.BackgroundContainer>
             {contextSelected.map((item) => (
               <ColorOption
                 key={item}
@@ -119,10 +120,19 @@ export default function PostPage() {
                 setSelected={setSelected}
               />
             ))}
-            <S.UploadImageBox>
-              <AddButton />
-              {/* <ImageUploader /> */}
-            </S.UploadImageBox>
+            {imageFile && (
+              <ColorOption
+                background={selected}
+                selected={selected}
+                setSelected={setSelected}
+              />
+            )}
+            <ImageUploader
+              buttonStyle='addButton'
+              setSelected={setSelected}
+              imageFile={imageFile}
+              setImageFile={setImageFile}
+            />
           </S.BackgroundContainer>
           <Button
             text={'생성하기'}
