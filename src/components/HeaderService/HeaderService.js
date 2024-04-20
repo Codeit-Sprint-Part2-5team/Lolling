@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './HeaderService.styled';
 import Inner from '../Inner/Inner';
@@ -10,8 +10,8 @@ import Button from '../Button/Button';
 import ShareIcon from '../../assets/images/ShareIcon.svg';
 import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
-import checkIcon from '../../assets/images/UrlCheckIcon.svg';
-import closeIcon from '../../assets/images/CloseIcon.svg';
+import Toast from '../Toast/Toast';
+import KakaoButton from '../KakaoButton/KakaoButton';
 
 export default function HeaderService({ userId }) {
   const [data, setData] = useState();
@@ -19,9 +19,12 @@ export default function HeaderService({ userId }) {
   const [isShowEmoji, setIsShowEmoji] = useState(false);
   const [isShowEmojiPicker, setIsShowEmojiPicker] = useState(false);
   const [isShowShareButton, setIsShowShareButton] = useState(false);
-  const location = useLocation();
   const [isShowToast, setIsShowToast] = useState(false);
+  const location = useLocation();
   const [emojiLog, setEmojiLog] = useState([]);
+  const emojiPickerRef = useRef(null);
+  const emojiButtonRef = useRef(null);
+  const shareButtonRef = useRef(null);
 
   const getData = async () => {
     const response = await getCardFolderRequest(userId);
@@ -77,6 +80,36 @@ export default function HeaderService({ userId }) {
     }
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
+        setIsShowEmojiPicker(false);
+      }
+
+      if (
+        emojiButtonRef.current &&
+        !emojiButtonRef.current.contains(event.target)
+      ) {
+        setIsShowEmoji(false);
+      }
+
+      if (
+        shareButtonRef.current &&
+        !shareButtonRef.current.contains(event.target)
+      ) {
+        setIsShowShareButton(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     data && (
       <Inner>
@@ -115,7 +148,7 @@ export default function HeaderService({ userId }) {
                     onClick={showEmojiContainer}
                   />
                   {isShowEmoji && (
-                    <S.EmojiBoxItem>
+                    <S.EmojiBoxItem ref={emojiButtonRef}>
                       {emojiData?.map((item) => (
                         <EmojiBadge
                           key={item.id}
@@ -135,7 +168,7 @@ export default function HeaderService({ userId }) {
                   isSmileIcon={'on'}
                   onClick={showEmojiPickerContainer}
                 />
-                <S.EmojiSelectdBox>
+                <S.EmojiSelectdBox ref={emojiPickerRef}>
                   {isShowEmojiPicker && (
                     <EmojiPicker onEmojiClick={onEmojiClick} />
                   )}
@@ -146,8 +179,11 @@ export default function HeaderService({ userId }) {
                 </S.SharedButton>
                 {isShowShareButton && (
                   <S.SharedSelectContainer>
-                    <S.SharedSelectedItem>카카오톡 공유</S.SharedSelectedItem>
+                    <S.SharedSelectedItem>
+                      <KakaoButton name={data.data.name} id={userId} />
+                    </S.SharedSelectedItem>
                     <S.SharedSelectedItem
+                      ref={shareButtonRef}
                       onClick={() =>
                         handleCopyClipBoard(
                           `${'http://localhost:3000'}${location.pathname}`
@@ -160,19 +196,7 @@ export default function HeaderService({ userId }) {
                 )}
                 {isShowToast && (
                   <S.UrlToastContainer>
-                    <S.UrlToastTextBox>
-                      <img src={checkIcon} alt='icon' />
-                      <S.UrlToastTextItem>
-                        URL이 복사 되었습니다.
-                      </S.UrlToastTextItem>
-                    </S.UrlToastTextBox>
-                    <img
-                      src={closeIcon}
-                      alt='닫기'
-                      onClick={() => {
-                        setIsShowToast(false);
-                      }}
-                    />
+                    <Toast callback={() => setIsShowToast(false)} />
                   </S.UrlToastContainer>
                 )}
               </S.EmojiButtonContainer>

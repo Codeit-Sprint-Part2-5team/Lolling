@@ -36,6 +36,7 @@ export const CardContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px 24px;
+  z-index: 1;
 
   @media (max-width: 1248px) {
     grid-template-columns: repeat(2, 1fr);
