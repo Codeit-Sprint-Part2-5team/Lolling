@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import EmojiBadge from '../EmojiBadge/EmojiBadge';
 
 export const HeaderServiceLayout = styled.div`
   display: flex;
@@ -17,18 +16,30 @@ export const HeaderServiceTitleBox = styled.h1`
   font-weight: 700;
   line-height: 42px;
   letter-spacing: -0.28px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const HeaderServiceContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 28px;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 `;
 
 export const HeaderServiceDataContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
+
+  @media (max-width: 1248px) {
+    display: none;
+  }
 `;
 
 export const HeaderServiceInnerImg = styled.div`
@@ -142,12 +153,14 @@ export const EmojiBoxItem = styled.div`
   border: 1px solid #b6b6b6;
   background: #fff;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  z-index: 2;
 `;
 
 export const EmojiSelectdBox = styled.div`
   position: absolute;
   top: 70px;
   transform: translateX(-259px);
+  z-index: 2;
 `;
 
 export const SharedSelectContainer = styled.ul`
@@ -162,6 +175,7 @@ export const SharedSelectContainer = styled.ul`
   position: absolute;
   top: 70px;
   transform: translateX(36px);
+  z-index: 2;
 `;
 
 export const SharedSelectedItem = styled.li`
@@ -181,4 +195,14 @@ export const UrlToastContainer = styled.div`
   bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
+`;
+
+export const MobileHeaderLayout = styled.div`
+  display: flex;
+  width: 360px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 263px;
+  background: #fff;
 `;

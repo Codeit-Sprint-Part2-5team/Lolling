@@ -12,15 +12,19 @@ import { getReactionsRequest } from '../../apis/api';
 import EmojiPicker from 'emoji-picker-react';
 import Toast from '../Toast/Toast';
 
+const { Kakao } = window;
+
 export default function HeaderService({ userId }) {
   const [data, setData] = useState();
   const [emojiData, setEmojiData] = useState();
   const [isShowEmoji, setIsShowEmoji] = useState(false);
   const [isShowEmojiPicker, setIsShowEmojiPicker] = useState(false);
   const [isShowShareButton, setIsShowShareButton] = useState(false);
-  const location = useLocation();
   const [isShowToast, setIsShowToast] = useState(false);
+  const location = useLocation();
   const [emojiLog, setEmojiLog] = useState([]);
+  const realUrl = `https://5rolling.netlify.app/post/${userId}`;
+  const thumnailImage = require('../../assets/images/share-img.png');
 
   const getData = async () => {
     const response = await getCardFolderRequest(userId);
@@ -74,6 +78,36 @@ export default function HeaderService({ userId }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init('078e480e2602fab08071f90f6fc7425a');
+    console.log(Kakao); // 잘 작동하면 true
+  }, []);
+
+  const shareKakao = () => {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: 'Rolling',
+        description: `${data.data.name}님의 롤링페이퍼입니다`,
+        imageUrl: thumnailImage,
+        link: {
+          mobileWebUrl: realUrl,
+          webUrl: realUrl,
+        },
+      },
+      buttons: [
+        {
+          title: '롤링페이퍼 확인하기',
+          link: {
+            mobileWebUrl: realUrl,
+            webUrl: realUrl,
+          },
+        },
+      ],
+    });
   };
 
   return (
@@ -145,7 +179,9 @@ export default function HeaderService({ userId }) {
                 </S.SharedButton>
                 {isShowShareButton && (
                   <S.SharedSelectContainer>
-                    <S.SharedSelectedItem>카카오톡 공유</S.SharedSelectedItem>
+                    <S.SharedSelectedItem onClick={shareKakao}>
+                      카카오톡 공유
+                    </S.SharedSelectedItem>
                     <S.SharedSelectedItem
                       onClick={() =>
                         handleCopyClipBoard(
