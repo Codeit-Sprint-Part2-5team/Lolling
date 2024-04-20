@@ -196,8 +196,8 @@ export const getBackgroundImageRequest = async () => {
   }
 
   const downloadUrlList = await Promise.all(
-    response.items.map((item) => {
-      const url = getDownloadURL(item);
+    response.items.map(async (item) => {
+      const url = await getDownloadURL(item);
       return url;
     })
   );

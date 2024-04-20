@@ -39,9 +39,9 @@ export default function PostPage() {
   );
 
   const getBackground = async () => {
-    const result = getBackgroundImage();
+    const result = await getBackgroundImage();
     if (!result) return;
-    console.log(result);
+
     setBackgroundImages(result);
   };
 
