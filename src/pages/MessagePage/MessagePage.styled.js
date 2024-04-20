@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
 
 export const PostPageLayout = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ export const ProfileImageContainer = styled.div`
   display: grid;
   grid-template-areas:
     'Title Title'
+    'Select Select'
     'Img P'
     'Img Box';
   grid-template-columns: 80px 1fr;
@@ -60,9 +62,13 @@ export const ProfileTitle = styled.h4`
   grid-area: Title;
 `;
 
+export const StyledToggleButton = styled(ToggleButton)`
+  grid-area: Select;
+  margin-bottom: 15px;
+`;
+
 export const ProfileImg = styled.img`
   grid-area: Img;
-  position: relative;
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -77,6 +83,7 @@ export const ProfileBox = styled.div`
   grid-area: Box;
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   > img {
     cursor: pointer;
@@ -101,4 +108,16 @@ export const TextAreaContainer = styled.div`
 export const FontContainer = styled.div`
   ${FlexMargin}
   margin-bottom: 206px;
+`;
+
+export const LoadingModalBox = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
 `;

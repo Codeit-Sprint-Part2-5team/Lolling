@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
@@ -7,8 +7,14 @@ import DropDown from '../../components/TextField/DropDown/DropDown';
 import Button from '../../components/Button/Button';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useAsync from '../../hooks/useAsync';
-import { createMessageRequest, getMockImageRequest } from '../../apis/api';
+import {
+  createMessageRequest,
+  getMockImageRequest,
+  uploadProfileImageRequest,
+} from '../../apis/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import ImageUploader from '../../components/ImageUploader/ImageUploader';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 const INIT_CREATE_MESSAGE = {
   recipientId: 0,
@@ -26,7 +32,13 @@ export default function MessagePage() {
   const [selected, setSelected] = useState('');
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [textareaBody, setTextareaBody] = useState('');
+  const [profileContext, setProfileContext] = useState('img');
+  const [imageFile, setImageFile] = useState();
+  const [isSubmit, setSubmit] = useState(false);
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
+  const { pending, requestFunction: getUrl } = useAsync(
+    uploadProfileImageRequest
+  );
   const { requestFunction: postMessageRequest } =
     useAsync(createMessageRequest);
   const nav = useNavigate();
@@ -47,11 +59,21 @@ export default function MessagePage() {
     setProfileImage(imageUrls);
   };
 
-  const postMessage = async (e) => {
+  const urlRequest = async (e) => {
     e.preventDefault();
+    setActiveBtn(true);
+    const url = await getUrl(imageFile);
+
+    setMessageBody({
+      ...messageBody,
+      profileImageURL: url,
+    });
+    setSubmit(true);
+  };
+
+  const postMessage = async () => {
     const result = await postMessageRequest(messageBody);
     if (!result) return;
-
     setMessageBody(INIT_CREATE_MESSAGE);
 
     nav(`/post/${userId}`);
@@ -72,8 +94,12 @@ export default function MessagePage() {
   };
 
   useEffect(() => {
-    setSelected(profileImage[0]);
-  }, [profileImage]);
+    if (profileContext === 'upload' && imageFile) {
+      const preview = URL.createObjectURL(imageFile);
+      return setSelected(preview);
+    }
+    return setSelected(profileImage[0]);
+  }, [profileImage, profileContext]);
 
   useEffect(() => {
     setMessageBody({
@@ -87,6 +113,10 @@ export default function MessagePage() {
   }, [messageBody.sender, messageBody.content]);
 
   useEffect(() => {
+    postMessage();
+  }, [isSubmit]);
+
+  useEffect(() => {
     getImage();
     setMessageBody({
       ...messageBody,
@@ -97,7 +127,7 @@ export default function MessagePage() {
   return (
     <Inner>
       <S.PostPageLayout>
-        <S.FormContainer onSubmit={postMessage}>
+        <S.FormContainer onSubmit={urlRequest}>
           <S.FromContainer>
             <h4>From.</h4>
             <Input
@@ -110,19 +140,36 @@ export default function MessagePage() {
           </S.FromContainer>
           <S.ProfileImageContainer>
             <S.ProfileTitle>프로필 이미지</S.ProfileTitle>
+            <S.StyledToggleButton
+              leftName={'이미지'}
+              rightName={'업로드'}
+              setContext={setProfileContext}
+              left={'img'}
+              right={'upload'}
+            />
             <S.ProfileImg src={selected} />
-            <S.ProfileP>프로필 이미지를 선택해주세요!</S.ProfileP>
-            <S.ProfileBox>
-              {profileImage.map((image) => (
-                <ProfileImage
-                  key={image}
-                  image={image}
-                  size={'m'}
+            <S.ProfileP>자신만의 프로필 이미지를 선택하세요!</S.ProfileP>
+            {profileContext === 'img' ? (
+              <S.ProfileBox>
+                {profileImage.map((image) => (
+                  <ProfileImage
+                    key={image}
+                    image={image}
+                    size={'m'}
+                    setSelected={setSelected}
+                    onChange={onChangeImageHandler}
+                  />
+                ))}
+              </S.ProfileBox>
+            ) : (
+              <S.ProfileBox>
+                <ImageUploader
                   setSelected={setSelected}
-                  onChange={onChangeImageHandler}
+                  imageFile={imageFile}
+                  setImageFile={setImageFile}
                 />
-              ))}
-            </S.ProfileBox>
+              </S.ProfileBox>
+            )}
           </S.ProfileImageContainer>
           <S.RelationShipContainer>
             <h4>상대와의 관계</h4>
@@ -150,12 +197,18 @@ export default function MessagePage() {
             />
           </S.FontContainer>
           <Button
+            type={'submit'}
             disabled={isActiveBtn}
             variant={'primary'}
             text={'생성하기'}
             size={56}
             width={'100%'}
           />
+          {pending && (
+            <S.LoadingModalBox>
+              <LoadingModal pending={pending} />
+            </S.LoadingModalBox>
+          )}
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>

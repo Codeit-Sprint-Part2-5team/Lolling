@@ -8,10 +8,12 @@ import {
   deleteCardFolderRequest,
   getReactionsRequest,
   postReactionRequest,
+  uploadProfileImageRequest,
 } from '../../apis/api';
 import { useState } from 'react';
 import * as S from './ApiTestPage.styled';
 import EmojiPicker from 'emoji-picker-react';
+import ProfileImage from '../../components/ProfileImage/ProfileImage';
 
 const INIT_CREATE_ROLL_PAPER = {
   userName: '',
@@ -404,6 +406,34 @@ const PostReaction = () => {
   );
 };
 
+const FileUpload = () => {
+  const [fileItem, setFileItem] = useState([]);
+  const [photoURL, setPhotoURL] = useState();
+  const { requestFunction: getUrl } = useAsync(uploadProfileImageRequest);
+
+  const handleImageChange = (e) => {
+    setFileItem(e.target.files[0]);
+  };
+
+  const handleImageUpload = async (e) => {
+    e.preventDefault();
+
+    const result = await getUrl(fileItem);
+    if (!result) return;
+
+    setPhotoURL(result);
+    console.log(photoURL);
+  };
+
+  return (
+    <form onSubmit={handleImageUpload}>
+      {photoURL && <ProfileImage image={photoURL} />}
+      <input type='file' accept='image/*' onChange={handleImageChange} />
+      <S.Button>업로드</S.Button>
+    </form>
+  );
+};
+
 const ApiTestPage = () => {
   return (
     <S.Layout>
@@ -416,6 +446,7 @@ const ApiTestPage = () => {
       <DeleteCardFolder />
       <GetReactions />
       <PostReaction />
+      <FileUpload />
     </S.Layout>
   );
 };

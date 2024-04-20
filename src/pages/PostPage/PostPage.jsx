@@ -101,6 +101,8 @@ export default function PostPage() {
           </S.TextContainer>
           <S.SelectingContainer>
             <ToggleButton
+              leftName={'컬러'}
+              rightName={'이미지'}
               setContext={setContextSelected}
               left={BACKGROUND_COLORS}
               right={BACKGROUND_IMAGES}

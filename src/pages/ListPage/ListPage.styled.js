@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  // 인기순 카드 목록 컨테이너(h 태그 + CardList)
   position: relative;
   flex-direction: column;
   width: 100%;
-  gap: 5px;
-  // margin-top: 20px; ui 조정중
 `;
 
 export const TextBox = styled.h4`
@@ -15,21 +12,23 @@ export const TextBox = styled.h4`
   line-height: 36px;
   letter-spacing: -0.01em;
   margin-left: 20px;
-  margin-bottom: 218px;
+  margin-top: 50px;
+  margin-bottom: 16px;
+
+  @media (max-width: 1248px) {
+    margin-left:0px;
+  }
 `;
 
-export const ListPageLayout = styled.div`
-  padding: 20px 0 100px;
-  overflow-y: hidden;
-`;
+export const ListPageLayout = styled.div``;
 
 export const RecentCardContainer = styled.div`
-  // 최신순 카드 목록 컨테이너
-  margin-top: 50px;
+  // textbox 제외 컨테이너
+  margin-top: 32px;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 48px;
 `;
