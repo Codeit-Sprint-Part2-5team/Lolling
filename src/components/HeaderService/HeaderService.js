@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './HeaderService.styled';
 import Inner from '../Inner/Inner';
@@ -25,6 +25,9 @@ export default function HeaderService({ userId }) {
   const [emojiLog, setEmojiLog] = useState([]);
   const realUrl = `https://5rolling.netlify.app/post/${userId}`;
   const thumnailImage = require('../../assets/images/share-img.png');
+  const emojiPickerRef = useRef(null);
+  const emojiButtonRef = useRef(null);
+  const shareButtonRef = useRef(null);
 
   const getData = async () => {
     const response = await getCardFolderRequest(userId);
@@ -110,6 +113,36 @@ export default function HeaderService({ userId }) {
     });
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
+        setIsShowEmojiPicker(false);
+      }
+
+      if (
+        emojiButtonRef.current &&
+        !emojiButtonRef.current.contains(event.target)
+      ) {
+        setIsShowEmoji(false);
+      }
+
+      if (
+        shareButtonRef.current &&
+        !shareButtonRef.current.contains(event.target)
+      ) {
+        setIsShowShareButton(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     data && (
       <Inner>
@@ -148,7 +181,7 @@ export default function HeaderService({ userId }) {
                     onClick={showEmojiContainer}
                   />
                   {isShowEmoji && (
-                    <S.EmojiBoxItem>
+                    <S.EmojiBoxItem ref={emojiButtonRef}>
                       {emojiData?.map((item) => (
                         <EmojiBadge
                           key={item.id}
@@ -162,6 +195,7 @@ export default function HeaderService({ userId }) {
               </S.EmojiBadgeContainer>
               <S.EmojiButtonContainer>
                 <Button
+                  ref={emojiPickerRef}
                   text={'추가'}
                   variant={'outline'}
                   size={36}
@@ -170,7 +204,10 @@ export default function HeaderService({ userId }) {
                 />
                 <S.EmojiSelectdBox>
                   {isShowEmojiPicker && (
-                    <EmojiPicker onEmojiClick={onEmojiClick} />
+                    <EmojiPicker
+                      ref={emojiPickerRef}
+                      onEmojiClick={onEmojiClick}
+                    />
                   )}
                 </S.EmojiSelectdBox>
                 <S.BarItemsInner></S.BarItemsInner>
@@ -183,6 +220,7 @@ export default function HeaderService({ userId }) {
                       카카오톡 공유
                     </S.SharedSelectedItem>
                     <S.SharedSelectedItem
+                      ref={shareButtonRef}
                       onClick={() =>
                         handleCopyClipBoard(
                           `${'http://localhost:3000'}${location.pathname}`
