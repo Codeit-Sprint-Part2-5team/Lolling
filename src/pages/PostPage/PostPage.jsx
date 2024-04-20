@@ -20,12 +20,7 @@ const INIT_CREATE_ROLL_PAPER = {
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
 export default function PostPage() {
-  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([
-    'https://picsum.photos/id/683/3840/2160',
-    'https://picsum.photos/id/24/3840/2160',
-    'https://picsum.photos/id/599/3840/2160',
-    'https://picsum.photos/id/1058/3840/2160',
-  ]);
+  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
   const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
   const [selected, setSelected] = useState('beige');
@@ -122,19 +117,14 @@ export default function PostPage() {
                 setSelected={setSelected}
               />
             ))}
-            {imageFile && (
-              <ColorOption
-                background={selected}
-                selected={selected}
+            {contextSelected === BACKGROUND_IMAGES && (
+              <ImageUploader
+                buttonStyle='addButton'
                 setSelected={setSelected}
+                imageFile={imageFile}
+                setImageFile={setImageFile}
               />
             )}
-            <ImageUploader
-              buttonStyle='addButton'
-              setSelected={setSelected}
-              imageFile={imageFile}
-              setImageFile={setImageFile}
-            />
           </S.BackgroundContainer>
           <Button
             text={'생성하기'}
