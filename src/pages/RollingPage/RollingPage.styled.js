@@ -92,12 +92,13 @@ export const LoadingContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 50px;
+
   color: var(--purple-800);
 `;
 
 export const LoadingBox = styled.img`
   display: block;
-  width: 20px;
+  width: 30px;
+  margin: 50px auto 0;
   animation: ${rotate} 3s infinite linear;
 `;
