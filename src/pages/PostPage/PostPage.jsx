@@ -101,6 +101,12 @@ export default function PostPage() {
   //   return setContextSelected(BACKGROUND_COLORS);
   // }, [backgroundImages]);
 
+  /** 미구현 항목
+   * 1. 로딩 처리
+   * 2. 이미지 업로드 완료후 새로고침 혹은 토글버튼 와리가리 안해도 추가된 이미지 바로 출력하는 기능
+   * 3. useEffect 정리
+   */
+
   useEffect(() => {
     if (rollPaperBody.name === '') {
       return setActiveBtn(true);
