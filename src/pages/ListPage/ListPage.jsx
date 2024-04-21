@@ -36,7 +36,7 @@ export default function ListPage() {
 
   return (
     <S.ListPageLayout>
-      <Inner>
+      <S.CardInner>
         <S.CardContainer>
           <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
           <CardSlider>
@@ -82,7 +82,7 @@ export default function ListPage() {
             />
           </Link>
         </S.ButtonContainer>
-      </Inner>
+      </S.CardInner>
     </S.ListPageLayout>
   );
 }

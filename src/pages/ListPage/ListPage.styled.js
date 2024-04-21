@@ -1,4 +1,13 @@
 import styled from 'styled-components';
+import Inner from '../../components/Inner/Inner';
+
+export const CardInner = styled(Inner)`
+  width: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 export const CardContainer = styled.div`
   position: relative;
@@ -16,7 +25,11 @@ export const TextBox = styled.h4`
   margin-bottom: 16px;
 
   @media (max-width: 1248px) {
-    margin-left:0px;
+    margin-left: 24px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
   }
 `;
 

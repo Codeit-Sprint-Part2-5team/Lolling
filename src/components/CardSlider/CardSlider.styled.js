@@ -49,4 +49,28 @@ export const CardList = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+
+  &> a: first-of-type {
+    display: block;
+
+    @media (max-width: 1248px) {
+      margin-left: 24px;
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 20px;
+    }
+  }
+
+  &> a: last-of-type {
+    display: block;
+
+    @media (max-width: 1248px) {
+      margin-right: 24px;
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 20px;
+    }
+  }
 `;
