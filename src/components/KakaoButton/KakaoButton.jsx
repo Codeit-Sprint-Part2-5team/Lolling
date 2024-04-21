@@ -12,7 +12,7 @@ export default function KakaoButton({ name, id }) {
     Kakao.init('078e480e2602fab08071f90f6fc7425a');
   }, []);
 
-  const shareKakao = () => {
+  const shareKakao = (e) => {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {

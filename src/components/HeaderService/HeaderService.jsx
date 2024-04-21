@@ -167,12 +167,11 @@ export default function HeaderService({
                 <img src={ShareIcon} alt='공유하기' />
               </S.SharedButton>
               {isShowShareButton && (
-                <S.SharedSelectContainer>
+                <S.SharedSelectContainer ref={shareButtonRef}>
                   <S.SharedSelectedItem>
                     <KakaoButton name={name} id={id} />
                   </S.SharedSelectedItem>
                   <S.SharedSelectedItem
-                    ref={shareButtonRef}
                     onClick={() =>
                       handleCopyClipBoard(
                         `${'http://localhost:3000'}${location.pathname}`
