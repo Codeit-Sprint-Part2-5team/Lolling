@@ -174,7 +174,7 @@ export default function HeaderService({
                   <S.SharedSelectedItem
                     onClick={() =>
                       handleCopyClipBoard(
-                        `${'http://localhost:3000'}${location.pathname}`
+                        `${'https://5rolling.netlify.app'}${location.pathname}`
                       )
                     }
                   >
