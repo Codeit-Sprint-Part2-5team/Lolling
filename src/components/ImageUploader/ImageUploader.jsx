@@ -2,12 +2,42 @@ import { useEffect, useRef } from 'react';
 import AddButton from '../AddButton/AddButton';
 import Button from '../Button/Button';
 import * as S from './ImageUploader.styled';
+import LoadingIcon from '../../assets/images/loadingIcon.png';
+
+function TextButtonStyle({ handleImageChange, inputRef }) {
+  return (
+    <S.InputContainer>
+      <Button text={'파일 선택'} size={56} width={'100%'} variant={'outline'} />
+      <S.Input
+        type='file'
+        accept='image/*'
+        onChange={handleImageChange}
+        ref={inputRef}
+      />
+    </S.InputContainer>
+  );
+}
+
+function AddButtonStyle({ handleImageChange, inputRef, pending }) {
+  return (
+    <S.PostInputContainer>
+      {pending ? <S.LoadingIcon src={LoadingIcon} /> : <AddButton />}
+      <S.Input
+        type='file'
+        accept='image/*'
+        onChange={handleImageChange}
+        ref={inputRef}
+      />
+    </S.PostInputContainer>
+  );
+}
 
 export default function ImageUploader({
   buttonStyle = 'textButton',
   setSelected,
   imageFile,
   setImageFile,
+  pending,
 }) {
   const inputRef = useRef();
 
@@ -31,30 +61,16 @@ export default function ImageUploader({
   return (
     <>
       {buttonStyle === 'textButton' ? (
-        <S.InputContainer>
-          <Button
-            text={'파일 선택'}
-            size={56}
-            width={'100%'}
-            variant={'outline'}
-          />
-          <S.Input
-            type='file'
-            accept='image/*'
-            onChange={handleImageChange}
-            ref={inputRef}
-          />
-        </S.InputContainer>
+        <TextButtonStyle
+          handleImageChange={handleImageChange}
+          inputRef={inputRef}
+        />
       ) : (
-        <S.PostInputContainer>
-          <AddButton />
-          <S.Input
-            type='file'
-            accept='image/*'
-            onChange={handleImageChange}
-            ref={inputRef}
-          />
-        </S.PostInputContainer>
+        <AddButtonStyle
+          handleImageChange={handleImageChange}
+          inputRef={inputRef}
+          pending={pending}
+        />
       )}
       {imageFile && (
         <S.CancelButton type='button' onClick={handleClearClick}>

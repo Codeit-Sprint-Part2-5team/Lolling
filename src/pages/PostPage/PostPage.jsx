@@ -34,7 +34,7 @@ export default function PostPage() {
     getBackgroundImageRequest
   );
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
-  const { requestFunction: uploadImageRequest } = useAsync(
+  const { pending, requestFunction: uploadImageRequest } = useAsync(
     uploadBackgroundImageRequest
   );
 
@@ -159,6 +159,7 @@ export default function PostPage() {
                 setSelected={setSelected}
                 imageFile={imageFile}
                 setImageFile={setImageFile}
+                pending={pending}
               />
             )}
           </S.BackgroundContainer>

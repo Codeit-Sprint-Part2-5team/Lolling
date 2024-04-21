@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from '../Button/Button';
 
 export const InputContainer = styled.label`
@@ -37,4 +37,22 @@ export const CancelButton = styled.button`
   top: -50px;
   background-color: var(--white-color, #ffffff);
   cursor: pointer;
+`;
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingIcon = styled.img`
+  display: block;
+  width: 30px;
+  animation: ${rotate} 3s infinite linear;
 `;
