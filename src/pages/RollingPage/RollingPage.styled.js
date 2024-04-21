@@ -15,6 +15,13 @@ export const RollingPageLayout = styled.div`
     background-color:${$background};
     `;
   }}
+
+  @media (max-width: 1248px) {
+    padding: 93px 0 91px;
+  }
+  @media (max-width: 768px) {
+    padding: 32px 0;
+  }
 `;
 
 export const ButtonBox = styled(Button)`

@@ -14,7 +14,6 @@ import Modal from '../../components/Modal/Modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
-import KakaoButton from '../../components/KakaoButton/KakaoButton';
 import LoadingIcon from '../../assets/images/loadingIcon.png';
 import Button from '../../components/Button/Button';
 
