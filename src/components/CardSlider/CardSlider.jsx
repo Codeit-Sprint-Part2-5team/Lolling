@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as S from './CardSlider.styled';
-import ArrowButton from '../ArrowButton/ArrowButton';
 
 function CardSlider({ children }) {
   const sliderRef = useRef(null);
@@ -38,13 +37,16 @@ function CardSlider({ children }) {
 
     sliderRef.current.addEventListener('scroll', handleScroll);
     // return () => {
-      // eslint-disable-next-line
+    // eslint-disable-next-line
     //   sliderRef.current.removeEventListener('scroll', handleScroll);
     // };
   }, []);
 
   useEffect(() => {
-    if (sliderRef.current && children.length * (cardFolderWidth + gap) > sliderRef.current.offsetWidth) {
+    if (
+      sliderRef.current &&
+      children.length * (cardFolderWidth + gap) > sliderRef.current.offsetWidth
+    ) {
       setShowRightButton(true);
     } else {
       setShowRightButton(false);
@@ -54,14 +56,10 @@ function CardSlider({ children }) {
   return (
     <S.CardSlider>
       {showLeftButton && (
-        <S.LeftButton onClick={handleLeftClick}>
-          <ArrowButton direction='left' />
-        </S.LeftButton>
+        <S.LeftButton onClick={handleLeftClick} direction='left' />
       )}
       {showRightButton && (
-        <S.RightButton onClick={handleRightClick}>
-          <ArrowButton direction='right' />
-        </S.RightButton>
+        <S.RightButton onClick={handleRightClick} direction='right' />
       )}
       <S.CardList ref={sliderRef}>{children}</S.CardList>
     </S.CardSlider>

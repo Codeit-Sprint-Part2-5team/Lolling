@@ -5,9 +5,8 @@ export const LeftButton = styled(ArrowButton)`
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%) rotate(180deg);
-  // arrowLeftIcon이 연결되지 않아 회전시킴
   z-index: 1;
+  transform: translateY(-50%);
 
   @media (max-width: 1248px) {
     display: none;
