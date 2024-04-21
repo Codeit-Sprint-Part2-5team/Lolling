@@ -1,12 +1,6 @@
 import axios from 'axios';
 import { storage } from '../apis/firebase';
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  getStorage,
-  listAll,
-} from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes, listAll } from 'firebase/storage';
 
 const API_URL = `https://rolling-api.vercel.app/`;
 const RECIPIENTS_URL = `https://rolling-api.vercel.app/5-5/recipients/`;
