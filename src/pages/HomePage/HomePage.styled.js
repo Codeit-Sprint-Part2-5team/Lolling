@@ -189,7 +189,7 @@ export const Content1 = styled.p`
   }
 `;
 
-export const BrBox = styled.div`
+export const BrBox = styled.br`
   display: block;
 
   @media (max-width: 1248px) {
