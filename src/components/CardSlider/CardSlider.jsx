@@ -37,10 +37,10 @@ function CardSlider({ children }) {
     };
 
     sliderRef.current.addEventListener('scroll', handleScroll);
-    return () => {
+    // return () => {
       // eslint-disable-next-line
-      sliderRef.current.removeEventListener('scroll', handleScroll);
-    };
+    //   sliderRef.current.removeEventListener('scroll', handleScroll);
+    // };
   }, []);
 
   useEffect(() => {

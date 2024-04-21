@@ -2,12 +2,17 @@ import { useEffect, useState } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './PostPage.styled';
 import useAsync from '../../hooks/useAsync';
-import { createCardFolderRequest } from '../../apis/api';
+import {
+  getBackgroundImageRequest,
+  createCardFolderRequest,
+  uploadBackgroundImageRequest,
+} from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/TextField/Input/Input';
+import ImageUploader from '../../components/ImageUploader/ImageUploader';
 
 const INIT_CREATE_ROLL_PAPER = {
   name: '',
@@ -18,18 +23,27 @@ const INIT_CREATE_ROLL_PAPER = {
 const BACKGROUND_COLORS = ['beige', 'purple', 'blue', 'green'];
 
 export default function PostPage() {
-  const [BACKGROUND_IMAGES, setBACKGROUND_IMAGES] = useState([
-    'https://picsum.photos/id/683/3840/2160',
-    'https://picsum.photos/id/24/3840/2160',
-    'https://picsum.photos/id/599/3840/2160',
-    'https://picsum.photos/id/1058/3840/2160',
-  ]);
+  const [backgroundImages, setBackgroundImages] = useState([]);
   const [rollPaperBody, setRollPaperBody] = useState(INIT_CREATE_ROLL_PAPER);
-  const [contextSelected, setContextSelected] = useState(BACKGROUND_IMAGES);
+  const [contextSelected, setContextSelected] = useState(BACKGROUND_COLORS);
   const [selected, setSelected] = useState('beige');
   const [isActiveBtn, setActiveBtn] = useState(true);
+  const [imageFile, setImageFile] = useState(null);
   const nav = useNavigate();
+  const { requestFunction: getBackgroundImage } = useAsync(
+    getBackgroundImageRequest
+  );
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
+  const { pending, requestFunction: uploadImageRequest } = useAsync(
+    uploadBackgroundImageRequest
+  );
+
+  const getBackground = async () => {
+    const result = await getBackgroundImage();
+    if (!result) return;
+
+    setBackgroundImages(result);
+  };
 
   const onChangeInputHandler = (e) => {
     setRollPaperBody({
@@ -38,7 +52,17 @@ export default function PostPage() {
     });
   };
 
+  const uploadRequest = async () => {
+    const url = await uploadImageRequest(imageFile);
+    if (!url) return;
+
+    setBackgroundImages([...backgroundImages, url]);
+    setImageFile(null);
+  };
+
   const onChangeBackgroundHandler = (value) => {
+    /** 이미지를 선택해도 백엔드에선 컬러값을 4가지중 하나를 무조건 받아야 함.
+     * backgroundColor만 null값을 허용안함 */
     if (value.includes('http')) {
       return setRollPaperBody({
         ...rollPaperBody,
@@ -67,19 +91,31 @@ export default function PostPage() {
   };
 
   useEffect(() => {
-    if (rollPaperBody.name === '') {
-      return setActiveBtn(true);
+    getBackground();
+    setContextSelected(BACKGROUND_COLORS);
+  }, []);
+
+  useEffect(() => {
+    if (contextSelected.length > 4) {
+      return setContextSelected(backgroundImages);
     }
-    return setActiveBtn(false);
+    return;
+  }, [backgroundImages]);
+
+  useEffect(() => {
+    if (!imageFile) return;
+    uploadRequest();
+  }, [imageFile]);
+
+  useEffect(() => {}, [backgroundImages]);
+
+  useEffect(() => {
+    setActiveBtn(rollPaperBody.name === '');
   }, [rollPaperBody]);
 
   useEffect(() => {
     onChangeBackgroundHandler(selected);
   }, [selected]);
-
-  useEffect(() => {
-    setContextSelected(BACKGROUND_COLORS);
-  }, []);
 
   return (
     <Inner>
@@ -101,9 +137,11 @@ export default function PostPage() {
           </S.TextContainer>
           <S.SelectingContainer>
             <ToggleButton
+              leftName={'컬러'}
+              rightName={'이미지'}
               setContext={setContextSelected}
               left={BACKGROUND_COLORS}
-              right={BACKGROUND_IMAGES}
+              right={backgroundImages}
             />
           </S.SelectingContainer>
           <S.BackgroundContainer>
@@ -115,6 +153,15 @@ export default function PostPage() {
                 setSelected={setSelected}
               />
             ))}
+            {contextSelected === backgroundImages && (
+              <ImageUploader
+                buttonStyle='addButton'
+                setSelected={setSelected}
+                imageFile={imageFile}
+                setImageFile={setImageFile}
+                pending={pending}
+              />
+            )}
           </S.BackgroundContainer>
           <Button
             text={'생성하기'}

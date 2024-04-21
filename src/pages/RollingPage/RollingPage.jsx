@@ -14,7 +14,8 @@ import Modal from '../../components/Modal/Modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
-import KakaoButton from '../../components/KakaoButton/KakaoButton';
+import LoadingIcon from '../../assets/images/loadingIcon.png';
+import Button from '../../components/Button/Button';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
@@ -28,21 +29,18 @@ export default function RollingPage({ edit }) {
   const { requestFunction: deleteMessageCard } = useAsync(deleteMessageRequest);
   const { userId } = useParams();
   const navigate = useNavigate();
-  const [dataLimit, setDataLimit] = useState(8);
-  const [isFetching, setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
+  const [dataLimit, setDataLimit] = useState(edit ? 9 : 8);
+  const [setIsFetching] = useInfiniteScroll(updateFunctionOnScroll);
   const [messageCount, setMessageCount] = useState();
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const noMoreData = messageCount && dataLimit - 9 > messageCount;
 
   function updateFunctionOnScroll() {
-    const noMoreData = messageCount && dataLimit - 9 > messageCount;
     if (noMoreData) return;
     setDataLimit((prev) => prev + 9);
     getMessageData(dataLimit);
     setIsFetching(false);
   }
-
-  useEffect(() => {
-    updateFunctionOnScroll();
-  }, []);
 
   const getMessageData = async (limit) => {
     const result = await getMessageList(userId, limit);
@@ -70,7 +68,8 @@ export default function RollingPage({ edit }) {
   };
 
   useEffect(() => {
-    getMessageData();
+    updateFunctionOnScroll();
+    getMessageData(edit ? 9 : 8);
     getRecipientsData();
   }, []);
 
@@ -84,7 +83,7 @@ export default function RollingPage({ edit }) {
 
   const handleDeleteAll = () => {
     deleteAll();
-    navigate('/');
+    navigate('/list');
   };
 
   return (
@@ -92,14 +91,33 @@ export default function RollingPage({ edit }) {
       <HeaderService userId={userId} />
       <S.RollingPageLayout $background={background}>
         <Inner>
-          <KakaoButton />
           {edit && (
             <S.ButtonBox
               text={'삭제하기'}
               variant={'primary'}
               size={40}
-              onClick={handleDeleteAll}
+              onClick={() => setIsDeleteModal(true)}
             />
+          )}
+          {isDeleteModal && (
+            <S.DeleteModalBox>
+              <span>
+                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
+                삭제하시겠습니까?
+              </span>
+              <Button
+                text={'네'}
+                variant={'primary'}
+                size={36}
+                onClick={handleDeleteAll}
+              />
+              <Button
+                text={'아니오'}
+                variant={'outline'}
+                size={36}
+                onClick={() => setIsDeleteModal(false)}
+              />
+            </S.DeleteModalBox>
           )}
           <S.CardContainer>
             {!edit && (
@@ -107,7 +125,6 @@ export default function RollingPage({ edit }) {
                 <Card add />
               </li>
             )}
-
             {messageList?.map((item) => (
               <li key={item.id}>
                 <Card
@@ -125,6 +142,7 @@ export default function RollingPage({ edit }) {
               </li>
             ))}
           </S.CardContainer>
+          {!noMoreData && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
           {modal && (
             <S.ModalContainer>
               <Modal

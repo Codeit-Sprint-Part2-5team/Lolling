@@ -13,35 +13,38 @@ export default function Button({
   isSmileIcon = 'off', // 웃음 아이콘 넣을지 안넣을지 지정 - on, off
   onClick,
   className,
+  type,
 }) {
   const buttonContent = (
     <>
       {isSmileIcon === 'on' ? (
-        <S.SmileIconImg
-          src={disabled ? smileWhiteIcon : smileIcon}
-          alt='스마일'
-        />
-      ) : null}
-      {text}
+        <>
+          <S.SmileIconImg
+            src={disabled ? smileWhiteIcon : smileIcon}
+            alt='스마일'
+          />
+          <S.SmileText>{text}</S.SmileText>
+        </>
+      ) : (
+        <>{text}</>
+      )}
     </>
   );
 
   return to ? (
-    <Link to={to} style={{ textDecoration: 'none' }}>
-      <S.ButtonLayout
-        className={className}
-        $variant={variant}
-        size={size}
-        width={width}
-        disabled={disabled}
-        $smileicon={isSmileIcon}
-        onClick={onClick}
-      >
-        {buttonContent}
-      </S.ButtonLayout>
-    </Link>
+    <S.ButtonLayout
+      className={className}
+      $variant={variant}
+      size={size}
+      width={width}
+      disabled={disabled}
+      $smileicon={isSmileIcon}
+    >
+      <Link to={to}>{buttonContent}</Link>
+    </S.ButtonLayout>
   ) : (
     <S.ButtonLayout
+      type={type}
       className={className}
       $variant={variant}
       size={size}

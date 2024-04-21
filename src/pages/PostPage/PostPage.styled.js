@@ -64,7 +64,10 @@ export const SelectingContainer = styled.div`
 
 export const BackgroundContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 168px);
+  grid-template-columns: ${({ $contextSelected }) =>
+    $contextSelected === 'BACKGROUND_IMAGES'
+      ? 'repeat(5, 1fr)'
+      : 'repeat(4, 168px)'};
   gap: 16px;
   width: 100%;
   margin-bottom: 69px;
@@ -72,5 +75,21 @@ export const BackgroundContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+`;
+
+export const UploadImageBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  background-color: var(--gray-300);
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;

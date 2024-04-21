@@ -144,3 +144,9 @@ export const SmileIconImg = styled.img`
   width: 24px;
   height: 24px;
 `;
+
+export const SmileText = styled.span`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
