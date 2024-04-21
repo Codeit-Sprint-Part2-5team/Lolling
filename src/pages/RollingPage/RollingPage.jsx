@@ -16,6 +16,7 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import LoadingIcon from '../../assets/images/loadingIcon.png';
 import Button from '../../components/Button/Button';
+import KakaoButton from '../../components/KakaoButton/KakaoButton';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
@@ -88,7 +89,13 @@ export default function RollingPage({ edit }) {
 
   return (
     <>
-      <HeaderService userId={userId} />
+      <HeaderService
+        id={userId}
+        name={recipient?.name}
+        recentMessages={recipient?.recentMessages}
+        messageCount={recipient?.messageCount}
+        topReactions={recipient?.topReactions}
+      />
       <S.RollingPageLayout $background={background}>
         <Inner>
           {edit && (

@@ -227,10 +227,19 @@ export const SharedSelectContainer = styled.ul`
 export const SharedSelectedItem = styled.li`
   display: flex;
   width: 138px;
-  padding: 12px 16px;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 
+  & > button {
+    width: 100%;
+    padding: 12px 16px;
+    color: var(--gray-900, #181818);
+    font-size: 16px;
+    text-align: left;
+    line-height: 26px; /* 162.5% */
+    letter-spacing: -0.16px;
+  }
   &:hover {
     background: var(--gray-100, #f6f6f6);
   }
