@@ -15,6 +15,7 @@ export const CardLayout = styled.div`
     `
     justify-content: center;
     align-items: center;
+    cursor: default;
     `}
 
   @media (max-width: 768px) {

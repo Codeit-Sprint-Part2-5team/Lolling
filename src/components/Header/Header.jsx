@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useParams } from 'react-router-dom';
 import Inner from '../Inner/Inner';
 import Logo from '../../assets/images/logo.svg';
-import Button from '../Button/Button';
 import * as S from './Header.styled';
 
 export default function Header() {
   const { pathname } = useLocation();
+  const { userId } = useParams();
   const [isShowRollingButton, setIsShowRollingButton] = useState(false);
+  const [isUnvisibleOnMobile, setisUnvisibleOnMobile] = useState(false);
 
   useEffect(() => {
     switch (pathname) {
       case '/':
       case '/list':
         setIsShowRollingButton(true);
+        break;
+      case `/post/${userId}`:
+        setisUnvisibleOnMobile(true);
         break;
       default:
         setIsShowRollingButton(false);
@@ -22,24 +26,23 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <S.HeaderLayout>
+    <S.HeaderLayout className={isUnvisibleOnMobile ? 'unvisibleOnMobile' : ''}>
       <Inner>
         <S.HeaderContainer>
           <S.LogoBox>
-            <S.LinkBox to="/">
-              <img src={Logo} alt="Rolling logo" />
+            <S.LinkBox to='/'>
+              <img src={Logo} alt='Rolling logo' />
               Rolling
             </S.LinkBox>
           </S.LogoBox>
           {isShowRollingButton && (
-            <Link to="/post">
-              <S.ButtonBox
-                text={'롤링 페이퍼 만들기'}
-                variant={'outline'}
-                size={40}
-                width={'157px'}
-              />
-            </Link>
+            <S.ButtonBox
+              to='/post'
+              text={'롤링 페이퍼 만들기'}
+              variant={'outline'}
+              size={40}
+              width={'157px'}
+            />
           )}
         </S.HeaderContainer>
       </Inner>

@@ -19,6 +19,9 @@ export const HeaderLayout = styled.header`
   }
 
   @media (max-width: 768px) {
+    &.unvisibleOnMobile {
+      display: none;
+    }
     width: 100%;
     height: 64px;
     flex-shrink: 0;
