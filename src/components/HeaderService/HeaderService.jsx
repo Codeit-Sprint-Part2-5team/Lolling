@@ -171,14 +171,18 @@ export default function HeaderService({
                   <S.SharedSelectedItem>
                     <KakaoButton name={name} id={id} />
                   </S.SharedSelectedItem>
-                  <S.SharedSelectedItem
-                    onClick={() =>
-                      handleCopyClipBoard(
-                        `${'https://5rolling.netlify.app'}${location.pathname}`
-                      )
-                    }
-                  >
-                    URL 공유
+                  <S.SharedSelectedItem>
+                    <button
+                      onClick={() =>
+                        handleCopyClipBoard(
+                          `${'https://5rolling.netlify.app'}${
+                            location.pathname
+                          }`
+                        )
+                      }
+                    >
+                      URL 공유
+                    </button>
                   </S.SharedSelectedItem>
                 </S.SharedSelectContainer>
               )}

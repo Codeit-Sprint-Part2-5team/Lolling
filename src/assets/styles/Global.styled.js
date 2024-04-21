@@ -14,6 +14,13 @@ const GlobalStyle = createGlobalStyle`
   vertical-align: baseline;
 }
 
+button {
+  border: 0;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
 /* ----- HTML5 display-role reset for older browsers ------ */
 
 article,aside,details,figcaption,
