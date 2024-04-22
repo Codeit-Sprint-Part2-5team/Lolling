@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
-  min-height: calc(100vh - 146px);
+  min-height: calc(100vh - 132px);
   padding: 113px 0;
   ${({ $background }) => {
     if ($background.includes('http')) {
@@ -10,6 +10,7 @@ export const RollingPageLayout = styled.div`
       background-image: url(${$background});
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       `;
     }
     return `
@@ -18,10 +19,11 @@ export const RollingPageLayout = styled.div`
   }}
 
   @media (max-width: 1248px) {
-    min-height: calc(100vh - 113px);
+    min-height: calc(100vh - 132px);
     padding: 93px 0 91px;
   }
   @media (max-width: 768px) {
+    min-height: calc(100vh - 113px);
     padding: 32px 0;
   }
 `;

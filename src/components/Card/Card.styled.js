@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-export const CardLayout = styled.div`
+const Card = css`
   display: flex;
   flex-direction: column;
   height: 280px;
@@ -10,17 +11,19 @@ export const CardLayout = styled.div`
   background-color: var(--white, #fff);
   cursor: pointer;
 
-  ${({ $add }) =>
-    $add &&
-    `
-    justify-content: center;
-    align-items: center;
-    cursor: default;
-    `}
-
   @media (max-width: 768px) {
     height: 230px;
   }
+`;
+
+export const CardLayout = styled.div`
+  ${Card}
+`;
+
+export const AddLink = styled(Link)`
+  ${Card}
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TopContainer = styled.div`
