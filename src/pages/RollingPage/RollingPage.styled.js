@@ -10,6 +10,7 @@ export const RollingPageLayout = styled.div`
       background-image: url(${$background});
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       `;
     }
     return `
