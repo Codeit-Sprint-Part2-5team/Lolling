@@ -18,10 +18,11 @@ export const RollingPageLayout = styled.div`
   }}
 
   @media (max-width: 1248px) {
-    min-height: calc(100vh - 113px);
+    min-height: calc(100vh - 132px);
     padding: 93px 0 91px;
   }
   @media (max-width: 768px) {
+    min-height: calc(100vh - 113px);
     padding: 32px 0;
   }
 `;

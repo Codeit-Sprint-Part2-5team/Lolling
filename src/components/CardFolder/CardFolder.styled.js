@@ -22,6 +22,7 @@ export const CardFolderLayout = styled.div`
       return `
       background-image: url(${$background});
       background-size: cover;
+      background-position: center;
       color: var(--white-color);
 
         &::after {
