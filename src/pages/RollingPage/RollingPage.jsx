@@ -16,13 +16,14 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import LoadingIcon from '../../assets/images/loadingIcon.png';
 import Button from '../../components/Button/Button';
-import KakaoButton from '../../components/KakaoButton/KakaoButton';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
   const [modal, setModal] = useState();
   const [recipient, setRecipient] = useState();
-  const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
+  const { pending, requestFunction: getMessageList } = useAsync(
+    getMessageListRequest
+  );
   const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
   const { requestFunction: deleteCardFolder } = useAsync(
     deleteCardFolderRequest
@@ -149,7 +150,7 @@ export default function RollingPage({ edit }) {
               </li>
             ))}
           </S.CardContainer>
-          {!noMoreData && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
+          {pending && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
           {modal && (
             <S.ModalContainer>
               <Modal

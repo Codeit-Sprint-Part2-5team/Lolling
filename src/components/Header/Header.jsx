@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, Link, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Inner from '../Inner/Inner';
 import Logo from '../../assets/images/logo.svg';
 import * as S from './Header.styled';
