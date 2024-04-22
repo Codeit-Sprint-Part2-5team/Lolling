@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
-  min-height: calc(100vh - 146px);
+  min-height: calc(100vh - 132px);
   padding: 113px 0;
   ${({ $background }) => {
     if ($background.includes('http')) {
