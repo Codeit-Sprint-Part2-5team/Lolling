@@ -36,20 +36,19 @@ export default function ListPage() {
 
   return (
     <S.ListPageLayout>
-      <Inner>
+      <S.CardInner>
         <S.CardContainer>
           <S.TextBox>인기 롤링 페이퍼🔥</S.TextBox>
           <CardSlider>
-            {sortedCardDataByReaction.map((card) => (
-              <Link to={`/post/${card.id}`}>
+            {sortedCardDataByReaction?.map((item) => (
+              <Link key={item.id} to={`/post/${item.id}`}>
                 <CardFolder
-                  key={card.id}
-                  name={card.name}
-                  backgroundColor={card.backgroundColor}
-                  backgroundImageURL={card.backgroundImageURL}
-                  messageCount={card.messageCount}
-                  topReactions={card.topReactions}
-                  recentMessages={card.recentMessages}
+                  name={item.name}
+                  backgroundColor={item.backgroundColor}
+                  backgroundImageURL={item.backgroundImageURL}
+                  messageCount={item.messageCount}
+                  topReactions={item.topReactions}
+                  recentMessages={item.recentMessages}
                   sort='like'
                 />
               </Link>
@@ -59,16 +58,17 @@ export default function ListPage() {
         <S.TextBox>최근에 만든 롤링 페이퍼⭐️️</S.TextBox>
         <S.RecentCardContainer>
           <CardSlider>
-            {sortedCardDataByCreatedAt.map((card) => (
-              <CardFolder
-                key={card.id}
-                name={card.name}
-                backgroundColor={card.backgroundColor}
-                backgroundImageURL={card.backgroundImageURL}
-                messageCount={card.messageCount}
-                topReactions={card.topReactions}
-                recentMessages={card.recentMessages}
-              />
+            {sortedCardDataByCreatedAt.map((item) => (
+              <Link key={item.id} to={`/post/${item.id}`}>
+                <CardFolder
+                  name={item.name}
+                  backgroundColor={item.backgroundColor}
+                  backgroundImageURL={item.backgroundImageURL}
+                  messageCount={item.messageCount}
+                  topReactions={item.topReactions}
+                  recentMessages={item.recentMessages}
+                />
+              </Link>
             ))}
           </CardSlider>
         </S.RecentCardContainer>
@@ -82,7 +82,7 @@ export default function ListPage() {
             />
           </Link>
         </S.ButtonContainer>
-      </Inner>
+      </S.CardInner>
     </S.ListPageLayout>
   );
 }

@@ -5,9 +5,8 @@ export const LeftButton = styled(ArrowButton)`
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%) rotate(180deg);
-  // arrowLeftIcon이 연결되지 않아 회전시킴
   z-index: 1;
+  transform: translateY(-50%);
 
   @media (max-width: 1248px) {
     display: none;
@@ -49,5 +48,29 @@ export const CardList = styled.div`
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+  }
+
+  &> a: first-of-type {
+    display: block;
+
+    @media (max-width: 1248px) {
+      margin-left: 24px;
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 20px;
+    }
+  }
+
+  &> a: last-of-type {
+    display: block;
+
+    @media (max-width: 1248px) {
+      margin-right: 24px;
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 20px;
+    }
   }
 `;
