@@ -1,6 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Inner from '../../components/Inner/Inner';
 import Button from '../../components/Button/Button';
 import CardFolder from '../../components/CardFolder/CardFolder';
 import useAsync from '../../hooks/useAsync';
