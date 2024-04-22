@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const ButtonStyle = css`
@@ -149,4 +150,8 @@ export const SmileText = styled.span`
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+export const LinkBox = styled(Link)`
+  width: ${({ width }) => width};
 `;

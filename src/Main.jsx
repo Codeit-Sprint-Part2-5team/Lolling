@@ -6,6 +6,7 @@ import ListPage from './pages/ListPage/ListPage';
 import MessagePage from './pages/MessagePage/MessagePage';
 import RollingPage from './pages/RollingPage/RollingPage';
 import ApiTestPage from './pages/ApiTestPage/ApiTestPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function Main() {
   return (
@@ -23,6 +24,7 @@ function Main() {
             </Route>
             <Route path='apitest' element={<ApiTestPage />} />
           </Route>
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

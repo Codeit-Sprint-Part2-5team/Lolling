@@ -3,6 +3,7 @@ import { useLocation, Link, useParams } from 'react-router-dom';
 import Inner from '../Inner/Inner';
 import Logo from '../../assets/images/logo.svg';
 import * as S from './Header.styled';
+import Button from '../Button/Button';
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -36,13 +37,15 @@ export default function Header() {
             </S.LinkBox>
           </S.LogoBox>
           {isShowRollingButton && (
-            <S.ButtonBox
-              to='/post'
-              text={'롤링 페이퍼 만들기'}
-              variant={'outline'}
-              size={40}
-              width={'157px'}
-            />
+            <S.ButtonBox>
+              <Button
+                to='/post'
+                text={'롤링 페이퍼 만들기'}
+                variant={'outline'}
+                size={40}
+                width={'100%'}
+              />
+            </S.ButtonBox>
           )}
         </S.HeaderContainer>
       </Inner>
