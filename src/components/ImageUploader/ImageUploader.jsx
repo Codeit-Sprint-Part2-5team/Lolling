@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import AddButton from '../AddButton/AddButton';
 import Button from '../Button/Button';
 import * as S from './ImageUploader.styled';

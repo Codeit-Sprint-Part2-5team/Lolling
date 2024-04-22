@@ -119,7 +119,7 @@ export default function PostPage() {
       <S.PostPageLayout>
         {isFetchingImages && (
           <S.LoadingModalBox>
-            <LoadingModal pending={isFetchingImages} text={'불러오는중..'} />
+            <LoadingModal pending={isFetchingImages} />
           </S.LoadingModalBox>
         )}
         <S.FormContainer onSubmit={createPaper}>

@@ -15,7 +15,7 @@ export const LoadingModalBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--white-color);
   z-index: 200;
 `;
 
