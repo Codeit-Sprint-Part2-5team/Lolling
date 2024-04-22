@@ -95,7 +95,6 @@ export default function RollingPage({ edit }) {
         name={recipient?.name}
         recentMessages={recipient?.recentMessages}
         messageCount={recipient?.messageCount}
-        topReactions={recipient?.topReactions}
       />
       <S.RollingPageLayout $background={background}>
         <Inner>

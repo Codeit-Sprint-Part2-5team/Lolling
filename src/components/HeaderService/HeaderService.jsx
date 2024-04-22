@@ -16,7 +16,6 @@ export default function HeaderService({
   name,
   recentMessages,
   messageCount,
-  topReactions,
 }) {
   const [emojiData, setEmojiData] = useState();
   const [isShowEmoji, setIsShowEmoji] = useState(false);
@@ -38,7 +37,6 @@ export default function HeaderService({
     if (!response) return;
 
     setEmojiData(response.data.results);
-    console.log(response);
   };
 
   useEffect(() => {
@@ -132,7 +130,7 @@ export default function HeaderService({
           <S.EmojiContainer>
             <S.EmojiBadgeContainer>
               <S.EmojiTopThree>
-                {topReactions?.map((item) => (
+                {emojiData?.slice(0, 3).map((item) => (
                   <EmojiBadge
                     key={item.id}
                     emoji={item.emoji}
