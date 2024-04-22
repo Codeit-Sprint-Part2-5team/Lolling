@@ -23,6 +23,7 @@ function DropDown({ items, type, messageBody, setMessageBody, font }) {
   const handleSelectedFont = (font) => {
     setSelectedItem(font);
     setMessageBody({ ...messageBody, font });
+    setIsOpen(false);
   }; 
 
   return (
