@@ -32,16 +32,19 @@ export default function Button({
   );
 
   return to ? (
-    <S.ButtonLayout
-      className={className}
-      $variant={variant}
-      size={size}
-      width={width}
-      disabled={disabled}
-      $smileicon={isSmileIcon}
-    >
-      <Link to={to}>{buttonContent}</Link>
-    </S.ButtonLayout>
+    <S.LinkBox to={to} width={width}>
+      <S.ButtonLayout
+        type='text'
+        className={className}
+        $variant={variant}
+        size={size}
+        width={width}
+        disabled={disabled}
+        $smileicon={isSmileIcon}
+      >
+        {buttonContent}
+      </S.ButtonLayout>
+    </S.LinkBox>
   ) : (
     <S.ButtonLayout
       type={type}
