@@ -22,6 +22,7 @@ export const CardFolderLayout = styled.div`
       return `
       background-image: url(${$background});
       background-size: cover;
+      background-position: center;
       color: var(--white-color);
 
         &::after {
@@ -116,6 +117,10 @@ export const CardFolderLayout = styled.div`
         return css`
           ${innerColorShape}, ${purpleShape}
         `;
+      default:
+        return css`
+          ${innerColorShape}, ${purpleShape}
+        `;
     }
   }}
 `;
@@ -130,7 +135,7 @@ export const CardUserNameBox = styled.div`
 export const CardGuestContainer = styled.div``;
 
 export const VisitCountBox = styled.div`
-  margin-top: 12px;
+  margin-top: ${({ $nopaper }) => ($nopaper ? 39 : 12)}px;
   font-size: 16px;
 `;
 

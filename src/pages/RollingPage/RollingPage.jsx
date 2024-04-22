@@ -85,7 +85,7 @@ export default function RollingPage({ edit }) {
 
   const handleDeleteAll = () => {
     deleteAll();
-    navigate('/list');
+    navigate('/');
   };
 
   return (

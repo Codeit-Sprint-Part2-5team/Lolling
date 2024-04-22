@@ -38,11 +38,9 @@ export default function Card({
   return (
     <>
       {add ? (
-        <S.CardLayout $add={add}>
-          <Link to='message'>
-            <AddButton />
-          </Link>
-        </S.CardLayout>
+        <S.AddLink to='message'>
+          <AddButton />
+        </S.AddLink>
       ) : (
         <S.CardLayout onClick={handleCardClick}>
           <S.TopContainer>
