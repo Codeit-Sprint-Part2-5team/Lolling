@@ -117,11 +117,7 @@ export default function PostPage() {
   return (
     <Inner>
       <S.PostPageLayout>
-        {isFetchingImages && (
-          <S.LoadingModalBox>
-            <LoadingModal pending={isFetchingImages} />
-          </S.LoadingModalBox>
-        )}
+        {isFetchingImages && <LoadingModal pending={isFetchingImages} />}
         <S.FormContainer onSubmit={createPaper}>
           <S.ToContainer>
             <h4>To.</h4>
