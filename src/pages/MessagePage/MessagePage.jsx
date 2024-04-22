@@ -210,7 +210,7 @@ export default function MessagePage() {
           />
           {pending && (
             <S.LoadingModalBox>
-              <LoadingModal pending={pending} />
+              <LoadingModal pending={pending} text={'업로드중..'} />
             </S.LoadingModalBox>
           )}
         </S.FormContainer>
