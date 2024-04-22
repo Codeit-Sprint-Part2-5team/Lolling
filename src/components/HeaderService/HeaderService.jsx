@@ -18,6 +18,7 @@ export default function HeaderService({
   messageCount,
 }) {
   const [emojiData, setEmojiData] = useState();
+  const [emojiDataLength, setEmojiDataLength] = useState([]);
   const [isShowEmoji, setIsShowEmoji] = useState(false);
   const [isShowEmojiPicker, setIsShowEmojiPicker] = useState(false);
   const [isShowShareButton, setIsShowShareButton] = useState(false);
@@ -37,6 +38,7 @@ export default function HeaderService({
     if (!response) return;
 
     setEmojiData(response.data.results);
+    setEmojiDataLength(response.data.results.length);
   };
 
   useEffect(() => {
@@ -138,25 +140,27 @@ export default function HeaderService({
                   />
                 ))}
               </S.EmojiTopThree>
-              <S.EmojiListButton>
-                <S.EmojiListButtonImg
-                  src={arrowDownIcon}
-                  alt='이모지 보기'
-                  ref={emojiListButtonRef}
-                  onClick={showEmojiContainer}
-                />
-                {isShowEmoji && (
-                  <S.EmojiBoxItem ref={emojiListRef}>
-                    {emojiData?.map((item) => (
-                      <EmojiBadge
-                        key={item.id}
-                        emoji={item.emoji}
-                        count={item.count}
-                      />
-                    ))}
-                  </S.EmojiBoxItem>
-                )}
-              </S.EmojiListButton>
+              {emojiDataLength > 0 && (
+                <S.EmojiListButton>
+                  <S.EmojiListButtonImg
+                    src={arrowDownIcon}
+                    alt='이모지 보기'
+                    ref={emojiListButtonRef}
+                    onClick={showEmojiContainer}
+                  />
+                  {isShowEmoji && (
+                    <S.EmojiBoxItem ref={emojiListRef}>
+                      {emojiData?.map((item) => (
+                        <EmojiBadge
+                          key={item.id}
+                          emoji={item.emoji}
+                          count={item.count}
+                        />
+                      ))}
+                    </S.EmojiBoxItem>
+                  )}
+                </S.EmojiListButton>
+              )}
             </S.EmojiBadgeContainer>
             <S.EmojiButtonContainer>
               <div ref={emojiPickerButtonRef}>
