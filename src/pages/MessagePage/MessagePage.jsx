@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
@@ -101,13 +101,13 @@ export default function MessagePage() {
     }
     return setSelected(profileImage[0]);
   }, [profileImage, profileContext]);
+
   useEffect(() => {
     setMessageBody({
       ...messageBody,
       content: textareaBody,
-      font,
     });
-  }, [textareaBody, font]);
+  }, [textareaBody]);
 
   useEffect(() => {
     setActiveBtn(messageBody.sender === '' || messageBody.content === '');
@@ -176,9 +176,7 @@ export default function MessagePage() {
             <h4>상대와의 관계</h4>
             <DropDown
               items={INIT_DROPDOWN.relationship}
-              type={'relationship'}
-              messageBody={messageBody}
-              setMessageBody={setMessageBody}
+              setSelectedFont={() => {}}
             />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
@@ -195,8 +193,7 @@ export default function MessagePage() {
               type={'font'}
               messageBody={messageBody}
               setMessageBody={setMessageBody}
-              font={font}
-              setFont={setFont}
+              setSelectedFont={setFont}
             />
           </S.FontContainer>
           <Button

@@ -1,32 +1,35 @@
-/* Regular Style */
+/* Noto Sans */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./Noto-Sans-regular.woff2') format('woff2'),
+    url('./Noto-Sans-regular.woff') format('woff');
+}
+
+/* Pretendard */
 @font-face {
   font-family: 'Pretendard';
   font-weight: 400;
-  src: url('../fonts/NotoSansKR-Regular.ttf');
+  src: url('./Pretendard-Regular.woff2') format('woff2'),
+    url('./Pretendard-Regular.woff') format('woff');
 }
 
-/* Bold Style */
 @font-face {
   font-family: 'Pretendard';
   font-weight: 700;
-  src: url('../fonts/Pretendard-Bold.ttf');
+  src: url('./Pretendard-Bold.woff2') format('woff2'),
+    url('./Pretendard-Bold.woff') format('woff');
 }
 
+/* 나눔명조 */
 @font-face {
-  font-family: 'Noto Sans', Pretendard;
-  src: url('../fonts/NotoSansKR-Regular.ttf');
+  font-family: '나눔명조';
+  src: url('./NanumMyeongjo.woff2') format('woff2'),
+    url('./NanumMyeongjo.woff') format('woff');
 }
 
+/* 나눔손글씨 손편지체 */
 @font-face {
-  font-family: '나눔명조', Pretendard;
-  src: url('../fonts/NanumMyeongjo.ttf');
-}
-
-@font-face {
-  font-family: '나눔손글씨 손편지체', Pretendard;
-  src: url('../fonts/NanumSonPyeonJiCe.ttf');
-}
-
-body {
-  font-family: 'Pretendard';
+  font-family: '나눔손글씨 손편지체';
+  src: url('./NanumPen.woff2') format('woff2'),
+    url('./NanumPen.woff') format('woff');
 }

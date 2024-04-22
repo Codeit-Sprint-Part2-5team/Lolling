@@ -3,7 +3,7 @@ import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items, type, messageBody, setMessageBody, font }) {
+function DropDown({ items, type, messageBody, setMessageBody, setSelectedFont }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
@@ -14,6 +14,7 @@ function DropDown({ items, type, messageBody, setMessageBody, font }) {
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
+    setSelectedFont(item); // 선택한 폰트를 DropDown 밖으로 전달
     setMessageBody(() => ({
       ...messageBody,
       [type]: item,
@@ -25,6 +26,7 @@ function DropDown({ items, type, messageBody, setMessageBody, font }) {
     setMessageBody({ ...messageBody, font });
     setIsOpen(false);
   }; 
+
 
   return (
     <S.DropDownLayout>
@@ -43,9 +45,7 @@ function DropDown({ items, type, messageBody, setMessageBody, font }) {
             <S.DropDownItemHover
               key={item}
               onClick={() => {
-                type === 'font'
-                  ? handleSelectedFont(item)
-                  : handleItemClick(item);
+                handleItemClick(item);
               }}
             >
               {item}
