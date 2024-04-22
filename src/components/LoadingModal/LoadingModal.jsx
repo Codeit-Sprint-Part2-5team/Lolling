@@ -1,12 +1,12 @@
 import * as S from './LoadingModal.styled';
 
-function Modal({ pending, className }) {
+function Modal({ pending, text, className }) {
   if (!pending) return;
   return (
     <S.Layout className={className}>
       <S.ContentBox>
         <S.Spinner />
-        <S.Text>업로드중...</S.Text>
+        <S.Text>{text}</S.Text>
       </S.ContentBox>
     </S.Layout>
   );

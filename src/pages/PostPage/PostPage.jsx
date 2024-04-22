@@ -9,6 +9,7 @@ import {
 } from '../../apis/api';
 import ColorOption from '../../components/ColorOption/ColorOption';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/TextField/Input/Input';
@@ -30,13 +31,11 @@ export default function PostPage() {
   const [isActiveBtn, setActiveBtn] = useState(true);
   const [imageFile, setImageFile] = useState(null);
   const nav = useNavigate();
-  const { requestFunction: getBackgroundImage } = useAsync(
-    getBackgroundImageRequest
-  );
+  const { pending: isFetchingImages, requestFunction: getBackgroundImage } =
+    useAsync(getBackgroundImageRequest);
   const { requestFunction: createRequest } = useAsync(createCardFolderRequest);
-  const { pending, requestFunction: uploadImageRequest } = useAsync(
-    uploadBackgroundImageRequest
-  );
+  const { pending: isUploadingImage, requestFunction: uploadImageRequest } =
+    useAsync(uploadBackgroundImageRequest);
 
   const getBackground = async () => {
     const result = await getBackgroundImage();
@@ -107,8 +106,6 @@ export default function PostPage() {
     uploadRequest();
   }, [imageFile]);
 
-  useEffect(() => {}, [backgroundImages]);
-
   useEffect(() => {
     setActiveBtn(rollPaperBody.name === '');
   }, [rollPaperBody]);
@@ -120,6 +117,11 @@ export default function PostPage() {
   return (
     <Inner>
       <S.PostPageLayout>
+        {isFetchingImages && (
+          <S.LoadingModalBox>
+            <LoadingModal pending={isFetchingImages} text={'불러오는중'} />
+          </S.LoadingModalBox>
+        )}
         <S.FormContainer onSubmit={createPaper}>
           <S.ToContainer>
             <h4>To.</h4>
@@ -159,7 +161,7 @@ export default function PostPage() {
                 setSelected={setSelected}
                 imageFile={imageFile}
                 setImageFile={setImageFile}
-                pending={pending}
+                pending={isUploadingImage}
               />
             )}
           </S.BackgroundContainer>
