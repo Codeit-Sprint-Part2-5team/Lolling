@@ -7,7 +7,13 @@ import LoadingIcon from '../../assets/images/loadingIcon.png';
 function TextButtonStyle({ handleImageChange, inputRef }) {
   return (
     <S.InputContainer>
-      <Button text={'파일 선택'} size={56} width={'100%'} variant={'outline'} />
+      <Button
+        type={'button'}
+        text={'파일 선택'}
+        size={56}
+        width={'100%'}
+        variant={'outline'}
+      />
       <S.Input
         type='file'
         accept='image/*'
