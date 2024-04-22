@@ -14,14 +14,6 @@ const GlobalStyle = createGlobalStyle`
   vertical-align: baseline;
 }
 
-html, body {
-  height: 100%;
-}
-
-#root > div > div {
-  min-height: calc(100vh - 64px);
-}
-
 button {
   border: 0;
   outline: none;
