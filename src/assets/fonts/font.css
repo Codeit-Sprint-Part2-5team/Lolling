@@ -2,28 +2,29 @@
 @font-face {
   font-family: 'Pretendard';
   font-weight: 400;
-  font-style: normal;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff')
-      format('woff'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.ttf')
-      format('truetype');
-  font-display: swap;
+  src: url('../fonts/NotoSansKR-Regular.ttf');
 }
 
 /* Bold Style */
 @font-face {
   font-family: 'Pretendard';
   font-weight: 700;
-  font-style: normal;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff')
-      format('woff'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.ttf')
-      format('truetype');
-  font-display: swap;
+  src: url('../fonts/Pretendard-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Sans', Pretendard;
+  src: url('../fonts/NotoSansKR-Regular.ttf');
+}
+
+@font-face {
+  font-family: '나눔명조', Pretendard;
+  src: url('../fonts/NanumMyeongjo.ttf');
+}
+
+@font-face {
+  font-family: '나눔손글씨 손편지체', Pretendard;
+  src: url('../fonts/NanumSonPyeonJiCe.ttf');
 }
 
 body {

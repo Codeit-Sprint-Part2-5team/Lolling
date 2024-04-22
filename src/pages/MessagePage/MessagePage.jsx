@@ -35,6 +35,7 @@ export default function MessagePage() {
   const [profileContext, setProfileContext] = useState('img');
   const [imageFile, setImageFile] = useState();
   const [isSubmit, setSubmit] = useState(false);
+  const [font, setFont] = useState('Noto Sans');
   const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
   const { pending, requestFunction: getUrl } = useAsync(
     uploadProfileImageRequest
@@ -100,13 +101,13 @@ export default function MessagePage() {
     }
     return setSelected(profileImage[0]);
   }, [profileImage, profileContext]);
-
   useEffect(() => {
     setMessageBody({
       ...messageBody,
       content: textareaBody,
+      font,
     });
-  }, [textareaBody]);
+  }, [textareaBody, font]);
 
   useEffect(() => {
     setActiveBtn(messageBody.sender === '' || messageBody.content === '');
@@ -194,6 +195,8 @@ export default function MessagePage() {
               type={'font'}
               messageBody={messageBody}
               setMessageBody={setMessageBody}
+              font={font}
+              setFont={setFont}
             />
           </S.FontContainer>
           <Button

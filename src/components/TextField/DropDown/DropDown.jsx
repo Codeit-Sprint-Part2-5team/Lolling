@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import * as S from './DropDown.styled';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items, type, messageBody, setMessageBody }) {
+function DropDown({ items, type, messageBody, setMessageBody, font }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
@@ -19,7 +18,12 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
       ...messageBody,
       [type]: item,
     }));
-  };
+  }; 
+
+  const handleSelectedFont = (font) => {
+    setSelectedItem(font);
+    setMessageBody({ ...messageBody, font });
+  }; 
 
   return (
     <S.DropDownLayout>
@@ -34,23 +38,23 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
       {isOpen && (
         <S.DropDownItemList>
           <S.DropDownItem>
-            {items.map((item) => (
-              <S.DropDownItemHover
-                key={item}
-                onClick={() => handleItemClick(item)}
-              >
-                {item}
-              </S.DropDownItemHover>
-            ))}
+          {items.map((item) => (
+            <S.DropDownItemHover
+              key={item}
+              onClick={() => {
+                type === 'font'
+                  ? handleSelectedFont(item)
+                  : handleItemClick(item);
+              }}
+            >
+              {item}
+            </S.DropDownItemHover>
+          ))}
           </S.DropDownItem>
         </S.DropDownItemList>
       )}
     </S.DropDownLayout>
   );
 }
-
-// DropDown.propTypes = {
-//   items: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
 
 export default DropDown;
