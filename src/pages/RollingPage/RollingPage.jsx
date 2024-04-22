@@ -113,18 +113,20 @@ export default function RollingPage({ edit }) {
                 정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
                 삭제하시겠습니까?
               </span>
-              <Button
-                text={'네'}
-                variant={'primary'}
-                size={36}
-                onClick={handleDeleteAll}
-              />
-              <Button
-                text={'아니오'}
-                variant={'outline'}
-                size={36}
-                onClick={() => setIsDeleteModal(false)}
-              />
+              <S.ButtonContainer>
+                <Button
+                  text={'네'}
+                  variant={'primary'}
+                  size={36}
+                  onClick={handleDeleteAll}
+                />
+                <Button
+                  text={'아니오'}
+                  variant={'outline'}
+                  size={36}
+                  onClick={() => setIsDeleteModal(false)}
+                />
+              </S.ButtonContainer>
             </S.DeleteModalBox>
           )}
           <S.CardContainer>
