@@ -43,5 +43,5 @@ export const RecentCardContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin: 48px 0px 218px 0px;
 `;
