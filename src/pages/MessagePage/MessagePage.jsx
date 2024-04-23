@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './MessagePage.styled';
 import MarkDown from '../../components/TextField/MarkDown';
@@ -36,8 +36,9 @@ export default function MessagePage() {
   const [imageFile, setImageFile] = useState();
   const [isSubmit, setSubmit] = useState(false);
   const [font, setFont] = useState('Noto Sans');
-  const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
-  const { pending, requestFunction: getUrl } = useAsync(
+  const { pending: isFetchingImage, requestFunction: getImageRequest } =
+    useAsync(getMockImageRequest);
+  const { pending: isUploadingImage, requestFunction: getUrl } = useAsync(
     uploadProfileImageRequest
   );
   const { requestFunction: postMessageRequest } =
@@ -63,6 +64,7 @@ export default function MessagePage() {
   const urlRequest = async (e) => {
     e.preventDefault();
     setActiveBtn(true);
+
     if (imageFile) {
       const url = await getUrl(imageFile);
 
@@ -80,7 +82,6 @@ export default function MessagePage() {
     const result = await postMessageRequest(messageBody);
     if (!result) return;
     setMessageBody(INIT_CREATE_MESSAGE);
-
     nav(`/post/${userId}`);
   };
 
@@ -132,6 +133,7 @@ export default function MessagePage() {
   return (
     <Inner>
       <S.PostPageLayout>
+        {isFetchingImage && <LoadingModal pending={isFetchingImage} />}
         <S.FormContainer onSubmit={urlRequest}>
           <S.FromContainer>
             <h4>From.</h4>
@@ -210,11 +212,7 @@ export default function MessagePage() {
             size={56}
             width={'100%'}
           />
-          {pending && (
-            <S.LoadingModalBox>
-              <LoadingModal pending={pending} />
-            </S.LoadingModalBox>
-          )}
+          {isUploadingImage && <LoadingModal pending={isUploadingImage} />}
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>
