@@ -11,6 +11,9 @@ export const Layout = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -96,5 +99,10 @@ export const ContentBox = styled.p`
   }
   &::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    line-height: 22px;
   }
 `;

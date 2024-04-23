@@ -19,6 +19,7 @@ export const DropDownInput = styled.div`
   background: #ffffff;
   font-family: 'Pretendard';
   font-size: 16px;
+  cursor: pointer;
 
   &::placeholder {
     color: #555555;
