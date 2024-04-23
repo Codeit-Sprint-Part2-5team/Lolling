@@ -16,7 +16,9 @@ export default function Card({
   edit,
   deleteMessage,
   setMessageList,
+  font, 
 }) {
+
   const date = createdAt?.slice(0, 10);
 
   const handleCardClick = () => {
@@ -54,7 +56,7 @@ export default function Card({
             {edit && <DeleteButton onClick={handleDelete} />}
           </S.TopContainer>
           <S.BottomContainer>
-            <S.ContentBox>{content}</S.ContentBox>
+            <S.ContentBox style={{ fontFamily: font }}>{content} </S.ContentBox>
             <S.DateBox>{date}</S.DateBox>
           </S.BottomContainer>
         </S.CardLayout>

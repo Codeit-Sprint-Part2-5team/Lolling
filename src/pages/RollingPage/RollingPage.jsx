@@ -145,7 +145,8 @@ export default function RollingPage({ edit }) {
                   createdAt={item.createdAt}
                   deleteMessage={deleteMessage}
                   setMessageList={setMessageList}
-                />
+                  font={item.font}
+                                  />
               </li>
             ))}
           </S.CardContainer>
