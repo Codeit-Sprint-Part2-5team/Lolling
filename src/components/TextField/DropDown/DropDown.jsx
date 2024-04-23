@@ -26,7 +26,6 @@ function DropDown({ items, type, messageBody, setMessageBody, setSelectedFont })
     }));
   }; 
 
-  // 폰트 선택 추가
   const handleSelectedFont = (font) => {
     setSelectedItem(font);
     setSelectedFont(font); 

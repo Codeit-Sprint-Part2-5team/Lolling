@@ -11,6 +11,7 @@ function Modal({
   onClick,
   font,
 }) {
+
   return (
     <S.Layout>
       <S.HeaderContainer>

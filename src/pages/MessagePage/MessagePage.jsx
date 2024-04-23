@@ -35,6 +35,7 @@ export default function MessagePage() {
   const [profileContext, setProfileContext] = useState('img');
   const [imageFile, setImageFile] = useState();
   const [isSubmit, setSubmit] = useState(false);
+  const [font, setFont] = useState('Noto Sans');
   const { pending: isFetchingImage, requestFunction: getImageRequest } =
     useAsync(getMockImageRequest);
   const { pending: isUploadingImage, requestFunction: getUrl } = useAsync(

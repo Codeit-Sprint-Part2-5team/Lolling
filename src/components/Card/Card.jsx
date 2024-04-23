@@ -27,6 +27,7 @@ export default function Card({
       relationship,
       sender,
       date,
+      font,
     });
   };
 
