@@ -15,6 +15,7 @@ export const ButtonLayout = styled.button`
   ${ButtonStyle}
   width: ${({ width }) => width};
   cursor: pointer;
+  transition: background-color 0.5s;
 
   // Size
   ${({ size, $variant }) =>
