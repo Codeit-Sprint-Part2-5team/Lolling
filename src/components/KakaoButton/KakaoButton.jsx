@@ -17,6 +17,8 @@ export default function KakaoButton({ name, id }) {
       content: {
         title: 'Rolling',
         description: `${name}님의 롤링페이퍼입니다`,
+        imageUrl:
+          'https://5rolling.netlify.app/static/media/logo.c1f18ffcdc76df4e2e28b644ee3ae6fb.svg',
         link: {
           mobileWebUrl: realUrl,
           webUrl: realUrl,
