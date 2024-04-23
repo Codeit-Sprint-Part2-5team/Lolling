@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../Button/Button';
 
 export const HeaderLayout = styled.header`
   display: flex;
@@ -19,13 +18,11 @@ export const HeaderLayout = styled.header`
   }
 
   @media (max-width: 768px) {
-    &.unvisibleOnMobile {
-      display: none;
-    }
+    display: ${({ $invisible }) =>
+      $invisible === 'true' ? 'none' : 'inline-flex'};
     width: 100%;
     height: 64px;
     flex-shrink: 0;
-    display: inline-flex;
     align-items: center;
     gap: 500px;
   }
@@ -56,11 +53,8 @@ export const LogoBox = styled.h1`
     display: flex;
     justify-content: center;
     align-items: center;
-    align-items: center;
   }
   @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
     gap: 8px;
   }
 `;
@@ -74,22 +68,13 @@ export const LinkBox = styled(Link)`
   color: #4a494f;
   text-align: center;
   font-family: Poppins;
-  line-height: normal;
-
-  @media (max-width: 768px) {
-    color: var(--gray-light-gray-90, #4a494f);
-    text-align: center;
-    font-family: Poppins;
-    font-size: 19.971px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
 `;
 
-export const ButtonBox = styled(Button)`
+export const ButtonBox = styled.div`
   @media (max-width: 768px) {
     width: 142px;
-    font-size: 14px;
+    & * {
+      font-size: 14px;
+    }
   }
 `;

@@ -67,7 +67,6 @@ export default function MessagePage() {
 
     if (imageFile) {
       const url = await getUrl(imageFile);
-
       setMessageBody({
         ...messageBody,
         profileImageURL: url,

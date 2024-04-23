@@ -16,13 +16,14 @@ import convertBackgroundColor from '../../utils/convertBackgroundColor';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import LoadingIcon from '../../assets/images/loadingIcon.png';
 import Button from '../../components/Button/Button';
-import KakaoButton from '../../components/KakaoButton/KakaoButton';
 
 export default function RollingPage({ edit }) {
   const [messageList, setMessageList] = useState();
   const [modal, setModal] = useState();
   const [recipient, setRecipient] = useState();
-  const { requestFunction: getMessageList } = useAsync(getMessageListRequest);
+  const { pending, requestFunction: getMessageList } = useAsync(
+    getMessageListRequest
+  );
   const { requestFunction: getRecipient } = useAsync(getCardFolderRequest);
   const { requestFunction: deleteCardFolder } = useAsync(
     deleteCardFolderRequest
@@ -54,7 +55,7 @@ export default function RollingPage({ edit }) {
 
   const getRecipientsData = async () => {
     const result = await getRecipient(userId);
-    if (!result) return;
+    if (!result) return navigate('*');
     const { data } = result;
     setRecipient(data);
     setMessageCount(data.messageCount);
@@ -84,7 +85,7 @@ export default function RollingPage({ edit }) {
 
   const handleDeleteAll = () => {
     deleteAll();
-    navigate('/list');
+    navigate('/');
   };
 
   return (
@@ -95,6 +96,7 @@ export default function RollingPage({ edit }) {
         recentMessages={recipient?.recentMessages}
         messageCount={recipient?.messageCount}
         topReactions={recipient?.topReactions}
+        backgroundImageURL={recipient?.backgroundImageURL}
       />
       <S.RollingPageLayout $background={background}>
         <Inner>
@@ -109,21 +111,23 @@ export default function RollingPage({ edit }) {
           {isDeleteModal && (
             <S.DeleteModalBox>
               <span>
-                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
+                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를 <S.Br />
                 삭제하시겠습니까?
               </span>
-              <Button
-                text={'네'}
-                variant={'primary'}
-                size={36}
-                onClick={handleDeleteAll}
-              />
-              <Button
-                text={'아니오'}
-                variant={'outline'}
-                size={36}
-                onClick={() => setIsDeleteModal(false)}
-              />
+              <S.ButtonContainer>
+                <Button
+                  text={'네'}
+                  variant={'primary'}
+                  size={36}
+                  onClick={handleDeleteAll}
+                />
+                <Button
+                  text={'아니오'}
+                  variant={'outline'}
+                  size={36}
+                  onClick={() => setIsDeleteModal(false)}
+                />
+              </S.ButtonContainer>
             </S.DeleteModalBox>
           )}
           <S.CardContainer>
@@ -146,11 +150,11 @@ export default function RollingPage({ edit }) {
                   deleteMessage={deleteMessage}
                   setMessageList={setMessageList}
                   font={item.font}
-                                  />
+                />
               </li>
             ))}
           </S.CardContainer>
-          {!noMoreData && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
+          {pending && <S.LoadingBox src={LoadingIcon} alt='로딩' />}
           {modal && (
             <S.ModalContainer>
               <Modal

@@ -2,6 +2,7 @@ import React from 'react';
 import Inner from '../../components/Inner/Inner';
 import * as S from './HomePage.styled';
 import GroupImg from '../../assets/images/Group.png';
+import Button from '../../components/Button/Button';
 
 export default function HomePage() {
   return (
@@ -36,13 +37,15 @@ export default function HomePage() {
               <S.Content2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.Content2>
             </S.SecondContentContainer>
           </S.SecondContainer>
-          <S.ButtonBox
-            to='/list'
-            text={'구경해보기'}
-            variant={'primary'}
-            size={56}
-            width={'280px'}
-          />
+          <S.ButtonContainer>
+            <Button
+              to='/list'
+              text={'구경해보기'}
+              variant={'primary'}
+              size={56}
+              width={'100%'}
+            />
+          </S.ButtonContainer>
         </S.MainContainer>
       </Inner>
     </S.HomePageLayout>

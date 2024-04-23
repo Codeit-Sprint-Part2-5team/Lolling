@@ -12,13 +12,13 @@ function CardFolder({
   sort = 'latest', // 수정: 기본값으로 'latest'를 사용하여 sort prop을 추가
 }) {
   let sortedData = recentMessages; // 수정: 기본값으로 recentMessages를 사용
-  
+
   if (sort === 'like') {
     sortedData = recentMessages.sort(
       (a, b) => b.reactionCount - a.reactionCount
     );
   }
-  
+
   return (
     <S.CardFolderLayout
       $background={
@@ -36,7 +36,9 @@ function CardFolder({
         {messageCount ? (
           <S.VisitCountBox>{`${messageCount}명이 작성했어요!`}</S.VisitCountBox>
         ) : (
-          '페이퍼 남기러 가요~'
+          <S.VisitCountBox $nopaper>
+            아직 작성된 페이퍼가 없어요!
+          </S.VisitCountBox>
         )}
       </S.UserInfoContainer>
       <S.CardEmojiContainer>

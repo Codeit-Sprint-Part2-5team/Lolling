@@ -6,10 +6,11 @@ import useAsync from '../../hooks/useAsync';
 import * as S from './ListPage.styled';
 import { getCardFolderListRequest } from '../../apis/api';
 import CardSlider from '../../components/CardSlider/CardSlider';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 export default function ListPage() {
   const [cardDataList, setCardDataList] = useState([]);
-  const { requestFunction: getCardDataList } = useAsync(
+  const { pending, requestFunction: getCardDataList } = useAsync(
     getCardFolderListRequest
   );
 
@@ -33,7 +34,9 @@ export default function ListPage() {
     );
   }, [cardDataList]);
 
-  return (
+  return pending ? (
+    <LoadingModal pending={pending} />
+  ) : (
     <S.ListPageLayout>
       <S.CardInner>
         <S.CardContainer>

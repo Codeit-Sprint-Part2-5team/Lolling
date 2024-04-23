@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Inner from '../../components/Inner/Inner';
 
 export const CardInner = styled(Inner)`
@@ -33,7 +33,9 @@ export const TextBox = styled.h4`
   }
 `;
 
-export const ListPageLayout = styled.div``;
+export const ListPageLayout = styled.div`
+  padding-bottom: 57px;
+`;
 
 export const RecentCardContainer = styled.div`
   // textbox 제외 컨테이너
