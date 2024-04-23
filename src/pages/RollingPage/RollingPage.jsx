@@ -87,6 +87,7 @@ export default function RollingPage({ edit }) {
     deleteAll();
     navigate('/');
   };
+  console.log(recipient);
 
   return (
     <>
@@ -95,6 +96,8 @@ export default function RollingPage({ edit }) {
         name={recipient?.name}
         recentMessages={recipient?.recentMessages}
         messageCount={recipient?.messageCount}
+        topReactions={recipient?.topReactions}
+        backgroundImageURL={recipient?.backgroundImageURL}
       />
       <S.RollingPageLayout $background={background}>
         <Inner>
@@ -109,21 +112,23 @@ export default function RollingPage({ edit }) {
           {isDeleteModal && (
             <S.DeleteModalBox>
               <span>
-                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
+                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를 <S.Br />
                 삭제하시겠습니까?
               </span>
-              <Button
-                text={'네'}
-                variant={'primary'}
-                size={36}
-                onClick={handleDeleteAll}
-              />
-              <Button
-                text={'아니오'}
-                variant={'outline'}
-                size={36}
-                onClick={() => setIsDeleteModal(false)}
-              />
+              <S.ButtonContainer>
+                <Button
+                  text={'네'}
+                  variant={'primary'}
+                  size={36}
+                  onClick={handleDeleteAll}
+                />
+                <Button
+                  text={'아니오'}
+                  variant={'outline'}
+                  size={36}
+                  onClick={() => setIsDeleteModal(false)}
+                />
+              </S.ButtonContainer>
             </S.DeleteModalBox>
           )}
           <S.CardContainer>

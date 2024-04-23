@@ -16,6 +16,8 @@ export default function HeaderService({
   name,
   recentMessages,
   messageCount,
+  topReactions,
+  backgroundImageURL,
 }) {
   const [emojiData, setEmojiData] = useState();
   const [emojiDataLength, setEmojiDataLength] = useState([]);
@@ -187,7 +189,13 @@ export default function HeaderService({
               {isShowShareButton && (
                 <S.SharedSelectContainer ref={shareListRef}>
                   <S.SharedSelectedItem>
-                    <KakaoButton name={name} id={id} />
+                    <KakaoButton
+                      name={name}
+                      id={id}
+                      image={backgroundImageURL}
+                      messageCount={messageCount}
+                      topReactions={topReactions}
+                    />
                   </S.SharedSelectedItem>
                   <S.SharedSelectedItem>
                     <button
