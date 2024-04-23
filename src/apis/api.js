@@ -83,7 +83,6 @@ export const getMessageListRequest = async (id, limit = 8, offset = 0) => {
   const response = await axios.get(`${RECIPIENTS_URL}${id}/messages/?${query}`);
 
   if (response.status < 200 || response.status >= 300) {
-    console.log('ddd');
     throw new Error('롤링 페이퍼 정보 가져오기 실패');
   }
 
