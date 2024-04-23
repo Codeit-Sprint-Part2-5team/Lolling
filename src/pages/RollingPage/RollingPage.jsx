@@ -110,7 +110,7 @@ export default function RollingPage({ edit }) {
           {isDeleteModal && (
             <S.DeleteModalBox>
               <span>
-                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
+                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를 <S.Br />
                 삭제하시겠습니까?
               </span>
               <S.ButtonContainer>

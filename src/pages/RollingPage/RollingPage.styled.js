@@ -68,6 +68,22 @@ export const DeleteModalBox = styled.div`
     right: 24px;
     width: auto;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+  }
+`;
+
+export const Br = styled.br`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 export const ButtonContainer = styled.div`
