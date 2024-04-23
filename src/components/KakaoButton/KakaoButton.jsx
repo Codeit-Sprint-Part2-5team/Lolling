@@ -29,20 +29,20 @@ export default function KakaoButton({
           webUrl: realUrl,
         },
       },
-      itemContent: {
-        items: [
-          {
-            item: '롤링페이퍼 작성 수',
-            itemOp: messageCount,
-          },
-          {
-            item: '리액션',
-            itemOp: topReactions.map(
-              (reaction) => `${reaction.emoji} ${reaction.count}`
-            ),
-          },
-        ],
-      },
+      // itemContent: {
+      //   items: [
+      //     {
+      //       item: '롤링페이퍼 작성 수',
+      //       itemOp: messageCount,
+      //     },
+      //     {
+      //       item: '리액션',
+      //       itemOp: topReactions.map(
+      //         (reaction) => `${reaction.emoji} ${reaction.count}`
+      //       ),
+      //     },
+      //   ],
+      // },
       buttons: [
         {
           title: '롤링페이퍼 확인하기',
