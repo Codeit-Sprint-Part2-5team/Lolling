@@ -47,13 +47,13 @@ export const FirstContainer = styled.div`
   align-items: flex-start;
   gap: 152px;
   border-radius: 16px;
-  background: var(--Surface, #f6f8ff);
+  background: var(--surface, #f6f8ff);
   margin-top: 60px;
 
   @media (max-width: 1248px) {
     width: 100%;
     border-radius: 16px;
-    background: var(--Surface, #f6f8ff);
+    background: var(--surface, #f6f8ff);
     flex-direction: column;
     gap: 0;
     justify-content: center;
@@ -97,7 +97,7 @@ export const PointBox = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  background: var(--Purple-600, #9935ff);
+  background: var(--purple-600, #9935ff);
 
   @media (max-width: 1248px) {
     display: flex;
@@ -127,7 +127,7 @@ export const PointContentBox = styled.p`
   letter-spacing: -0.07px;
 
   @media (max-width: 1248px) {
-    color: var(--white, #fff);
+    color: var(--white-color, #fff);
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
@@ -136,7 +136,7 @@ export const PointContentBox = styled.p`
   }
 
   @media (max-width: 768px) {
-    color: var(--white, #fff);
+    color: var(--white-color, #fff);
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
@@ -241,7 +241,7 @@ export const SecondContainer = styled.div`
   padding: 60px 192px 60px 0px;
   align-items: flex-start;
   border-radius: 16px;
-  background: var(--Surface, #f6f8ff);
+  background: var(--surface, #f6f8ff);
   gap: 125px;
   margin-bottom: 24px;
 
