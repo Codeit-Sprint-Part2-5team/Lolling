@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Inner from '../../components/Inner/Inner';
 
 export const CardInner = styled(Inner)`
@@ -44,4 +44,24 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 48px;
+`;
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingBox = styled.img`
+  display: block;
+  width: 30px;
+  top: 50%;
+  margin: 25% auto;
+  animation: ${rotate} 3s infinite linear;
 `;
