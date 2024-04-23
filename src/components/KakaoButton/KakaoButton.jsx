@@ -3,9 +3,14 @@ import * as S from './KakaoButton.styled';
 
 const { Kakao } = window;
 
-export default function KakaoButton({ name, id }) {
+export default function KakaoButton({
+  name,
+  id,
+  image,
+  messageCount,
+  topReactions,
+}) {
   const realUrl = `https://5rolling.netlify.app/post/${id}`;
-  const thumnailImage = require('../../assets/images/share-img.png');
 
   useEffect(() => {
     Kakao.cleanup();
@@ -18,11 +23,25 @@ export default function KakaoButton({ name, id }) {
       content: {
         title: 'Rolling',
         description: `${name}님의 롤링페이퍼입니다`,
-        imageUrl: thumnailImage,
+        imageUrl: image,
         link: {
           mobileWebUrl: realUrl,
           webUrl: realUrl,
         },
+      },
+      itemContent: {
+        items: [
+          {
+            item: '롤링페이퍼 작성 수',
+            itemOp: messageCount,
+          },
+          {
+            item: '리액션',
+            itemOp: topReactions.map(
+              (reaction) => `${reaction.emoji} ${reaction.count}`
+            ),
+          },
+        ],
       },
       buttons: [
         {

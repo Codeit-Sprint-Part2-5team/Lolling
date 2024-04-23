@@ -87,6 +87,7 @@ export default function RollingPage({ edit }) {
     deleteAll();
     navigate('/');
   };
+  console.log(recipient);
 
   return (
     <>
@@ -96,6 +97,7 @@ export default function RollingPage({ edit }) {
         recentMessages={recipient?.recentMessages}
         messageCount={recipient?.messageCount}
         topReactions={recipient?.topReactions}
+        backgroundImageURL={recipient?.backgroundImageURL}
       />
       <S.RollingPageLayout $background={background}>
         <Inner>
