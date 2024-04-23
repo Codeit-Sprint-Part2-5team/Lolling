@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
   min-height: calc(100vh - 132px);
-  padding: 113px 0;
+  padding: 112px 0;
   ${({ $background }) => {
     if ($background.includes('http')) {
       return `
@@ -141,7 +141,7 @@ export const LoadingContainer = styled.div`
 
 export const LoadingBox = styled.img`
   display: block;
-  width: 30px;
+  width: 50px;
   margin: 50px auto 0;
   animation: ${rotate} 3s infinite linear;
 `;
