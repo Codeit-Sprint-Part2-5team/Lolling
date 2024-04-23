@@ -181,6 +181,7 @@ export default function MessagePage() {
             <DropDown
               items={INIT_DROPDOWN.relationship}
               messageBody={messageBody}
+              setMessageBody={setMessageBody}
               setSelectedFont={() => {}}
             />
           </S.RelationShipContainer>
