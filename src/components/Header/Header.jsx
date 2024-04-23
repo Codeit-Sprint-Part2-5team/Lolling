@@ -9,7 +9,7 @@ export default function Header() {
   const { pathname } = useLocation();
   const { userId } = useParams();
   const [isShowRollingButton, setIsShowRollingButton] = useState(false);
-  const [isUnvisibleOnMobile, setisUnvisibleOnMobile] = useState(false);
+  const [isInvisibleOnMobile, setIsInvisibleOnMobile] = useState(false);
 
   useEffect(() => {
     switch (pathname) {
@@ -18,7 +18,7 @@ export default function Header() {
         setIsShowRollingButton(true);
         break;
       case `/post/${userId}`:
-        setisUnvisibleOnMobile(true);
+        setIsInvisibleOnMobile(true);
         break;
       default:
         setIsShowRollingButton(false);
@@ -27,7 +27,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <S.HeaderLayout className={isUnvisibleOnMobile ? 'unvisibleOnMobile' : ''}>
+    <S.HeaderLayout className={isInvisibleOnMobile ? 'invisibleOnMobile' : ''}>
       <Inner>
         <S.HeaderContainer>
           <S.LogoBox>

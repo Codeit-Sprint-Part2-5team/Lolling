@@ -18,7 +18,7 @@ export const HeaderLayout = styled.header`
   }
 
   @media (max-width: 768px) {
-    &.unvisibleOnMobile {
+    &.invisibleOnMobile {
       display: none;
     }
     width: 100%;
