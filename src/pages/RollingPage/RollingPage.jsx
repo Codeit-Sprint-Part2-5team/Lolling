@@ -87,7 +87,6 @@ export default function RollingPage({ edit }) {
     deleteAll();
     navigate('/');
   };
-  console.log(recipient);
 
   return (
     <>
@@ -151,7 +150,7 @@ export default function RollingPage({ edit }) {
                   deleteMessage={deleteMessage}
                   setMessageList={setMessageList}
                   font={item.font}
-                                  />
+                />
               </li>
             ))}
           </S.CardContainer>
