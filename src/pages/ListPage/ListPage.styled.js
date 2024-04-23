@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Inner from '../../components/Inner/Inner';
 
 export const CardInner = styled(Inner)`
