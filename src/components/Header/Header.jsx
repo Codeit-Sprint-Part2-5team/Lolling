@@ -9,25 +9,32 @@ export default function Header() {
   const { pathname } = useLocation();
   const { userId } = useParams();
   const [isShowRollingButton, setIsShowRollingButton] = useState(false);
-  const [isInvisibleOnMobile, setIsInvisibleOnMobile] = useState(false);
+  const [isInvisibleOnMobile, setIsInvisibleOnMobile] = useState('false');
+  const [path, setPath] = useState();
 
+  console.log('pathname', pathname);
+  console.log('path', path);
   useEffect(() => {
-    switch (pathname) {
+    switch (path) {
       case '/':
       case '/list':
         setIsShowRollingButton(true);
         break;
       case `/post/${userId}`:
-        setIsInvisibleOnMobile(true);
+        setIsInvisibleOnMobile('true');
         break;
       default:
         setIsShowRollingButton(false);
         break;
     }
+  }, [path]);
+
+  useEffect(() => {
+    setPath(pathname);
   }, [pathname]);
 
   return (
-    <S.HeaderLayout className={isInvisibleOnMobile ? 'invisibleOnMobile' : ''}>
+    <S.HeaderLayout $invisible={isInvisibleOnMobile}>
       <Inner>
         <S.HeaderContainer>
           <S.LogoBox>

@@ -31,8 +31,8 @@ const rotate = keyframes`
 `;
 
 export const Spinner = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   background-image: url('${LoadingIcon}');
   background-size: contain;
   background-repeat: no-repeat;
