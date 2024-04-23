@@ -51,7 +51,6 @@ export const UserProfileNameContainer = styled.div`
 
 export const UserProfileTextBox = styled.p`
   color: #000;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -60,7 +59,6 @@ export const UserProfileTextBox = styled.p`
 
 export const UserProfileNameBox = styled.p`
   color: #000;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -69,7 +67,6 @@ export const UserProfileNameBox = styled.p`
 
 export const DateBox = styled.p`
   color: var(--gray-400, #999);
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -81,7 +78,6 @@ export const ContentBox = styled.p`
   width: 100%;
   height: 256px;
   color: #5a5a5a;
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
