@@ -4,7 +4,7 @@ import { ReactComponent as CardImageSvg } from '../../assets/images/card.svg';
 export const HomePageLayout = styled.div`
   background: #fff;
   display: flex;
-  padding-bottom: 174px;
+  padding-bottom: 57px;
 
   @media (max-width: 1248px) {
     display: flex;

@@ -55,7 +55,7 @@ export default function RollingPage({ edit }) {
 
   const getRecipientsData = async () => {
     const result = await getRecipient(userId);
-    if (!result) return;
+    if (!result) return navigate('*');
     const { data } = result;
     setRecipient(data);
     setMessageCount(data.messageCount);

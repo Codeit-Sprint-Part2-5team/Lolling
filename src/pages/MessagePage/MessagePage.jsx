@@ -35,8 +35,9 @@ export default function MessagePage() {
   const [profileContext, setProfileContext] = useState('img');
   const [imageFile, setImageFile] = useState();
   const [isSubmit, setSubmit] = useState(false);
-  const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
-  const { pending, requestFunction: getUrl } = useAsync(
+  const { pending: isFetchingImage, requestFunction: getImageRequest } =
+    useAsync(getMockImageRequest);
+  const { pending: isUploadingImage, requestFunction: getUrl } = useAsync(
     uploadProfileImageRequest
   );
   const { requestFunction: postMessageRequest } =
@@ -131,6 +132,7 @@ export default function MessagePage() {
   return (
     <Inner>
       <S.PostPageLayout>
+        {isFetchingImage && <LoadingModal pending={isFetchingImage} />}
         <S.FormContainer onSubmit={urlRequest}>
           <S.FromContainer>
             <h4>From.</h4>
@@ -208,11 +210,7 @@ export default function MessagePage() {
             size={56}
             width={'100%'}
           />
-          {pending && (
-            <S.LoadingModalBox>
-              <LoadingModal pending={pending} />
-            </S.LoadingModalBox>
-          )}
+          {isUploadingImage && <LoadingModal pending={isUploadingImage} />}
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>
