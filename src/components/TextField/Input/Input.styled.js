@@ -18,6 +18,12 @@ export const InputContainer = styled.input`
   background: #ffffff;
   font-family: 'Pretendard';
   font-size: 16px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid var(--purple-600);
+    outline: none;
+  }
 
   &::placeholder {
     color: #555555;

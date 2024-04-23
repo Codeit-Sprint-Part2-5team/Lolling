@@ -3,7 +3,7 @@ import * as S from './KakaoButton.styled';
 
 const { Kakao } = window;
 
-export default function KakaoButton({ name, id, image }) {
+export default function KakaoButton({ name, id }) {
   const realUrl = `https://5rolling.netlify.app/post/${id}`;
 
   useEffect(() => {
@@ -17,7 +17,6 @@ export default function KakaoButton({ name, id, image }) {
       content: {
         title: 'Rolling',
         description: `${name}님의 롤링페이퍼입니다`,
-        imageUrl: image,
         link: {
           mobileWebUrl: realUrl,
           webUrl: realUrl,
