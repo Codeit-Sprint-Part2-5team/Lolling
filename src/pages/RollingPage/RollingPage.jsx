@@ -160,6 +160,7 @@ export default function RollingPage({ edit }) {
                 date={modal.date}
                 content={modal.content}
                 onClick={handleModalClose}
+                font={modal.font}
               />
             </S.ModalContainer>
           )}
