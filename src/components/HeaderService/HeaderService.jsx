@@ -189,11 +189,7 @@ export default function HeaderService({
               {isShowShareButton && (
                 <S.SharedSelectContainer ref={shareListRef}>
                   <S.SharedSelectedItem>
-                    <KakaoButton
-                      name={name}
-                      id={id}
-                      image={backgroundImageURL}
-                    />
+                    <KakaoButton name={name} id={id} />
                   </S.SharedSelectedItem>
                   <S.SharedSelectedItem>
                     <button
