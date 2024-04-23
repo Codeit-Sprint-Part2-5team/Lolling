@@ -66,7 +66,6 @@ export default function MessagePage() {
 
     if (imageFile) {
       const url = await getUrl(imageFile);
-
       setMessageBody({
         ...messageBody,
         profileImageURL: url,
@@ -181,9 +180,8 @@ export default function MessagePage() {
             <h4>상대와의 관계</h4>
             <DropDown
               items={INIT_DROPDOWN.relationship}
-              type={'relationship'}
               messageBody={messageBody}
-              setMessageBody={setMessageBody}
+              setSelectedFont={() => {}}
             />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
@@ -200,6 +198,7 @@ export default function MessagePage() {
               type={'font'}
               messageBody={messageBody}
               setMessageBody={setMessageBody}
+              setSelectedFont={setFont}
             />
           </S.FontContainer>
           <Button

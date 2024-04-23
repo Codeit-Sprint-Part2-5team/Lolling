@@ -9,6 +9,7 @@ function Modal({
   date,
   content,
   onClick,
+  font,
 }) {
   return (
     <S.Layout>
@@ -22,7 +23,7 @@ function Modal({
           <S.DateBox>{date}</S.DateBox>
         </S.HeaderInner>
       </S.HeaderContainer>
-      <S.ContentBox>{content}</S.ContentBox>
+      <S.ContentBox style={{ fontFamily: font }}>{content}</S.ContentBox>
       <Button
         onClick={onClick}
         text={'확인'}

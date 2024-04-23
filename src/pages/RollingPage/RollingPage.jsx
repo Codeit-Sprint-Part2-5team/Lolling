@@ -150,7 +150,8 @@ export default function RollingPage({ edit }) {
                   createdAt={item.createdAt}
                   deleteMessage={deleteMessage}
                   setMessageList={setMessageList}
-                />
+                  font={item.font}
+                                  />
               </li>
             ))}
           </S.CardContainer>
@@ -164,6 +165,7 @@ export default function RollingPage({ edit }) {
                 date={modal.date}
                 content={modal.content}
                 onClick={handleModalClose}
+                font={modal.font}
               />
             </S.ModalContainer>
           )}

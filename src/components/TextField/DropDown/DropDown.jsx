@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import * as S from './DropDown.styled';
+import '../../../assets/fonts/font.css';
 import ArrowDown from '../../../assets/images/ArrowDownIcon.svg';
 import ArrowUp from '../../../assets/images/ArrowUpIcon.svg';
 
-function DropDown({ items, type, messageBody, setMessageBody }) {
+function DropDown({ items, type, messageBody, setMessageBody, setSelectedFont }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(items[0]);
+
+  useEffect(() => {
+    setSelectedFont(messageBody.font); 
+  }, [messageBody.font]);
 
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
@@ -15,15 +19,24 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
+    setSelectedFont(item); 
     setMessageBody(() => ({
       ...messageBody,
       [type]: item,
     }));
-  };
+  }; 
+
+  // 폰트 선택 추가
+  const handleSelectedFont = (font) => {
+    setSelectedItem(font);
+    setSelectedFont(font); 
+    setMessageBody({ ...messageBody, font });
+    setIsOpen(false);
+  }; 
 
   return (
     <S.DropDownLayout>
-      <S.DropDownInput onClick={toggleDropDown}>
+      <S.DropDownInput onClick={toggleDropDown} style={{ fontFamily: messageBody.font }}>
         {selectedItem}
         <img
           src={isOpen ? ArrowUp : ArrowDown}
@@ -33,24 +46,24 @@ function DropDown({ items, type, messageBody, setMessageBody }) {
       </S.DropDownInput>
       {isOpen && (
         <S.DropDownItemList>
-          <S.DropDownItem>
-            {items.map((item) => (
+          {items.map((item) => (
+            <S.DropDownItem key={item}>
               <S.DropDownItemHover
-                key={item}
-                onClick={() => handleItemClick(item)}
+                onClick={() => {
+                  type === 'font'
+                    ? handleSelectedFont(item)
+                    : handleItemClick(item);
+                }}
+                style={{ fontFamily: item }}
               >
                 {item}
               </S.DropDownItemHover>
-            ))}
-          </S.DropDownItem>
+            </S.DropDownItem>
+          ))}
         </S.DropDownItemList>
       )}
     </S.DropDownLayout>
   );
 }
-
-// DropDown.propTypes = {
-//   items: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
 
 export default DropDown;
