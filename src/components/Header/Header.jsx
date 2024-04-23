@@ -12,8 +12,6 @@ export default function Header() {
   const [isInvisibleOnMobile, setIsInvisibleOnMobile] = useState('false');
   const [path, setPath] = useState();
 
-  console.log('pathname', pathname);
-  console.log('path', path);
   useEffect(() => {
     switch (path) {
       case '/':
