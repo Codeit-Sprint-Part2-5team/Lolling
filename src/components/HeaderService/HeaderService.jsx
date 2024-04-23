@@ -193,8 +193,6 @@ export default function HeaderService({
                       name={name}
                       id={id}
                       image={backgroundImageURL}
-                      messageCount={messageCount}
-                      topReactions={topReactions}
                     />
                   </S.SharedSelectedItem>
                   <S.SharedSelectedItem>
