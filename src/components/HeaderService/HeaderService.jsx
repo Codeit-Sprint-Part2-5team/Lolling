@@ -16,9 +16,9 @@ export default function HeaderService({
   name,
   recentMessages,
   messageCount,
-  topReactions,
 }) {
   const [emojiData, setEmojiData] = useState();
+  const [emojiDataLength, setEmojiDataLength] = useState([]);
   const [isShowEmoji, setIsShowEmoji] = useState(false);
   const [isShowEmojiPicker, setIsShowEmojiPicker] = useState(false);
   const [isShowShareButton, setIsShowShareButton] = useState(false);
@@ -26,8 +26,11 @@ export default function HeaderService({
   const location = useLocation();
   const [emojiLog, setEmojiLog] = useState([]);
   const emojiPickerRef = useRef(null);
-  const emojiButtonRef = useRef(null);
-  const shareButtonRef = useRef(null);
+  const emojiPickerButtonRef = useRef(null);
+  const emojiListRef = useRef(null);
+  const emojiListButtonRef = useRef(null);
+  const shareListRef = useRef(null);
+  const sharedButtonRef = useRef(null);
 
   const getEmojiData = async () => {
     const response = await getReactionsRequest(id);
@@ -35,6 +38,7 @@ export default function HeaderService({
     if (!response) return;
 
     setEmojiData(response.data.results);
+    setEmojiDataLength(response.data.results.length);
   };
 
   useEffect(() => {
@@ -78,21 +82,27 @@ export default function HeaderService({
     function handleClickOutside(event) {
       if (
         emojiPickerRef.current &&
-        !emojiPickerRef.current.contains(event.target)
+        !emojiPickerRef.current.contains(event.target) &&
+        emojiPickerButtonRef.current &&
+        !emojiPickerButtonRef.current.contains(event.target)
       ) {
         setIsShowEmojiPicker(false);
       }
 
       if (
-        emojiButtonRef.current &&
-        !emojiButtonRef.current.contains(event.target)
+        emojiListRef.current &&
+        !emojiListRef.current.contains(event.target) &&
+        emojiListButtonRef.current &&
+        !emojiListButtonRef.current.contains(event.target)
       ) {
         setIsShowEmoji(false);
       }
 
       if (
-        shareButtonRef.current &&
-        !shareButtonRef.current.contains(event.target)
+        shareListRef.current &&
+        !shareListRef.current.contains(event.target) &&
+        sharedButtonRef.current &&
+        !sharedButtonRef.current.contains(event.target)
       ) {
         setIsShowShareButton(false);
       }
@@ -122,7 +132,7 @@ export default function HeaderService({
           <S.EmojiContainer>
             <S.EmojiBadgeContainer>
               <S.EmojiTopThree>
-                {topReactions?.map((item) => (
+                {emojiData?.slice(0, 3).map((item) => (
                   <EmojiBadge
                     key={item.id}
                     emoji={item.emoji}
@@ -130,44 +140,52 @@ export default function HeaderService({
                   />
                 ))}
               </S.EmojiTopThree>
-              <S.EmojiListButton>
-                <S.EmojiListButtonImg
-                  src={arrowDownIcon}
-                  alt='이모지 보기'
-                  onClick={showEmojiContainer}
-                />
-                {isShowEmoji && (
-                  <S.EmojiBoxItem ref={emojiButtonRef}>
-                    {emojiData?.map((item) => (
-                      <EmojiBadge
-                        key={item.id}
-                        emoji={item.emoji}
-                        count={item.count}
-                      />
-                    ))}
-                  </S.EmojiBoxItem>
-                )}
-              </S.EmojiListButton>
+              {emojiDataLength > 0 && (
+                <S.EmojiListButton>
+                  <S.EmojiListButtonImg
+                    src={arrowDownIcon}
+                    alt='이모지 보기'
+                    ref={emojiListButtonRef}
+                    onClick={showEmojiContainer}
+                  />
+                  {isShowEmoji && (
+                    <S.EmojiBoxItem ref={emojiListRef}>
+                      {emojiData?.map((item) => (
+                        <EmojiBadge
+                          key={item.id}
+                          emoji={item.emoji}
+                          count={item.count}
+                        />
+                      ))}
+                    </S.EmojiBoxItem>
+                  )}
+                </S.EmojiListButton>
+              )}
             </S.EmojiBadgeContainer>
             <S.EmojiButtonContainer>
-              <S.EmojiButtonBox
-                text={'추가'}
-                variant={'outline'}
-                size={36}
-                isSmileIcon={'on'}
-                onClick={showEmojiPickerContainer}
-              />
+              <div ref={emojiPickerButtonRef}>
+                <S.EmojiButtonBox
+                  text={'추가'}
+                  variant={'outline'}
+                  size={36}
+                  isSmileIcon={'on'}
+                  onClick={showEmojiPickerContainer}
+                />
+              </div>
               <S.EmojiSelectdBox ref={emojiPickerRef}>
                 {isShowEmojiPicker && (
                   <EmojiPicker onEmojiClick={onEmojiClick} />
                 )}
               </S.EmojiSelectdBox>
               <S.BarItemsInner></S.BarItemsInner>
-              <S.SharedButton onClick={showSharedContainer}>
+              <S.SharedButton
+                ref={sharedButtonRef}
+                onClick={showSharedContainer}
+              >
                 <img src={ShareIcon} alt='공유하기' />
               </S.SharedButton>
               {isShowShareButton && (
-                <S.SharedSelectContainer ref={shareButtonRef}>
+                <S.SharedSelectContainer ref={shareListRef}>
                   <S.SharedSelectedItem>
                     <KakaoButton name={name} id={id} />
                   </S.SharedSelectedItem>
