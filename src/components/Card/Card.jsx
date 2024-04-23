@@ -1,6 +1,5 @@
 import * as S from './Card.styled';
 import AddButton from '../AddButton/AddButton';
-import { Link } from 'react-router-dom';
 import SenderProfile from '../SenderProfile/SenderProfile';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
@@ -40,11 +39,9 @@ export default function Card({
   return (
     <>
       {add ? (
-        <S.CardLayout $add={add}>
-          <Link to='message'>
-            <AddButton />
-          </Link>
-        </S.CardLayout>
+        <S.AddLink to='message'>
+          <AddButton />
+        </S.AddLink>
       ) : (
         <S.CardLayout onClick={handleCardClick}>
           <S.TopContainer>

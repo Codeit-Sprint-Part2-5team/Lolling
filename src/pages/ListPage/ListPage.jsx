@@ -6,10 +6,11 @@ import useAsync from '../../hooks/useAsync';
 import * as S from './ListPage.styled';
 import { getCardFolderListRequest } from '../../apis/api';
 import CardSlider from '../../components/CardSlider/CardSlider';
+import LoadingIcon from '../../assets/images/loadingIcon.png';
 
 export default function ListPage() {
   const [cardDataList, setCardDataList] = useState([]);
-  const { requestFunction: getCardDataList } = useAsync(
+  const { pending, requestFunction: getCardDataList } = useAsync(
     getCardFolderListRequest
   );
 
@@ -33,7 +34,9 @@ export default function ListPage() {
     );
   }, [cardDataList]);
 
-  return (
+  return pending ? (
+    <S.LoadingBox src={LoadingIcon} alt='로딩' />
+  ) : (
     <S.ListPageLayout>
       <S.CardInner>
         <S.CardContainer>

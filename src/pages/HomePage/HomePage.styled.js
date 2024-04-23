@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { ReactComponent as CardImageSvg } from '../../assets/images/card.svg';
-import Button from '../../components/Button/Button';
 
 export const HomePageLayout = styled.div`
   background: #fff;
   display: flex;
-  padding-bottom: 174px;
+  padding-bottom: 57px;
 
   @media (max-width: 1248px) {
     display: flex;
@@ -53,10 +52,8 @@ export const FirstContainer = styled.div`
 
   @media (max-width: 1248px) {
     width: 100%;
-    height: 440px;
     border-radius: 16px;
     background: var(--Surface, #f6f8ff);
-    display: flex;
     flex-direction: column;
     gap: 0;
     justify-content: center;
@@ -65,12 +62,9 @@ export const FirstContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    display: flex;
-    width: 100%;
-    height: 352px;
-    padding: 24px 0px 62.278px 0px;
-    flex-direction: column;
+    padding: 0 0 20px;
     align-items: center;
+    overflow: hidden;
   }
 `;
 
@@ -121,13 +115,11 @@ export const PointBox = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 24px;
   }
 `;
 
 export const PointContentBox = styled.p`
   color: var(--white, #fff);
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -136,7 +128,6 @@ export const PointContentBox = styled.p`
 
   @media (max-width: 1248px) {
     color: var(--white, #fff);
-    font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
@@ -146,7 +137,6 @@ export const PointContentBox = styled.p`
 
   @media (max-width: 768px) {
     color: var(--white, #fff);
-    font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
@@ -157,7 +147,6 @@ export const PointContentBox = styled.p`
 
 export const Content1 = styled.p`
   color: var(--gray-900, #181818);
-  font-family: Pretendard;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -168,7 +157,6 @@ export const Content1 = styled.p`
 
   @media (max-width: 1248px) {
     color: var(--gray-900, #181818);
-    font-family: Pretendard;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -179,7 +167,6 @@ export const Content1 = styled.p`
   @media (max-width: 768px) {
     width: 100%;
     color: var(--gray-900, #181818);
-    font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -200,7 +187,6 @@ export const BrBox = styled.br`
 
 export const Content2 = styled.p`
   color: var(--gray-500, #555);
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -210,7 +196,6 @@ export const Content2 = styled.p`
 
   @media (max-width: 1248px) {
     color: var(--gray-500, #555);
-    font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -220,7 +205,6 @@ export const Content2 = styled.p`
 
   @media (max-width: 768px) {
     color: var(--gray-500, #555);
-    font-family: Pretendard;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -234,7 +218,6 @@ export const Content2 = styled.p`
 export const CardImageBox = styled(CardImageSvg)`
   display: flex;
   width: 720px;
-  height: 204px;
   justify-content: center;
   align-items: center;
   padding-right: 40px;
@@ -248,8 +231,7 @@ export const CardImageBox = styled(CardImageSvg)`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    height: 204px;
+    width: 115%;
     padding: 0;
   }
 `;
@@ -294,14 +276,13 @@ export const GroupImageBox = styled.img`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 82%;
     margin-bottom: 51px;
   }
 `;
 
 export const ContentBox = styled.p`
   color: #000;
-  font-family: Pretendard;
   font-size: 14.545px;
   font-style: normal;
   font-weight: 500;
@@ -328,18 +309,14 @@ export const SecondContentContainer = styled.div`
     align-items: flex-start;
     width: 100%;
     margin-bottom: 48px;
-    padding: 0 0 0 24px;
+    padding: 24px 0 0 24px;
   }
 `;
 
-export const ButtonBox = styled(Button)`
+export const ButtonContainer = styled.div`
+  width: 280px;
+  margin: 0 auto;
   @media (max-width: 1248px) {
     width: 100%;
-    height: 56px;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 56px;
   }
 `;

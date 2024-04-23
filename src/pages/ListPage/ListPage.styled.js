@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Inner from '../../components/Inner/Inner';
 
 export const CardInner = styled(Inner)`
@@ -33,7 +33,9 @@ export const TextBox = styled.h4`
   }
 `;
 
-export const ListPageLayout = styled.div``;
+export const ListPageLayout = styled.div`
+  padding-bottom: 57px;
+`;
 
 export const RecentCardContainer = styled.div`
   // textbox 제외 컨테이너
@@ -44,4 +46,24 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 48px 0px 218px 0px;
+`;
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingBox = styled.img`
+  display: block;
+  width: 30px;
+  top: 50%;
+  margin: 25% auto;
+  animation: ${rotate} 3s infinite linear;
 `;

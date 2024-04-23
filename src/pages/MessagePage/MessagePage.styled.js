@@ -8,7 +8,7 @@ export const PostPageLayout = styled.div`
 `;
 
 export const FormContainer = styled.form`
-  padding: 57px 0;
+  padding: 57px 0 130px;
   width: 720px;
 
   > div {
@@ -108,17 +108,4 @@ export const TextAreaContainer = styled.div`
 
 export const FontContainer = styled.div`
   ${FlexMargin}
-  margin-bottom: 206px;
-`;
-
-export const LoadingModalBox = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
 `;

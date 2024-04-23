@@ -195,6 +195,7 @@ export const EmojiBoxItem = styled.div`
   background: #fff;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   z-index: 2;
+  cursor: default;
 
   @media (max-width: 768px) {
     left: 0;
