@@ -63,16 +63,20 @@ export default function MessagePage() {
   const urlRequest = async (e) => {
     e.preventDefault();
     setActiveBtn(true);
-    const url = await getUrl(imageFile);
+    if (imageFile) {
+      const url = await getUrl(imageFile);
 
-    setMessageBody({
-      ...messageBody,
-      profileImageURL: url,
-    });
-    setSubmit(true);
+      setMessageBody({
+        ...messageBody,
+        profileImageURL: url,
+      });
+    }
+
+    return setSubmit(true);
   };
 
   const postMessage = async () => {
+    if (isSubmit === false) return;
     const result = await postMessageRequest(messageBody);
     if (!result) return;
     setMessageBody(INIT_CREATE_MESSAGE);
