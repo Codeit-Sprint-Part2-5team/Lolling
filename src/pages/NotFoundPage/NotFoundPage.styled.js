@@ -9,7 +9,7 @@ export const InnerContainer = styled(Inner)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 200px 0 100px;
+  padding: 161px 0 100px;
   @media (max-width: 768px) {
     padding: 100px 0 30px;
   }

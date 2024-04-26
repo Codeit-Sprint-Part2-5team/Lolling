@@ -16,6 +16,8 @@ export default function HeaderService({
   name,
   recentMessages,
   messageCount,
+  topReactions,
+  backgroundImageURL,
 }) {
   const [emojiData, setEmojiData] = useState();
   const [emojiDataLength, setEmojiDataLength] = useState([]);

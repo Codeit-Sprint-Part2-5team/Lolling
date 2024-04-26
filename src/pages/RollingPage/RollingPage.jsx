@@ -55,7 +55,7 @@ export default function RollingPage({ edit }) {
 
   const getRecipientsData = async () => {
     const result = await getRecipient(userId);
-    if (!result) return;
+    if (!result) return navigate('*');
     const { data } = result;
     setRecipient(data);
     setMessageCount(data.messageCount);
@@ -95,6 +95,8 @@ export default function RollingPage({ edit }) {
         name={recipient?.name}
         recentMessages={recipient?.recentMessages}
         messageCount={recipient?.messageCount}
+        topReactions={recipient?.topReactions}
+        backgroundImageURL={recipient?.backgroundImageURL}
       />
       <S.RollingPageLayout $background={background}>
         <Inner>
@@ -109,21 +111,23 @@ export default function RollingPage({ edit }) {
           {isDeleteModal && (
             <S.DeleteModalBox>
               <span>
-                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를
+                정말로 <b>{recipient.name}</b>님의 롤링페이퍼를 <S.Br />
                 삭제하시겠습니까?
               </span>
-              <Button
-                text={'네'}
-                variant={'primary'}
-                size={36}
-                onClick={handleDeleteAll}
-              />
-              <Button
-                text={'아니오'}
-                variant={'outline'}
-                size={36}
-                onClick={() => setIsDeleteModal(false)}
-              />
+              <S.ButtonContainer>
+                <Button
+                  text={'네'}
+                  variant={'primary'}
+                  size={36}
+                  onClick={handleDeleteAll}
+                />
+                <Button
+                  text={'아니오'}
+                  variant={'outline'}
+                  size={36}
+                  onClick={() => setIsDeleteModal(false)}
+                />
+              </S.ButtonContainer>
             </S.DeleteModalBox>
           )}
           <S.CardContainer>
@@ -145,6 +149,7 @@ export default function RollingPage({ edit }) {
                   createdAt={item.createdAt}
                   deleteMessage={deleteMessage}
                   setMessageList={setMessageList}
+                  font={item.font}
                 />
               </li>
             ))}
@@ -159,6 +164,7 @@ export default function RollingPage({ edit }) {
                 date={modal.date}
                 content={modal.content}
                 onClick={handleModalClose}
+                font={modal.font}
               />
             </S.ModalContainer>
           )}

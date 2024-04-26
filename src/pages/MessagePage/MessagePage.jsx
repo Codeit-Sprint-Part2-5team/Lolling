@@ -35,8 +35,10 @@ export default function MessagePage() {
   const [profileContext, setProfileContext] = useState('img');
   const [imageFile, setImageFile] = useState();
   const [isSubmit, setSubmit] = useState(false);
-  const { requestFunction: getImageRequest } = useAsync(getMockImageRequest);
-  const { pending, requestFunction: getUrl } = useAsync(
+  const [font, setFont] = useState('Noto Sans');
+  const { pending: isFetchingImage, requestFunction: getImageRequest } =
+    useAsync(getMockImageRequest);
+  const { pending: isUploadingImage, requestFunction: getUrl } = useAsync(
     uploadProfileImageRequest
   );
   const { requestFunction: postMessageRequest } =
@@ -65,7 +67,6 @@ export default function MessagePage() {
 
     if (imageFile) {
       const url = await getUrl(imageFile);
-
       setMessageBody({
         ...messageBody,
         profileImageURL: url,
@@ -131,6 +132,7 @@ export default function MessagePage() {
   return (
     <Inner>
       <S.PostPageLayout>
+        {isFetchingImage && <LoadingModal pending={isFetchingImage} />}
         <S.FormContainer onSubmit={urlRequest}>
           <S.FromContainer>
             <h4>From.</h4>
@@ -179,9 +181,9 @@ export default function MessagePage() {
             <h4>상대와의 관계</h4>
             <DropDown
               items={INIT_DROPDOWN.relationship}
-              type={'relationship'}
               messageBody={messageBody}
               setMessageBody={setMessageBody}
+              setSelectedFont={() => {}}
             />
           </S.RelationShipContainer>
           <S.TextAreaContainer>
@@ -198,6 +200,7 @@ export default function MessagePage() {
               type={'font'}
               messageBody={messageBody}
               setMessageBody={setMessageBody}
+              setSelectedFont={setFont}
             />
           </S.FontContainer>
           <Button
@@ -208,11 +211,7 @@ export default function MessagePage() {
             size={56}
             width={'100%'}
           />
-          {pending && (
-            <S.LoadingModalBox>
-              <LoadingModal pending={pending} />
-            </S.LoadingModalBox>
-          )}
+          {isUploadingImage && <LoadingModal pending={isUploadingImage} />}
         </S.FormContainer>
       </S.PostPageLayout>
     </Inner>

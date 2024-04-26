@@ -33,7 +33,9 @@ export const TextBox = styled.h4`
   }
 `;
 
-export const ListPageLayout = styled.div``;
+export const ListPageLayout = styled.div`
+  padding-bottom: 37px;
+`;
 
 export const RecentCardContainer = styled.div`
   // textbox 제외 컨테이너
@@ -43,5 +45,5 @@ export const RecentCardContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin: 48px 0px 0 0px;
 `;

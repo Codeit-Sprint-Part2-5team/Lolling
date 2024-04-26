@@ -5,7 +5,6 @@ const { Kakao } = window;
 
 export default function KakaoButton({ name, id }) {
   const realUrl = `https://5rolling.netlify.app/post/${id}`;
-  const thumnailImage = require('../../assets/images/share-img.png');
 
   useEffect(() => {
     Kakao.cleanup();
@@ -18,7 +17,8 @@ export default function KakaoButton({ name, id }) {
       content: {
         title: 'Rolling',
         description: `${name}님의 롤링페이퍼입니다`,
-        imageUrl: thumnailImage,
+        imageUrl:
+          'https://5rolling.netlify.app/static/media/logo.c1f18ffcdc76df4e2e28b644ee3ae6fb.svg',
         link: {
           mobileWebUrl: realUrl,
           webUrl: realUrl,

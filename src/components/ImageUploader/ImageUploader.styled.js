@@ -12,7 +12,6 @@ export const PostInputContainer = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 168px;
   height: 168px;
   border-radius: 16px;
   transition: transform 0.3s;

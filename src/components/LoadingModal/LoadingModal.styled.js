@@ -1,27 +1,27 @@
 import styled, { keyframes } from 'styled-components';
-import spinnerImg from '../../assets/images/Spinner.png';
+import LoadingIcon from '../../assets/images/loadingIcon.png';
 
 export const Layout = styled.div`
-  max-width: 500px;
-  width: calc(100% - 48px);
-  height: 476px;
-  padding: 40px;
-  border-radius: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--white-color);
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  z-index: 200;
+`;
+
+export const ContentBox = styled.div`
+  width: 100vw;
+  height: 100vh;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
-
-export const ContentBox = styled.div`
-  width: 100%;
-  height: 256px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
 `;
 
 const rotate = keyframes`
@@ -31,9 +31,9 @@ const rotate = keyframes`
 `;
 
 export const Spinner = styled.div`
-  width: 160px;
-  height: 160px;
-  background-image: url('${spinnerImg}');
+  width: 80px;
+  height: 80px;
+  background-image: url('${LoadingIcon}');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

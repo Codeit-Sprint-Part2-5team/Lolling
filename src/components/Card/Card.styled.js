@@ -24,6 +24,10 @@ export const AddLink = styled(Link)`
   ${Card}
   justify-content: center;
   align-items: center;
+
+  &:hover button {
+    background: var(--gray-600, #4a4a4a);
+  }
 `;
 
 export const TopContainer = styled.div`

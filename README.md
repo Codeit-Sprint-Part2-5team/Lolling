@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+<img width="916" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/133f2259-f169-458a-9234-4ff2ba0e75c0">  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+- 배포 URL : https://5rolling.netlify.app/
+- 개발 기간 : 2024.4.9 - 2024.4.24
 
-In the project directory, you can run:
 
-### `npm start`
+## 프로젝트 소개
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  - Rolling은 롤링페이퍼를 웹에서  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 팀원 구성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+|박준영|이보미|이진욱|정성혜|오다은|
+|:---:|:---:|:---:|:---:|:---:|
+|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/58012212-d77b-4e4e-ad06-8e5bada646b6" width="100" alt="박준영" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e6fce7e8-820c-4e96-8434-8c43a565ba29" width="100" alt="이보미" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/790302e8-55b9-48ae-93f2-8f5bed2584b5" width="100" alt="이진욱" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5984c657-ddc6-4971-8d61-e66d8a8589a5" width="100" alt="정성혜" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/41a83c4c-5ccd-48b4-a3a8-7dcc1939360c" width="100" alt="오다은" />|
+|<a href="https://github.com/JunYoungee">JunYoungee</a>|<a href="https://github.com/Leebomi98">Leebomi98</a>|<a href="https://github.com/kidboi666">kidboi666</a>|<a href="https://github.com/eqypo9">eqypo9</a>|<a href="https://github.com/O-daeun">O-daeun</a>|
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 개발 환경
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. 기술 스택
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. 협업 툴
 
-### `npm run eject`
+### 3. 서비스 배포 환경
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 4. 디자인
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5. 커밋 컨벤션
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 6. 코드 컨벤션
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 프로젝트 구조
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 역할 분담
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+⭐ 오다은
+  - UI
+    - 페이지 : Rolling 페이지, NotFound 페이지
+    - 공통 컴포넌트 : 롤링페이퍼 카드, 헤더
+  - 기능
+    - 무한 스크롤, 롤링페이퍼 페이지 삭제, 롤링페이퍼 카드 삭제, 모달창 띄우기, 카카오톡 공유하기
 
-### Code Splitting
+## 페이지별 기능
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🏠 Home 페이지
 
-### Analyzing the Bundle Size
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0">|
+|---|---|
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+🗂️ List 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108">|
+|---|---|
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+✉️ RollingPaper 페이지
 
-### Deployment
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6">|
+|---|---|
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+📫 Post 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|<img width="1133" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="240" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
+|---|---|
+
+
+✍️ Message 페이지
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174">|
+|---|---|
+
+
+
+## 트러블 슈팅
+
+
+
+## 개선 사항
+
+

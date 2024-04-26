@@ -18,13 +18,11 @@ export const HeaderLayout = styled.header`
   }
 
   @media (max-width: 768px) {
-    &.unvisibleOnMobile {
-      display: none;
-    }
+    display: ${({ $invisible }) =>
+      $invisible === 'true' ? 'none' : 'inline-flex'};
     width: 100%;
     height: 64px;
     flex-shrink: 0;
-    display: inline-flex;
     align-items: center;
     gap: 500px;
   }

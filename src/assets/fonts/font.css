@@ -1,31 +1,35 @@
-/* Regular Style */
+/* Noto Sans */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./Noto-Sans-regular.woff2') format('woff2'),
+    url('./Noto-Sans-regular.woff') format('woff');
+}
+
+/* Pretendard */
 @font-face {
   font-family: 'Pretendard';
   font-weight: 400;
-  font-style: normal;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff')
-      format('woff'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.ttf')
-      format('truetype');
-  font-display: swap;
+  src: url('./Pretendard-Regular.woff2') format('woff2'),
+    url('./Pretendard-Regular.woff') format('woff');
 }
 
-/* Bold Style */
 @font-face {
   font-family: 'Pretendard';
   font-weight: 700;
-  font-style: normal;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff')
-      format('woff'),
-    url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.ttf')
-      format('truetype');
-  font-display: swap;
+  src: url('./Pretendard-Bold.woff2') format('woff2'),
+    url('./Pretendard-Bold.woff') format('woff');
 }
 
-body {
-  font-family: 'Pretendard';
+/* 나눔명조 */
+@font-face {
+  font-family: '나눔명조';
+  src: url('./NanumMyeongjo.woff2') format('woff2'),
+    url('./NanumMyeongjo.woff') format('woff');
+}
+
+/* 나눔손글씨 손편지체 */
+@font-face {
+  font-family: '나눔손글씨 손편지체';
+  src: url('./NanumPen.woff2') format('woff2'),
+    url('./NanumPen.woff') format('woff');
 }

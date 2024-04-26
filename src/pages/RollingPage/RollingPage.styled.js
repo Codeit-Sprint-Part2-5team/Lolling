@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button';
 
 export const RollingPageLayout = styled.div`
   min-height: calc(100vh - 132px);
-  padding: 113px 0;
+  padding: 112px 0;
   ${({ $background }) => {
     if ($background.includes('http')) {
       return `
@@ -45,7 +45,7 @@ export const ButtonBox = styled(Button)`
 
 export const DeleteModalBox = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   position: absolute;
   top: 0;
@@ -58,6 +58,37 @@ export const DeleteModalBox = styled.div`
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   font-size: 18px;
   color: var(--gray-600, #4a4a4a);
+
+  @media (max-width: 1248px) {
+    justify-content: space-between;
+    position: fixed;
+    top: unset;
+    bottom: 70px;
+    left: 24px;
+    right: 24px;
+    width: auto;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+  }
+`;
+
+export const Br = styled.br`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 5px;
 `;
 
 export const CardContainer = styled.ul`
@@ -110,7 +141,7 @@ export const LoadingContainer = styled.div`
 
 export const LoadingBox = styled.img`
   display: block;
-  width: 30px;
+  width: 50px;
   margin: 50px auto 0;
   animation: ${rotate} 3s infinite linear;
 `;
