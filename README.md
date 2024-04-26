@@ -1,8 +1,9 @@
 <img width="916" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/133f2259-f169-458a-9234-4ff2ba0e75c0">  
 
-<br>
+<br />
 
 - 배포 URL : https://5rolling.netlify.app/
+- 개발 기간 : 2024.4.9 - 2024.4.24
 
 
 ## 프로젝트 소개
@@ -20,4 +21,68 @@
 
 ## 개발 환경
 
+### 1. 기술 스택
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+
+### 2. 협업 툴
+
+### 3. 서비스 배포 환경
+
+### 4. 디자인
+
+### 5. 커밋 컨벤션
+
+### 6. 코드 컨벤션
+
+
+## 프로젝트 구조
+
+## 역할 분담
+
+⭐ 오다은
+  - UI
+    - 페이지 : Rolling 페이지, NotFound 페이지
+    - 공통 컴포넌트 : 롤링페이퍼 카드, 헤더
+  - 기능
+    - 무한 스크롤, 롤링페이퍼 페이지 삭제, 롤링페이퍼 카드 삭제, 모달창 띄우기, 카카오톡 공유하기
+
+## 페이지별 기능
+
+🏠 Home 페이지
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0">|
+|---|---|
+
+
+🗂️ List 페이지
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108">|
+|---|---|
+
+
+✉️ RollingPaper 페이지
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6">|
+|---|---|
+
+
+📫 Post 페이지
+
+|<img width="1133" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="240" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
+|---|---|
+
+
+✍️ Message 페이지
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174">|
+|---|---|
+
+
+
+## 트러블 슈팅
+
+
+
+## 개선 사항
+
+
