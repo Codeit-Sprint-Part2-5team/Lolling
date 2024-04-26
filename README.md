@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+<img width="916" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/133f2259-f169-458a-9234-4ff2ba0e75c0">  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+- 배포 URL : https://5rolling.netlify.app/
 
-In the project directory, you can run:
 
-### `npm start`
+## 프로젝트 소개
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  - Rolling은 롤링페이퍼를 웹에서  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 팀원 구성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+|박준영|이보미|이진욱|정성혜|오다은|
+|:---:|:---:|:---:|:---:|:---:|
+|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/58012212-d77b-4e4e-ad06-8e5bada646b6" width="100" alt="박준영" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e6fce7e8-820c-4e96-8434-8c43a565ba29" width="100" alt="이보미" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/790302e8-55b9-48ae-93f2-8f5bed2584b5" width="100" alt="이진욱" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5984c657-ddc6-4971-8d61-e66d8a8589a5" width="100" alt="정성혜" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/41a83c4c-5ccd-48b4-a3a8-7dcc1939360c" width="100" alt="오다은" />|
+|<a href="https://github.com/JunYoungee">JunYoungee</a>|<a href="https://github.com/Leebomi98">Leebomi98</a>|<a href="https://github.com/kidboi666">kidboi666</a>|<a href="https://github.com/eqypo9">eqypo9</a>|<a href="https://github.com/O-daeun">O-daeun</a>|
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 개발 환경
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
