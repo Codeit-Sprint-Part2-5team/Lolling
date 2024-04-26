@@ -48,31 +48,31 @@
 
 ## 페이지별 기능
 
-🏠 Home 페이지
+### 🏠 Home 페이지
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0">|
 |---|---|
 
 
-🗂️ List 페이지
+### 🗂️ List 페이지
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108">|
 |---|---|
 
 
-✉️ RollingPaper 페이지
+### ✉️ RollingPaper 페이지
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6">|
 |---|---|
 
 
-📫 Post 페이지
+### 📫 Post 페이지
 
-|<img width="1133" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="240" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
 |---|---|
 
 
-✍️ Message 페이지
+### ✍️ Message 페이지
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174">|
 |---|---|
