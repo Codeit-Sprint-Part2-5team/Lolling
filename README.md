@@ -21,26 +21,95 @@
 ## 개발 환경
 
 ### 1. 기술 스택
+
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white"><img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"><img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"><img src="https://img.shields.io/badge/lodash-3492FF?style=for-the-badge&logo=lodash&logoColor=white">
 
 ### 2. 협업 툴
+
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"><img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 
 ### 3. 서비스 배포 환경
+
 <img src="https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white">
 
 ### 4. 디자인 시안
+
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 
 ### 5. 코드 컨벤션
+
 <a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98">코드 컨벤션</a>
 
 ### 6. 커밋 컨벤션
+
 <a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%EC%BB%A4%EB%B0%8B-%EC%BB%A8%EB%B2%A4%EC%85%98">커밋 컨벤션</a>
 
 <br>
 
 ## 프로젝트 구조
+
+```├── README.md
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── public
+│    ├── _redirects
+│    ├── favicon.ico
+│    └── index.html
+└── src
+     ├── App.jsx
+     ├── index.js
+     ├── Main.jsx
+     ├── api
+     │     ├── firebase.js
+     │     └── api.js
+     ├── assets
+     │     ├── fonts
+     │     ├── images
+     │     └── styles
+     │           └── Global.styled.js
+     ├── components
+     │     ├── AddButton
+     │     │     ├── AddButton.jsx
+     │     │     └── AddButton.styled.js
+     │     ├── ArrowButton
+     │     ├── Badge
+     │     ├── Button
+     │     ├── Card
+     │     ├── CardFolder
+     │     ├── CardSlider
+     │     ├── ColorOption
+     │     ├── DeleteButton
+     │     ├── EmojiBadge
+     │     ├── Header
+     │     ├── HeaderService
+     │     ├── ImageUploader
+     │     ├── Inner
+     │     ├── KakaoButton
+     │     ├── LoadingModal
+     │     ├── Modal
+     │     ├── ProfileImage
+     │     ├── ProfileList
+     │     ├── SenderProfile
+     │     ├── TextField
+     │     ├── Toast
+     │     └── ToggleButton
+     ├── hooks
+     │     ├── useAsync.js
+     │     └── useInfiniteScroll.js
+     ├── pages
+     │     ├── ApiTestPage
+     │     │     ├── ApiTestPage.jsx
+     │     │     └── ApiTestPage.styled.js
+     │     ├── HomePage
+     │     ├── ListPage
+     │     ├── MessagePage
+     │     ├── NotFoundPage
+     │     ├── PostPage
+     │     └── RollingPage
+     └── utils
+           └── convertBackgroundColor.js
+```
 
 <br>
 
@@ -75,6 +144,7 @@
 
 ### 🏠 Home 페이지
 
+
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0">|
 |---|---|
 
@@ -94,18 +164,18 @@
 - 카카오톡으로 공유하거나 URL을 복사할 수 있습니다.
 - 이모지를 추가할 수 있습니다.
 
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 - /edit 경로로 이동하면 롤링페이퍼를 삭제할 수 있습니다.
-  
-|<img width="650" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b50d5043-f156-437e-a91e-1306a9c3712a">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/35c8e606-fff9-4562-aed6-d14b5b450003">|
-|---|---|
 
+| <img width="650" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b50d5043-f156-437e-a91e-1306a9c3712a"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/35c8e606-fff9-4562-aed6-d14b5b450003"> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
 ### 📫 Post 페이지
+
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
 |---|---|
@@ -123,8 +193,8 @@
 
 - 잘못된 주소로 접근할 경우 NotFound 페이지가 보여집니다.
 
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/ee46e1c6-37a2-4946-93f9-8b6927902ac9">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/a02cce9a-f11d-446c-b149-426b731bbf40">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/ee46e1c6-37a2-4946-93f9-8b6927902ac9"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/a02cce9a-f11d-446c-b149-426b731bbf40"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
@@ -141,9 +211,10 @@
 
 ## 트러블 슈팅
 
-
 <br>
 
 ## 개선 사항
 
+```
 
+```
