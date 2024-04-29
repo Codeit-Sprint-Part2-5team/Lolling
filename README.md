@@ -8,10 +8,9 @@
 
 ## 프로젝트 소개
 
-  - Rolling은 롤링페이퍼를 웹에서 작성할 수 있는 서비스입니다.
-  - 본인의 롤링페이퍼 페이지를 생성할 때 로컬에서 원하는 사진을 배경으로 등록해 보세요.
-  - 다른 사람에게 롤링페이퍼를 작성할 때 프로필 사진도 로컬에서 등록할 수 있습니다.
-  - 다른 사람의 롤링페이퍼에 이모지로 반응해 보세요.
+  - 추억의 롤링 페이퍼를 웹 상에서도 즐길 수 있는 플랫폼인 '롤링' 서비스입니다.
+  - 모든 롤링페이퍼를 한 눈에 확인할 수 있습니다.
+  - 본인의 롤링페이퍼 페이지도 생성해보고, 다른 사람의 페이지에 롤링페이퍼도 작성해 보세요.
 
 
 ## 팀원 구성
@@ -51,6 +50,13 @@
     - 공통 컴포넌트 : 롤링페이퍼 카드, 헤더
   - 기능
     - 무한 스크롤, 롤링페이퍼 페이지 삭제, 롤링페이퍼 카드 삭제, 모달창 띄우기, 카카오톡 공유하기
+   
+⭐ 이보미
+  - UI
+    - 페이지 : Home 페이지
+    - 공통 컴포넌트 : 롤링 페이퍼 상세 모달, 토스트 팝업, 관계 뱃지
+  - 기능
+    - 버튼 클릭시 페이지 이동
 
 ## 페이지별 기능
 
@@ -68,14 +74,23 @@
 
 ✉️ RollingPaper 페이지
 
+- 카드 목록은 무한 스크롤 방식으로 보여집니다.
+- 카드를 누르면 해당 카드가 확대되어 보여집니다.
+- 카카오톡으로 공유하거나 URL을 복사할 수 있습니다.
+- 이모지를 추가할 수 있습니다.
+
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e7330558-1b8d-413a-b70a-03f2329ab9ce">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/94ef647a-5654-46f6-8d0b-243df5b65ed6">|
 |---|---|
 
+- /edit 경로로 이동하면 롤링페이퍼를 삭제할 수 있습니다.
+  
+|<img width="650" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b50d5043-f156-437e-a91e-1306a9c3712a">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/35c8e606-fff9-4562-aed6-d14b5b450003">|
+|---|---|
 
 
 📫 Post 페이지
 
-|<img width="1133" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="240" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
 |---|---|
 
 
@@ -83,6 +98,23 @@
 
 |<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174">|
 |---|---|
+
+
+❌ NotFound 페이지
+
+- 잘못된 주소로 접근할 경우 NotFound 페이지가 보여집니다.
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/ee46e1c6-37a2-4946-93f9-8b6927902ac9">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/a02cce9a-f11d-446c-b149-426b731bbf40">|
+|---|---|
+
+## 기타 기능
+
+⌛ 로딩중 아이콘
+
+- API 호출 시 pending 상태일 때 로딩중 아이콘이 회전하며 보여집니다.
+
+|<img width="400" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5f7e3f5f-2e2e-4e2d-98f9-df58f8d26306">|
+|---|
 
 
 
