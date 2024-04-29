@@ -2,8 +2,7 @@ import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
-import { useEffect } from 'react';
-import axios from 'axios';
+
 function CardFolder({
   name = 'Sowon',
   backgroundImageURL = 'https://picsum.photos/id/24/3840/2160',
@@ -20,17 +19,6 @@ function CardFolder({
       (a, b) => b.reactionCount - a.reactionCount
     );
   }
-
-  const getImage = async () => {
-    const result = await axios.get(`${backgroundImageURL}`);
-    if (!result) {
-      return (backgroundImageURL = null);
-    }
-  };
-
-  useEffect(() => {
-    getImage();
-  }, []);
 
   return (
     <S.CardFolderLayout
