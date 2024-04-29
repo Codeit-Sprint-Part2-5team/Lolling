@@ -153,6 +153,13 @@
 
 <br>
 
+🏀 정성혜
+- UI
+  - 페이지 : List 페이지
+  - 공통 컴포넌트 : 드롭다운, 인풋창, 텍스트 에디터
+- 기능
+    - 카드 슬라이드 좌우 스크롤, 카드 좌측부터 채우기, 카드 4개 초과부터 좌측 버튼 생성, 버튼 클릭시 카드 목록 한 페이지씩 불러오기, 불러올 카드 데이터 없을시 버튼 없애기, 카드 인기순&최신순으로 배열
+
 ## 페이지별 기능
 
 ### 🏠 Home 페이지
@@ -164,6 +171,13 @@
 
 ### 🗂️ List 페이지
 
+- 카드 목록은 규격에 따라 좌우 스크롤과 버튼으로 넘길 수 있습니다.
+- 카드는 좌측부터 채워지며 4개 초과시 우측 버튼이 생성되어 다음 페이지로 넘어갈 수 있습니다.
+- 더이상 불러올 카드 데이터가 없으면 우측 버튼은 사라집니다.
+- 카드는 인기순과 최신순으로 배열되어 있습니다.
+
+|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108">|
+|---|---|
 | <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108"> |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
@@ -221,6 +235,8 @@
 <br>
 
 ## 트러블 슈팅
+- <a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_cardslider-%EC%97%90%EB%9F%AC-%EC%9D%B4%EC%8A%88#cardslider-%EC%97%90%EB%9F%AC-%EC%9D%B4%EC%8A%88">cardslider 트러블 슈팅</a>
+
 
 <br>
 
