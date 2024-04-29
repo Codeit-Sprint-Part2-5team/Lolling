@@ -35,10 +35,11 @@
 ### 4. 디자인 시안
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 
-### 5. 커밋 컨벤션
+### 5. 코드 컨벤션
+<a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98">코드 컨벤션</a>
 
-### 6. 코드 컨벤션
-
+### 6. 커밋 컨벤션
+<a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%EC%BB%A4%EB%B0%8B-%EC%BB%A8%EB%B2%A4%EC%85%98">커밋 컨벤션</a>
 
 ## 프로젝트 구조
 
