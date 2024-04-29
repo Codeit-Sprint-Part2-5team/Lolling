@@ -131,7 +131,7 @@
 
 
 ## 트러블 슈팅
-
+- <a href="https://github.com/Codeit-Sprint-Part2-5team/Rolling/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_cardslider-%EC%97%90%EB%9F%AC-%EC%9D%B4%EC%8A%88#cardslider-%EC%97%90%EB%9F%AC-%EC%9D%B4%EC%8A%88">cardslider 트러블 슈팅</a>
 
 
 ## 개선 사항
