@@ -1,5 +1,4 @@
-<img width="916" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/133f2259-f169-458a-9234-4ff2ba0e75c0">  
-
+<img width="9160" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/68220e8a-68ea-4961-8106-806d55c33636">  
 <br />
 
 - 배포 URL : https://5rolling.netlify.app/
