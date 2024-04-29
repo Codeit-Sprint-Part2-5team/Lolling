@@ -2,6 +2,7 @@ import * as S from './CardFolder.styled';
 import EmojiBadge from '../EmojiBadge/EmojiBadge';
 import ProfileList from '../ProfileList/ProfileList';
 import convertBackgroundColor from '../../utils/convertBackgroundColor';
+
 function CardFolder({
   name = 'Sowon',
   backgroundImageURL = 'https://picsum.photos/id/24/3840/2160',
