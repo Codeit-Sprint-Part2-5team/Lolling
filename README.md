@@ -141,15 +141,15 @@
 
   - 버튼 클릭시 페이지 이동
 
-  👍박준영
+👍박준영
 
-  - UI
-    - 페이지 : Lolling페이지에서 HeaderService부분 구현
-    - 공통 컴포넌트 : Button, ArrowButton, AddButton, DeleteButton
-  - 기능
-    - 이모지 데이터 받아와서 순위별로 3번째까지 보여주고, 버튼 클릭시 상위 8개 이모지 보여주기
-    - Emoji-Picker라이브러리를 이용해서 버튼 클릭 시 이모지 선택 창 띄우고 이모지 선택 시 이모지가 데이터에 추가
-    - URL 복사하기 클릭 시 현재 URL이 복사되고 Toast 5초간 띄우기
+- UI
+     - 페이지 : Lolling페이지에서 HeaderService부분 구현
+     - 공통 컴포넌트 : Button, ArrowButton, AddButton, DeleteButton
+- 기능
+     - 이모지 데이터 받아와서 순위별로 3번째까지 보여주고, 버튼 클릭시 상위 8개 이모지 보여주기
+     - Emoji-Picker라이브러리를 이용해서 버튼 클릭 시 이모지 선택 창 띄우고 이모지 선택 시 이모지가 데이터에 추가
+     - URL 복사하기 클릭 시 현재 URL이 복사되고 Toast 5초간 띄우기
 
 <br>
 
