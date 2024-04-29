@@ -5,9 +5,9 @@
 
 ## 프로젝트 소개
 
-  - 추억의 롤링 페이퍼를 웹 상에서도 즐길 수 있는 플랫폼인 '롤링' 서비스입니다.
-  - 모든 롤링페이퍼를 한 눈에 확인할 수 있습니다.
-  - 본인의 롤링페이퍼 페이지도 생성해보고, 다른 사람의 페이지에 롤링페이퍼도 작성해 보세요.
+- 추억의 롤링 페이퍼를 웹 상에서도 즐길 수 있는 플랫폼인 '롤링' 서비스입니다.
+- 모든 롤링페이퍼를 한 눈에 확인할 수 있습니다.
+- 본인의 롤링페이퍼 페이지도 생성해보고, 다른 사람의 페이지에 롤링페이퍼도 작성해 보세요.
 
 <br>
 
@@ -48,95 +48,97 @@
 
 ## 프로젝트 구조
 
-```├── README.md
-├── .gitignore
-├── package-lock.json
-├── package.json
-├── public
-│    ├── _redirects
-│    ├── favicon.ico
-│    └── index.html
-└── src
-     ├── App.jsx
-     ├── index.js
-     ├── Main.jsx
-     ├── api
-     │     ├── firebase.js
-     │     └── api.js
-     ├── assets
-     │     ├── fonts
-     │     ├── images
-     │     └── styles
-     │           └── Global.styled.js
-     ├── components
-     │     ├── AddButton
-     │     │     ├── AddButton.jsx
-     │     │     └── AddButton.styled.js
-     │     ├── ArrowButton
-     │     ├── Badge
-     │     ├── Button
-     │     ├── Card
-     │     ├── CardFolder
-     │     ├── CardSlider
-     │     ├── ColorOption
-     │     ├── DeleteButton
-     │     ├── EmojiBadge
-     │     ├── Header
-     │     ├── HeaderService
-     │     ├── ImageUploader
-     │     ├── Inner
-     │     ├── KakaoButton
-     │     ├── LoadingModal
-     │     ├── Modal
-     │     ├── ProfileImage
-     │     ├── ProfileList
-     │     ├── SenderProfile
-     │     ├── TextField
-     │     ├── Toast
-     │     └── ToggleButton
-     ├── hooks
-     │     ├── useAsync.js
-     │     └── useInfiniteScroll.js
-     ├── pages
-     │     ├── ApiTestPage
-     │     │     ├── ApiTestPage.jsx
-     │     │     └── ApiTestPage.styled.js
-     │     ├── HomePage
-     │     ├── ListPage
-     │     ├── MessagePage
-     │     ├── NotFoundPage
-     │     ├── PostPage
-     │     └── RollingPage
-     └── utils
-           └── convertBackgroundColor.js
+```├── 📄README.md
+├── 📄.gitignore
+├── 📄package-lock.json
+├── 📄package.json
+├── 📦public
+│    ├── 📄_redirects
+│    ├── 📄favicon.ico
+│    └── 📄index.html
+└── 📦src
+     ├── 📄App.jsx
+     ├── 📄index.js
+     ├── 📄Main.jsx
+     ├── 📂apis
+     │     ├── 📄firebase.js
+     │     └── 📄api.js
+     ├── 📂assets
+     │     ├── 📂fonts
+     │     ├── 📂images
+     │     └── 📂styles
+     │           └── 📄Global.styled.js
+     ├── 📂components
+     │     ├── 📂AddButton
+     │     │     ├── 📄AddButton.jsx
+     │     │     └── 📄AddButton.styled.js
+     │     ├── 📂ArrowButton
+     │     ├── 📂Badge
+     │     ├── 📂Button
+     │     ├── 📂Card
+     │     ├── 📂CardFolder
+     │     ├── 📂CardSlider
+     │     ├── 📂ColorOption
+     │     ├── 📂DeleteButton
+     │     ├── 📂EmojiBadge
+     │     ├── 📂Header
+     │     ├── 📂HeaderService
+     │     ├── 📂ImageUploader
+     │     ├── 📂Inner
+     │     ├── 📂KakaoButton
+     │     ├── 📂LoadingModal
+     │     ├── 📂Modal
+     │     ├── 📂ProfileImage
+     │     ├── 📂ProfileList
+     │     ├── 📂SenderProfile
+     │     ├── 📂TextField
+     │     ├── 📂Toast
+     │     └── 📂ToggleButton
+     ├── 📂hooks
+     │     ├── 📄useAsync.js
+     │     └── 📄useInfiniteScroll.js
+     ├── 📂pages
+     │     ├── 📂ApiTestPage
+     │     │     ├── 📄ApiTestPage.jsx
+     │     │     └── 📄ApiTestPage.styled.js
+     │     ├── 📂HomePage
+     │     ├── 📂ListPage
+     │     ├── 📂MessagePage
+     │     ├── 📂NotFoundPage
+     │     ├── 📂PostPage
+     │     └── 📂RollingPage
+     └── 📂utils
+           └── 📄convertBackgroundColor.js
 ```
 
 <br>
 
 ## 팀원 구성
 
-|박준영|이보미|이진욱|정성혜|오다은|
-|:---:|:---:|:---:|:---:|:---:|
-|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/58012212-d77b-4e4e-ad06-8e5bada646b6" width="100" alt="박준영" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e6fce7e8-820c-4e96-8434-8c43a565ba29" width="100" alt="이보미" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/790302e8-55b9-48ae-93f2-8f5bed2584b5" width="100" alt="이진욱" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5984c657-ddc6-4971-8d61-e66d8a8589a5" width="100" alt="정성혜" />|<img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/41a83c4c-5ccd-48b4-a3a8-7dcc1939360c" width="100" alt="오다은" />|
-|<a href="https://github.com/JunYoungee">JunYoungee</a>|<a href="https://github.com/Leebomi98">Leebomi98</a>|<a href="https://github.com/kidboi666">kidboi666</a>|<a href="https://github.com/eqypo9">eqypo9</a>|<a href="https://github.com/O-daeun">O-daeun</a>|
+|                                                                      박준영                                                                       |                                                                      이보미                                                                       |                                                                      이진욱                                                                       |                                                                      정성혜                                                                       |                                                                      오다은                                                                       |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/58012212-d77b-4e4e-ad06-8e5bada646b6" width="100" alt="박준영" /> | <img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e6fce7e8-820c-4e96-8434-8c43a565ba29" width="100" alt="이보미" /> | <img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/790302e8-55b9-48ae-93f2-8f5bed2584b5" width="100" alt="이진욱" /> | <img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5984c657-ddc6-4971-8d61-e66d8a8589a5" width="100" alt="정성혜" /> | <img src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/41a83c4c-5ccd-48b4-a3a8-7dcc1939360c" width="100" alt="오다은" /> |
+|                                              <a href="https://github.com/JunYoungee">JunYoungee</a>                                               |                                               <a href="https://github.com/Leebomi98">Leebomi98</a>                                                |                                               <a href="https://github.com/kidboi666">kidboi666</a>                                                |                                                  <a href="https://github.com/eqypo9">eqypo9</a>                                                   |                                                 <a href="https://github.com/O-daeun">O-daeun</a>                                                  |
 
 <br>
 
 ## 역할 분담
 
 🔥 오다은
-  - UI
-    - 페이지 : Rolling 페이지, NotFound 페이지
-    - 공통 컴포넌트 : 롤링페이퍼 카드, 헤더
-  - 기능
-    - 무한 스크롤, 롤링페이퍼 페이지 삭제, 롤링페이퍼 카드 삭제, 모달창 띄우기, 카카오톡 공유하기
-   
+
+- UI
+  - 페이지 : Rolling 페이지, NotFound 페이지
+  - 공통 컴포넌트 : 롤링페이퍼 카드, 헤더
+- 기능
+  - 무한 스크롤, 롤링페이퍼 페이지 삭제, 롤링페이퍼 카드 삭제, 모달창 띄우기, 카카오톡 공유하기
+
 🤗 이보미
-  - UI
-    - 페이지 : Home 페이지
-    - 공통 컴포넌트 : 롤링 페이퍼 상세 모달, 토스트 팝업, 관계 뱃지
-  - 기능
-    - 버튼 클릭시 페이지 이동
+
+- UI
+  - 페이지 : Home 페이지
+  - 공통 컴포넌트 : 롤링 페이퍼 상세 모달, 토스트 팝업, 관계 뱃지
+- 기능
+  - 버튼 클릭시 페이지 이동
 
 <br>
 
@@ -144,16 +146,15 @@
 
 ### 🏠 Home 페이지
 
-
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/9b050dc8-c81b-44a0-a686-c47ebd16ddb6"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/b93a28e3-664a-4f16-a808-9d47abb248b0"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
 ### 🗂️ List 페이지
 
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/aa6c36d2-cd6d-4481-9031-cae2fb594d8e"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/98b911e8-2925-41e3-aab0-1b46e5f5d108"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
@@ -176,16 +177,15 @@
 
 ### 📫 Post 페이지
 
-
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/7085a106-e798-4520-8941-8b1fe89bdc68"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/f393ffde-d69b-45fe-bb6c-e7f619c57961"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
 ### ✍️ Message 페이지
 
-|<img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633">|<img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174">|
-|---|---|
+| <img width="1120" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/6c25011d-fecb-458b-9db2-59ca90985633"> | <img width="320" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/56592f90-ae95-427d-bc03-92e533ed3174"> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
@@ -204,8 +204,8 @@
 
 - API 호출 시 pending 상태일 때 로딩중 아이콘이 회전하며 보여집니다.
 
-|<img width="400" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5f7e3f5f-2e2e-4e2d-98f9-df58f8d26306">|
-|---|
+| <img width="400" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/5f7e3f5f-2e2e-4e2d-98f9-df58f8d26306"> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <br>
 
