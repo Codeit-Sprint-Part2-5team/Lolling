@@ -1,3 +1,6 @@
+# <img width="30" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/e0ae1703-522c-4cfa-aede-8c9a18ab5c8c"> Rolling - 온라인 롤링페이퍼 서비스 
+
+
 <div>
 <img width="9160" alt="image" src="https://github.com/Codeit-Sprint-Part2-5team/Rolling/assets/105799083/68220e8a-68ea-4961-8106-806d55c33636">  
 </div>
@@ -186,6 +189,8 @@
   - 배경화면 추가시 추가버튼 자리에 해당 이미지를 넣고 추가버튼은 다음 칸으로 이동하기
   - 이미지를 클릭했을때 해당 이미지를 특정 미리보기 위치에도 띄워주기
   - 카드 폴더의 색상에 따라 다른 디자인 적용시키기
+ 
+<br>
 
 ## 페이지별 기능
 
